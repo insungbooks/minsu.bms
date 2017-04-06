@@ -387,89 +387,10 @@ footer { /*바닥글*/
 						</thead>
 						<tbody>
 							<tr>
-
 								<td><input type="checkbox"></td>
 								<td></td>
 								<td></td>
 								<td></td>
-								<td>한강</td>
-								<td>장비</td>
-								<td>2007/10/30</td>
-								<td>12,000</td>
-								<td>100</td>
-								<td>삭제</td>
-								<td>수정</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>H12345</td>
-								<td>이문학</td>
-								<td>채식주의자</td>
-								<td>한강</td>
-								<td>장비</td>
-								<td>2007/10/30</td>
-								<td>12,000</td>
-								<td>100</td>
-								<td>삭제</td>
-								<td>수정</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>H12345</td>
-								<td>이문학</td>
-								<td>채식주의자</td>
-								<td>한강</td>
-								<td>장비</td>
-								<td>2007/10/30</td>
-								<td>12,000</td>
-								<td>100</td>
-								<td>삭제</td>
-								<td>수정</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>H12345</td>
-								<td>이문학</td>
-								<td>채식주의자</td>
-								<td>한강</td>
-								<td>장비</td>
-								<td>2007/10/30</td>
-								<td>12,000</td>
-								<td>100</td>
-								<td>삭제</td>
-								<td>수정</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>H12345</td>
-								<td>이문학</td>
-								<td>채식주의자</td>
-								<td>한강</td>
-								<td>장비</td>
-								<td>2007/10/30</td>
-								<td>12,000</td>
-								<td>100</td>
-								<td>삭제</td>
-								<td>수정</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>H12345</td>
-								<td>이문학</td>
-								<td>채식주의자</td>
-								<td>한강</td>
-								<td>장비</td>
-								<td>2007/10/30</td>
-								<td>12,000</td>
-								<td>100</td>
-								<td>삭제</td>
-								<td>수정</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>H12345</td>
-								<td>이문학</td>
-								<td>채식주의자</td>
 								<td>한강</td>
 								<td>장비</td>
 								<td>2007/10/30</td>

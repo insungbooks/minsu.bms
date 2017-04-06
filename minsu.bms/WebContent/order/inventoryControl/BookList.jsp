@@ -404,7 +404,7 @@ footer { /*바닥글*/
 								<td><%= book.getBookPrice() %></td>
 								<td><%= book.getSellCount() %></td>
 								<td><button type="submit" formaction="bookProc.jsp">수정</button></td>
-								<td><button type="submit" formaction="bookProc.jsp">삭제</button></td>
+								<td><button type="submit" formaction="deleteBook.jsp">삭제</button></td>
 							</tr>
 <%
 			}

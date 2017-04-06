@@ -6,4 +6,15 @@
 			   company, publi_date publiDate, sell_count sellCount, country, kind
 		from books
 	</select>
+	
+	<select id="getBook" parameterType="string" resultType="book">
+		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
+			   company, publi_date publiDate, sell_count sellCount, country, kind
+		from books
+		where book_code = #{bookCode}
+	</select>
+	
+	<delete id="delBook" parameterType="string">
+		delete books where book_code = #{bookCode}
+	</delete>
 </mapper>

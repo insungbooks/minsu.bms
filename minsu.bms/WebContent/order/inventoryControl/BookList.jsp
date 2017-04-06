@@ -251,7 +251,7 @@ footer { /*바닥글*/
 		<nav class="btnRight navbar-fixed-top">
 			<div class="container">
 				<ul class="topul">
-					<li class="topli"><a href="../../main.html">로그아웃</a></li>
+					<li class="topli"><a href="../../main.jsp">로그아웃</a></li>
 					<li class="topli"><a>적립금 : 650점</a></li>
 					
 					<li class="topli"><a href="../../guest/signUp/signUp.html">회원가입</a></li>
@@ -266,7 +266,7 @@ footer { /*바닥글*/
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<a href="../../main.html"><img src="../../img/logo.png" class="headlogo"></a>
+						<a href="../../main.jsp"><img src="../../img/logo.png" class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
 						<form action="../../shop/search/searchResult.html">
@@ -514,13 +514,13 @@ footer { /*바닥글*/
 		<footer>
 			<div class="row">
 				<ul class="footerul">
-					<li class="footerli"><a href="../../footer/insungInfo.html">회사소개</a></li>
-					<li class="footerli"><a href="../../footer/adInfo.html">광고안내</a></li>
+					<li class="footerli"><a href="../../footer/insungInfo.jsp">회사소개</a></li>
+					<li class="footerli"><a href="../../footer/adInfo.jsp">광고안내</a></li>
 					<li class="footerli"><a href="../../customerCenter/frequent10.html">고객센터</a></li>
-					<li class="footerli"><a href="../../footer/agreementUtilization.html">이용약관</a></li>
-					<li class="footerli"><a href="../../footer/individualInfo.html">개인정보처리</a></li>
-					<li class="footerli"><a href="../../footer/pictureInfo.html">영상정보관리방침</a></li>
-					<li class="footerli"><a href="../../footer/emailCollectBan.html">이메일무단복제금지</a></li>
+					<li class="footerli"><a href="../../footer/agreementUtilization.jsp">이용약관</a></li>
+					<li class="footerli"><a href="../../footer/individualInfo.jsp">개인정보처리</a></li>
+					<li class="footerli"><a href="../../footer/pictureInfo.jsp">영상정보관리방침</a></li>
+					<li class="footerli"><a href="../../footer/emailCollectBan.jsp">이메일무단복제금지</a></li>
 				</ul>
 			</div>
 			<hr>

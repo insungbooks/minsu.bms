@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>광고안내</title>
+<title>이메일 무단 수집금지</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -10,64 +12,72 @@
 /*사이드바*/
 
 /* CSS코드는 관리자나 회원이나 동일한 코드 */
-.nav-sidebar { 
-    width: 100%;
-    padding: 8px 0; 
-    border-right: 1px solid #ddd;
+.nav-sidebar {
+	width: 100%;
+	padding: 8px 0;
+	border-right: 1px solid #ddd;
 }
+
 .nav-sidebar a {
-    color: #333;
-    transition: all 0.08s linear;
-    border-radius: 4px 0 0 4px; 
+	color: #333;
+	transition: all 0.08s linear;
+	border-radius: 4px 0 0 4px;
 }
-.nav-sidebar .active a { 
-    cursor: default;
-    background-color: rgb(115, 215, 209); 
-    color: #fff; 
-    text-shadow: 1px 1px 1px #666; 
+
+.nav-sidebar .active a {
+	cursor: default;
+	background-color: rgb(115, 215, 209);
+	color: #fff;
+	text-shadow: 1px 1px 1px #666;
 }
+
 .nav-sidebar .active a:hover {
-    background-color: rgb(115, 215, 209);   
+	background-color: rgb(115, 215, 209);
 }
 
 /* Right-aligned sidebar */
-.nav-sidebar.pull-right { 
-    border-right: 0; 
-    border-left: 1px solid #ddd; 
-}
-.nav-sidebar.pull-right a { 
-    border-radius: 0 4px 4px 0; 
+.nav-sidebar.pull-right {
+	border-right: 0;
+	border-left: 1px solid #ddd;
 }
 
-.nav-header{
-	color : #909090;
+.nav-sidebar.pull-right a {
+	border-radius: 0 4px 4px 0;
 }
-/*/사이드바*/
 
+.nav-header {
+	color: #909090;
+}
+
+/*//사이드바*/
 /*여기서부터 main*/
 body {
 	padding-top: 20px;
 }
 
-#text1{
-	background-color : rgba(0, 0, 0,0.1);
-	text-color:black;
+#text1 {
+	background-color: rgba(0, 0, 0, 0.1);
+	text-color: black;
 }
-#imgInfo{
-	position : relative;
-	top : -320px;
-	transition-property : all;
+
+#imgInfo {
+	position: relative;
+	top: -320px;
+	transition-property: all;
 }
-#imgInfo:hover,#imgInfo1:hover{
-	opacity : 0.1;
+
+#imgInfo:hover, #imgInfo1:hover {
+	opacity: 0.1;
 }
-#imgInfo1{
-	position : relative;
-	top : -150px;
-	transition-property : all;
+
+#imgInfo1 {
+	position: relative;
+	top: -150px;
+	transition-property: all;
 }
+
 .jumbotron {
-	padding-top : 30px;
+	padding-top: 30px;
 	background-color: #FFFFFF; /*배경색 흰색*/
 	border: 1px solid black; /*테두리선*/
 	height: 180px; /*높이*/
@@ -228,7 +238,6 @@ footer { /*바닥글*/
 	height: 130px;
 }
 /*이미지*/
-
 </style>
 </head>
 <body>
@@ -237,10 +246,29 @@ footer { /*바닥글*/
 		<nav class="btnRight navbar-fixed-top">
 			<div class="container">
 				<ul class="topul">
-					<li class="topli"><a href="../shop/system/login.html">로그인</a></li>
+					<%
+	String id = ""; 
+	if(session.getAttribute("login")!=null) {		//세션값이 비어있지 않다라면
+		id = (String)session.getAttribute("login"); //세션값 추출하고 저장
+	}
+%>
+					<% if(id.equals("insung")) { %>
+					<!-- 세센값의 아이디가 관리자 아이디와 같다면 밑에 코드 출력  -->
+					<li class="topli"><a href="../shop/system/login/logoutProc.jsp">로그아웃</a></li>
+					<li class="topli"><a href="../order/member/memberList.html">관리자페이지</a></li>
+					<% }else if(!id.equals("")) { %>
+					<!-- 로그인이 성공했다라면 id값에 데이터가 들어가있으므로 실행 -->
+					<li class="topli"><a href="../shop/system/login/logoutProc.jsp">로그아웃</a></li>
+					<li class="topli"><a>적립금 : 650점</a></li>
+					<li class="topli"><a href="../guest/basket/Basket.html">장바구니</a></li>
+					<li class="topli"><a href="../guest/mypage/orderList.html">마이페이지</a></li>
+					<% }else { %>
+					<!-- 세션값이 없다라면 실행 (로그인 안된상태) -->
+					<li class="topli"><a href="../shop/system/login/login.jsp">로그인</a></li>
 					<li class="topli"><a href="../guest/signUp/signUp.html">회원가입</a></li>
 					<li class="topli"><a href="../guest/basket/Basket.html">장바구니</a></li>
 					<li class="topli"><a href="../guest/mypage/orderList.html">마이페이지</a></li>
+					<% } %>
 				</ul>
 			</div>
 		</nav>
@@ -250,7 +278,8 @@ footer { /*바닥글*/
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<a href="../main.html"><img src="../img/logo.png" class="headlogo"></a>
+						<a href="../main.jsp"><img src="../img/logo.png"
+							class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
 						<form action="../shop/search/searchResult.html">
@@ -270,8 +299,8 @@ footer { /*바닥글*/
 
 								<input type="hidden" name="search_param" value="all"
 									id="search_param"> <input type="text"
-									class="form-control" name="x" placeholder="입력하세요">
-								<span class="input-group-btn">
+									class="form-control" name="x" placeholder="입력하세요"> <span
+									class="input-group-btn">
 
 									<button class="btn btn-default" type="submit">
 										<span class="glyphicon glyphicon-search"></span>
@@ -310,10 +339,10 @@ footer { /*바닥글*/
 									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="../category/domesticBook/literatureBook.html">문학</a> 
-									<a href="../category/domesticBook/humanitiesBook.html">인문</a> 
-									<a href="../category/domesticBook/referenceBook.html">참고서</a>
-									<a href="../category/domesticBook/besidesBook.html">기타</a>
+									<a href="../category/domesticBook/literatureBook.html">문학</a> <a
+										href="../category/domesticBook/humanitiesBook.html">인문</a> <a
+										href="../category/domesticBook/referenceBook.html">참고서</a> <a
+										href="../category/domesticBook/besidesBook.html">기타</a>
 								</div>
 							</div>
 							<div class="dropdown">
@@ -321,10 +350,10 @@ footer { /*바닥글*/
 									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="../category/foreignBook/literatureBook.html">문학</a> 
-									<a href="../category/foreignBook/humanitiesBook.html">인문</a> 
-									<a href="../category/foreignBook/referenceBook.html">참고서</a>
-									<a href="../category/domesticBook/besidesBook.html">기타</a>
+									<a href="../category/foreignBook/literatureBook.html">문학</a> <a
+										href="../category/foreignBook/humanitiesBook.html">인문</a> <a
+										href="../category/foreignBook/referenceBook.html">참고서</a> <a
+										href="../category/domesticBook/besidesBook.html">기타</a>
 								</div>
 							</div>
 						</div>
@@ -336,48 +365,46 @@ footer { /*바닥글*/
 	<!-- //메뉴바 -->
 
 
-<article>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-2">
-			<nav class="nav-sidebar">
-        <ul class="nav">
-        	<li class="nav-header"><strong>인성문고</strong></li>
-            <li><a href="insungInfo.html">회사소개</a></li>
-            <li class="active"><a href="adInfo.html">광고안내</a></li>
-            <li><a href="agreementUtilization.html">이용약관</a></li>
-            <li><a href="individualInfo.html">개인정보처리방침</a></li>
-            <li><a href="pictureInfo.html">영상정보처리방침</a></li>
-            <li><a href="emailCollectBan.html">이메일무단복제금지</a></li>
-        </ul>
-    </nav></div>
-			<div class="col-md-10">
-				<br>
-				<h3>광고안내</h3>
-				<hr>
-				<img src="../img/ad/adInfo1.jpg"> <br>
-				<hr>
-				<br> <img src="../img/ad/adInfo2.jpg"> <br>
-				<hr>
-				<br> <img src="../img/ad/adInfo3.jpg"> <br>
-				<hr>
-				<br> <img src="../img/ad/adInfo4.jpg">
+	<article>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2">
+					<nav class="nav-sidebar">
+						<ul class="nav">
+							<li class="nav-header"><strong>인성문고</strong></li>
+							<li><a href="insungInfo.jsp">회사소개</a></li>
+							<li><a href="adInfo.jsp">광고안내</a></li>
+							<li><a href="agreementUtilization.jsp">이용약관</a></li>
+							<li><a href="individualInfo.jsp">개인정보처리방침</a></li>
+							<li><a href="pictureInfo.jsp">영상정보처리방침</a></li>
+							<li class="active"><a href="emailCollectBan.jsp">이메일무단복제금지</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-md-10">
+					<br>
+					<h2>이메일 무단 수집 금지</h2>
+					<hr>
+					<br> <img src="../img/emailCollectBan.jpg"
+						style="width: 100%;">
+
+				</div>
 			</div>
+
 		</div>
-	</div>
-</article>
-<!-- 바닥글 -->
+	</article>
+	<!-- 바닥글 -->
 	<div class="container">
 		<footer>
 			<div class="row">
 				<ul class="footerul">
-					<li class="footerli"><a href="insungInfo.html">회사소개</a></li>
-					<li class="footerli"><a href="adInfo.html">광고안내</a></li>
-					<li class="footerli"><a href="../customerCenter/frequent10.html">고객센터</a></li>
-					<li class="footerli"><a href="agreementUtilization.html">이용약관</a></li>
-					<li class="footerli"><a href="individualInfo.html">개인정보처리</a></li>
-					<li class="footerli"><a href="pictureInfo.html">영상정보관리방침</a></li>
-					<li class="footerli"><a href="emailCollectBan.html">이메일무단복제금지</a></li>
+					<li class="footerli"><a href="insungInfo.jsp">회사소개</a></li>
+					<li class="footerli"><a href="adInfo.jsp">광고안내</a></li>
+					<li class="footerli"><a href="customerCenter.html">고객센터</a></li>
+					<li class="footerli"><a href="agreementUtilization.jsp">이용약관</a></li>
+					<li class="footerli"><a href="individualInfo.jsp">개인정보처리</a></li>
+					<li class="footerli"><a href="pictureInfo.jsp">영상정보관리방침</a></li>
+					<li class="footerli"><a href="emailCollectBan.jsp">이메일무단복제금지</a></li>
 				</ul>
 			</div>
 			<hr>

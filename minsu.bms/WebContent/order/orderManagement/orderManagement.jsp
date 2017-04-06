@@ -288,7 +288,7 @@ footer { /*바닥글*/
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<a href="../../main.html"><img src="../../img/logo.png"
+						<a href="../../main.jsp"><img src="../../img/logo.png"
 							class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
@@ -430,8 +430,7 @@ footer { /*바닥글*/
 							<th>배송주소</th>
 							<th>상품코드</th>
 							<th>주문수량</th>
-							<th>배송조회</th><!-- 배송코드사용 -->
-							<th>주문수정</th>
+							<th>배송상황</th><!-- 자바코드로 구현(기창이오빠말) -->
 						</tr>
 					</thead>
 					<tbody>
@@ -442,8 +441,7 @@ footer { /*바닥글*/
 							<td>경기도안산시상록구</td>
 							<td>N111</td>
 							<td>2</td>
-							<td><button class="btn btn-md" type="submit" formaction="../../guest/mypage/shipment.html">배송조회</button></td>
-							<td><button class="btn btn-md" type="submit" formaction="orderUpdate.jsp">주문수정하기</button></td>
+							<td>배송완료</td>
 						</tr>
 						<tr>
 							<td>dlstjr</td>
@@ -452,8 +450,7 @@ footer { /*바닥글*/
 							<td>경기도안양시</td>
 							<td>N122</td>
 							<td>5</td>
-							<td><button class="btn btn-md" type="submit" formaction="../../guest/mypage/shipment.html">배송조회</button></td>
-							<td><button class="btn btn-md" type="submit" formaction="orderUpdate.jsp">주문수정하기</button></td>
+							<td>배송완료</td>
 						</tr>
 						
 					</tbody>
@@ -480,17 +477,17 @@ footer { /*바닥글*/
 		<footer>
 			<div class="row">
 				<ul class="footerul">
-					<li class="footerli"><a href="../../footer/insungInfo.html">회사소개</a></li>
-					<li class="footerli"><a href="../../footer/adInfo.html">광고안내</a></li>
+					<li class="footerli"><a href="../../footer/insungInfo.jsp">회사소개</a></li>
+					<li class="footerli"><a href="../../footer/adInfo.jsp">광고안내</a></li>
 					<li class="footerli"><a
 						href="../../customerCenter/frequent10.html">고객센터</a></li>
 					<li class="footerli"><a
-						href="../../footer/agreementUtilization.html">이용약관</a></li>
+						href="../../footer/agreementUtilization.jsp">이용약관</a></li>
 					<li class="footerli"><a
-						href="../../footer/individualInfo.html">개인정보처리</a></li>
-					<li class="footerli"><a href="../../footer/pictureInfo.html">영상정보관리방침</a></li>
+						href="../../footer/individualInfo.jsp">개인정보처리</a></li>
+					<li class="footerli"><a href="../../footer/pictureInfo.jsp">영상정보관리방침</a></li>
 					<li class="footerli"><a
-						href="../../footer/emailCollectBan.html">이메일무단복제금지</a></li>
+						href="../../footer/emailCollectBan.jsp">이메일무단복제금지</a></li>
 				</ul>
 			</div>
 			<hr>

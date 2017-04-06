@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>해외도서-기타</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<style>
+/* 간단한 책 소개 */
+.text{
+	text-align : center;
+}
+.classification{
+	color:blue;
+}
+
+/* a tag가... 색이 안변한다?? */
+/* .aTag:link {
+	text-decoration:none; color:black;
+} */
+
+.author{
+	color:gray;
+}
+.price{
+	color:red;
+}
+/* 여기까지 */
+
+/* CSS코드는 관리자나 회원이나 동일한 코드 */
+.nav-sidebar { 
+    width: 100%;
+    padding: 8px 0; 
+    border-right: 1px solid #ddd;
+}
+.nav-sidebar a {
+    color: #333;
+    transition: all 0.08s linear;
+    border-radius: 4px 0 0 4px; 
+}
+.nav-sidebar .active a { 
+    cursor: default;
+    background-color: rgb(115, 215, 209); 
+    color: #fff; 
+    text-shadow: 1px 1px 1px #666; 
+}
+.nav-sidebar .active a:hover {
+    background-color: rgb(115, 215, 209);   
+}
+
+/* Right-aligned sidebar */
+.nav-sidebar.pull-right { 
+    border-right: 0; 
+    border-left: 1px solid #ddd; 
+}
+.nav-sidebar.pull-right a { 
+    border-radius: 0 4px 4px 0; 
+}
+
+.nav-header{
+	color : #909090;
+}
+
+/**/
+body {
+	padding-top: 20px;
+}
+
+#text1{
+	background-color : rgba(0, 0, 0,0.1);
+	text-color:black;
+}
+#imgInfo{
+	position : relative;
+	top : -320px;
+	transition-property : all;
+}
+#imgInfo:hover,#imgInfo1:hover{
+	opacity : 0.1;
+}
+#imgInfo1{
+	position : relative;
+	top : -150px;
+	transition-property : all;
+}
+.jumbotron {
+	padding-top : 30px;
+	background-color: #FFFFFF; /*배경색 흰색*/
+	border: 1px solid black; /*테두리선*/
+	height: 180px; /*높이*/
+}
+
+.headlogo {
+	width: 110px;
+	height: 110px;
+	margin: none;
+}
+
+a {
+	text-decoration: none; /* 밑줄 없앰 */
+	color: #000000; /*검정색*/
+}
+
+.topul { /*위ul*/
+	padding-top: 20px; /*위에여백*/
+	float: right; /*오른쪽정렬*/
+	background-color: #ffffff; /*배경색 흰색*/
+}
+
+.topli { /*위li*/
+	display: inline; /*한줄로표시*/
+	font-size: 12px;
+	font-weight: bold; /* 진하게 */
+	border-left: 1px solid #666666; /* menu글씨 왼쪽옆에 "|" 표시 */
+} /*위li 앞에*/
+.topli:first-child {
+	border-left: none;
+}
+
+.topli a { /*위li 링크*/
+	margin: 0 10px 0 10px; /* 메뉴 글자 간격 */
+}
+
+.topli a:hover { /*위li*/
+	color: #ff9900; /* li요소의 글자에 마우스 올렸을때 글자색 변경*/
+}
+
+.menubar { /*메뉴바색깔*/
+	background-color: rgb(115, 215, 209);
+}
+
+/* 드롭다운 버튼 */
+.dropbtn {
+	background-color: rgb(115, 215, 209);
+	padding: 17px; /*안쪽여백*/
+	font-size: 13.5px; /*글씨크기*/
+	border: none; /*테두리*/
+	cursor: pointer; /*커서 손모양*/
+	float: center; /* 가운데정렬 */
+	font-weight: bold; /* 진하게 */
+}
+
+/*드롭다운 */
+.dropdown {
+	position: relative; /*상대적위치?*/
+	display: inline-block; /*한줄로 보기*/
+	padding-right: 60px; /*오른쪽 안여백*/
+	padding-left: 60px; /*왼쪽 안여백*/
+}
+
+/* 드롭다운 아래 */
+.dropdown-content {
+	display: none; /*화면상에 아무것도 나타내지 않겠다*/
+	position: absolute;
+	background-color: rgb(115, 215, 209);
+	min-width: 160px;
+	z-index: 1;
+}
+
+/* 드롭다운 아래 링크 */
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	background-color: rgb(56, 194, 188);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+	background-color: rgb(56, 194, 188);
+}
+
+article { /*본문*/
+	background-color: white;
+	height: 400px;
+}
+
+/* 회전판 */
+.carousel {
+	margin-bottom: 0;
+	padding: 0 40px 30px 40px;
+}
+
+.carousel-control {
+	left: -12px;
+	height: 40px;
+	width: 40px;
+	background: none repeat scroll 0 0 #222222;
+	border: 4px solid #FFFFFF;
+	border-radius: 23px 23px 23px 23px;
+	margin-top: 90px;
+}
+
+.carousel-control.right {
+	right: -12px;
+}
+/* The indicators */
+.carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: -10px;
+	margin-right: -19px;
+}
+/* The colour of the indicators */
+.carousel-indicators li {
+	background: #cecece;
+}
+
+.carousel-indicators .active {
+	background: #428bca;
+}
+/*바닥글*/
+.footerul { /*바닥ul*/
+	padding-top: 10px; /*위에여백*/
+}
+
+.footerli { /*바닥li*/
+	display: inline-block; /*한줄로표시*/
+	font-size: 12px; /*한줄로표시*/
+	font-weight: bold; /* 진하게 */
+	border-left: none;
+	padding-right: 40px;
+	padding-left: 40px;
+}
+
+footer { /*바닥글*/
+	clear: both;
+	background-color: #FFFFFF;
+	border: 1px solid black;
+}
+
+.footerlogo { /*바닥 로고*/
+	padding: 16px;
+	width: 130px;
+	height: 130px;
+}
+/*이미지*/
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<!-- 위에 고정바 -->
+		<nav class="btnRight navbar-fixed-top">
+			<div class="container">
+				<ul class="topul">
+					<li class="topli"><a href="../../shop/system/login.html">로그인</a></li>
+					<li class="topli"><a href="../../guest/signUp/signUp.html">회원가입</a></li>
+					<li class="topli"><a href="../../guest/basket/Basket.html">장바구니</a></li>
+					<li class="topli"><a href="../../guest/mypage/orderList.html">마이페이지</a></li>
+				</ul>
+			</div>
+		</nav>
+		<br>
+		<!-- 상단 -->
+		<div class="jumbotron">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<a href="../../main.html"><img src="../../img/logo.png" class="headlogo"></a>
+					</div>
+					<div class="col-md-7">
+						<form action="../../shop/search/searchResult.html">
+							<div class="input-group" class="searchBar" style="margin: 80px;">
+								<div class="input-group-btn search-panel">
+									<button type="button" class="btn btn-default ">
+										<SELECT name=s_search style="border: none;">
+											<OPTION value=ai_bookname>도서명</OPTION>
+											<OPTION value=ai_writer>저자</OPTION>
+											<OPTION value=ai_publisher>출판사</OPTION>
+											<OPTION value=ai_category>번역자</OPTION>
+											<OPTION value=ai_sequence>차례</OPTION>
+										</SELECT>
+									</button>
+
+								</div>
+
+								<input type="hidden" name="search_param" value="all"
+									id="search_param"> <input type="text"
+									class="form-control" name="x" placeholder="입력하세요">
+								<span class="input-group-btn">
+
+									<button class="btn btn-default" type="submit">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 검색바 -->
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 메뉴바 -->
+	<div class="container">
+		<div class="navbar">
+			<nav class="navbar navbar-inverse">
+				<div class="menubar">
+					<div class="menubar collapse navbar-collapse navbar-center"
+						id=myNavbar>
+						<div class="#myNavbar">
+							<div class="dropdown">
+								<a href="../bestBook.html"><button class="dropbtn">베스트셀러</button></a>
+							</div>
+							<div class="dropdown">
+								<a href="../newBook.html"><button class="dropbtn">신간도서</button></a>
+							</div>
+							<div class="dropdown">
+								<a href="../saleBook.html"><button class="dropbtn">할인도서</button></a>
+							</div>
+							<div class="dropdown">
+								<button class="dropbtn">
+									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
+								</button>
+								<div class="dropdown-content">
+									<a href="../domesticBook/literatureBook.html">문학</a> 
+									<a href="../domesticBook/humanitiesBook.html">인문</a> 
+									<a href="../domesticBook/referenceBook.html">참고서</a>
+									<a href="../domesticBook/besidesBook.html">기타</a>
+								</div>
+							</div>
+							<div class="dropdown">
+								<button class="dropbtn">
+									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
+								</button>
+								<div class="dropdown-content">
+									<a href="literatureBook.html">문학</a> 
+									<a href="humanitiesBook.html">인문</a> 
+									<a href="referenceBook.html">참고서</a>
+									<a href="besidesBook.html">기타</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<!-- //메뉴바 -->
+<article>
+	<div class="container">
+		<!-- 사이드 네비 바 -->
+		<div class="col-md-2">
+			<nav class="nav-sidebar">
+				<ul class="nav">
+					<li class="nav-header"><strong> 국내도서</strong></li>
+					<li><a href="../domesticBook/literatureBook.html">문학</a></li>
+					<li><a href="../domesticBook/humanitiesBook.html">인문</a></li>
+					<li><a href="../domesticBook/referenceBook.html">참고서</a></li>
+					<li><a href="../domesticBook/besidesBook.html">기타</a></li>
+					<li class="nav-divider"></li>
+					<li class="nav-header"><strong> 해외도서</strong></li>
+					<li><a href="literatureBook.html">문학</a></li>
+					<li><a href="humanitiesBook.html">인문</a></li>
+					<li><a href="referenceBook.html">참고서</a></li>
+					<li class="active"><a href="besidesBook.html">기타</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div class="col-md-10">
+			<!--베스트셀러-->
+			<div class="row">
+				<h3>▶ 베스트셀러</h3>
+				<div class="col-md-1"></div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG1.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">PRADE, HC</a></b></div>
+							<div class="author"><p>Miuccia Prade</p></div>
+							<div class="price"><p>15,500원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG2.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Kinfolk Volume 12</a></b></div>
+							<div class="author"><p>Nathan Williams</p></div>
+							<div class="price"><p>21,060원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG3.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Let' Go WorkBook</a></b></div>
+							<div class="author"><p>이퍼블릭코리아</p></div>
+							<div class="price"><p>13,000원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG4.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">The One Thing</a></b></div>
+							<div class="author"><p>Philippin, Frank</p></div>
+							<div class="price"><p>25.200원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG5.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Me Before You</a></b></div>
+							<div class="author"><p>조조 모예스</p></div>
+							<div class="price"><p>14,400원</p></div>
+						</div>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+
+			<!--MD추천작-->
+			<div class="row">
+				<h3>▶ MD추천작</h3>
+				<div class="col-md-1"></div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG6.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Holes</a></b></div>
+							<div class="author"><p>루이스 새커</p></div>
+							<div class="price"><p>8,100원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG7.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Charlotte's Web</a></b></div>
+							<div class="author"><p>E.B 화이트</p></div>
+							<div class="price"><p>8,550원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG8.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Who Moved My Cheese?</a></b></div>
+							<div class="author"><p>스펜서 존슨</p></div>
+							<div class="price"><p>10,800원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG9.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Inferno</a></b></div>
+							<div class="author"><p>Brown, Dan</p></div>
+							<div class="price"><p>37,500원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG10.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">The Great Gatsby</a></b></div>
+							<div class="author"><p>F. 스콧 피츠제럴드</p></div>
+							<div class="price"><p>8,100원</p></div>
+						</div>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+
+			<!--신간-->
+			<div class="row">
+				<h3>▶ N E W</h3>
+				<div class="col-md-1"></div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG11.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Life of Pi</a></b></div>
+							<div class="author"><p>얀 마텔</p></div>
+							<div class="price"><p>8,550원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG12.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">World War Z</a></b></div>
+							<div class="author"><p>맥스 브룩스</p></div>
+							<div class="price"><p>8,550원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG13.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Ventures 4</a></b></div>
+							<div class="author"><p>Bitterlin, Gretchen</p></div>
+							<div class="price"><p>18,000원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG14.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Wicked</a></b></div>
+							<div class="author"><p>그레고리 매과이어</p></div>
+							<div class="price"><p>8,550원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG15.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Fifty Shades of Grey</a></b></div>
+							<div class="author"><p>James E.I</p></div>
+							<div class="price"><p>15,500원</p></div>
+						</div>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+
+			<!--오늘의도서-->
+			<div class="row">
+				<h3>▶ 오늘의 도서</h3>
+				<div class="col-md-1"></div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG16.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Justice</a></b></div>
+							<div class="author"><p>Sandel, Michael J.</p></div>
+							<div class="price"><p>17,900원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG17.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">What the Dog Saw</a></b></div>
+							<div class="author"><p>말콤 글래드웰</p></div>
+							<div class="price"><p>9,600원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG18.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Aesop's Fables</a></b></div>
+							<div class="author"><p>Aesop</p></div>
+							<div class="price"><p>8,000원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG19.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Side by Side (3/E)</a></b></div>
+							<div class="author"><p>Bill Bliss</p></div>
+							<div class="price"><p>16,200원</p></div>
+						</div>
+				</div>
+				<div class="col-md-2">
+					<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						src="../../img/wG/kG20.jpg" style="width: 150px; height: 150px">
+					</a>
+					<div class="text">
+							<div class="classification"><p>[기타]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Heaven Is for Real</a></b></div>
+							<div class="author"><p>Todd Burpo</p></div>
+							<div class="price"><p>20,400원</p></div>
+						</div>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+		</div>
+	</div>
+</article>
+<!-- 바닥글 -->
+	<div class="container">
+		<footer>
+			<div class="row">
+				<ul class="footerul">
+					<li class="footerli"><a href="../../footer/insungInfo.html">회사소개</a></li>
+					<li class="footerli"><a href="../../footer/adInfo.html">광고안내</a></li>
+					<li class="footerli"><a href="../../customerCenter/frequent10.html">고객센터</a></li>
+					<li class="footerli"><a href="../../footer/agreementUtilization.html">이용약관</a></li>
+					<li class="footerli"><a href="../../footer/individualInfo.html">개인정보처리</a></li>
+					<li class="footerli"><a href="../../footer/pictureInfo.html">영상정보관리방침</a></li>
+					<li class="footerli"><a href="../../footer/emailCollectBan.html">이메일무단복제금지</a></li>
+				</ul>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="../../img/logo.png" class="footerlogo">
+				</div>
+				<div class="col-md-5">
+					<h4>(주)인성문고</h4>
+					<ul>
+						<li>서울시 종로구 종각 soldesk</li>
+						<li>사업자등록번호 : 123-45-67891</li>
+						<li>대표번호 : 1544-1234(발신자부담전화)</li>
+						<li>서울특별시 통신판매업신고번호 : 제 653호</li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<h4>고객센터</h4>
+					<ul>
+						<li>일반문의:1234-1234</li>
+						<li>월~금(09:00~18:00)</li>
+						<li>토요일(09:00~13:00)</li>
+						<li>일요일, 공휴일 휴무</li>
+						<li>E-mail 문의:dlstjd@naver.com</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- //바닥글 -->
+</body>
+</html>

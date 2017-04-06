@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<title>신간도서</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<style>
+#block {
+	display: block;
+	margin-top: 10px;
+	width: 150px;
+}
+/*여기서부터 main*/
+body {
+	padding-top: 20px;
+}
+
+#text1{
+	background-color : rgba(0, 0, 0,0.1);
+	text-color:black;
+}
+#imgInfo{
+	position : relative;
+	top : -320px;
+	transition-property : all;
+}
+#imgInfo:hover,#imgInfo1:hover{
+	opacity : 0.1;
+}
+#imgInfo1{
+	position : relative;
+	top : -150px;
+	transition-property : all;
+}
+.jumbotron {
+	padding-top : 30px;
+	background-color: #FFFFFF; /*배경색 흰색*/
+	border: 1px solid black; /*테두리선*/
+	height: 180px; /*높이*/
+}
+
+.headlogo {
+	width: 110px;
+	height: 110px;
+	margin: none;
+}
+
+a {
+	text-decoration: none; /* 밑줄 없앰 */
+	color: #000000; /*검정색*/
+}
+
+.topul { /*위ul*/
+	padding-top: 20px; /*위에여백*/
+	float: right; /*오른쪽정렬*/
+	background-color: #ffffff; /*배경색 흰색*/
+}
+
+.topli { /*위li*/
+	display: inline; /*한줄로표시*/
+	font-size: 12px;
+	font-weight: bold; /* 진하게 */
+	border-left: 1px solid #666666; /* menu글씨 왼쪽옆에 "|" 표시 */
+} /*위li 앞에*/
+.topli:first-child {
+	border-left: none;
+}
+
+.topli a { /*위li 링크*/
+	margin: 0 10px 0 10px; /* 메뉴 글자 간격 */
+}
+
+.topli a:hover { /*위li*/
+	color: #ff9900; /* li요소의 글자에 마우스 올렸을때 글자색 변경*/
+}
+
+.menubar { /*메뉴바색깔*/
+	background-color: rgb(115, 215, 209);
+}
+
+/* 드롭다운 버튼 */
+.dropbtn {
+	background-color: rgb(115, 215, 209);
+	padding: 17px; /*안쪽여백*/
+	font-size: 13.5px; /*글씨크기*/
+	border: none; /*테두리*/
+	cursor: pointer; /*커서 손모양*/
+	float: center; /* 가운데정렬 */
+	font-weight: bold; /* 진하게 */
+}
+
+/*드롭다운 */
+.dropdown {
+	position: relative; /*상대적위치?*/
+	display: inline-block; /*한줄로 보기*/
+	padding-right: 60px; /*오른쪽 안여백*/
+	padding-left: 60px; /*왼쪽 안여백*/
+}
+
+/* 드롭다운 아래 */
+.dropdown-content {
+	display: none; /*화면상에 아무것도 나타내지 않겠다*/
+	position: absolute;
+	background-color: rgb(115, 215, 209);
+	min-width: 160px;
+	z-index: 1;
+}
+
+/* 드롭다운 아래 링크 */
+.dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+	background-color: rgb(56, 194, 188);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+	background-color: rgb(56, 194, 188);
+}
+
+article { /*본문*/
+	background-color: white;
+	height: 400px;
+}
+
+/* 회전판 */
+.carousel {
+	margin-bottom: 0;
+	padding: 0 40px 30px 40px;
+}
+
+.carousel-control {
+	left: -12px;
+	height: 40px;
+	width: 40px;
+	background: none repeat scroll 0 0 #222222;
+	border: 4px solid #FFFFFF;
+	border-radius: 23px 23px 23px 23px;
+	margin-top: 90px;
+}
+
+.carousel-control.right {
+	right: -12px;
+}
+/* The indicators */
+.carousel-indicators {
+	right: 50%;
+	top: auto;
+	bottom: -10px;
+	margin-right: -19px;
+}
+/* The colour of the indicators */
+.carousel-indicators li {
+	background: #cecece;
+}
+
+.carousel-indicators .active {
+	background: #428bca;
+}
+/*바닥글*/
+.footerul { /*바닥ul*/
+	padding-top: 10px; /*위에여백*/
+}
+
+.footerli { /*바닥li*/
+	display: inline-block; /*한줄로표시*/
+	font-size: 12px; /*한줄로표시*/
+	font-weight: bold; /* 진하게 */
+	border-left: none;
+	padding-right: 40px;
+	padding-left: 40px;
+}
+
+footer { /*바닥글*/
+	clear: both;
+	background-color: #FFFFFF;
+	border: 1px solid black;
+}
+
+.footerlogo { /*바닥 로고*/
+	padding: 16px;
+	width: 130px;
+	height: 130px;
+}
+/*이미지*/
+
+</style>
+</head>
+<body>
+	<div class="container">
+		<!-- 위에 고정바 -->
+		<nav class="btnRight navbar-fixed-top">
+			<div class="container">
+				<ul class="topul">
+					<li class="topli"><a href="../shop/system/login.html">로그인</a></li>
+					<li class="topli"><a href="../guest/signUp/signUp.html">회원가입</a></li>
+					<li class="topli"><a href="../guest/basket/Basket.html">장바구니</a></li>
+					<li class="topli"><a href="../guest/mypage/orderList.html">마이페이지</a></li>
+				</ul>
+			</div>
+		</nav>
+		<br>
+		<!-- 상단 -->
+		<div class="jumbotron">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-3">
+						<a href="../main.html"><img src="../img/logo.png" class="headlogo"></a>
+					</div>
+					<div class="col-md-7">
+						<form action="../shop/search/searchResult.html">
+							<div class="input-group" class="searchBar" style="margin: 80px;">
+								<div class="input-group-btn search-panel">
+									<button type="button" class="btn btn-default ">
+										<SELECT name=s_search style="border: none;">
+											<OPTION value=ai_bookname>도서명</OPTION>
+											<OPTION value=ai_writer>저자</OPTION>
+											<OPTION value=ai_publisher>출판사</OPTION>
+											<OPTION value=ai_category>번역자</OPTION>
+											<OPTION value=ai_sequence>차례</OPTION>
+										</SELECT>
+									</button>
+
+								</div>
+
+								<input type="hidden" name="search_param" value="all"
+									id="search_param"> <input type="text"
+									class="form-control" name="x" placeholder="입력하세요">
+								<span class="input-group-btn">
+
+									<button class="btn btn-default" type="submit">
+										<span class="glyphicon glyphicon-search"></span>
+									</button>
+
+								</span>
+							</div>
+						</form>
+					</div>
+				</div>
+				<!-- 검색바 -->
+			</div>
+		</div>
+	</div>
+
+
+	<!-- 메뉴바 -->
+	<div class="container">
+		<div class="navbar">
+			<nav class="navbar navbar-inverse">
+				<div class="menubar">
+					<div class="menubar collapse navbar-collapse navbar-center"
+						id=myNavbar>
+						<div class="#myNavbar">
+							<div class="dropdown">
+								<a href="bestBook.html"><button class="dropbtn">베스트셀러</button></a>
+							</div>
+							<div class="dropdown">
+								<a href="newBook.html"><button class="dropbtn">신간도서</button></a>
+							</div>
+							<div class="dropdown">
+								<a href="saleBook.html"><button class="dropbtn">할인도서</button></a>
+							</div>
+							<div class="dropdown">
+								<button class="dropbtn">
+									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
+								</button>
+								<div class="dropdown-content">
+									<a href="domesticBook/literatureBook.html">문학</a> 
+									<a href="domesticBook/humanitiesBook.html">인문</a> 
+									<a href="domesticBook/referenceBook.html">참고서</a>
+									<a href="domesticBook/besidesBook.html">기타</a>
+								</div>
+							</div>
+							<div class="dropdown">
+								<button class="dropbtn">
+									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
+								</button>
+								<div class="dropdown-content">
+									<a href="foreignBook/literatureBook.html">문학</a> 
+									<a href="foreignBook/humanitiesBook.html">인문</a> 
+									<a href="foreignBook/referenceBook.html">참고서</a>
+									<a href="domesticBook/besidesBook.html">기타</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</div>
+	<!-- //메뉴바 -->
+
+<article>
+<div class="container">
+	<br>
+	<h2>신간도서</h2>
+	<hr>
+<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new1.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">로즈</a><br><br> <a href="../shop/search/productInfo.html">서배스천배리</a>(지은이)|<a
+							href="../shop/search/productInfo.html">아르테</a>|2017.03.31<br> 16,000원 →<b>14,400</b>(10%
+						할인), 마일리지 800점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+	<hr>
+	<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new2.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">안나푸르나에서 밀크티를 마시다</a><br><br> <a href="../shop/search/productInfo.html">정지영</a>(지은이)|<a
+							href="../shop/search/productInfo.html">더블엔</a>|2017.04.12<br> 15,000원 →<b>13,500</b>(10%
+						할인), 마일리지 750점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+
+	<hr>
+	<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new3.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">이상 씨, 봄이 그렇게 좋아요?</a><br><br> <a href="../shop/search/productInfo.html">성재림</a>(지은이)|<a
+							href="../shop/search/productInfo.html">루이앤휴잇</a>|2017.04.11<br> 13,000원 →<b>11,700</b>(10%
+						할인), 마일리지 650점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+	<hr>
+	<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new4.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">토닥토닥 맘조리</a><br><br> <a href="../shop/search/productInfo.html">김재호</a>(지은이)|<a
+							href="../shop/search/productInfo.html">레드박스</a>|2017.03.30<br> 14,800원 →<b>13,320</b>(10%
+						할인), 마일리지 740점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+	<hr>
+	<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new5.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">100 나에게 건네는 말</a><br><br> <a href="../shop/search/productInfo.html">전승환</a>(지은이)|<a
+							href="../shop/search/productInfo.html">허밍버드</a>|2017.03.27<br> 16,000원 →<b>14,400</b>(10%
+						할인), 마일리지 800점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+	<hr>
+	<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new6.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">꿰맨 심장</a><br><br> <a href="../shop/search/productInfo.html">카롤마르티네즈</a>(지은이)|<a
+							href="../shop/search/productInfo.html">문학동네(주)</a>|2017.03.24<br> 15,500원 →<b>13,950</b>(10%
+						할인), 마일리지 775점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+	<hr>
+	<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new7.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">바보부자</a><br><br> <a href="../shop/search/productInfo.html">박정수</a>(지은이)|<a
+							href="../shop/search/productInfo.html">평단(도)</a>|2017.03.23<br> 14,000원 →<b>12,600</b>(10%
+						할인), 마일리지 700점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+	<hr>
+	<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new8.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">상처 하나 위로 둘</a><br><br> <a href="../shop/search/productInfo.html">동그라미</a>(지은이)|<a
+							href="../shop/search/productInfo.html">경향BP</a>|2017.03.22<br> 13,500원 →<b>12,150</b>(10%
+						할인), 마일리지 675점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+	<hr>
+	<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new9.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">서울이 죽어야 나라가 산다.</a><br><br> <a href="../shop/search/productInfo.html">신현국</a>(지은이)|<a
+							href="../shop/search/productInfo.html">리즈앤북</a>|2017.03.20<br> 14,000원 →<b>12,600</b>(10%
+						할인), 마일리지 700점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+	<hr>
+	<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="../shop/search/productInfo.html" class="thumbnail"> <img
+							src="../img/new/new10.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="col-md-7">
+					
+					<br>
+					<p>
+						[신간도서]<a href="../shop/search/productInfo.html">프리즘</a><br><br> <a href="../shop/search/productInfo.html">누쿠이도쿠로</a>(지은이)|<a
+							href="../shop/search/productInfo.html">엘릭시르</a>|2017.03.20<br> 12,800원 →<b>11,520</b>(10%
+						할인), 마일리지 640점(5% 적립)<br>
+						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					
+					<a href="../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
+					<a href="../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				</div>
+			</div>
+			<br>
+			
+	</div>
+
+</article>
+<!-- 바닥글 -->
+	<div class="container">
+		<footer>
+			<div class="row">
+				<ul class="footerul">
+					<li class="footerli"><a href="../footer/insungInfo.html">회사소개</a></li>
+					<li class="footerli"><a href="../footer/adInfo.html">광고안내</a></li>
+					<li class="footerli"><a href="../customerCenter/frequent10.html">고객센터</a></li>
+					<li class="footerli"><a href="../footer/agreementUtilization.html">이용약관</a></li>
+					<li class="footerli"><a href="../footer/individualInfo.html">개인정보처리</a></li>
+					<li class="footerli"><a href="../footer/pictureInfo.html">영상정보관리방침</a></li>
+					<li class="footerli"><a href="../footer/emailCollectBan.html">이메일무단복제금지</a></li>
+				</ul>
+			</div>
+			<hr>
+			<div class="row">
+				<div class="col-md-3">
+					<img src="../img/logo.png" class="footerlogo">
+				</div>
+				<div class="col-md-5">
+					<h4>(주)인성문고</h4>
+					<ul>
+						<li>서울시 종로구 종각 soldesk</li>
+						<li>사업자등록번호 : 123-45-67891</li>
+						<li>대표번호 : 1544-1234(발신자부담전화)</li>
+						<li>서울특별시 통신판매업신고번호 : 제 653호</li>
+					</ul>
+				</div>
+				<div class="col-md-4">
+					<h4>고객센터</h4>
+					<ul>
+						<li>일반문의:1234-1234</li>
+						<li>월~금(09:00~18:00)</li>
+						<li>토요일(09:00~13:00)</li>
+						<li>일요일, 공휴일 휴무</li>
+						<li>E-mail 문의:dlstjd@naver.com</li>
+					</ul>
+				</div>
+			</div>
+		</footer>
+	</div>
+	<!-- //바닥글 -->
+</body>
+</html>

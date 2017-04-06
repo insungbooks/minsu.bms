@@ -364,7 +364,7 @@ footer { /*바닥글*/
 							<li><a href="bookAdd.html">도서 추가</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 재고관리</strong></li>
-							<li><a href="../orderManagement/orderManagement.html">
+							<li><a href="../orderManagement/orderManagement.jsp">
 									주문관리</a></li>
 						</ul>
 					</nav>

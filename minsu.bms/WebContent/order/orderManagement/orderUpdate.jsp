@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>장바구니</title>
+<title>주문관리</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -11,71 +13,35 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
-#orderDate{
-	padding-top : 25px;
-}
 
-/*사이드바*/
-
-/* CSS코드는 관리자나 회원이나 동일한 코드 */
-.nav-sidebar { 
-    width: 100%;
-    padding: 8px 0; 
-    border-right: 1px solid #ddd;
-}
-.nav-sidebar a {
-    color: #333;
-    transition: all 0.08s linear;
-    border-radius: 4px 0 0 4px; 
-}
-.nav-sidebar .active a { 
-    cursor: default;
-    background-color: rgb(115, 215, 209); 
-    color: #fff; 
-    text-shadow: 1px 1px 1px #666; 
-}
-.nav-sidebar .active a:hover {
-    background-color: rgb(115, 215, 209);   
-}
-
-/* Right-aligned sidebar */
-.nav-sidebar.pull-right { 
-    border-right: 0; 
-    border-left: 1px solid #ddd; 
-}
-.nav-sidebar.pull-right a { 
-    border-radius: 0 4px 4px 0; 
-}
-
-.nav-header{
-	color : #909090;
-}
-
-/*//사이드바*/
 /*여기서부터 main*/
 body {
 	padding-top: 20px;
 }
 
-#text1{
-	background-color : rgba(0, 0, 0,0.1);
-	text-color:black;
+#text1 {
+	background-color: rgba(0, 0, 0, 0.1);
+	text-color: black;
 }
-#imgInfo{
-	position : relative;
-	top : -320px;
-	transition-property : all;
+
+#imgInfo {
+	position: relative;
+	top: -320px;
+	transition-property: all;
 }
-#imgInfo:hover,#imgInfo1:hover{
-	opacity : 0.1;
+
+#imgInfo:hover, #imgInfo1:hover {
+	opacity: 0.1;
 }
-#imgInfo1{
-	position : relative;
-	top : -150px;
-	transition-property : all;
+
+#imgInfo1 {
+	position: relative;
+	top: -150px;
+	transition-property: all;
 }
+
 .jumbotron {
-	padding-top : 30px;
+	padding-top: 30px;
 	background-color: #FFFFFF; /*배경색 흰색*/
 	border: 1px solid black; /*테두리선*/
 	height: 180px; /*높이*/
@@ -236,7 +202,6 @@ footer { /*바닥글*/
 	height: 130px;
 }
 /*이미지*/
-
 </style>
 </head>
 <body>
@@ -245,12 +210,39 @@ footer { /*바닥글*/
 		<nav class="btnRight navbar-fixed-top">
 			<div class="container">
 				<ul class="topul">
-					<li class="topli"><a href="../../main.html">로그아웃</a></li>
+					<%
+						String id = "";
+						if (session.getAttribute("login") != null) { //세션값이 비어있지 않다라면
+							id = (String) session.getAttribute("login"); //세션값 추출하고 저장
+						}
+					%>
+					<%
+						if (id.equals("insung")) {
+					%>
+					<!-- 세센값의 아이디가 관리자 아이디와 같다면 밑에 코드 출력  -->
+					<li class="topli"><a
+						href="../../shop/system/login/logoutProc.jsp">로그아웃</a></li>
+					<li class="topli"><a href="../../order/member/memberList.html">관리자페이지</a></li>
+					<%
+						} else if (!id.equals("")) {
+					%>
+					<!-- 로그인이 성공했다라면 id값에 데이터가 들어가있으므로 실행 -->
+					<li class="topli"><a
+						href="../../shop/system/login/logoutProc.jsp">로그아웃</a></li>
 					<li class="topli"><a>적립금 : 650점</a></li>
-					
+					<li class="topli"><a href="../../guest/basket/Basket.html">장바구니</a></li>
+					<li class="topli"><a href="../../guest/mypage/orderList.html">마이페이지</a></li>
+					<%
+						} else {
+					%>
+					<!-- 세션값이 없다라면 실행 (로그인 안된상태) -->
+					<li class="topli"><a href="../../shop/system/login/login.jsp">로그인</a></li>
 					<li class="topli"><a href="../../guest/signUp/signUp.html">회원가입</a></li>
 					<li class="topli"><a href="../../guest/basket/Basket.html">장바구니</a></li>
-					<li class="topli"><a href="../../order/member/memberList.html">관리페이지</a></li>
+					<li class="topli"><a href="../../guest/mypage/orderList.html">마이페이지</a></li>
+					<%
+						}
+					%>
 				</ul>
 			</div>
 		</nav>
@@ -260,7 +252,8 @@ footer { /*바닥글*/
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<a href="../../main.html"><img src="../../img/logo.png" class="headlogo"></a>
+						<a href="../../main.html"><img src="../../img/logo.png"
+							class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
 						<form action="../../shop/search/searchResult.html">
@@ -280,8 +273,8 @@ footer { /*바닥글*/
 
 								<input type="hidden" name="search_param" value="all"
 									id="search_param"> <input type="text"
-									class="form-control" name="x" placeholder="입력하세요">
-								<span class="input-group-btn">
+									class="form-control" name="x" placeholder="입력하세요"> <span
+									class="input-group-btn">
 
 									<button class="btn btn-default" type="submit">
 										<span class="glyphicon glyphicon-search"></span>
@@ -307,21 +300,24 @@ footer { /*바닥글*/
 						id=myNavbar>
 						<div class="#myNavbar">
 							<div class="dropdown">
-								<a href="../../category/bestBook.html"><button class="dropbtn">베스트셀러</button></a>
+								<a href="../../category/bestBook.html"><button
+										class="dropbtn">베스트셀러</button></a>
 							</div>
 							<div class="dropdown">
-								<a href="../../category/newBook.html"><button class="dropbtn">신간도서</button></a>
+								<a href="../../category/newBook.html"><button
+										class="dropbtn">신간도서</button></a>
 							</div>
 							<div class="dropdown">
-								<a href="../../category/saleBook.html"><button class="dropbtn">할인도서</button></a>
+								<a href="../../category/saleBook.html"><button
+										class="dropbtn">할인도서</button></a>
 							</div>
 							<div class="dropdown">
 								<button class="dropbtn">
 									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="../../category/domesticBook/literatureBook.html">문학</a> 
-									<a href="../../category/domesticBook/humanitiesBook.html">인문</a> 
+									<a href="../../category/domesticBook/literatureBook.html">문학</a>
+									<a href="../../category/domesticBook/humanitiesBook.html">인문</a>
 									<a href="../../category/domesticBook/referenceBook.html">참고서</a>
 									<a href="../../category/domesticBook/besidesBook.html">기타</a>
 								</div>
@@ -331,8 +327,8 @@ footer { /*바닥글*/
 									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="../../category/foreignBook/literatureBook.html">문학</a> 
-									<a href="../../category/foreignBook/humanitiesBook.html">인문</a> 
+									<a href="../../category/foreignBook/literatureBook.html">문학</a>
+									<a href="../../category/foreignBook/humanitiesBook.html">인문</a>
 									<a href="../../category/foreignBook/referenceBook.html">참고서</a>
 									<a href="../../category/domesticBook/besidesBook.html">기타</a>
 								</div>
@@ -344,159 +340,69 @@ footer { /*바닥글*/
 		</div>
 	</div>
 	<!-- //메뉴바 -->
-<article>
-<div class="container">
-	<div class="col-md-2">
-	<nav class="nav-sidebar">
-        <ul class="nav">
-        	<li class="nav-header"><strong> 회원관리</strong></li>
-            <li><a href="../member/memberList.html">회원목록조회</a></li>
-            <li class="nav-divider"></li>
-     		<li class="nav-header"><strong> 주문관리</strong></li>
-            <li><a href="../inventoryControl/BookList.html">도서목록조회</a></li>
-            <li><a href="../inventoryControl/bookAdd.html">도서 추가</a></li>
-            <li class="nav-divider"></li>
-            <li class="nav-header"><strong> 재고관리</strong></li>
-            <li class="active"><a href="orderManagement.html"> 주문관리</a></li>
-        </ul>
-    </nav>
-	</div>
-	<div class="col-md-10">
-		<div class="row">
-			<div class="col-md-3">
-				<h2>주문관리</h2> <hr>
-			</div>
-			<div class="col-md-2"></div>
-			<div class="col-md-5">
-				<form class="form-horizontal col-md-12" id="orderDate" action="#" method="post">
-				    <div class="form-group registration-date">
-				    	<div class="input-group registration-date-time">
-				    		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-				    		<input class="form-control" name="registration_date" id="registration-date" type="date">
-				    		<span class="input-group-addon" id="basic-addon1">~</span>
-				    		<input class="form-control" name="registration_date" id="registration-date" type="date">
-				    		<span class="input-group-btn">
-				    	    	<button class="btn btn-default" type="submit">확인</button>
-				            </span>
-				    	</div>
-				    </div>
-				</form>
-			</div>
+	<article>
+		<div class="container">
+			<h2>주문내역수정</h2>
+			<br>
+			<form action="orderManagement.jsp">
+
+			<table class="table table-bordered">
+				<tr>
+					<th>회원아이디</th>
+					<td><input type="text" value="xotn" /></td>
+				</tr>
+				<tr>
+					<th>주문번호</th>
+					<td><input type="text" value="1" /></td>
+				</tr>
+				<tr>
+					<th>주문날짜</th>
+					<td><input type="text" value="2016-04-04" /></td>
+				</tr>
+				<tr>
+					<th>배송주소</th>
+					<td><input type="text" value="경기도안산시상록구" /></td>
+				</tr>
+				<tr>
+					<th>상품코드</th>
+					<td><input type="text" value="N111" /></td>
+				</tr>
+				<tr>
+					<th>주문수량</th>
+					<td><input type="text" value="2" /></td>
+				</tr>
+				<tr>
+					<th>배송상황</th>
+					<td><input type="text" value="배송중" /></td>
+				</tr>
+			</table>
+			<button type="submit" style="float:right; margin-bottom:20px; "class="btn btn-md">수정하기</button>
+			</form>
+
 		</div>
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th>회원/비회원</th>
-					<th>시간 정보</th>
-					<th>주문 정보</th>
-					<th>상품 정보</th>
-					<th>주문 수량</th>
-					<th>재고 수량</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-<!-- 체크박스 좀 이상한데? -->	<td><input type="checkbox" name="orderStatement" value=""/>abcd(구태수)</td>
-					<td>10:20:30</td>
-					<td>O123456543</td>
-					<td>B23141222</td>
-					<td>14</td>
-					<td>115</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="orderStatement" value=""/>abcd(구태수)</td>
-					<td>10:20:30</td>
-					<td>O123456543</td>
-					<td>B23141222</td>
-					<td>14</td>
-					<td>115</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="orderStatement" value=""/>abcd(구태수)</td>
-					<td>10:20:30</td>
-					<td>O123456543</td>
-					<td>B23141222</td>
-					<td>14</td>
-					<td>115</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="orderStatement" value=""/>abcd(구태수)</td>
-					<td>10:20:30</td>
-					<td>O123456543</td>
-					<td>B23141222</td>
-					<td>14</td>
-					<td>115</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="orderStatement" value=""/>abcd(구태수)</td>
-					<td>10:20:30</td>
-					<td>O123456543</td>
-					<td>B23141222</td>
-					<td>14</td>
-					<td>115</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="orderStatement" value=""/>abcd(구태수)</td>
-					<td>10:20:30</td>
-					<td>O123456543</td>
-					<td>B23141222</td>
-					<td>14</td>
-					<td>115</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="orderStatement" value=""/>abcd(구태수)</td>
-					<td>10:20:30</td>
-					<td>O123456543</td>
-					<td>B23141222</td>
-					<td>14</td>
-					<td>115</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="orderStatement" value=""/>abcd(구태수)</td>
-					<td>10:20:30</td>
-					<td>O123456543</td>
-					<td>B23141222</td>
-					<td>14</td>
-					<td>115</td>
-				</tr>
-				<tr>
-					<td><input type="checkbox" name="orderStatement" value=""/>abcd(구태수)</td>
-					<td>10:20:30</td>
-					<td>O123456543</td>
-					<td>B23141222</td>
-					<td>14</td>
-					<td>115</td>
-				</tr>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="3"><td>
-					<th>총 금액 :</th>
-					<td>860,000원</td>
-				</tr>				
-			</tfoot>
-		</table>
-	</div>
-</div>
+		
 
-
-</article>
+	</article>
 
 
 
-<!-- //구매화면 -->
-<!-- 바닥글 -->
+	<!-- //구매화면 -->
+	<!-- 바닥글 -->
 	<div class="container">
 		<footer>
 			<div class="row">
 				<ul class="footerul">
 					<li class="footerli"><a href="../../footer/insungInfo.html">회사소개</a></li>
 					<li class="footerli"><a href="../../footer/adInfo.html">광고안내</a></li>
-					<li class="footerli"><a href="../../customerCenter/frequent10.html">고객센터</a></li>
-					<li class="footerli"><a href="../../footer/agreementUtilization.html">이용약관</a></li>
-					<li class="footerli"><a href="../../footer/individualInfo.html">개인정보처리</a></li>
+					<li class="footerli"><a
+						href="../../customerCenter/frequent10.html">고객센터</a></li>
+					<li class="footerli"><a
+						href="../../footer/agreementUtilization.html">이용약관</a></li>
+					<li class="footerli"><a
+						href="../../footer/individualInfo.html">개인정보처리</a></li>
 					<li class="footerli"><a href="../../footer/pictureInfo.html">영상정보관리방침</a></li>
-					<li class="footerli"><a href="../../footer/emailCollectBan.html">이메일무단복제금지</a></li>
+					<li class="footerli"><a
+						href="../../footer/emailCollectBan.html">이메일무단복제금지</a></li>
 				</ul>
 			</div>
 			<hr>

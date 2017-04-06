@@ -3,16 +3,52 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>주문관리</title>
+<title>광고안내</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
+/*사이드바*/
+
+/* CSS코드는 관리자나 회원이나 동일한 코드 */
+.nav-sidebar {
+	width: 100%;
+	padding: 8px 0;
+	border-right: 1px solid #ddd;
+}
+
+.nav-sidebar a {
+	color: #333;
+	transition: all 0.08s linear;
+	border-radius: 4px 0 0 4px;
+}
+
+.nav-sidebar .active a {
+	cursor: default;
+	background-color: rgb(115, 215, 209);
+	color: #fff;
+	text-shadow: 1px 1px 1px #666;
+}
+
+.nav-sidebar .active a:hover {
+	background-color: rgb(115, 215, 209);
+}
+
+/* Right-aligned sidebar */
+.nav-sidebar.pull-right {
+	border-right: 0;
+	border-left: 1px solid #ddd;
+}
+
+.nav-sidebar.pull-right a {
+	border-radius: 0 4px 4px 0;
+}
+
+.nav-header {
+	color: #909090;
+}
+/*/사이드바*/
 
 /*여기서부터 main*/
 body {
@@ -211,38 +247,28 @@ footer { /*바닥글*/
 			<div class="container">
 				<ul class="topul">
 					<%
-						String id = "";
-						if (session.getAttribute("login") != null) { //세션값이 비어있지 않다라면
-							id = (String) session.getAttribute("login"); //세션값 추출하고 저장
-						}
-					%>
-					<%
-						if (id.equals("insung")) {
-					%>
+	String id = ""; 
+	if(session.getAttribute("login")!=null) {		//세션값이 비어있지 않다라면
+		id = (String)session.getAttribute("login"); //세션값 추출하고 저장
+	}
+%>
+					<% if(id.equals("insung")) { %>
 					<!-- 세센값의 아이디가 관리자 아이디와 같다면 밑에 코드 출력  -->
-					<li class="topli"><a
-						href="../../shop/system/login/logoutProc.jsp">로그아웃</a></li>
-					<li class="topli"><a href="../../order/member/memberList.html">관리자페이지</a></li>
-					<%
-						} else if (!id.equals("")) {
-					%>
+					<li class="topli"><a href="../shop/system/login/logoutProc.jsp">로그아웃</a></li>
+					<li class="topli"><a href="../order/member/memberList.html">관리자페이지</a></li>
+					<% }else if(!id.equals("")) { %>
 					<!-- 로그인이 성공했다라면 id값에 데이터가 들어가있으므로 실행 -->
-					<li class="topli"><a
-						href="../../shop/system/login/logoutProc.jsp">로그아웃</a></li>
+					<li class="topli"><a href="../shop/system/login/logoutProc.jsp">로그아웃</a></li>
 					<li class="topli"><a>적립금 : 650점</a></li>
-					<li class="topli"><a href="../../guest/basket/Basket.html">장바구니</a></li>
-					<li class="topli"><a href="../../guest/mypage/orderList.html">마이페이지</a></li>
-					<%
-						} else {
-					%>
+					<li class="topli"><a href="../guest/basket/Basket.html">장바구니</a></li>
+					<li class="topli"><a href="../guest/mypage/orderList.html">마이페이지</a></li>
+					<% }else { %>
 					<!-- 세션값이 없다라면 실행 (로그인 안된상태) -->
-					<li class="topli"><a href="../../shop/system/login/login.jsp">로그인</a></li>
-					<li class="topli"><a href="../../guest/signUp/signUp.html">회원가입</a></li>
-					<li class="topli"><a href="../../guest/basket/Basket.html">장바구니</a></li>
-					<li class="topli"><a href="../../guest/mypage/orderList.html">마이페이지</a></li>
-					<%
-						}
-					%>
+					<li class="topli"><a href="../shop/system/login/login.jsp">로그인</a></li>
+					<li class="topli"><a href="../guest/signUp/signUp.html">회원가입</a></li>
+					<li class="topli"><a href="../guest/basket/Basket.html">장바구니</a></li>
+					<li class="topli"><a href="../guest/mypage/orderList.html">마이페이지</a></li>
+					<% } %>
 				</ul>
 			</div>
 		</nav>
@@ -252,11 +278,11 @@ footer { /*바닥글*/
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<a href="../../main.html"><img src="../../img/logo.png"
+						<a href="../main.jsp"><img src="../img/logo.png"
 							class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
-						<form action="../../shop/search/searchResult.html">
+						<form action="../shop/search/searchResult.html">
 							<div class="input-group" class="searchBar" style="margin: 80px;">
 								<div class="input-group-btn search-panel">
 									<button type="button" class="btn btn-default ">
@@ -290,7 +316,6 @@ footer { /*바닥글*/
 		</div>
 	</div>
 
-
 	<!-- 메뉴바 -->
 	<div class="container">
 		<div class="navbar">
@@ -300,26 +325,23 @@ footer { /*바닥글*/
 						id=myNavbar>
 						<div class="#myNavbar">
 							<div class="dropdown">
-								<a href="../../category/bestBook.html"><button
-										class="dropbtn">베스트셀러</button></a>
+								<a href="../category/bestBook.html"><button class="dropbtn">베스트셀러</button></a>
 							</div>
 							<div class="dropdown">
-								<a href="../../category/newBook.html"><button
-										class="dropbtn">신간도서</button></a>
+								<a href="../category/newBook.html"><button class="dropbtn">신간도서</button></a>
 							</div>
 							<div class="dropdown">
-								<a href="../../category/saleBook.html"><button
-										class="dropbtn">할인도서</button></a>
+								<a href="../category/saleBook.html"><button class="dropbtn">할인도서</button></a>
 							</div>
 							<div class="dropdown">
 								<button class="dropbtn">
 									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="../../category/domesticBook/literatureBook.html">문학</a>
-									<a href="../../category/domesticBook/humanitiesBook.html">인문</a>
-									<a href="../../category/domesticBook/referenceBook.html">참고서</a>
-									<a href="../../category/domesticBook/besidesBook.html">기타</a>
+									<a href="../category/domesticBook/literatureBook.html">문학</a> <a
+										href="../category/domesticBook/humanitiesBook.html">인문</a> <a
+										href="../category/domesticBook/referenceBook.html">참고서</a> <a
+										href="../category/domesticBook/besidesBook.html">기타</a>
 								</div>
 							</div>
 							<div class="dropdown">
@@ -327,10 +349,10 @@ footer { /*바닥글*/
 									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="../../category/foreignBook/literatureBook.html">문학</a>
-									<a href="../../category/foreignBook/humanitiesBook.html">인문</a>
-									<a href="../../category/foreignBook/referenceBook.html">참고서</a>
-									<a href="../../category/domesticBook/besidesBook.html">기타</a>
+									<a href="../category/foreignBook/literatureBook.html">문학</a> <a
+										href="../category/foreignBook/humanitiesBook.html">인문</a> <a
+										href="../category/foreignBook/referenceBook.html">참고서</a> <a
+										href="../category/domesticBook/besidesBook.html">기타</a>
 								</div>
 							</div>
 						</div>
@@ -340,75 +362,62 @@ footer { /*바닥글*/
 		</div>
 	</div>
 	<!-- //메뉴바 -->
+
 	<article>
 		<div class="container">
-			<h2>주문내역수정</h2>
-			<br>
-			<form action="orderManagement.jsp">
-
-			<table class="table table-bordered">
-				<tr>
-					<th>회원아이디</th>
-					<td><input type="text" value="xotn" /></td>
-				</tr>
-				<tr>
-					<th>주문번호</th>
-					<td><input type="text" value="1" /></td>
-				</tr>
-				<tr>
-					<th>주문날짜</th>
-					<td><input type="text" value="2016-04-04" /></td>
-				</tr>
-				<tr>
-					<th>배송주소</th>
-					<td><input type="text" value="경기도안산시상록구" /></td>
-				</tr>
-				<tr>
-					<th>상품코드</th>
-					<td><input type="text" value="N111" /></td>
-				</tr>
-				<tr>
-					<th>주문수량</th>
-					<td><input type="text" value="2" /></td>
-				</tr>
-				<tr>
-					<th>배송상황</th>
-					<td><input type="text" value="배송중" /></td>
-				</tr>
-			</table>
-			<button type="submit" style="float:right; margin-bottom:20px; "class="btn btn-md">수정하기</button>
-			</form>
-
+			<div class="row">
+				<div class="col-md-2">
+					<nav class="nav-sidebar">
+						<ul class="nav">
+							<li class="nav-header"><strong>인성문고</strong></li>
+							<li><a href="insungInfo.jsp">회사소개</a></li>
+							<li class="active"><a href="adInfo.jsp">광고안내</a></li>
+							<li><a href="agreementUtilization.jsp">이용약관</a></li>
+							<li><a href="individualInfo.jsp">개인정보처리방침</a></li>
+							<li><a href="pictureInfo.jsp">영상정보처리방침</a></li>
+							<li><a href="emailCollectBan.jsp">이메일무단복제금지</a></li>
+						</ul>
+					</nav>
+				</div>
+				<div class="col-md-10">
+					<br>
+					<h2>광고안내</h2>
+					<hr>
+					<div class="row">
+						<div class="col-md-2"></div>
+						<div class="col-md-10">
+							<img src="../img/ad/adInfo1.jpg"><br>
+							<hr>
+							<br> <img src="../img/ad/adInfo2.jpg"><br>
+							<hr>
+							<br> <img src="../img/ad/adInfo3.jpg"><br>
+							<hr>
+							<br> <img src="../img/ad/adInfo4.jpg">
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
-		
-
 	</article>
-
-
-
-	<!-- //구매화면 -->
 	<!-- 바닥글 -->
 	<div class="container">
 		<footer>
 			<div class="row">
 				<ul class="footerul">
-					<li class="footerli"><a href="../../footer/insungInfo.html">회사소개</a></li>
-					<li class="footerli"><a href="../../footer/adInfo.html">광고안내</a></li>
+					<li class="footerli"><a href="insungInfo.html">회사소개</a></li>
+					<li class="footerli"><a href="adInfo.html">광고안내</a></li>
 					<li class="footerli"><a
-						href="../../customerCenter/frequent10.html">고객센터</a></li>
-					<li class="footerli"><a
-						href="../../footer/agreementUtilization.html">이용약관</a></li>
-					<li class="footerli"><a
-						href="../../footer/individualInfo.html">개인정보처리</a></li>
-					<li class="footerli"><a href="../../footer/pictureInfo.html">영상정보관리방침</a></li>
-					<li class="footerli"><a
-						href="../../footer/emailCollectBan.html">이메일무단복제금지</a></li>
+						href="../customerCenter/frequent10.html">고객센터</a></li>
+					<li class="footerli"><a href="agreementUtilization.html">이용약관</a></li>
+					<li class="footerli"><a href="individualInfo.html">개인정보처리</a></li>
+					<li class="footerli"><a href="pictureInfo.html">영상정보관리방침</a></li>
+					<li class="footerli"><a href="emailCollectBan.html">이메일무단복제금지</a></li>
 				</ul>
 			</div>
 			<hr>
 			<div class="row">
 				<div class="col-md-3">
-					<img src="../../img/logo.png" class="footerlogo">
+					<img src="../img/logo.png" class="footerlogo">
 				</div>
 				<div class="col-md-5">
 					<h4>(주)인성문고</h4>

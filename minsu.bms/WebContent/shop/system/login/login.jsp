@@ -216,7 +216,7 @@ footer { /*바닥글*/
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<a href="../../main.html"><img src="../../img/logo.png" class="headlogo"></a>
+						<a href="../../main.jsp"><img src="../../img/logo.png" class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
 						<form action="../../shop/search/searchResult.html">

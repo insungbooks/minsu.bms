@@ -387,13 +387,11 @@ footer { /*바닥글*/
 						</thead>
 						<tbody>
 							<tr>
-<% List<books> books = request.getAttribute("books");
-	for(Book book:books) {
-%>
+
 								<td><input type="checkbox"></td>
-								<td><%= book.getBookCode() %></td>
-								<td><%= book.getWriter() %></td>
-								<td><%= %></td>
+								<td></td>
+								<td></td>
+								<td></td>
 								<td>한강</td>
 								<td>장비</td>
 								<td>2007/10/30</td>

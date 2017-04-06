@@ -1003,13 +1003,13 @@ footer { /*바닥글*/
 		<footer>
 			<div class="row">
 				<ul class="footerul">
-					<li class="footerli"><a href="insungInfo.html">회사소개</a></li>
-					<li class="footerli"><a href="adInfo.html">광고안내</a></li>
+					<li class="footerli"><a href="insungInfo.jsp">회사소개</a></li>
+					<li class="footerli"><a href="adInfo.jsp">광고안내</a></li>
 					<li class="footerli"><a href="customerCenter.html">고객센터</a></li>
-					<li class="footerli"><a href="agreementUtilization.html">이용약관</a></li>
-					<li class="footerli"><a href="individualInfo.html">개인정보처리</a></li>
-					<li class="footerli"><a href="pictureInfo.html">영상정보관리방침</a></li>
-					<li class="footerli"><a href="emailCollectBan.html">이메일무단복제금지</a></li>
+					<li class="footerli"><a href="agreementUtilization.jsp">이용약관</a></li>
+					<li class="footerli"><a href="individualInfo.jsp">개인정보처리</a></li>
+					<li class="footerli"><a href="pictureInfo.jsp">영상정보관리방침</a></li>
+					<li class="footerli"><a href="emailCollectBan.jsp">이메일무단복제금지</a></li>
 				</ul>
 			</div>
 			<hr>

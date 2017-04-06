@@ -17,4 +17,10 @@
 	<delete id="delBook" parameterType="string">
 		delete books where book_code = #{bookCode}
 	</delete>
+	
+	<insert id="addBook" parameterType="book">
+		insert into books values{
+		#{bookCode}, #{bookName}, #{bookPrice}, #{writer}, #{company},
+		#{publiDate}, #{country}, #{kind})
+	</insert>
 </mapper>

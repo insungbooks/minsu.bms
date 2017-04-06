@@ -377,35 +377,18 @@ footer { /*바닥글*/
 					<div class="col-md-10">
 						<div class="col-md-3">
 <!-- 각 분류 버튼들 '>' 넣고 한줄 정렬 하기 --> 
-							<select class="form-control" id="sel1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+					<form>
+							<select class="form-control" name="country">
+								<option value="국내">국내</option>
+								<option value="해외">해외</option>
 							</select>
 						</div>
 						<div class="col-md-3">
-							<select class="form-control" id="sel1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-							</select>
-						</div>
-						<div class="col-md-3">
-							<select class="form-control" id="sel1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-							</select>
-						</div>
-						<div class="col-md-3">
-							<select class="form-control" id="sel1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
+							<select class="form-control" name="kind">
+								<option value="문학">문학</option>
+								<option value="인문">인문</option>
+								<option value="참고서">참고서</option>
+								<option value="기타">기타</option>
 							</select>
 						</div>
 					</div>
@@ -414,74 +397,48 @@ footer { /*바닥글*/
 				<div class="form-group">
 					<label class="col-md-2" for="bookCode">도서 코드 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" id="bookCode" placeholder="도서 코드를 입력하세요.">
+						<input type="text" class="form-control" name="bookCode" placeholder="도서 코드를 입력하세요.">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="bookName">도서 제목 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" id="bookName" placeholder="도서 제목을 입력하세요.">
+						<input type="text" class="form-control" name="bookName" placeholder="도서 제목을 입력하세요.">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="author">저자 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" id="author" placeholder="저자를 입력하세요.">
+						<input type="text" class="form-control" name="writer" placeholder="저자를 입력하세요.">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="publisher">출판사 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" id="publisher" placeholder="출판사를 입력하세요.">
+						<input type="text" class="form-control" name="company" placeholder="출판사를 입력하세요.">
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="publicationDate">출간일 :</label>
 					<div class="col-md-10">
-						<input type="date" class="form-control" id="publicationDate" placeholder="출간일을 입력하세요.">
+						<input type="date" class="form-control" name="publiDate" placeholder="출간일을 입력하세요.">
 					</div>
 				</div>
-				
-				<div class="form-group">
-					<label class="col-md-2" for="fixedPrice">정가 :</label>
-					<div class="col-md-10">
-						<input type="text" class="form-control" id="fixedPrice" placeholder="정가를 입력하세요.">
-					</div>
-				</div>
-				
+							
 				<div class="form-group">
 					<label class="col-md-2" for="listPrice">판매가 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" id="listPrice" placeholder="판매가를 입력하세요.">
+						<input type="text" class="form-control" name="bookPrice" placeholder="판매가를 입력하세요.">
 					</div>
 				</div>
-				
-				<div class="form-group">
-					<label class="col-md-2" for="isbn">ISBN :</label>
-					<div class="col-md-10">
-						<input type="text" class="form-control" id="isbn" placeholder="ISBN을 입력하세요.">
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="col-md-2" for="pages">쪽수 :</label>
-					<div class="col-md-10">
-						<input type="text" class="form-control" id="pages" placeholder="쪽수를 입력하세요.">
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<label class="col-md-2" for="size">도서 크기 :</label>
-					<div class="col-md-10">
-						<input type="text" class="form-control" id="size" placeholder="도서 크기를 입력하세요.">
-					</div>
-				</div>
+			<button type="submit" formaction="addBook.jsp" style="float:right;">책추가</button>
+			</form>
+			<br><br>
 			</div>
-			
 			<div class="row">
 				<h3>책 소개</h3>
 				<br>

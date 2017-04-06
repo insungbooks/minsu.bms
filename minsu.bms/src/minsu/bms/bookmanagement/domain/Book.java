@@ -1,33 +1,29 @@
 package minsu.bms.bookmanagement.domain;
 
-import java.sql.Date;
-
 public class Book {
 	private String  bookCode;
 	private String  bookName;
 	private int 	bookPrice;
 	private String  writer;
 	private String  company;
-	private Date    publiDate;
-	private int     sellCount;
+	private String  publiDate;
 	private String  country;
 	private String  kind;
 	
 	public Book() {}
 	
 	public Book(String bookCode, String bookName, int bookPrice, String writer, String company,
-				Date publiDate, int sellCount, String country, String kind) {
+				String publiDate, String country, String kind) {
 		this.bookCode = bookCode;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
 		this.writer = writer;
 		this.company = company;
 		this.publiDate = publiDate;
-		this.sellCount = sellCount;
 		this.country = country;
 		this.kind = kind;
 	}
-	
+
 	public String getBookCode() {
 		return bookCode;
 	}
@@ -68,20 +64,12 @@ public class Book {
 		this.company = company;
 	}
 
-	public Date getPubliDate() {
+	public String getPubliDate() {
 		return publiDate;
 	}
 
-	public void setPubliDate(Date publiDate) {
+	public void setPubliDate(String publiDate) {
 		this.publiDate = publiDate;
-	}
-
-	public int getSellCount() {
-		return sellCount;
-	}
-
-	public void setSellCount(int sellCount) {
-		this.sellCount = sellCount;
 	}
 
 	public String getCountry() {

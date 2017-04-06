@@ -369,6 +369,8 @@ footer { /*바닥글*/
 						</ul>
 					</nav>
 				</div>
+			<form>
+			<button type="submit" formaction="listBooks.jsp">조회</button>
 				<div class="col-md-10">
 					<table class="table table-hover">
 						<thead>
@@ -386,20 +388,30 @@ footer { /*바닥글*/
 							</tr>
 						</thead>
 						<tbody>
+<%
+	if(request.getAttribute("books") != null) {
+		List<Book> books = (List<Book>)request.getAttribute("books");
+			for(Book book : books) {
+%>
 							<tr>
-								<td><input type="checkbox"></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td>한강</td>
-								<td>장비</td>
-								<td>2007/10/30</td>
-								<td>12,000</td>
-								<td>100</td>
-								<td>삭제</td>
-								<td>수정</td>
+								<td><input type="checkbox" name="bookCode" value = "<%=book.getBookCode() %>"></td>
+								<td><%= book.getBookCode() %></td>
+								<td><%= book.getKind() %></td>
+								<td><%= book.getBookName() %></td>
+								<td><%= book.getWriter() %></td>
+								<td><%= book.getCompany() %></td>
+								<td><%= book.getPubliDate() %></td>
+								<td><%= book.getBookPrice() %></td>
+								<td><%= book.getSellCount() %></td>
+								<td><button type="submit" formaction="bookProc.jsp">수정</button></td>
+								<td><button type="submit" formaction="bookProc.jsp">삭제</button></td>
 							</tr>
+<%
+			}
+	}
+%>
 						</tbody>
+			</form>
 					</table>
 					<div class="row">
 						<div class="col-sm-3"></div>

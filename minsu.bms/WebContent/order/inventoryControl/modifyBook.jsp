@@ -14,22 +14,9 @@
 	BookDao bookDao = new BookDaoImpl(bookMapper);
 	BookService bookService = new BookServiceImpl(bookDao);
 	
-	String choice = request.getParameter("choice");
-	String bookCode =  request.getParameter("bookCode");
-	String bookName =  request.getParameter("bookName");
-	String writer =	   request.getParameter("writer");
-	String company =   request.getParameter("company");
-	String publiDate = request.getParameter("publiDate");
-	String bookPrices = request.getParameter("bookPrice");
-	int bookPrice = Integer.parseInt(bookPrices);
-	String country =   request.getParameter("country");
-	String kind = 	   request.getParameter("kind");
+	String bookCode = request.getParameter("bookCode");
+	Book modBook = bookService.findBook(bookCode);
 	
-	Book addBook = new Book(bookCode,bookName,bookPrice,writer,company,publiDate,country,kind);
-	
-	if(choice.equals("add")) {
-		bookService.addBook(addBook);
-	}else {
-		bookService.modifyBook(addBook);
-	}
+	request.setAttribute("modBook", modBook);
 %>
+	<jsp:forward page="bookAdd.jsp"/>

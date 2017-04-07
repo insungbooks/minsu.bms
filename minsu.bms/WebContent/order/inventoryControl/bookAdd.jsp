@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -346,7 +349,7 @@ footer { /*바닥글*/
             <li><a href="../member/memberList.html">회원목록조회</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 주문관리</strong></li>
-            <li><a href="BookList.html">도서목록조회</a></li>
+            <li><a href="BookList.jsp">도서목록조회</a></li>
             <li class="active"><a href="bookAdd.html">도서 추가</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 재고관리</strong></li>
@@ -376,8 +379,13 @@ footer { /*바닥글*/
 					<label class="col-md-2">분류 :</label>
 					<div class="col-md-10">
 						<div class="col-md-3">
-<!-- 각 분류 버튼들 '>' 넣고 한줄 정렬 하기 --> 
+<!-- 각 분류 버튼들 '>' 넣고 한줄 정렬 하기 -->
+<%
+	if(request.getAttribute("modBook") != null) { 
+		Book book = (Book)request.getAttribute("modBook");
+%> 
 					<form>
+					<input type="hidden" name="choice" value="mod"/> 
 							<select class="form-control" name="country">
 								<option value="국내">국내</option>
 								<option value="해외">해외</option>
@@ -394,6 +402,69 @@ footer { /*바닥글*/
 					</div>
 				</div>
 				
+				<div class="form-group">
+					<label class="col-md-2" for="bookCode">도서 코드 :</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="bookCode" value="<%= book.getBookCode()  %>" placeholder="도서 코드를 입력하세요.">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-2" for="bookName">도서 제목 :</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="bookName" value="<%= book.getBookName() %>" placeholder="도서 제목을 입력하세요.">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-2" for="author">저자 :</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="writer" value="<%= book.getWriter() %>" placeholder="저자를 입력하세요.">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-2" for="publisher">출판사 :</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="company" value="<%= book.getCompany() %>" placeholder="출판사를 입력하세요.">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<label class="col-md-2" for="publicationDate">출간일 :</label>
+					<div class="col-md-10">
+						<input type="date" class="form-control" name="publiDate" value="<%= book.getPubliDate() %>" placeholder="출간일을 입력하세요.">
+					</div>
+				</div>
+							
+				<div class="form-group">
+					<label class="col-md-2" for="listPrice">판매가 :</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="bookPrice" value="<%= book.getBookPrice() %>" placeholder="판매가를 입력하세요.">
+					</div>
+				</div>
+			<button type="submit" formaction="addBook.jsp" style="float:right;">수정</button>
+			</form>
+<%
+	}else {
+%>
+					<form>
+					<input type="hidden" name="choice" value="add"/> 
+							<select class="form-control" name="country">
+								<option value="국내">국내</option>
+								<option value="해외">해외</option>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<select class="form-control" name="kind">
+								<option value="문학">문학</option>
+								<option value="인문">인문</option>
+								<option value="참고서">참고서</option>
+								<option value="기타">기타</option>
+							</select>
+						</div>
+					</div>
+				</div>
 				<div class="form-group">
 					<label class="col-md-2" for="bookCode">도서 코드 :</label>
 					<div class="col-md-10">
@@ -437,6 +508,9 @@ footer { /*바닥글*/
 				</div>
 			<button type="submit" formaction="addBook.jsp" style="float:right;">책추가</button>
 			</form>
+<%
+	}
+%>
 			<br><br>
 			</div>
 			<div class="row">

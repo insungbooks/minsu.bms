@@ -360,7 +360,7 @@ footer { /*바닥글*/
 							<li><a href="../member/memberList.html">회원목록조회</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 주문관리</strong></li>
-							<li class="active"><a href="BookList.html">도서목록조회</a></li>
+							<li class="active"><a href="BookList.jsp">도서목록조회</a></li>
 							<li><a href="bookAdd.html">도서 추가</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 재고관리</strong></li>
@@ -383,7 +383,6 @@ footer { /*바닥글*/
 								<td><strong>출판사</strong></td>
 								<td><strong>출간일</strong></td>
 								<td><strong>정가</strong></td>
-								<td><strong>재고</strong></td>
 								<td><strong>삭제</strong></td>
 							</tr>
 						</thead>
@@ -402,8 +401,7 @@ footer { /*바닥글*/
 								<td><%= book.getCompany() %></td>
 								<td><%= book.getPubliDate() %></td>
 								<td><%= book.getBookPrice() %></td>
-								<td></td>
-								<td><button type="submit" formaction="bookProc.jsp">수정</button></td>
+								<td><button type="submit" formaction="modifyBook.jsp">수정</button></td>
 								<td><button type="submit" formaction="deleteBook.jsp">삭제</button></td>
 							</tr>
 <%

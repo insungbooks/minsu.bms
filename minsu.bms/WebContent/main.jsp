@@ -23,7 +23,7 @@
 			$("#leftBanner").animate({
 				left : "-=145px"
 			}, speed);
-
+	
 			$("#arrow_leftBan").attr("src", "img/leftBan_on.png");
 			$("#arrow_leftBan").attr("alt", "열기");
 		} else { // 보이기

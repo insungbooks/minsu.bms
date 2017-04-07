@@ -16,7 +16,7 @@
 <script>
 	// 왼쪽 배너 애니메이션
 	var check_leftBanner = true;
-	function visible_leftBanner() {
+	function visible_leftBanner() {   
 		var speed = 150;
 		if (check_leftBanner) { // 숨기기
 			check_leftBanner = false;

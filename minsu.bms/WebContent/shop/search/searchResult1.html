@@ -11,12 +11,6 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
-/*search*/
-/* 안된다....
-#pageNum{
-	border : 0px solid black; none;
-}
- */
 .nav {
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
@@ -88,445 +82,121 @@
 	width: 150px;
 }
 /*search end*/
-/*여기서부터 main*/
-body {
-	padding-top: 20px;
-}
-
-#text1{
-	background-color : rgba(0, 0, 0,0.1);
-	text-color:black;
-}
-#imgInfo{
-	position : relative;
-	top : -320px;
-	transition-property : all;
-}
-#imgInfo:hover,#imgInfo1:hover{
-	opacity : 0.1;
-}
-#imgInfo1{
-	position : relative;
-	top : -150px;
-	transition-property : all;
-}
-.jumbotron {
-	padding-top : 30px;
-	background-color: #FFFFFF; /*배경색 흰색*/
-	border: 1px solid black; /*테두리선*/
-	height: 180px; /*높이*/
-}
-
-.headlogo {
-	width: 110px;
-	height: 110px;
-	margin: none;
-}
-
-a {
-	text-decoration: none; /* 밑줄 없앰 */
-	color: #000000; /*검정색*/
-}
-
-.topul { /*위ul*/
-	padding-top: 20px; /*위에여백*/
-	float: right; /*오른쪽정렬*/
-	background-color: #ffffff; /*배경색 흰색*/
-}
-
-.topli { /*위li*/
-	display: inline; /*한줄로표시*/
-	font-size: 12px;
-	font-weight: bold; /* 진하게 */
-	border-left: 1px solid #666666; /* menu글씨 왼쪽옆에 "|" 표시 */
-} /*위li 앞에*/
-.topli:first-child {
-	border-left: none;
-}
-
-.topli a { /*위li 링크*/
-	margin: 0 10px 0 10px; /* 메뉴 글자 간격 */
-}
-
-.topli a:hover { /*위li*/
-	color: #ff9900; /* li요소의 글자에 마우스 올렸을때 글자색 변경*/
-}
-
-.menubar { /*메뉴바색깔*/
-	background-color: rgb(115, 215, 209);
-}
-
-/* 드롭다운 버튼 */
-.dropbtn {
-	background-color: rgb(115, 215, 209);
-	padding: 17px; /*안쪽여백*/
-	font-size: 13.5px; /*글씨크기*/
-	border: none; /*테두리*/
-	cursor: pointer; /*커서 손모양*/
-	float: center; /* 가운데정렬 */
-	font-weight: bold; /* 진하게 */
-}
-
-/*드롭다운 */
-.dropdown {
-	position: relative; /*상대적위치?*/
-	display: inline-block; /*한줄로 보기*/
-	padding-right: 60px; /*오른쪽 안여백*/
-	padding-left: 60px; /*왼쪽 안여백*/
-}
-
-/* 드롭다운 아래 */
-.dropdown-content {
-	display: none; /*화면상에 아무것도 나타내지 않겠다*/
-	position: absolute;
-	background-color: rgb(115, 215, 209);
-	min-width: 160px;
-	z-index: 1;
-}
-
-/* 드롭다운 아래 링크 */
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {
-	background-color: rgb(56, 194, 188);
-}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-	display: block;
-}
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {
-	background-color: rgb(56, 194, 188);
-}
 
 article { /*본문*/
 	background-color: white;
 	height: 400px;
 }
 
-/* 회전판 */
-.carousel {
-	margin-bottom: 0;
-	padding: 0 40px 30px 40px;
-}
-
-.carousel-control {
-	left: -12px;
-	height: 40px;
-	width: 40px;
-	background: none repeat scroll 0 0 #222222;
-	border: 4px solid #FFFFFF;
-	border-radius: 23px 23px 23px 23px;
-	margin-top: 90px;
-}
-
-.carousel-control.right {
-	right: -12px;
-}
-/* The indicators */
-.carousel-indicators {
-	right: 50%;
-	top: auto;
-	bottom: -10px;
-	margin-right: -19px;
-}
-/* The colour of the indicators */
-.carousel-indicators li {
-	background: #cecece;
-}
-
-.carousel-indicators .active {
-	background: #428bca;
-}
-/*바닥글*/
-.footerul { /*바닥ul*/
-	padding-top: 10px; /*위에여백*/
-}
-
-.footerli { /*바닥li*/
-	display: inline-block; /*한줄로표시*/
-	font-size: 12px; /*한줄로표시*/
-	font-weight: bold; /* 진하게 */
-	border-left: none;
-	padding-right: 40px;
-	padding-left: 40px;
-}
-
-footer { /*바닥글*/
-	clear: both;
-	background-color: #FFFFFF;
-	border: 1px solid black;
-}
-
-.footerlogo { /*바닥 로고*/
-	padding: 16px;
-	width: 130px;
-	height: 130px;
-}
-/*이미지*/
-
 </style>
 </head>
 <body>
-	<div class="container">
-		<!-- 위에 고정바 -->
-		<nav class="btnRight navbar-fixed-top">
-			<div class="container">
-				<ul class="topul">
-					<li class="topli"><a href="../../shop/system/login.html">로그인</a></li>
-					<li class="topli"><a href="../../guest/signUp/signUp.html">회원가입</a></li>
-					<li class="topli"><a href="../../guest/basket/Basket.html">장바구니</a></li>
-					<li class="topli"><a href="../../guest/mypage/orderList.html">마이페이지</a></li>
-				</ul>
-			</div>
-		</nav>
-		<br>
-		<!-- 상단 -->
-		<div class="jumbotron">
-			<div class="container">
+	<article>
+		<div class="container">
+			<div class="col-md-2"></div>
+			<div class="col-md-10">
+				<p>총 n개의 상품이 검색되었습니다.</p>
+				<div class="navbar">
+					<nav class="navbar">
+						<div class="row">
+							<div class="nav">
+								<div class="dropdown1">
+									<button class="dropbtn1">판매량순</button>
+									<button class="dropbtn1">상품평순</button>
+									<button class="dropbtn1">평점순</button>
+									<button class="dropbtn1">리뷰순</button>
+									<button class="dropbtn1">출간일순</button>
+									<button class="dropbtn1">저가격순</button>
+									<!-- 옵션선택/품절포함 박스는 왜 길게 나오지?? 고치려는데 잘 안되네 -->
+									<button class="dropbtn1">
+										옵션선택 <span class="glyphicon glyphicon glyphicon-chevron-down"></span>
+									</button>
+									<!-- 
+									 <div class="dropdown-content">
+										<a href="#">옵션1</a>
+										<a href="#">옵션2</a>
+										<a href="#">옵션3</a>
+										<a href="#">옵션4</a>
+									</div>
+									-->
+									<button class="dropbtn1">
+										품절포함 <span class="glyphicon glyphicon glyphicon-chevron-down"></span>
+									</button>
+									<!-- 
+									 <div class="dropdown-content">
+										<a href="#">포함</a>
+										<a href="#">미포함</a>
+									</div>
+									-->
+								</div>
+							</div>
+						</div>
+					</nav>
+				</div>
+
 				<div class="row">
-					<div class="col-md-3">
-						<a href="../../main.jsp"><img src="../../img/logo.png" class="headlogo"></a>
+
+					<div id="optBtn">
+						<a href="#" class="btn btn-default btn-sm">전체선택</a> <a href="#"
+							class="btn btn-default btn-sm">장바구니 담기</a>
+					</div>
+				</div>
+				<br>
+
+				<div class="row">
+					<div class="col-md-2">
+						<div>
+							<a href="productInfo.html" class="thumbnail"> <img
+								src="../../img/7.jpg">
+							</a>
+						</div>
 					</div>
 					<div class="col-md-7">
-						<form action="../../shop/search/searchResult.html">
-							<div class="input-group" class="searchBar" style="margin: 80px;">
-								<div class="input-group-btn search-panel">
-									<button type="button" class="btn btn-default ">
-										<SELECT name=s_search style="border: none;">
-											<OPTION value=ai_bookname>도서명</OPTION>
-											<OPTION value=ai_writer>저자</OPTION>
-											<OPTION value=ai_publisher>출판사</OPTION>
-											<OPTION value=ai_category>번역자</OPTION>
-											<OPTION value=ai_sequence>차례</OPTION>
-										</SELECT>
-									</button>
-
-								</div>
-
-								<input type="hidden" name="search_param" value="all"
-									id="search_param"> <input type="text"
-									class="form-control" name="x" placeholder="입력하세요">
-								<span class="input-group-btn">
-
-									<button class="btn btn-default" type="submit">
-										<span class="glyphicon glyphicon-search"></span>
-									</button>
-
-								</span>
-							</div>
-						</form>
+						<a href="productInfo.html">[대학교재수험서.외어.컴퓨터.-자수 에코백/파우치 외 사은품
+							10종]</a> <br> <br>
+						<p>
+							[국내도서]<a href="productInfo.html">어서와 JAVA는 처음이지!</a><br> 
+							<a href="productInfo.html">전인국</a>(지은이)|<a href="productInfo.html">인피니티북스</a>|2015년11월<br>
+							33,000원 →<b>29,700</b>(10% 할인), 마일리지 1,650점(5% 적립)<br> <br>
+							출고예상일 : 지금 주문하면 <b>3월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+						</p>
+					</div>
+					<div class="col-md-3">
+						<input id="line checkbox" type="checkbox" />
+						<p id="line">수량</p>
+						<input id="line" type="number" size="3" min="0" /> <a
+							href="../../guest/basket/Basket.html"><button id="block"
+								type="button" class="btn btn-default btn-md">장바구니</button></a> <a
+							href="../../guest/purchase/payment.html"><button id="block"
+								type="button" class="btn btn-default btn-md">바로구매</button></a>
 					</div>
 				</div>
-				<!-- 검색바 -->
-			</div>
-		</div>
-	</div>
-
-
-	<!-- 메뉴바 -->
-	<div class="container">
-		<div class="navbar">
-			<nav class="navbar navbar-inverse">
-				<div class="menubar">
-					<div class="menubar collapse navbar-collapse navbar-center"
-						id=myNavbar>
-						<div class="#myNavbar">
-							<div class="dropdown">
-								<a href="../../category/bestBook.html"><button class="dropbtn">베스트셀러</button></a>
-							</div>
-							<div class="dropdown">
-								<a href="../../category/newBook.html"><button class="dropbtn">신간도서</button></a>
-							</div>
-							<div class="dropdown">
-								<a href="../../category/saleBook.html"><button class="dropbtn">할인도서</button></a>
-							</div>
-							<div class="dropdown">
-								<button class="dropbtn">
-									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
-								</button>
-								<div class="dropdown-content">
-									<a href="../../category/domesticBook/literatureBook.html">문학</a> 
-									<a href="../../category/domesticBook/humanitiesBook.html">인문</a> 
-									<a href="../../category/domesticBook/referenceBook.html">참고서</a>
-									<a href="../../category/domesticBook/besidesBook.html">기타</a>
-								</div>
-							</div>
-							<div class="dropdown">
-								<button class="dropbtn">
-									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
-								</button>
-								<div class="dropdown-content">
-									<a href="../../category/foreignBook/literatureBook.html">문학</a> 
-									<a href="../../category/foreignBook/humanitiesBook.html">인문</a> 
-									<a href="../../category/foreignBook/referenceBook.html">참고서</a>
-									<a href="../../category/domesticBook/besidesBook.html">기타</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</nav>
-		</div>
-	</div>
-	<!-- //메뉴바 -->
-<article>
-	<div class="container">
-		<div class="col-md-2"></div>
-		<div class="col-md-10">
-			<p>총 n개의 상품이 검색되었습니다.</p>
-			<div class="navbar">
-				<nav class="navbar">
-					<div class="row">
-						<div class="nav">
-							<div class="dropdown1">
-								<button class="dropbtn1">정확도순</button>
-								<button class="dropbtn1">판매량순</button>
-								<button class="dropbtn1">상품평순</button>
-								<button class="dropbtn1">평점순</button>
-								<button class="dropbtn1">리뷰순</button>
-								<button class="dropbtn1">출간일순</button>
-								<button class="dropbtn1">저가격순</button>
-								<!-- 옵션선택/품절포함 박스는 왜 길게 나오지?? 고치려는데 잘 안되네 -->
-								<button class="dropbtn1">
-									옵션선택 <span class="glyphicon glyphicon glyphicon-chevron-down"></span>
-								</button>
-								<!--  <div class="dropdown-content">
-								<a href="#">옵션1</a>
-								<a href="#">옵션2</a>
-								<a href="#">옵션3</a>
-								<a href="#">옵션4</a>
-							</div>-->
-								<button class="dropbtn1">
-									품절포함 <span class="glyphicon glyphicon glyphicon-chevron-down"></span>
-								</button>
-								<!--  <div class="dropdown-content">
-								<a href="#">포함</a>
-								<a href="#">미포함</a>
-							</div>-->
-							</div>
-						</div>
-					</div>
-				</nav>
-			</div>
-
-			<div class="row">
-
-				<div id="optBtn">
-					<a href="#" class="btn btn-default btn-sm">전체선택</a> <a href="#"
-						class="btn btn-default btn-sm">장바구니 담기</a>
-				</div>
-			</div>
-			<br>
-
-			<div class="row">
-				<div class="col-md-2">
-					<div>
-						<a href="productInfo.html" class="thumbnail"> <img
-							src="../../img/7.jpg">
-						</a>
-					</div>
-				</div>
-				<div class="col-md-7">
-					<a href="productInfo.html">[대학교재수험서.외어.컴퓨터.-자수 에코백/파우치 외 사은품 10종]</a> <br>
-					<br>
-					<p>
-						[국내도서]<a href="productInfo.html">어서오 JAVA는 처음이지!</a><br> <a href="productInfo.html">전인국</a>(지은이)|<a
-							href="productInfo.html">인피니티북스</a>|2015년11월<br> 33,000원 →<b>29,700</b>(10%
-						할인), 마일리지 1,650점(5% 적립)<br>
-						<br> 출고예상일 : 지금 주문하면 <b>3월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
-					</p>
-				</div>
-				<div class="col-md-3">
-					<input id="line checkbox" type="checkbox" />
-					<p id="line">수량</p>
-					<input id="line" type="number" size="3" min="0"/>
-					<a href="../../guest/basket/Basket.html"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
-					<a href="../../guest/purchase/payment.html"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-sm-6">
-					<div class="text-center" id="searchPageNum">
-						<!-- 페이지숫자 테두리 없는게 더 깔끔하겠지? 내일 고칠게/  그리고 이게 검색된책들 아래가 아니고, 위에 오는게 맞아? -->
-						<ul class="pagination pagination-sm" id="pageNum">
-							<li><a href="searchResult.html" rel="prev">«</a></li>
-							<li><a href="searchResult.html">1</a></li>
-							<li class="active"><a href="searchResult1.html">2</a></li>
-							<!--  <li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">6</a></li>
-							<li><a href="#">7</a></li>
-							<li><a href="#">8</a></li>
-							<li><a href="#">9</a></li>
-							<li><a href="#">10</a></li>-->
-							<li><a href="#" rel="next">»</a></li>
-						</ul>
-					</div>
+				<div class="row">
 					<div class="col-sm-3"></div>
+					<div class="col-sm-6">
+						<div class="text-center" id="searchPageNum">
+							<!-- 페이지숫자 테두리 없는게 더 깔끔하겠지? 내일 고칠게/  그리고 이게 검색된책들 아래가 아니고, 위에 오는게 맞아? -->
+							<ul class="pagination pagination-sm" id="pageNum">
+								<li><a href="searchResult.html" rel="prev">«</a></li>
+								<li><a href="searchResult.html">1</a></li>
+								<li class="active"><a href="searchResult1.html">2</a></li>
+								<!--  <li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">6</a></li>
+								<li><a href="#">7</a></li>
+								<li><a href="#">8</a></li>
+								<li><a href="#">9</a></li>
+								<li><a href="#">10</a></li>-->
+								<li><a href="#" rel="next">»</a></li>
+							</ul>
+						</div>
+						<div class="col-sm-3"></div>
 
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-
-
-</article>
-
-
-
-<!-- //구매화면 -->
-	<!-- 바닥글 -->
-	<div class="container">
-		<footer>
-			<div class="row">
-				<ul class="footerul">
-					<li class="footerli"><a href="../../footer/insungInfo.jsp">회사소개</a></li>
-					<li class="footerli"><a href="../../footer/adInfo.jsp">광고안내</a></li>
-					<li class="footerli"><a href="../../customerCenter/frequent10.html">고객센터</a></li>
-					<li class="footerli"><a href="../../footer/agreementUtilization.jsp">이용약관</a></li>
-					<li class="footerli"><a href="../../footer/individualInfo.jsp">개인정보처리</a></li>
-					<li class="footerli"><a href="../../footer/pictureInfo.jsp">영상정보관리방침</a></li>
-					<li class="footerli"><a href="../../footer/emailCollectBan.jsp">이메일무단복제금지</a></li>
-				</ul>
-			</div>
-			<hr>
-			<div class="row">
-				<div class="col-md-3">
-					<img src="../../img/logo.png" class="footerlogo">
-				</div>
-				<div class="col-md-5">
-					<h4>(주)인성문고</h4>
-					<ul>
-						<li>서울시 종로구 종각 soldesk</li>
-						<li>사업자등록번호 : 123-45-67891</li>
-						<li>대표번호 : 1544-1234(발신자부담전화)</li>
-						<li>서울특별시 통신판매업신고번호 : 제 653호</li>
-					</ul>
-				</div>
-				<div class="col-md-4">
-					<h4>고객센터</h4>
-					<ul>
-						<li>일반문의:1234-1234</li>
-						<li>월~금(09:00~18:00)</li>
-						<li>토요일(09:00~13:00)</li>
-						<li>일요일, 공휴일 휴무</li>
-						<li>E-mail 문의:dlstjd@naver.com</li>
-					</ul>
-				</div>
-			</div>
-		</footer>
-	</div>
-	<!-- //바닥글 -->
+	</article>
 </body>
 </html>

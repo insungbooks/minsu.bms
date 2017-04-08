@@ -6,6 +6,7 @@
 	<typeAliases>
 		<typeAlias alias="user" type="minsu.bms.login.domain.User" />
 		<typeAlias alias="book" type="minsu.bms.bookmanagement.domain.Book" />
+		<typeAlias alias="searchResult" type="minsu.bms.search.domain.SearchResult"/>
 	</typeAliases>	
 
 	<environments default="development">
@@ -23,5 +24,6 @@
 	<mappers>		
 		<mapper resource="minsu/bms/login/dao/mapper/LoginMapper.xml" />
 		<mapper resource="minsu/bms/bookmanagement/dao/mapper/BookMapper.xml" />
+		<mapper resource="minsu/bms/search/dao/mapper/SearchMapper.xml" />
 	</mappers>
 </configuration>

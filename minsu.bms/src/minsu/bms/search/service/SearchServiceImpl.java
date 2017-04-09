@@ -13,7 +13,10 @@ public class SearchServiceImpl implements SearchService{
 		this.searchDao=new SearchDaoImpl();
 	}
 	
-	public List<SearchResult> listSearchResult(){
-		return searchDao.searchBooks();
+	//검색된 도서 목록을 얻는다.
+	//return : 도서 목록
+	//Param : 검색 옵션, 검색어
+	public List<SearchResult> listSearchResult(String searchOption, String searchText){
+		return searchDao.searchBooks(searchOption, searchText);
 	}
 }

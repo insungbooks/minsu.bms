@@ -5,5 +5,6 @@ import java.util.List;
 import minsu.bms.search.domain.SearchResult;
 
 public interface SearchService {
-	List<SearchResult> listSearchResult();
+	//도서 목록
+	List<SearchResult> listSearchResult(String searchOption, String searchText);
 }

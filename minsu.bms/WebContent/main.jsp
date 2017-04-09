@@ -280,14 +280,12 @@ footer { /*바닥글*/
 										<SELECT name=searchOption style="border: none;">
 											<OPTION value=bookTitle>도서명</OPTION>
 											<OPTION value=writer>저자</OPTION>
-											<OPTION value=publisher>출판사</OPTION>
+											<OPTION value=company>출판사</OPTION>
 										</SELECT>
 									</button>
 								</div>
-								<input type="hidden" name="searchText" value="all"
-									id="searchText"> <input type="text"
-									class="form-control" name="searchText" placeholder="입력하세요"> <span
-									class="input-group-btn">
+								<input type="text" class="form-control" name="searchText"
+									placeholder="입력하세요"> <span class="input-group-btn">
 									<button class="btn btn-default" type="submit">
 										<span class="glyphicon glyphicon-search"></span>
 									</button>

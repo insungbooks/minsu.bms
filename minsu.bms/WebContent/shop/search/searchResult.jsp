@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.search.domain.SearchResult"%>
 <%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -93,31 +94,15 @@ article { /*본문*/
 </style>
 </head>
 <body>
+<jsp:include page="../../header.jsp"/>
 <article>
-
 <%
-	if(request.getAttribute("books") != null) {
-		List<SearchResult> searchResults = (List<SearchResult>)request.getAttribute("searchResults");
-			for(SearchResult searchResult : searchResults) {
+	List<SearchResult> searchResults = (List<SearchResult>)request.getAttribute("searchResults");
 %>
-				<%=searchResult.getBookCode() %>
-				<td><%= searchResult.getBookCode() %>
-				<td><%= searchResult.getKind() %>
-				<td><%= searchResult.getBookName() %>
-				<td><%= searchResult.getWriter() %>
-				<td><%= searchResult.getCompany() %>
-				<td><%= searchResult.getPubliDate() %>
-				<td><%= searchResult.getBookPrice() %>
-<%
-			}
-	}
-%>
-
-
 	<div class="container">
 		<div class="col-md-2"></div>
 		<div class="col-md-10">
-			<p>총 n개의 상품이 검색되었습니다.</p>
+			<p>총 <%= searchResults.size() %>개의 상품이 검색되었습니다.</p>
 			<div class="navbar">
 				<nav class="navbar">
 					<div class="row">
@@ -164,35 +149,45 @@ article { /*본문*/
 				</div>
 			</div>
 			<br>
-
-			<div class="row">
-				<div class="col-md-2">
-					<div>
-						<a href="productInfo.html" class="thumbnail"> <img
-							src="../../img/7.jpg">
-						</a>
+			<%
+				if(searchResults == null || searchResults.size()==0){
+			%>
+					<p>검색 결과가 없습니다.</p>
+			<%
+				}else{
+					for(SearchResult searchResult : searchResults){
+			%>
+					<div class="row">
+						<div class="col-md-2">
+							<div>
+								<a href="productInfo.html" class="thumbnail"> <img
+									src="../../img/7.jpg">
+								</a>
+							</div>
+						</div>
+						<div class="col-md-7">
+							<a href="productInfo.html">[<%= searchResult.getKind() %>]</a> <br> <br>
+							<p>
+								[<%= searchResult.getCountry() %>도서]<a href="productInfo.html"><%= searchResult.getBookName() %></a><br> <a
+									href="productInfo.html"><%= searchResult.getWriter() %></a>(지은이)|<a href="productInfo.html"><%= searchResult.getCompany() %></a>|<%= searchResult.getPubliDate() %><br>
+								<%= searchResult.getBookPrice() %>원 →<%= searchResult.getBookPrice()*9/10 %>원(10% 할인), 마일리지 1,650점(5% 적립)<br> <br>
+								출고예상일 : 지금 주문하면 <b>3월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+							</p>
+						</div>
+						<div class="col-md-3">
+							<input id="line checkbox" type="checkbox" />
+							<p id="line">수량</p>
+							<input id="line" type="number" size="3" min="0" /> <a
+								href="../../guest/basket/Basket.html"><button id="block"
+									type="button" class="btn btn-default btn-md">장바구니</button></a> <a
+								href="../../guest/purchase/payment.html"><button id="block"
+									type="button" class="btn btn-default btn-md">바로구매</button></a>
+						</div>
 					</div>
-				</div>
-				<div class="col-md-7">
-					<a href="productInfo.html">[대학교재수험서.외어.컴퓨터.-자수 에코백/파우치 외 사은품
-						10종]</a> <br> <br>
-					<p>
-						[국내도서]<a href="productInfo.html">어서와 JAVA는 처음이지!</a><br> 
-						<a href="productInfo.html">전인국</a>(지은이)|<a href="productInfo.html">인피니티북스</a>|2015년11월<br>
-						33,000원 →<b>29,700</b>(10% 할인), 마일리지 1,650점(5% 적립)<br> <br>
-						출고예상일 : 지금 주문하면 <b>3월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
-					</p>
-				</div>
-				<div class="col-md-3">
-					<input id="line checkbox" type="checkbox" />
-					<p id="line">수량</p>
-					<input id="line" type="number" size="3" min="0" /> <a
-						href="../../guest/basket/Basket.html"><button id="block"
-							type="button" class="btn btn-default btn-md">장바구니</button></a> <a
-						href="../../guest/purchase/payment.html"><button id="block"
-							type="button" class="btn btn-default btn-md">바로구매</button></a>
-				</div>
-			</div>
+			<%
+					}
+				}
+			%>
 			<div class="row">
 				<div class="col-sm-3"></div>
 				<div class="col-sm-6">
@@ -214,11 +209,11 @@ article { /*본문*/
 						</ul>
 					</div>
 					<div class="col-sm-3"></div>
-
 				</div>
 			</div>
 		</div>
 	</div>
 </article>
+<jsp:include page="../../footer.html"/>
 </body>
 </html>

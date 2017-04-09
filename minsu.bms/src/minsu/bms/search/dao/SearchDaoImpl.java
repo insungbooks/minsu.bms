@@ -13,7 +13,10 @@ public class SearchDaoImpl implements SearchDao{
 		this.searchMapper=Configuration.getMapper(SearchMapper.class);;
 	}
 	
-	public List<SearchResult> searchBooks(){
-		return searchMapper.searchBooks();
+	//도서를 검색한다.
+	//return : 도서 목록
+	//Param : 검색옵션, 검색어
+	public List<SearchResult> searchBooks(String searchOption, String searchText){
+		return searchMapper.searchBooks(searchOption, searchText);
 	}
 }

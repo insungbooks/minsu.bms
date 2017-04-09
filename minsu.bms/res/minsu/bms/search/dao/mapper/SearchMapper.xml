@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="minsu.bms.search.dao.mapper.SearchMapper">
-	<select id="searchBooks" resultType="searchResult">
+	<select id="searchBooks" parameterType="string" resultType="searchResult">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
 			   company, publi_date publiDate, country, kind
 		from books
+		<if test="searchOption.equals('bookTitle')">
+			where book_name like '%'||#{searchText}||'%'
+		</if>
+		<if test="searchOption.equals('writer')">
+			where writer like '%'||#{searchText}||'%'
+		</if>
+		<if test="searchOption.equals('company')">
+			where company like '%'||#{searchText}||'%'
+		</if>
 	</select>
 </mapper>

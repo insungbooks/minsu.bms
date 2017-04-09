@@ -1,14 +1,14 @@
 package minsu.bms.search.domain;
 
 public class SearchResult {
-	private String  bookCode;
-	private String  bookName;
-	private int 	bookPrice;
-	private String  writer;
-	private String  company;
-	private String  publiDate;
-	private String  country;
-	private String  kind;
+	private String  bookCode;	//도서 코드
+	private String  bookName;	//도서 제목
+	private int 	bookPrice;	//도서 가격
+	private String  writer;		//저자
+	private String  company;	//출판사
+	private String  publiDate;	//출판일
+	private String  country;	//출판 국가(국내/해외)
+	private String  kind;		//분류
 	
 	public SearchResult() {}
 	

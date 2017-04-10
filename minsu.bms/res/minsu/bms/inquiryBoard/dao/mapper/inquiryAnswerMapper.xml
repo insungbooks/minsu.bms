@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="minsu.bms.inquiryBoard.dao.mapper.inquiryAnswerMapper">
+	<select id="inquiryList" resultType="inquiry">
+		select board_num boardNum, user_id userId, title, content, answer, separation, answer_state answerState, reporting_date reportingDate
+		from boards
+	</select>
+	
+	<select id="getInquiry" parameterType="string" resultType="inquiry">
+		select board_num boardNum, user_id userId, title, content, answer, separation, answer_state answerState, reporting_date reportingDate
+		from boards
+		where board_num = #{boardNum}
+	</select>
+	
+	<update id="updateInquiry" parameterType="inquiry">
+		update boards set
+		answer = #{answer}
+		where board_num
+		= #{boardNum}
+	</update>
+	
+</mapper>

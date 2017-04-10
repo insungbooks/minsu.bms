@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.inquiryBoard.domain.Inquiry" %>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -17,19 +19,24 @@
     width: 100%;
     padding: 8px 0; 
     border-right: 1px solid #ddd;
+    
 }
-.nav-sidebar a {
+.nav-sidebar a ,button{
     color: #333;
     transition: all 0.08s linear;
     border-radius: 4px 0 0 4px; 
+    border:none;
 }
-.nav-sidebar .active a { 
+.nav-sidebar .active a ,button{ 
     cursor: default;
     background-color: rgb(115, 215, 209); 
     color: #fff; 
     text-shadow: 1px 1px 1px #666; 
 }
 .nav-sidebar .active a:hover {
+    background-color: rgb(115, 215, 209);   
+}
+.nav-sidebar .active button:hover {
     background-color: rgb(115, 215, 209);   
 }
 
@@ -39,6 +46,9 @@
     border-left: 1px solid #ddd; 
 }
 .nav-sidebar.pull-right a { 
+    border-radius: 0 4px 4px 0; 
+}
+.nav-sidebar.pull-right button { 
     border-radius: 0 4px 4px 0; 
 }
 
@@ -68,7 +78,7 @@
             <li><a href="../orderManagement/orderManagement.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
-			<li class="active"><a href="inquiryAnswerList.jsp">문의답하기</a></li>
+			<li class="active"><form><button type="submit" formaction="inquiryAnswerProc.jsp">문의답하기</button></form></li>
         </ul>
     </nav>
 </div>
@@ -86,14 +96,23 @@
 				</tr>
 			</thead>
 			<tbody>
+<%
+			if (request.getAttribute("answers") != null) {
+				List<Inquiry> answers = (List<Inquiry>) request.getAttribute("answers");
+				for (Inquiry answer : answers) {
+%>
 				<tr>
-					<td><a href="inquiryAnswer.jsp">1</a></td>
-					<td><a href="inquiryAnswer.jsp">배송</a></td>
-					<td><a href="inquiryAnswer.jsp">soyeun</a></td>
-					<td><a href="inquiryAnswer.jsp">배송언제되나요?</a></td>
-					<td><a href="inquiryAnswer.jsp">2017.03.03</a></td>
-					<td>답변미완료</td>
+					<td><a href="inquiryAnswer.jsp"><%=answer.getBoardNum() %></a></td>
+					<td><a href="inquiryAnswer.jsp"><%=answer.getSeparation() %></a></td>
+					<td><a href="inquiryAnswer.jsp"><%=answer.getUserId() %></a></td>
+					<td><a href="inquiryAnswer.jsp"><%=answer.getTitle() %></a></td>
+					<td><a href="inquiryAnswer.jsp"><%=answer.getReportingDate() %></a></td>
+					<td><%=answer.getAnswerState() %></td>
 				</tr>
+				<%
+									}
+									}
+								%>
 			</tbody>
 		</table>
 	</div>

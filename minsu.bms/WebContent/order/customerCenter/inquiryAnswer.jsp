@@ -74,14 +74,13 @@
             <li><a href="../orderManagement/orderManagement.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
-			<li class="active"><a href="inquiryAnswerList.jsp">문의답하기</a></li>
-        </ul>
+		<li class="active"><form><button type="submit" formaction="inquiryAnswerProc.jsp">문의답하기</button></form></li> </ul>
     </nav>
 		</div>
 
 		<div class="col-md-8">
 			<div class="row">
-			<form class="form" action="inquiryAnswerList.jsp">
+			<form class="form" action="#">
 			<div class="form-group row">
 			<h2>문의 답하기</h2>
 			<hr>
@@ -117,7 +116,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="answer">답변 내용 : </label>
 				<div class="col-md-10">
-					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요."></textarea>
+					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="inquiryAnswer"></textarea>
 				</div>
 			</div>
 			

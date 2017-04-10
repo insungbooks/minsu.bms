@@ -78,16 +78,16 @@ th, td {
 				<nav class="nav-sidebar">
         <ul class="nav">
         	<li class="nav-header"><strong> 주문관리</strong></li>
-            <li ><a href="../mypage/orderList.html"> 주문조회</a></li>
-            <li class="active"><a href="Basket.html"> 장바구니</a></li>
-            <li><a href="../mypage/purchaseList.html">구매내역</a></li>
+            <li ><a href="../mypage/orderList.jsp"> 주문조회</a></li>
+            <li class="active"><a href="Basket.jsp"> 장바구니</a></li>
+            <li><a href="../mypage/purchaseList.jsp">구매내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
-            <li><a href="../mypage/modification.html"> 회원정보 수정</a></li>
-            <li><a href="../mypage/memberLeave.html"> 회원 탈퇴</a></li>
+            <li><a href="../mypage/modification.jsp"> 회원정보 수정</a></li>
+            <li><a href="../mypage/memberLeave.jsp"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 나의 상담</strong></li>
-            <li><a href="../mypage/customCenter2.html"> 나의 상담 내역</a></li>
+            <li><a href="../mypage/customCenter2.jsp"> 나의 상담 내역</a></li>
         </ul>
     </nav>
 				</div>
@@ -117,7 +117,7 @@ th, td {
 						<hr class="star-primary">
 						<nav class="buynav">
 							<a href="../../main.jsp"><button type="button" class="btn btn-default ">쇼핑계속하기</button></a>
-							<a href="../purchase/payment.html"><button type="button" class="btn btn-default ">회원 구매</button></a>
+							<a href="../purchase/payment.jsp"><button type="button" class="btn btn-default ">회원 구매</button></a>
 						</nav>
 				<br><br>
 				

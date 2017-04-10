@@ -77,17 +77,17 @@ th, td {
 				<nav class="nav-sidebar">
         <ul class="nav">
         	<li class="nav-header"><strong> 주문관리</strong></li>
-            <li ><a href="../mypage/orderList.html"> 주문조회</a></li>
-            <li class="active"><a href="Basket.html"> 장바구니</a></li>
-            <li><a href="../mypage/purchaseList.html">구매내역</a></li>
-            <li><a href="../mypage/refundDetail.html">취소/교환내역</a></li>
+            <li ><a href="../mypage/orderList.jsp"> 주문조회</a></li>
+            <li class="active"><a href="Basket.jsp"> 장바구니</a></li>
+            <li><a href="../mypage/purchaseList.jsp">구매내역</a></li>
+            <li><a href="../mypage/refundDetail.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
-            <li><a href="../../shop/system/idCheck.html"> 회원정보 수정</a></li>
-            <li><a href="../../shop/system/idCheck1.html"> 회원 탈퇴</a></li>
+            <li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
+            <li><a href="../../shop/system/idCheck1.jsp"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 나의 상담</strong></li>
-            <li><a href="../mypage/customCenter2.html"> 나의 상담 내역</a></li>
+            <li><a href="../mypage/customCenter2.jsp"> 나의 상담 내역</a></li>
         </ul>
     </nav>
 				</div>
@@ -125,8 +125,8 @@ th, td {
 									<td style="padding: 35px 15px;">10,800원</td>
 									<td style="padding: 35px 15px;">2017년3월19일 도착예정</td>
 									<td class="a">
-										<a href="../purchase/payment.html"><button type="button" class="btn btn-default btn-block">바로구매</button></a>
-										<a href="Basket1.html"><button type="button" class="btn btn-default btn-block">삭제</button></a>
+										<a href="../purchase/payment.jsp"><button type="button" class="btn btn-default btn-block">바로구매</button></a>
+										<a href="Basket1.jsp"><button type="button" class="btn btn-default btn-block">삭제</button></a>
 									</td>
 
 								</tr>
@@ -136,7 +136,7 @@ th, td {
 						<hr class="star-primary">
 						<nav class="buynav">
 							<a href="../../main.jsp"><button type="button" class="btn btn-default ">쇼핑계속하기</button></a>
-							<a href="../purchase/payment.html"><button type="button" class="btn btn-default ">회원 구매</button></a>
+							<a href="../purchase/payment.jsp"><button type="button" class="btn btn-default ">회원 구매</button></a>
 						</nav>
 				<br><br>
 				

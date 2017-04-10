@@ -164,30 +164,22 @@ a {
 						<a href="main.html"><img src="http://localhost:85/minsu.bms/img/logo.png" class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
-						<form action="shop/search/searchResult.html">
+						<form action="shop/search/searchResultProc.jsp">
 							<div class="input-group" class="searchBar" style="margin: 80px;">
 								<div class="input-group-btn search-panel">
 									<button type="button" class="btn btn-default ">
-										<SELECT name=s_search style="border: none;">
-											<OPTION value=ai_bookname>도서명</OPTION>
-											<OPTION value=ai_writer>저자</OPTION>
-											<OPTION value=ai_publisher>출판사</OPTION>
-											<OPTION value=ai_category>번역자</OPTION>
-											<OPTION value=ai_sequence>차례</OPTION>
+										<SELECT name=searchOption style="border: none;">
+											<OPTION value=bookTitle>도서명</OPTION>
+											<OPTION value=writer>저자</OPTION>
+											<OPTION value=company>출판사</OPTION>
 										</SELECT>
 									</button>
-
 								</div>
-
-								<input type="hidden" name="search_param" value="all"
-									id="search_param"> <input type="text"
-									class="form-control" name="x" placeholder="입력하세요">
-								<span class="input-group-btn">
-
+								<input type="text" class="form-control" name="searchText"
+									placeholder="입력하세요"> <span class="input-group-btn">
 									<button class="btn btn-default" type="submit">
 										<span class="glyphicon glyphicon-search"></span>
 									</button>
-
 								</span>
 							</div>
 						</form>

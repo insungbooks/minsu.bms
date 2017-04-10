@@ -1,6 +1,6 @@
-package minsu.bms.inquiryBoard.domain;
+package minsu.bms.query.domain;
 
-public class Inquiry {
+public class Query {
 	private int boardNum;
 	private String separation;
 	private String userId;
@@ -10,9 +10,9 @@ public class Inquiry {
 	private String answerState;
 	private String reportingDate;
 	
-	public Inquiry() {}
+	public Query() {}
 	
-	public Inquiry(int boardNum, String separation, String userId, String title, String content, String answer, String answerState,String reportingDate) {
+	public Query(int boardNum, String separation, String userId, String title, String content, String answer, String answerState,String reportingDate) {
 		this.boardNum=boardNum;
 		this.separation=separation;
 		this.userId=userId;
@@ -23,8 +23,9 @@ public class Inquiry {
 		this.reportingDate=reportingDate;
 	}
 	
-	public Inquiry(String answer) {
+	public Query(String answer) {
 		this.answer=answer;
+		separation="답변완료";
 	}
 	
 	public int getBoardNum() {

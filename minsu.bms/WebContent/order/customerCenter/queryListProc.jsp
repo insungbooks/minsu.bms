@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<%@ page import="java.util.*" %>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.query.dao.mapper.QueryMapper" %>
+<%@ page import="minsu.bms.query.dao.QueryDao" %>
+<%@ page import="minsu.bms.query.dao.QueryDaoImpl" %>
+<%@ page import="minsu.bms.query.domain.Query" %>
+<%@ page import="minsu.bms.query.service.QueryService" %>
+<%@ page import="minsu.bms.query.service.QueryServiceImpl" %>
+<%
+QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
+QueryDao queryDao = new QueryDaoImpl(queryMapper);
+QueryService queryService = new QueryServiceImpl(queryDao);
+
+//String inquiryAnswer = request.getParameter("inquiryAnswer");
+
+//Inquiry updateInquiry = new Inquiry(inquiryAnswer);
+
+List<Query> query = queryService.queryList();
+request.setAttribute("query", query);
+
+
+
+%>
+<jsp:forward page="queryList.jsp"/>

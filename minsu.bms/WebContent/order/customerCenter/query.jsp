@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.query.domain.Query" %>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -74,60 +76,74 @@
             <li><a href="../orderManagement/orderManagement.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
-		<li class="active"><form><button type="submit" formaction="inquiryAnswerProc.jsp">문의답하기</button></form></li> </ul>
+		<li class="active"><form><button type="submit" formaction="queryProc.jsp">문의답하기</button></form></li> </ul>
     </nav>
 		</div>
 
 		<div class="col-md-8">
 			<div class="row">
-			<form class="form" action="#">
+			<form class="form" action="queryList.jsp">
+			
 			<div class="form-group row">
 			<h2>문의 답하기</h2>
 			<hr>
 				
 			</div>
+			<%
+			if(request.getAttribute("queryAnswer") != null) { 
+				Query query = (Query)request.getAttribute("queryAnswer");
+			
+			%>
 			<div class="form-group row">
+			<label class="control-label col-md-2" for="className">번 호 : </label>
+				<div class="col-md-2">
+					<input type="text" class="form-control" id="className" name="boardNum" value="<%=query.getBoardNum() %>" readonly/>
+				</div>
 				<label class="control-label col-md-2" for="classification">분 류 : </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="classification" value="배송" readonly/>
+					<input type="text" class="form-control" id="classification" name="separation" value="<%=query.getSeparation() %>" readonly/>
 				</div>
 				<label class="control-label col-md-2" for="person">작 성 자 : </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="person" value="soyeun" readonly/>
+					<input type="text" class="form-control" id="person" name="userId" value="<%=query.getUserId() %>" readonly/>
 				</div>
 				<label class="control-label col-md-2" for="reportingDate">작 성 일 : </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="reportingDate" value="2017.03.03" readonly/>
+					<input type="text" class="form-control" id="reportingDate" name="reportingDate" value="<%=query.getReportingDate() %>" readonly/>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="title">제 목 : </label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="title" value="배송언제되나요?" readonly/>
+					<input type="text" class="form-control" id="title" name="title" value="<%=query.getTitle() %>" readonly/>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<input class="form-control" rows="10" id="content" value="배송빨리좀 해주세요!!!" readonly></textarea>
+					<input class="form-control" rows="10" id="content" name="content" value="<%=query.getContent() %>" readonly/></textarea>
 				</div>
 			</div>
+			<%
+				
+			}
+			%>
+			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="answer">답변 내용 : </label>
 				<div class="col-md-10">
-					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="inquiryAnswer"></textarea>
+					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="answer"></textarea>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
-					<button type="submit" class="btn btn-default">확인</button>
-					<a href="inquiryAnswerList.jsp"><button type="button" class="btn btn-default">취소</button></a>
+					<button type="submit" class="btn btn-default" >확인</button>
+					<a href="queryList.jsp"><button type="button" class="btn btn-default">취소</button></a>
 				</div>
 			</div>
 		</form>
-			
 				</div>
 			</div>
 		</div>

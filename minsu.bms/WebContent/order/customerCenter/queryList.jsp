@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="minsu.bms.inquiryBoard.domain.Inquiry" %>
+<%@ page import="minsu.bms.query.domain.Query" %>
 <%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="ko">
@@ -78,7 +78,7 @@
             <li><a href="../orderManagement/orderManagement.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
-			<li class="active"><form><button type="submit" formaction="inquiryAnswerProc.jsp">문의답하기</button></form></li>
+			<li class="active"><form><button type="submit" formaction="queryListProc.jsp">문의답하기</button></form></li>
         </ul>
     </nav>
 </div>
@@ -92,26 +92,31 @@
 					<th>작성자</th>
 					<th>제목</th>
 					<th>등록일</th>
+					<th>상태</th>
 					<th>답변</th>
 				</tr>
 			</thead>
 			<tbody>
 <%
-			if (request.getAttribute("answers") != null) {
-				List<Inquiry> answers = (List<Inquiry>) request.getAttribute("answers");
-				for (Inquiry answer : answers) {
+			if (request.getAttribute("query") != null) {
+				List<Query> querys = (List<Query>) request.getAttribute("query");
+				for (Query query : querys) {
 %>
 				<tr>
-					<td><a href="inquiryAnswer.jsp"><%=answer.getBoardNum() %></a></td>
-					<td><a href="inquiryAnswer.jsp"><%=answer.getSeparation() %></a></td>
-					<td><a href="inquiryAnswer.jsp"><%=answer.getUserId() %></a></td>
-					<td><a href="inquiryAnswer.jsp"><%=answer.getTitle() %></a></td>
-					<td><a href="inquiryAnswer.jsp"><%=answer.getReportingDate() %></a></td>
-					<td><%=answer.getAnswerState() %></td>
+					<td><a href="query.jsp"><%=query.getBoardNum() %></a></td>
+					<td><a href="query.jsp"><%=query.getSeparation() %></a></td>
+					<td><a href="query.jsp"><%=query.getUserId() %></a></td>
+					<td><a href="query.jsp"><%=query.getTitle() %></a></td>
+					<td><a href="query.jsp"><%=query.getReportingDate() %></a></td>
+					<td><%=query.getAnswerState() %></td>
+					<td><form action="queryProc.jsp"><input type="hidden" name="boardNum" value="<%=query.getBoardNum() %>"/>
+					<input type="submit" class="btn btn-md" value="답변하기"/>
+					</form></td>
+					
 				</tr>
 				<%
 									}
-									}
+							}
 								%>
 			</tbody>
 		</table>

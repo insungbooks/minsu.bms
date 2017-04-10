@@ -49,6 +49,6 @@
 	</form>
 <br><br><br><br><br><br><br><br>
 </article>
-<jsp:include page="../../footer"/>
+<jsp:include page="../../footer.html"/>
 </body>
 </html>

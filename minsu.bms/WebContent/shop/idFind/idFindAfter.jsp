@@ -59,7 +59,7 @@
 		<br>
 		<br>
 		<br>
-<jsp:include page="../../footer"/>
+<jsp:include page="../../footer.html"/>
 
 </body>
 </html>

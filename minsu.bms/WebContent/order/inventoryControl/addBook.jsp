@@ -33,3 +33,5 @@
 		bookService.modifyBook(addBook);
 	}
 %>
+	완료되었습니다.
+<p><a href="../../main.jsp">메인으로</a>

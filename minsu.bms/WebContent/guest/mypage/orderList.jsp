@@ -129,7 +129,7 @@
 				</thead>
 				<tbody>
 					<tr>
-						<td>K00001</td>
+						<td><a href="detaiList.jsp">K00001</a></td>
 						<td>20000원</td>
 						<td>종이여자</td>
 						<td>1</td>

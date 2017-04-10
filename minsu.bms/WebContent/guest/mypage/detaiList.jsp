@@ -46,7 +46,7 @@ th, td {
 					<tbody>
 						<tr>
 							<td style="padding: 35px;">245704</td>
-							<td><a href="#"> <img src="../../img/nobody.jpg"
+							<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 									class="img-responsive1"> [도서]아무도아닌
 							</a></td>
 							<td style="padding: 35px;">10,800원</td>
@@ -59,7 +59,7 @@ th, td {
 						</tr>
 						<tr>
 							<td style="padding: 35px;">245705</td>
-							<td><a href="#"> <img src="../../img/oneDictionary.jpg"
+							<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/oneDictionary.jpg"
 									class="img-responsive1"> [도서]1분상식사전
 							</a></td>
 							<td style="padding: 35px;">11,700원</td>

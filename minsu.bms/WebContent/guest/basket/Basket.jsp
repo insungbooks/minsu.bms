@@ -79,7 +79,6 @@ th, td {
         	<li class="nav-header"><strong> 주문관리</strong></li>
             <li ><a href="../mypage/orderList.jsp"> 주문조회</a></li>
             <li class="active"><a href="Basket.jsp"> 장바구니</a></li>
-            <li><a href="../mypage/purchaseList.jsp">구매내역</a></li>
             <li><a href="../mypage/refundDetail.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
@@ -113,7 +112,7 @@ th, td {
 								<tr>
 									<td><input type="checkbox" name="pre" value="grammer"
 										style="margin: 35px;"></td>
-									<td><a href="#"> <img src="../../img/nobody.jpg"
+									<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 											class="img-responsive1"> [도서]아무도아닌
 									</a></td>
 									<td style="padding: 35px 15px;">10,800원</td>

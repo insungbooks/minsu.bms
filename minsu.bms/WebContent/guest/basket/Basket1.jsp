@@ -80,11 +80,10 @@ th, td {
         	<li class="nav-header"><strong> 주문관리</strong></li>
             <li ><a href="../mypage/orderList.jsp"> 주문조회</a></li>
             <li class="active"><a href="Basket.jsp"> 장바구니</a></li>
-            <li><a href="../mypage/purchaseList.jsp">구매내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
-            <li><a href="../mypage/modification.jsp"> 회원정보 수정</a></li>
-            <li><a href="../mypage/memberLeave.jsp"> 회원 탈퇴</a></li>
+             <li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
+            <li><a href="../../shop/system/idCheck1.jsp"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 나의 상담</strong></li>
             <li><a href="../mypage/customCenter2.jsp"> 나의 상담 내역</a></li>

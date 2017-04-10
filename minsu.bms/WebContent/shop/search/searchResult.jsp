@@ -214,6 +214,6 @@ article { /*본문*/
 		</div>
 	</div>
 </article>
-<jsp:include page="../../footer"/>
+<jsp:include page="../../footer.html"/>
 </body>
 </html>

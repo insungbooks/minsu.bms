@@ -160,16 +160,16 @@ article { /*본문*/
 					<div class="row">
 						<div class="col-md-2">
 							<div>
-								<a href="productInfo.html" class="thumbnail"> <img
+								<a href="productInfo.jsp" class="thumbnail"> <img
 									src="../../img/7.jpg">
 								</a>
 							</div>
 						</div>
 						<div class="col-md-7">
-							<a href="productInfo.html">[<%= searchResult.getKind() %>]</a> <br> <br>
+							<a href="productInfo.jsp">[<%= searchResult.getKind() %>]</a> <br> <br>
 							<p>
-								[<%= searchResult.getCountry() %>도서]<a href="productInfo.html"><%= searchResult.getBookName() %></a><br> <a
-									href="productInfo.html"><%= searchResult.getWriter() %></a>(지은이)|<a href="productInfo.html"><%= searchResult.getCompany() %></a>|<%= searchResult.getPubliDate() %><br>
+								[<%= searchResult.getCountry() %>도서]<a href="productInfo.jsp"><%= searchResult.getBookName() %></a><br> <a
+									href="productInfo.jsp"><%= searchResult.getWriter() %></a>(지은이)|<a href="productInfo.jsp"><%= searchResult.getCompany() %></a>|<%= searchResult.getPubliDate() %><br>
 								<%= searchResult.getBookPrice() %>원 →<%= searchResult.getBookPrice()*9/10 %>원(10% 할인), 마일리지 1,650점(5% 적립)<br> <br>
 								출고예상일 : 지금 주문하면 <b>3월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
 							</p>
@@ -178,9 +178,9 @@ article { /*본문*/
 							<input id="line checkbox" type="checkbox" />
 							<p id="line">수량</p>
 							<input id="line" type="number" size="3" min="0" /> <a
-								href="../../guest/basket/Basket.html"><button id="block"
+								href="../../guest/basket/Basket.jsp"><button id="block"
 									type="button" class="btn btn-default btn-md">장바구니</button></a> <a
-								href="../../guest/purchase/payment.html"><button id="block"
+								href="../../guest/purchase/payment.jsp"><button id="block"
 									type="button" class="btn btn-default btn-md">바로구매</button></a>
 						</div>
 					</div>
@@ -194,9 +194,9 @@ article { /*본문*/
 					<div class="text-center" id="searchPageNum">
 						<!-- 페이지숫자 테두리 없는게 더 깔끔하겠지? 내일 고칠게/  그리고 이게 검색된책들 아래가 아니고, 위에 오는게 맞아? -->
 						<ul class="pagination pagination-sm" id="pageNum">
-							<li><a href="searchResult.html" rel="prev">«</a></li>
-							<li><a href="searchResult.html">1</a></li>
-							<li class="active"><a href="searchResult1.html">2</a></li>
+							<li><a href="searchResult.jsp" rel="prev">«</a></li>
+							<li class="active"><a href="searchResult.jsp">1</a></li>
+							<li><a href="searchResult.jsp">2</a></li>
 							<!--  <li><a href="#">3</a></li>
 							<li><a href="#">4</a></li>
 							<li><a href="#">5</a></li>

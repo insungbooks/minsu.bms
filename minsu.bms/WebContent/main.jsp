@@ -242,19 +242,19 @@ footer { /*바닥글*/
 					<% if(id.equals("insung")) { %>
 					<!-- 세센값의 아이디가 관리자 아이디와 같다면 밑에 코드 출력  -->
 					<li class="topli"><a
-						href="shop/system/login/logoutProc.jsp">로그아웃</a></li>
+						href="shop/login/logoutProc.jsp">로그아웃</a></li>
 					<li class="topli"><a
 						href="order/member/memberList.html">관리자페이지</a></li>
 					<% }else if(!id.equals("")) { %>
 					<!-- 로그인이 성공했다라면 id값에 데이터가 들어가있으므로 실행 -->
-					<li class="topli"><a href="shop/system/login/logoutProc.jsp">로그아웃</a></li>
+					<li class="topli"><a href="shop/login/logoutProc.jsp">로그아웃</a></li>
 					<li class="topli"><a>적립금 : 650점</a></li>
 					<li class="topli"><a href="guest/basket/Basket.html">장바구니</a></li>
 					<li class="topli"><a href="guest/mypage/orderList.html">마이페이지</a></li>
 					<% }else { %>
 					<!-- 세션값이 없다라면 실행 (로그인 안된상태) -->
 					<li class="topli"><a
-						href="shop/system/login/login.jsp">로그인</a></li>
+						href="shop/login/login.jsp">로그인</a></li>
 					<li class="topli"><a
 						href="guest/signUp/signUp.html">회원가입</a></li>
 					<li class="topli"><a href="guest/basket/Basket.html">장바구니</a></li>

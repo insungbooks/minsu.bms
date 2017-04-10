@@ -138,20 +138,27 @@ a {
 		id = (String)session.getAttribute("login"); //세션값 추출하고 저장
 	}
 %>
-<% if(id.equals("insung")) { %>		<!-- 세센값의 아이디가 관리자 아이디와 같다면 밑에 코드 출력  -->
-					<li class="topli"><a href="http://localhost:85/minsu.bms/shop/system/login/logoutProc.jsp">로그아웃</a></li>
-					<li class="topli"><a href="http://localhost:85/minsu.bms/order/member/memberList.html">관리자페이지</a></li>
-<% }else if(!id.equals("")) { %>    <!-- 로그인이 성공했다라면 id값에 데이터가 들어가있으므로 실행 -->
-					<li class="topli"><a href="shop/system/login/logoutProc.jsp">로그아웃</a></li>
+					<% if(id.equals("insung")) { %>
+					<!-- 세센값의 아이디가 관리자 아이디와 같다면 밑에 코드 출력  -->
+					<li class="topli"><a
+						href="../../shop/login/logoutProc.jsp">로그아웃</a></li>
+					<li class="topli"><a
+						href="../../order/member/memberList.jsp">관리자페이지</a></li>
+					<% }else if(!id.equals("")) { %>
+					<!-- 로그인이 성공했다라면 id값에 데이터가 들어가있으므로 실행 -->
+					<li class="topli"><a href="../../shop/login/logoutProc.jsp">로그아웃</a></li>
 					<li class="topli"><a>적립금 : 650점</a></li>
-					<li class="topli"><a href="guest/basket/Basket.html">장바구니</a></li>
-					<li class="topli"><a href="guest/mypage/orderList.html">마이페이지</a></li>
-<% }else { %> <!-- 세션값이 없다라면 실행 (로그인 안된상태) -->
-					<li class="topli"><a href="http://localhost:85/minsu.bms/shop/system/login/login.jsp">로그인</a></li>
-					<li class="topli"><a href="http://localhost:85/minsu.bms/guest/signUp/signUp.html">회원가입</a></li>
-					<li class="topli"><a href="guest/basket/Basket.html">장바구니</a></li>
-					<li class="topli"><a href="guest/mypage/orderList.html">마이페이지</a></li>
-<% } %>
+					<li class="topli"><a href="../../guest/basket/Basket.jsp">장바구니</a></li>
+					<li class="topli"><a href="../../guest/mypage/orderList.jsp">마이페이지</a></li>
+					<% }else { %>
+					<!-- 세션값이 없다라면 실행 (로그인 안된상태) -->
+					<li class="topli"><a
+						href="../../shop/login/login.jsp">로그인</a></li>
+					<li class="topli"><a
+						href="../../guest/signUp/signUp.jsp">회원가입</a></li>
+					<li class="topli"><a href="../../guest/basket/Basket.jsp">장바구니</a></li>
+					<li class="topli"><a href="../../guest/mypage/orderList.jsp">마이페이지</a></li>
+					<% } %>
 				</ul>
 			</div>
 		</nav>
@@ -161,10 +168,10 @@ a {
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<a href="main.html"><img src="http://localhost:85/minsu.bms/img/logo.png" class="headlogo"></a>
+						<a href="main.jsp"><img src="../../img/logo.png" class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
-						<form action="shop/search/searchResultProc.jsp">
+						<form action="../../shop/search/searchResultProc.jsp">
 							<div class="input-group" class="searchBar" style="margin: 80px;">
 								<div class="input-group-btn search-panel">
 									<button type="button" class="btn btn-default ">
@@ -201,23 +208,23 @@ a {
 						id=myNavbar>
 						<div class="#myNavbar">
 							<div class="dropdown">
-								<a href="category/bestBook.html"><button class="dropbtn">베스트셀러</button></a>
+								<a href="../../category/categoryBook/bestBook.jsp"><button class="dropbtn">베스트셀러</button></a>
 							</div>
 							<div class="dropdown">
-								<a href="category/newBook.html"><button class="dropbtn">신간도서</button></a>
+								<a href="../../category/categoryBook/newBook.jsp"><button class="dropbtn">신간도서</button></a>
 							</div>
 							<div class="dropdown">
-								<a href="category/saleBook.html"><button class="dropbtn">할인도서</button></a>
+								<a href="../../category/categoryBook/saleBook.jsp"><button class="dropbtn">할인도서</button></a>
 							</div>
 							<div class="dropdown">
 								<button class="dropbtn">
 									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="category/domesticBook/literatureBook.html">문학</a> 
-									<a href="category/domesticBook/humanitiesBook.html">인문</a> 
-									<a href="category/domesticBook/referenceBook.html">참고서</a>
-									<a href="category/domesticBook/besidesBook.html">기타</a>
+									<a href="../../category/domesticBook/literatureBook.jsp">문학</a> 
+									<a href="../../category/domesticBook/humanitiesBook.jsp">인문</a> 
+									<a href="../../category/domesticBook/referenceBook.jsp">참고서</a>
+									<a href="../../category/domesticBook/besidesBook.jsp">기타</a>
 								</div>
 							</div>
 							<div class="dropdown">
@@ -225,10 +232,10 @@ a {
 									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="category/foreignBook/literatureBook.html">문학</a> 
-									<a href="category/foreignBook/humanitiesBook.html">인문</a> 
-									<a href="category/foreignBook/referenceBook.html">참고서</a>
-									<a href="category/domesticBook/besidesBook.html">기타</a>
+									<a href="../../category/foreignBook/literatureBook.jsp">문학</a> 
+									<a href="../../category/foreignBook/humanitiesBook.jsp">인문</a> 
+									<a href="../../category/foreignBook/referenceBook.jsp">참고서</a>
+									<a href="../../category/domesticBook/besidesBook.jsp">기타</a>
 								</div>
 							</div>
 						</div>

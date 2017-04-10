@@ -244,21 +244,21 @@ footer { /*바닥글*/
 					<li class="topli"><a
 						href="shop/login/logoutProc.jsp">로그아웃</a></li>
 					<li class="topli"><a
-						href="order/member/memberList.html">관리자페이지</a></li>
+						href="order/member/memberList.jsp">관리자페이지</a></li>
 					<% }else if(!id.equals("")) { %>
 					<!-- 로그인이 성공했다라면 id값에 데이터가 들어가있으므로 실행 -->
 					<li class="topli"><a href="shop/login/logoutProc.jsp">로그아웃</a></li>
 					<li class="topli"><a>적립금 : 650점</a></li>
-					<li class="topli"><a href="guest/basket/Basket.html">장바구니</a></li>
-					<li class="topli"><a href="guest/mypage/orderList.html">마이페이지</a></li>
+					<li class="topli"><a href="guest/basket/Basket.jsp">장바구니</a></li>
+					<li class="topli"><a href="guest/mypage/orderList.jsp">마이페이지</a></li>
 					<% }else { %>
 					<!-- 세션값이 없다라면 실행 (로그인 안된상태) -->
 					<li class="topli"><a
 						href="shop/login/login.jsp">로그인</a></li>
 					<li class="topli"><a
-						href="guest/signUp/signUp.html">회원가입</a></li>
-					<li class="topli"><a href="guest/basket/Basket.html">장바구니</a></li>
-					<li class="topli"><a href="guest/mypage/orderList.html">마이페이지</a></li>
+						href="guest/signUp/signUp.jsp">회원가입</a></li>
+					<li class="topli"><a href="guest/basket/Basket.jsp">장바구니</a></li>
+					<li class="topli"><a href="guest/mypage/orderList.jsp">마이페이지</a></li>
 					<% } %>
 				</ul>
 			</div>
@@ -269,7 +269,7 @@ footer { /*바닥글*/
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">
-						<a href="main.html"><img
+						<a href="main.jsp"><img
 							src="img/logo.png" class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
@@ -308,23 +308,23 @@ footer { /*바닥글*/
 						id=myNavbar>
 						<div class="#myNavbar">
 							<div class="dropdown">
-								<a href="category/bestBook.html"><button class="dropbtn">베스트셀러</button></a>
+								<a href="category/categoryBook/bestBook.jsp"><button class="dropbtn">베스트셀러</button></a>
 							</div>
 							<div class="dropdown">
-								<a href="category/newBook.html"><button class="dropbtn">신간도서</button></a>
+								<a href="category/categoryBook/newBook.jsp"><button class="dropbtn">신간도서</button></a>
 							</div>
 							<div class="dropdown">
-								<a href="category/saleBook.html"><button class="dropbtn">할인도서</button></a>
+								<a href="category/categoryBook/saleBook.jsp"><button class="dropbtn">할인도서</button></a>
 							</div>
 							<div class="dropdown">
 								<button class="dropbtn">
 									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="category/domesticBook/literatureBook.html">문학</a> <a
-										href="category/domesticBook/humanitiesBook.html">인문</a> <a
-										href="category/domesticBook/referenceBook.html">참고서</a> <a
-										href="category/domesticBook/besidesBook.html">기타</a>
+									<a href="category/domesticBook/literatureBook.jsp">문학</a> <a
+										href="category/domesticBook/humanitiesBook.jsp">인문</a> <a
+										href="category/domesticBook/referenceBook.jsp">참고서</a> <a
+										href="category/domesticBook/besidesBook.jsp">기타</a>
 								</div>
 							</div>
 							<div class="dropdown">
@@ -332,10 +332,10 @@ footer { /*바닥글*/
 									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="category/foreignBook/literatureBook.html">문학</a> <a
-										href="category/foreignBook/humanitiesBook.html">인문</a> <a
-										href="category/foreignBook/referenceBook.html">참고서</a> <a
-										href="category/domesticBook/besidesBook.html">기타</a>
+									<a href="category/foreignBook/literatureBook.jsp">문학</a> <a
+										href="category/foreignBook/humanitiesBook.jsp">인문</a> <a
+										href="category/foreignBook/referenceBook.jsp">참고서</a> <a
+										href="category/domesticBook/besidesBook.jsp">기타</a>
 								</div>
 							</div>
 						</div>
@@ -356,7 +356,7 @@ footer { /*바닥글*/
 				onmouseover="dragObj=Notice;drag=1; move=0" onmouseout="drag=0">
 				<table>
 					<tr>
-						<td><a href="event/event.html"> <img
+						<td><a href="event/event.jsp"> <img
 								src="img/leftimg.jpg" alt="언어의 온도" border="0" width="144" />
 						</a></td>
 						<td width="21"><img id="arrow_leftBan" src="img/t.png"
@@ -393,7 +393,7 @@ footer { /*바닥글*/
 											<p>저자 : 차병직</p>
 										</div>
 										<div id="imgInfo">
-											<a href="shop/search/productInfo.html" class="thumbnail"><img
+											<a href="shop/search/productInfo.jsp" class="thumbnail"><img
 												src="img/againNow.jpg" alt="Image"
 												style="max-width: 100%; height: 320px;"></a>
 										</div>
@@ -405,7 +405,7 @@ footer { /*바닥글*/
 											<p>저자 : 유은정</p>
 										</div>
 										<div id="imgInfo">
-											<a href="shop/search/productInfo.html" class="thumbnail"><img
+											<a href="shop/search/productInfo.jsp" class="thumbnail"><img
 												src="img/aloneRight.jpg" alt="Image"
 												style="max-width: 100%; height: 320px;"></a>
 										</div>
@@ -417,7 +417,7 @@ footer { /*바닥글*/
 											<p>저자 : 앤절라더크워스</p>
 										</div>
 										<div id="imgInfo">
-											<a href="shop/search/productInfo.html" class="thumbnail"><img
+											<a href="shop/search/productInfo.jsp" class="thumbnail"><img
 												src="img/grit.jpg" alt="Image"
 												style="max-width: 100%; height: 320px;"></a>
 										</div>
@@ -429,7 +429,7 @@ footer { /*바닥글*/
 											<p>저자 : 황정은</p>
 										</div>
 										<div id="imgInfo">
-											<a href="shop/search/productInfo.html" class="thumbnail"><img
+											<a href="shop/search/productInfo.jsp" class="thumbnail"><img
 												src="img/nobody.jpg" alt="Image"
 												style="max-width: 100%; height: 320px;"></a>
 										</div>
@@ -442,26 +442,26 @@ footer { /*바닥글*/
 									<h4 style="padding-left: 20px;">▶ 이벤트</h4>
 									<div class="col-md-3">
 
-										<a href="event/event.html" class="thumbnail"><img
+										<a href="event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad1.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 
 									<div class="col-md-3">
 
-										<a href="event/event.html" class="thumbnail"><img
+										<a href="event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad4.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.html" class="thumbnail"><img
+										<a href="event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad2.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.html" class="thumbnail"><img
+										<a href="event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad5.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
@@ -473,25 +473,25 @@ footer { /*바닥글*/
 									<h4 style="padding-left: 20px;">▶ 이벤트</h4>
 									<div class="col-md-3">
 
-										<a href="event/event.html" class="thumbnail"><img
+										<a href="event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad3.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.html" class="thumbnail"><img
+										<a href="event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad7.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.html" class="thumbnail"><img
+										<a href="event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad6.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.html" class="thumbnail"><img
+										<a href="event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad8.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
@@ -519,29 +519,29 @@ footer { /*바닥글*/
 				<hr>
 				<div class="col-md-1"></div>
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/1.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/2.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/3.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/4.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/5.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
@@ -555,29 +555,29 @@ footer { /*바닥글*/
 				<hr>
 				<div class="col-md-1"></div>
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/1.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/2.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/3.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/4.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/5.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
@@ -591,29 +591,29 @@ footer { /*바닥글*/
 				<hr>
 				<div class="col-md-1"></div>
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/1.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/2.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/3.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/5.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.html" class="thumbnail"> <img
+					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
 						src="img/4.jpg" style="width: 150px; height: 150px">
 					</a>
 				</div>
@@ -628,13 +628,13 @@ footer { /*바닥글*/
 		<footer>
 			<div class="row">
 				<ul class="footerul">
-					<li class="footerli"><a href="footer/insungInfo.jsp">회사소개</a></li>
-					<li class="footerli"><a href="footer/adInfo.jsp">광고안내</a></li>
-					<li class="footerli"><a href="customerCenter/frequent10.html">고객센터</a></li>
-					<li class="footerli"><a href="footer/agreementUtilization.jsp">이용약관</a></li>
-					<li class="footerli"><a href="footer/individualInfo.jsp">개인정보처리</a></li>
-					<li class="footerli"><a href="footer/pictureInfo.jsp">영상정보관리방침</a></li>
-					<li class="footerli"><a href="footer/emailCollectBan.jsp">이메일무단복제금지</a></li>
+					<li class="footerli"><a href="footer/footer/insungInfo.jsp">회사소개</a></li>
+					<li class="footerli"><a href="footer/footer/adInfo.jsp">광고안내</a></li>
+					<li class="footerli"><a href="customerCenter/customerCenter/frequent10.jsp">고객센터</a></li>
+					<li class="footerli"><a href="footer/footer/agreementUtilization.jsp">이용약관</a></li>
+					<li class="footerli"><a href="footer/footer/individualInfo.jsp">개인정보처리</a></li>
+					<li class="footerli"><a href="footer/footer/pictureInfo.jsp">영상정보관리방침</a></li>
+					<li class="footerli"><a href="footer/footer/emailCollectBan.jsp">이메일무단복제금지</a></li>
 				</ul>
 			</div>
 			<hr>

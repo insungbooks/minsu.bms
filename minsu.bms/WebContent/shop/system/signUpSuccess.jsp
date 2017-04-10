@@ -30,6 +30,6 @@
 	</div>
 </div>
 <br><br><br><br><br><br><br><br><br><br>
-<jsp:include page="../../footer.html"/>
+<jsp:include page="../../footer"/>
 </body>
 </html>

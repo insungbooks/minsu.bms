@@ -78,14 +78,14 @@
 			<nav class="nav-sidebar">
 				<ul class="nav">
 		        	<li class="nav-header"><strong> FAQ</strong></li>
-		            <li><a href="frequent10.html"> 자주 묻는 질문</a></li>
-		            <li><a href="cancelPurchase.html"> 반품/교환/환불</a></li>
-		            <li class="active"><a href="orderAndPayment.html"> 주문/결제</a></li>
-		            <li><a href="userQnA.html"> 회원</a></li>
-		            <li><a href="shipping.html"> 배송/수령일안내</a></li>
+		            <li><a href="frequent10.jsp"> 자주 묻는 질문</a></li>
+		            <li><a href="cancelPurchase.jsp"> 반품/교환/환불</a></li>
+		            <li class="active"><a href="orderAndPayment.jsp"> 주문/결제</a></li>
+		            <li><a href="userQnA.jsp"> 회원</a></li>
+		            <li><a href="shipping.jsp"> 배송/수령일안내</a></li>
 		            <li class="nav-divider"></li>
 		            <li class="nav-header"><strong>문의하기</strong></li>
-		            <li><a href="customerCenter.html"> 1:1 문의하기</a></li>
+		            <li><a href="customerCenter.jsp"> 1:1 문의하기</a></li>
 		         </ul>
 			</nav>
 			<div class="guide">

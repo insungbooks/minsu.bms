@@ -30,7 +30,7 @@
 			<tbody>
 				<tr>
 					<td><input type="checkbox" name="pre" value="grammer" style="margin:35px;"></td>
-					<td><a href="../../shop/search/productInfo.html"> <img src="../../img/nobody.jpg"
+					<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 							class="img-responsive1" style="width:150px; height:150px;"> [도서]아무도아닌
 					</a></td>
 					<td style="padding:35px;">10,800원</td>
@@ -107,7 +107,7 @@
 						<br>
 						<textarea class="form-control" rows="8" style="resize: none">기타 환불 사유</textarea>
 						<br>
-						<nav style="float:right;"><a href="../../guest/mypage/refundDetail.html"><input type="button" value="환불하기"></a> <a href="../mypage/purchaseList.html"><input type="button" value="취소하기"></a></nav>
+						<nav style="float:right;"><a href="../../guest/mypage/refundDetail.jsp"><input type="button" value="환불하기"></a> <a href="../mypage/purchaseList.jsp"><input type="button" value="취소하기"></a></nav>
 					</div>
 				</div>
 			</div>

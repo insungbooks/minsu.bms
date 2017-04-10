@@ -80,16 +80,16 @@
 				<nav class="nav-sidebar">
 					<ul class="nav">
 						<li class="nav-header"><strong> 국내도서</strong></li>
-						<li><a href="../domesticBook/literatureBook.html">문학</a></li>
-						<li><a href="../domesticBook/humanitiesBook.html">인문</a></li>
-						<li><a href="../domesticBook/referenceBook.html">참고서</a></li>
-						<li><a href="../domesticBook/besidesBook.html">기타</a></li>
+						<li><a href="../domesticBook/literatureBook.jsp">문학</a></li>
+						<li><a href="../domesticBook/humanitiesBook.jsp">인문</a></li>
+						<li><a href="../domesticBook/referenceBook.jsp">참고서</a></li>
+						<li><a href="../domesticBook/besidesBook.jsp">기타</a></li>
 						<li class="nav-divider"></li>
 						<li class="nav-header"><strong> 해외도서</strong></li>
-						<li><a href="literatureBook.html">문학</a></li>
-						<li><a href="humanitiesBook.html">인문</a></li>
-						<li class="active"><a href="referenceBook.html">참고서</a></li>
-						<li><a href="besidesBook.html">기타</a></li>
+						<li><a href="literatureBook.jsp">문학</a></li>
+						<li><a href="humanitiesBook.jsp">인문</a></li>
+						<li class="active"><a href="referenceBook.jsp">참고서</a></li>
+						<li><a href="besidesBook.jsp">기타</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -100,56 +100,56 @@
 					<h3>▶ 베스트셀러</h3>
 					<div class="col-md-1"></div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC1.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Wonder</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Wonder</a></b></div>
 							<div class="author"><p>R.J 팔라시오</p></div>
 							<div class="price"><p>11,100원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC2.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">The Witches</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">The Witches</a></b></div>
 							<div class="author"><p>로알드 달</p></div>
 							<div class="price"><p>9,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC3.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Smart Phonics 2</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Smart Phonics 2</a></b></div>
 							<div class="author"><p>이퓨쳐 편집부</p></div>
 							<div class="price"><p>6,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC4.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Dog</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Dog</a></b></div>
 							<div class="author"><p>에밀리 </p></div>
 							<div class="price"><p>10,800원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC5.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Hatchet</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Hatchet</a></b></div>
 							<div class="author"><p>게리 폴슨</p></div>
 							<div class="price"><p>9,500원</p></div>
 						</div>
@@ -162,56 +162,56 @@
 					<h3>▶ MD추천작</h3>
 					<div class="col-md-1"></div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC6.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Number the Stars</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Number the Stars</a></b></div>
 							<div class="author"><p>로이스 로리</p></div>
 							<div class="price"><p>9,500원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC7.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Maniac Magee</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Maniac Magee</a></b></div>
 							<div class="author"><p>제리 스피넬리</p></div>
 							<div class="price"><p>9,500원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC8.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Happy Pig Day!</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Happy Pig Day!</a></b></div>
 							<div class="author"><p>Mo Willems</p></div>
 							<div class="price"><p>11,900원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC9.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Gangsta Granny</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Gangsta Granny</a></b></div>
 							<div class="author"><p>David Walliams</p></div>
 							<div class="price"><p>13,300원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC10.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">The Outsiders</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">The Outsiders</a></b></div>
 							<div class="author"><p>S. E. 힌튼</p></div>
 							<div class="price"><p>11,900원</p></div>
 						</div>
@@ -224,56 +224,56 @@
 					<h3>▶ N E W</h3>
 					<div class="col-md-1"></div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC11.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Matilda</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Matilda</a></b></div>
 							<div class="author"><p>로알드 달</p></div>
 							<div class="price"><p>8,500원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC12.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">River Boy</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">River Boy</a></b></div>
 							<div class="author"><p>팀 보울러</p></div>
 							<div class="price"><p>9,500원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC13.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Homo Deus</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Homo Deus</a></b></div>
 							<div class="author"><p>Yuval Noah Harari</p></div>
 							<div class="price"><p>26,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC14.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">From Head to Toe</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">From Head to Toe</a></b></div>
 							<div class="author"><p>에릭 칼</p></div>
 							<div class="price"><p>9,500원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC15.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">No, David</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">No, David</a></b></div>
 							<div class="author"><p>데이빗 섀논</p></div>
 							<div class="price"><p>7,200원</p></div>
 						</div>
@@ -286,56 +286,56 @@
 					<h3>▶ 오늘의 도서</h3>
 					<div class="col-md-1"></div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC16.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Bud, Not Buddy</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Bud, Not Buddy</a></b></div>
 							<div class="author"><p>크리스토퍼 <br>폴 커티스</p></div>
 							<div class="price"><p>8,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC17.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">My Dad</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">My Dad</a></b></div>
 							<div class="author"><p>앤서니 브라운</p></div>
 							<div class="price"><p>11,900원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC18.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Will You Be There?</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Will You Be There?</a></b></div>
 							<div class="author"><p>기욤 뮈소</p></div>
 							<div class="price"><p>16,200원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC19.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">The History Boys</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">The History Boys</a></b></div>
 							<div class="author"><p>Alan Bennett</p></div>
 							<div class="price"><p>16,900원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/wC/wC20.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[참고서]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">Nicholas</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">Nicholas</a></b></div>
 							<div class="author"><p>Rene Goscinny</p></div>
 							<div class="price"><p>13,370원</p></div>
 						</div>

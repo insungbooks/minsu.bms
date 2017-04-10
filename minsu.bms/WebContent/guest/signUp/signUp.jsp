@@ -54,7 +54,7 @@ h2, h4 { /*그룹을 쉼표로 지음*/
 			</section>
 
 			<p>
-<form action="../../shop/system/signUpSuccess.html">
+<form action="../../shop/system/signUpSuccess.jsp">
 				<!-- 이용약관 -->
 			<div class="container">
 			

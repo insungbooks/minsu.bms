@@ -207,6 +207,6 @@
 <br><br><br><br><br><br><br><br><br>
 
 <!-- //구매화면 -->
-	<jsp:include page="../../footer.html"/>
+	<jsp:include page="../../footer"/>
 </body>
 </html>

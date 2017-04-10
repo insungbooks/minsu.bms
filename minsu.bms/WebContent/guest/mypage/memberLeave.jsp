@@ -71,21 +71,21 @@ ul {
 				<nav class="nav-sidebar">
         <ul class="nav">
         	<li class="nav-header"><strong> 주문관리</strong></li>
-            <li ><a href="orderList.html"> 주문조회</a></li>
-            <li><a href="../basket/Basket.html"> 장바구니</a></li>
-            <li><a href="refundDetail.html">취소/교환내역</a></li>
+            <li ><a href="orderList.jsp"> 주문조회</a></li>
+            <li><a href="../basket/Basket.jsp"> 장바구니</a></li>
+            <li><a href="refundDetail.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
-     		<li><a href="../../shop/system/idCheck.html"> 회원정보 수정</a></li>
-            <li  class="active"><a href="../../shop/system/idCheck1.html"> 회원 탈퇴</a></li>
+     		<li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
+            <li  class="active"><a href="../../shop/system/idCheck1.jsp"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 나의 상담</strong></li>
-            <li ><a href="customCenter2.html"> 나의 상담 내역</a></li>
+            <li ><a href="customCenter2.jsp"> 나의 상담 내역</a></li>
         </ul>
     </nav>
 				</div>
 				<div class="col-md-10">
-				<form action="../../shop/system/leaveSuccess.html">
+				<form action="../../shop/system/leaveSuccess.jsp">
 					<div>
 						<h3>회원을 탈퇴합니다.</h3>
 						<hr>

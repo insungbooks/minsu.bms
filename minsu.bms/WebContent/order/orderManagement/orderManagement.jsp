@@ -69,11 +69,11 @@
 				<nav class="nav-sidebar">
 					<ul class="nav">
 						<li class="nav-header"><strong> 회원관리</strong></li>
-						<li><a href="../member/memberList.html">회원목록조회</a></li>
+						<li><a href="../member/memberList.jsp">회원목록조회</a></li>
 						<li class="nav-divider"></li>
 						<li class="nav-header"><strong> 주문관리</strong></li>
-						<li><a href="../inventoryControl/BookList.html">도서목록조회</a></li>
-						<li><a href="../inventoryControl/bookAdd.html">도서 추가</a></li>
+						<li><a href="../inventoryControl/BookList.jsp">도서목록조회</a></li>
+						<li><a href="../inventoryControl/bookAdd.jsp">도서 추가</a></li>
 						<li class="nav-divider"></li>
 						<li class="nav-header"><strong> 재고관리</strong></li>
 						<li class="active"><a href="orderManagement.jsp"> 주문관리</a></li>

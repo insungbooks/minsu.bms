@@ -181,7 +181,7 @@ th, td {
 					<tr>
 						<td><input type="checkbox" name="pre" value="grammer"
 							style="margin: 35px;"></td>
-						<td><a href="../../shop/search/productInfo.html"> <img src="../../img/nobody.jpg"
+						<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 								class="img-responsive1"> [도서]아무도아닌
 						</a></td>
 						<td style="padding: 35px;">10,800원</td>
@@ -196,7 +196,7 @@ th, td {
 					<tr>
 						<td><input type="checkbox" name="pre" value="grammer"
 							style="margin: 35px;"></td>
-						<td><a href="../../shop/search/productInfo.html"> <img src="../../img/oneDictionary.jpg"
+						<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/oneDictionary.jpg"
 								class="img-responsive1"> [도서]1분상식사전
 						</a></td>
 						<td style="padding: 35px;">11,700원</td>
@@ -692,7 +692,7 @@ th, td {
 						<div class="row">
 		                	<div class="paymentBtn">
 		                        <p>
-		                            <a href="../mypage/purchaseList.html" class="btn btn-outlined btn-pay btn-lg" data-wow-delay="0.7s">결제하기</a>
+		                            <a href="../mypage/purchaseList.jsp" class="btn btn-outlined btn-pay btn-lg" data-wow-delay="0.7s">결제하기</a>
 		                        </p>
 		                    </div>
 		                </div>

@@ -51,9 +51,9 @@ th, td {
 							</a></td>
 							<td style="padding: 35px;">10,800원</td>
 							<td style="padding: 35px;">1</td>
-							<td><a href="shipment.html"><button type="button"
+							<td><a href="shipment.jsp"><button type="button"
 										class="btn btn-default btn-block">배송조회</button></a></td>
-							<td><a href="../purchase/purchasingCancel.html"><button
+							<td><a href="../purchase/purchasingCancel.jsp"><button
 										type="button" class="btn btn-default btn-block">환불</button></a></td>
 
 						</tr>
@@ -64,9 +64,9 @@ th, td {
 							</a></td>
 							<td style="padding: 35px;">11,700원</td>
 							<td style="padding: 35px;">1</td>
-							<td><a href="shipment.html"><button type="button"
+							<td><a href="shipment.jsp"><button type="button"
 										class="btn btn-default btn-block">배송조회</button></a></td>
-							<td><a href="../purchase/purchasingCancel.html"><button
+							<td><a href="../purchase/purchasingCancel.jsp"><button
 										type="button" class="btn btn-default btn-block">환불</button></a></td>
 						</tr>
 					</tbody>

@@ -51,6 +51,6 @@
 	</div>
 <br><br><br><br><br><br><br><br>
 </article>
-<jsp:include page="../../footer.html"/>
+<jsp:include page="../../footer"/>
 </body>
 </html>

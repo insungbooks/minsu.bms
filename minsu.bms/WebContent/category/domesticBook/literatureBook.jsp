@@ -83,16 +83,16 @@
 				<nav class="nav-sidebar">
 					<ul class="nav">
 						<li class="nav-header"><strong> 국내도서</strong></li>
-						<li class="active"><a href="literatureBook.html">문학</a></li>
-						<li><a href="humanitiesBook.html">인문</a></li>
-						<li><a href="referenceBook.html">참고서</a></li>
-						<li><a href="besidesBook.html">기타</a></li>
+						<li class="active"><a href="literatureBook.jsp">문학</a></li>
+						<li><a href="humanitiesBook.jsp">인문</a></li>
+						<li><a href="referenceBook.jsp">참고서</a></li>
+						<li><a href="besidesBook.jsp">기타</a></li>
 						<li class="nav-divider"></li>
 						<li class="nav-header"><strong> 해외도서</strong></li>
-						<li><a href="../foreignBook/literatureBook.html">문학</a></li>
-						<li><a href="../foreignBook/humanitiesBook.html">인문</a></li>
-						<li><a href="../foreignBook/referenceBook.html">참고서</a></li>
-						<li><a href="../foreignBook/besidesBook.html">기타</a></li>
+						<li><a href="../foreignBook/literatureBook.jsp">문학</a></li>
+						<li><a href="../foreignBook/humanitiesBook.jsp">인문</a></li>
+						<li><a href="../foreignBook/referenceBook.jsp">참고서</a></li>
+						<li><a href="../foreignBook/besidesBook.jsp">기타</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -103,56 +103,56 @@
 					<h3>▶ 베스트셀러</h3>
 					<div class="col-md-1"></div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM1.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">한국 문화유산</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">한국 문화유산</a></b></div>
 							<div class="author"><p>김영택</p></div>
 							<div class="price"><p>18,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM2.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">살아남지못한자들의책읽기</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">살아남지못한자들의책읽기</a></b></div>
 							<div class="author"><p>박숙자</p></div>
 							<div class="price"><p>14,900원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM3.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">발트3국의언어와 근대문학</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">발트3국의언어와 근대문학</a></b></div>
 							<div class="author"><p>서진석</p></div>
 							<div class="price"><p>30,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM4.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">귀신과 괴물</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">귀신과 괴물</a></b></div>
 							<div class="author"><p>강상순</p></div>
 							<div class="price"><p>23,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM5.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">운산역사기행</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">운산역사기행</a></b></div>
 							<div class="author"><p>박순진</p></div>
 							<div class="price"><p>15,000원</p></div>
 						</div>
@@ -166,58 +166,58 @@
 					<div class="col-md-1"></div>
 					<div class="col-md-2">
 
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM6.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">감의 빛깔들</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">감의 빛깔들</a></b></div>
 							<div class="author"><p>정홍섭</p></div>
 							<div class="price"><p>13,000원</p></div>
 						</div>
 					</div>
 
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM7.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">한국대중문화예술사</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">한국대중문화예술사</a></b></div>
 							<div class="author"><p>김정섭</p></div>
 							<div class="price"><p>30,000원</p></div>
 						</div>
 					</div>
 
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM8.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">한국문헌해제</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">한국문헌해제</a></b></div>
 							<div class="author"><p>허권수</p></div>
 							<div class="price"><p>40,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM9.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">일본문화의 이해</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">일본문화의 이해</a></b></div>
 							<div class="author"><p>이영숙</p></div>
 							<div class="price"><p>12,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM10.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">문화는정치다</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">문화는정치다</a></b></div>
 							<div class="author"><p>김진해</p></div>
 							<div class="price"><p>12,000원</p></div>
 						</div>
@@ -231,58 +231,58 @@
 					<div class="col-md-1"></div>
 					<div class="col-md-2">
 
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM11.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">무형문화재를 만나다</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">무형문화재를 만나다</a></b></div>
 							<div class="author"><p>나지혜</p></div>
 							<div class="price"><p>20,000원</p></div>
 						</div>
 					</div>
 
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM12.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">중국문학의 탄생</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">중국문학의 탄생</a></b></div>
 							<div class="author"><p>권용호</p></div>
 							<div class="price"><p>23,000원</p></div>
 						</div>
 					</div>
 
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM13.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">세계식문화사</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">세계식문화사</a></b></div>
 							<div class="author"><p>공혜진</p></div>
 							<div class="price"><p>20,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM14.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">졸혼 시대</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">졸혼 시대</a></b></div>
 							<div class="author"><p>장은주</p></div>
 							<div class="price"><p>15,000원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM15.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">독일문화산책</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">독일문화산책</a></b></div>
 							<div class="author"><p>김선형</p></div>
 							<div class="price"><p>15,000원</p></div>
 						</div>
@@ -296,58 +296,58 @@
 					<div class="col-md-1"></div>
 					<div class="col-md-2">
 
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM16.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">컬처 DNA</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">컬처 DNA</a></b></div>
 							<div class="author"><p>이미소</p></div>
 							<div class="price"><p>16,200원</p></div>
 						</div>
 					</div>
 
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM17.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">안목</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">안목</a></b></div>
 							<div class="author"><p>유홍준</p></div>
 							<div class="price"><p>18,000원</p></div>
 						</div>
 					</div>
 
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM18.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">조선족 재발견</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">조선족 재발견</a></b></div>
 							<div class="author"><p>한주</p></div>
 							<div class="price"><p>11,700원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM19.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">축제에서 일주일을</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">축제에서 일주일을</a></b></div>
 							<div class="author"><p>김성일</p></div>
 							<div class="price"><p>11,520원</p></div>
 						</div>
 					</div>
 					<div class="col-md-2">
-						<a href="../../shop/search/productInfo.html" class="thumbnail"> <img
+						<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
 							src="../../img/kM/kM20.jpg" style="width: 150px; height: 150px">
 						</a>
 						<div class="text">
 							<div class="classification"><p>[문학]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.html">음식패설</a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">음식패설</a></b></div>
 							<div class="author"><p>김정희</p></div>
 							<div class="price"><p>11,700원</p></div>
 						</div>

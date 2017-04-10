@@ -89,7 +89,7 @@
 				<tr>
 					<td><a href="inquiryAnswer.jsp">1</a></td>
 					<td><a href="inquiryAnswer.jsp">배송</a></td>
-					<td><a href="inquiryAnswer.jsp">이소연</a></td>
+					<td><a href="inquiryAnswer.jsp">soyeun</a></td>
 					<td><a href="inquiryAnswer.jsp">배송언제되나요?</a></td>
 					<td><a href="inquiryAnswer.jsp">2017.03.03</a></td>
 					<td>답변미완료</td>

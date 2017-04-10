@@ -356,7 +356,7 @@ footer { /*바닥글*/
 				onmouseover="dragObj=Notice;drag=1; move=0" onmouseout="drag=0">
 				<table>
 					<tr>
-						<td><a href="event/event.jsp"> <img
+						<td><a href="event/event/event.jsp"> <img
 								src="img/leftimg.jpg" alt="언어의 온도" border="0" width="144" />
 						</a></td>
 						<td width="21"><img id="arrow_leftBan" src="img/t.png"

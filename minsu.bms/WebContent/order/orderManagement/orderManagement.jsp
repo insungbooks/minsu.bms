@@ -146,7 +146,7 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="6">
+							<td colspan="5">
 							</td>
 							<th>총 금액 :</th>
 							<td>860,000원</td>

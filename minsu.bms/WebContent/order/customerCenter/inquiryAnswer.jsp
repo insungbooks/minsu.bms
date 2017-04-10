@@ -94,7 +94,7 @@
 				</div>
 				<label class="control-label col-md-2" for="person">작 성 자 : </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="person" value="이소연" readonly/>
+					<input type="text" class="form-control" id="person" value="soyeun" readonly/>
 				</div>
 				<label class="control-label col-md-2" for="reportingDate">작 성 일 : </label>
 				<div class="col-md-2">

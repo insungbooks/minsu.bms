@@ -89,6 +89,8 @@
 				</div>
 				<form>
 					<button type="submit" formaction="listBooks.jsp">조회</button>
+					<button type="submit" formaction="modifyBook.jsp">수정</button>
+					<button type="submit" formaction="deleteBook.jsp">삭제</button>
 					<div class="col-md-10">
 						<table class="table table-hover">
 							<thead>
@@ -101,7 +103,6 @@
 									<td><strong>출판사</strong></td>
 									<td><strong>출간일</strong></td>
 									<td><strong>정가</strong></td>
-									<td><strong>삭제</strong></td>
 								</tr>
 							</thead>
 							<tbody>
@@ -120,12 +121,10 @@
 									<td><%=book.getCompany()%></td>
 									<td><%=book.getPubliDate()%></td>
 									<td><%=book.getBookPrice()%></td>
-									<td><button type="submit" formaction="modifyBook.jsp">수정</button></td>
-									<td><button type="submit" formaction="deleteBook.jsp">삭제</button></td>
 								</tr>
 								<%
 									}
-									}
+								}
 								%>
 							</tbody>
 							</form>

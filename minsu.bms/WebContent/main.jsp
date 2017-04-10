@@ -442,26 +442,26 @@ footer { /*바닥글*/
 									<h4 style="padding-left: 20px;">▶ 이벤트</h4>
 									<div class="col-md-3">
 
-										<a href="event/event.jsp" class="thumbnail"><img
+										<a href="event/event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad1.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 
 									<div class="col-md-3">
 
-										<a href="event/event.jsp" class="thumbnail"><img
+										<a href="event/event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad4.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.jsp" class="thumbnail"><img
+										<a href="event/event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad2.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.jsp" class="thumbnail"><img
+										<a href="event/event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad5.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
@@ -473,25 +473,25 @@ footer { /*바닥글*/
 									<h4 style="padding-left: 20px;">▶ 이벤트</h4>
 									<div class="col-md-3">
 
-										<a href="event/event.jsp" class="thumbnail"><img
+										<a href="event/event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad3.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.jsp" class="thumbnail"><img
+										<a href="event/event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad7.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.jsp" class="thumbnail"><img
+										<a href="event/event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad6.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>
 									<div class="col-md-3">
 
-										<a href="event/event.jsp" class="thumbnail"><img
+										<a href="event/event/event.jsp" class="thumbnail"><img
 											src="img/ad/ad8.jpg" alt="Image"
 											style="max-width: 100%; height: 320px;"></a>
 									</div>

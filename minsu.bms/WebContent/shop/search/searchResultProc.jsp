@@ -9,9 +9,10 @@
 	SearchService searchService=new SearchServiceImpl();
 	String searchText = request.getParameter("searchText");
 	String searchOption = request.getParameter("searchOption");
+	String pageNum = request.getParameter("pageNum");
 	
 	List<SearchResult> searchResults = null;
 	searchResults = searchService.listSearchResult(searchOption, searchText);
 	request.setAttribute("searchResults", searchResults);
 %>
-	<jsp:forward page="searchResultTest.jsp"/>
+	<jsp:forward page="searchResultTest.jsp?searchOption=<%= searchOption %>&searchText=<%= searchText %>&pageNum=<%= pageNum %>"/>

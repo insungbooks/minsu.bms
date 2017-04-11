@@ -179,7 +179,7 @@ article { /*본문*/
 					}else{
 						endNum=startNum+9;
 					}
-					startDataNum=(startNum-1)*10+1;
+					startDataNum=(currentNum-1)*10+1;
 					if(currentNum==totalPageNum){
 						endDataNum=dataNum;
 					}else{
@@ -242,6 +242,15 @@ article { /*본문*/
 								}
 							%>
 							<li><a href="#" rel="next">»</a></li>
+							
+						2	<%= currentNum %>
+						1	<%= startNum %>
+						2	<%= endNum %>
+						18	<%= dataNum %>
+						2	<%= totalPageNum %>
+						1	<%= startDataNum %>
+						18	<%= endDataNum %>
+
 						</ul>
 					</div>
 					<div class="col-sm-3"></div>

@@ -8,6 +8,6 @@ import minsu.bms.query.domain.Query;
 
 public interface QueryService {
 	List<Query> queryList();
-	Query findQuery(String boardNum);
+	Query findQuery(int boardNum);
 	boolean modifyQuery(Query query);
 }

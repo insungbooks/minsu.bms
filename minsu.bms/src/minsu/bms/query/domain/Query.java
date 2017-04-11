@@ -23,10 +23,6 @@ public class Query {
 		this.reportingDate=reportingDate;
 	}
 	
-	public Query(String answer) {
-		this.answer=answer;
-		separation="답변완료";
-	}
 	
 	public int getBoardNum() {
 		return boardNum;

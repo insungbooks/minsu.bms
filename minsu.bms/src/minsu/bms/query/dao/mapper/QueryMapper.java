@@ -6,6 +6,6 @@ import minsu.bms.query.domain.Query;
 
 public interface QueryMapper {
 	List<Query> queryList();
-	Query getQuery(String boardNum);
+	Query getQuery(int boardNum);
 	int updateQuery(Query query);
 }

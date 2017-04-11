@@ -6,7 +6,7 @@
 		from boards
 	</select>
 	
-	<select id="getQuery" parameterType="string" resultType="query">
+	<select id="getQuery" parameterType="int" resultType="query">
 		select board_num boardNum, user_id userId, title, content, answer, separation, answer_state answerState, reporting_date reportingDate
 		from boards
 		where board_num = #{boardNum}

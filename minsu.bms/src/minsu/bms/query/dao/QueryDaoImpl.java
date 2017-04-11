@@ -15,7 +15,7 @@ public class QueryDaoImpl implements QueryDao{
 	public List<Query> queryList(){
 		return queryMapper.queryList();
 	}
-	public Query getQuery(String boardNum){
+	public Query getQuery(int boardNum){
 		return queryMapper.getQuery(boardNum);
 	}
 

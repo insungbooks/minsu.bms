@@ -14,9 +14,6 @@ QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
-//String inquiryAnswer = request.getParameter("inquiryAnswer");
-
-//Inquiry updateInquiry = new Inquiry(inquiryAnswer);
 
 List<Query> query = queryService.queryList();
 request.setAttribute("query", query);

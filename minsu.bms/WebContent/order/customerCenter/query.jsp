@@ -90,8 +90,8 @@
 				
 			</div>
 			<%
-			if(request.getAttribute("queryAnswer") != null) { 
-				Query query = (Query)request.getAttribute("queryAnswer");
+			if(request.getAttribute("answer") != null) { 
+				Query query = (Query)request.getAttribute("answer");
 			
 			%>
 			<div class="form-group row">

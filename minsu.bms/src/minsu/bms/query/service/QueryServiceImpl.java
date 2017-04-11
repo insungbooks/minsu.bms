@@ -17,7 +17,7 @@ public class QueryServiceImpl implements QueryService{
 	public List<Query> queryList(){
 		return queryDao.queryList();
 	}
-	public Query findQuery(String boardNum){
+	public Query findQuery(int boardNum){
 		return queryDao.getQuery(boardNum);
 	}
 	public boolean modifyQuery(Query query){

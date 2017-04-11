@@ -14,10 +14,10 @@ QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
-String boardNum = request.getParameter("boardNum");
-Query queryAnswer = queryService.findQuery(boardNum);
+int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+Query answer = queryService.findQuery(boardNum);
 
-request.setAttribute("queryAnswer", queryAnswer);
+request.setAttribute("answer", answer);
 
 %>
 <jsp:include page="query.jsp"/>

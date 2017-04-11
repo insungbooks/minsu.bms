@@ -103,11 +103,11 @@
 				for (Query query : querys) {
 %>
 				<tr>
-					<td><a href="query.jsp"><%=query.getBoardNum() %></a></td>
-					<td><a href="query.jsp"><%=query.getSeparation() %></a></td>
-					<td><a href="query.jsp"><%=query.getUserId() %></a></td>
-					<td><a href="query.jsp"><%=query.getTitle() %></a></td>
-					<td><a href="query.jsp"><%=query.getReportingDate() %></a></td>
+					<td><%=query.getBoardNum() %></td>
+					<td><%=query.getSeparation() %></td>
+					<td><%=query.getUserId() %></td>
+					<td><%=query.getTitle() %></td>
+					<td><%=query.getReportingDate() %></td>
 					<td><%=query.getAnswerState() %></td>
 					<td><form action="queryProc.jsp"><input type="hidden" name="boardNum" value="<%=query.getBoardNum() %>"/>
 					<input type="submit" class="btn btn-md" value="답변하기"/>

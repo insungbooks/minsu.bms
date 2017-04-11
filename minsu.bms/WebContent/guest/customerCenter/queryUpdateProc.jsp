@@ -15,23 +15,7 @@ QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
 
-String title=request.getParameter("title");
-String content=request.getParameter("content");
-String separation=request.getParameter("separation");
-String id=(String)session.getAttribute("login");
 
-if(title!=null&&!title.equals("")&&content!=null&&!content.equals("")&&separation!=null&&!separation.equals("")){
-Query query= new Query();
-query.setContent(content);//
-query.setTitle(title);//
-query.setSeparation(separation);//
-query.setUserId(id);//
-query.setReportingDate("2016-12-12");
-
-queryService.addQuery(query);
-}
-
-request.setAttribute("id",id);
 
 %>
-<jsp:forward page="queryListProc.jsp"/>
+<jsp:include page="queryListProc.jsp"/>

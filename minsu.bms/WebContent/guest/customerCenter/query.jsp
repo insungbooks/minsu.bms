@@ -120,10 +120,10 @@
 				<label class="control-label col-md-2">분 류 </label>
 				<div class="col-md-2">
 					<select class="form-control" id="sel1" name="separation">
-						<option>구매</option>
-						<option>환불</option>
-						<option>배송</option>
-						<option>회원</option>
+						<option value="구매">구매</option>
+						<option value="환불">환불</option>
+						<option value="배송">배송</option>
+						<option value="회원">회원</option>
 					</select>
 				</div>
 				</div>
@@ -145,7 +145,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 					<button type="submit" class="btn btn-default">확인</button>
-					<button type="button" class="btn btn-default">취소</button>
+					<a href="queryListProc.jsp"><button type="button" class="btn btn-default">취소</button></a>
 				</div>
 			</div>
 		</form>

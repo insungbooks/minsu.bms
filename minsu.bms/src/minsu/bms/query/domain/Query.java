@@ -2,12 +2,12 @@ package minsu.bms.query.domain;
 
 public class Query {
 	private int boardNum;
-	private String separation;
-	private String userId;
-	private String title;
-	private String content;
-	private String answer;
-	private String answerState;
+	private String separation;	//분류
+	private String userId;		
+	private String title;		
+	private String content;		
+	private String answer;		
+	private String answerState;	//답변상태
 	private String reportingDate;
 	
 	public Query() {}

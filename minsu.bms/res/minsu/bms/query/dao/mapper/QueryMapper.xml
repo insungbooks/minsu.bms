@@ -4,6 +4,7 @@
 	<select id="queryList" resultType="query">
 		select board_num boardNum, user_id userId, title, content, answer, separation, answer_state answerState, reporting_date reportingDate
 		from boards
+		order by board_num
 	</select>
 	
 	<select id="getQueryNum" parameterType="int" resultType="query">
@@ -16,6 +17,7 @@
 		select board_num boardNum, user_id userId, title, content, answer, separation, answer_state answerState, reporting_date reportingDate
 		from boards
 		where user_id = #{userId}
+		order by board_num
 	</select>
 	
 	<update id="updateQuery" parameterType="query">
@@ -32,6 +34,6 @@
 	<insert id="addQuery" parameterType="query">
 		insert into boards values (
 		boardnum_seq.nextval, #{userId}, #{title}, #{content}, #{answer,jdbcType=VARCHAR},
-		#{separation}, #{answerState}, #{reportingDate})
+		#{separation},'답변전', sysdate)
 	</insert>
 </mapper>

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.query.domain.Query" %>
+<%@ page import="minsu.bms.query.service.QueryService" %>
+<%@ page import="minsu.bms.query.service.QueryServiceImpl" %>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -86,7 +90,7 @@
 		            <li><a href="shipping.jsp"> 배송/수령일안내</a></li>
 		            <li class="nav-divider"></li>
 		            <li class="nav-header"><strong>문의하기</strong></li>
-		            <li class="active"><a href="customerCenter.jsp"> 1:1 문의하기</a></li>
+		            <li class="active"><a href="query.jsp"> 1:1 문의하기</a></li>
 		           
 		        </ul>
 			</nav>
@@ -106,44 +110,45 @@
 
 		<div class="col-md-8">
 			<div class="row">
-			<form class="form" action="../../guest/mypage/customCenter2.jsp">
 			<div class="form-group row">
-			<h2>1대1 문의</h2>
-			<hr>
-				<label class="control-label col-md-2">분 류 : </label>
+				<h2>1대1 문의하기</h2>
+				<hr>
+			</div>
+		
+			<form class="form" action="queryProc.jsp">
+			<div class="form-group row">
+				<label class="control-label col-md-2">분 류 </label>
 				<div class="col-md-2">
-					<select class="form-control" id="sel1">
+					<select class="form-control" id="sel1" name="separation">
 						<option>구매</option>
 						<option>환불</option>
 						<option>배송</option>
-						<option>회원관련</option>
+						<option>회원</option>
 					</select>
 				</div>
-				<div class="col-md-8"></div>
-			</div>
-			
+				</div>
+				
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="title">제 목 : </label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="title" placeholder="제목을 입력하세요.">
+					<input type="text" class="form-control" id="title" placeholder="제목을 입력하세요." name="title"/>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<textarea class="form-control" rows="10" id="content" placeholder="내용을 입력하세요."></textarea>
+					<textarea class="form-control" rows="10" id="content" placeholder="내용을 입력하세요." name="content"></textarea>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 					<button type="submit" class="btn btn-default">확인</button>
-					<button type="submit" class="btn btn-default">취소</button>
+					<button type="button" class="btn btn-default">취소</button>
 				</div>
 			</div>
 		</form>
-			
 				</div>
 			</div>
 		</div>

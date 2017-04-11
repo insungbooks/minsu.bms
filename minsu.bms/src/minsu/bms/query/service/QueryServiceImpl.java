@@ -1,9 +1,6 @@
 package minsu.bms.query.service;
 
 import java.util.List;
-
-import minsu.bms.bookmanagement.dao.BookDao;
-import minsu.bms.bookmanagement.domain.Book;
 import minsu.bms.query.dao.QueryDao;
 import minsu.bms.query.domain.Query;
 
@@ -17,12 +14,21 @@ public class QueryServiceImpl implements QueryService{
 	public List<Query> queryList(){
 		return queryDao.queryList();
 	}
-	public Query findQuery(int boardNum){
-		return queryDao.getQuery(boardNum);
+	public Query findQueryNum(int boardNum){
+		return queryDao.getQueryNum(boardNum);
+	}
+	public List<Query> findQueryId(String userId){
+		List<Query> query = (List<Query>)queryDao.getQueryId(userId);
+			return query;
 	}
 	public boolean modifyQuery(Query query){
 		return queryDao.updateQuery(query)>0;
 	}
-	
+	public boolean addQuery(Query query){
+		return queryDao.addQuery(query)>0;
+	}
+	public boolean deleteQuery(int boardNum){
+		return queryDao.delQuery(boardNum)>0;
+	}
 
 }

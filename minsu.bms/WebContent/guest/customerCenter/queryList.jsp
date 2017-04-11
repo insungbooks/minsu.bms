@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.query.domain.Query" %>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -67,7 +69,7 @@
             <li><a href="../../shop/system/idCheck1.jsp"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 나의 상담</strong></li>
-            <li class="active"><a href="customCenter2.jsp"> 나의 상담 내역</a></li>
+            <li class="active"><a href="queryListProc.jsp"> 나의 상담 내역</a></li>
         </ul>
     </nav>
 </div>
@@ -75,32 +77,46 @@
 		<h2>나의 상담 내역</h2>
 		<table class="table table-hover">
 			<thead>
+			
 				<tr>
 					<th>번호</th>
 					<th>분류</th>
 					<th>제목</th>
 					<th>등록일</th>
+					<th>답변상태</th>
+					<th>답변</th>
 				</tr>
 			</thead>
 			<tbody>
+			<%
+			if (request.getAttribute("querys") != null) {
+				List<Query> querys = (List<Query>) request.getAttribute("querys");
+				for (Query query : querys) {
+					
+%>
 				<tr>
-					<td>3</td>
-					<td>구매</td>
-					<td>옷은 안파나요?</td>
-					<td>2017.03.03</td>
+					<td><%=query.getBoardNum() %></td>
+					<td><%=query.getSeparation() %></td>
+					<td><%=query.getTitle() %></td>
+					<td><%=query.getReportingDate() %></td>
+					<td><%=query.getAnswerState() %></td>
+					<td>
+					<form action="queryProc.jsp"><input type="hidden" name="boardNum" value="<%=query.getBoardNum()%>"/>
+					<%
+					String msg="";
+					if(query.getAnswerState()=="답변완료"||query.getAnswerState().equals("답변완료") ){
+							msg="답변보기";
+					}else{ 
+						msg="답변없음";
+					}
+						%>
+					<input type="submit" class="btn btn-md" value="<%=msg%>"/>
+				
+					</form>
+					
+					</td>
 				</tr>
-				<tr>
-					<td>2</td>
-					<td>환불</td>
-					<td>책 다 읽었어요. 환불 원합니다.</td>
-					<td>2017.03.03</td>
-				</tr>
-				<tr>
-					<td>1</td>
-					<td>배송</td>
-					<td>책이 1년 째 안와요.</td>
-					<td>2017.03.03</td>
-				</tr>
+				<%}} %>
 			</tbody>
 		</table>
 	</div>

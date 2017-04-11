@@ -121,7 +121,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<input class="form-control" rows="10" id="content" name="content" value="<%=queryList.getContent() %>" readonly/></textarea>
+					<input class="form-control" rows="10" id="content" name="content" value="<%=queryList.getContent() %>" readonly/>
 				</div>
 			</div>
 <%

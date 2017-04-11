@@ -15,7 +15,7 @@ QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
 int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-Query queryList = queryService.findQuery(boardNum);
+Query queryList = queryService.findQueryNum(boardNum);
 
 request.setAttribute("queryList", queryList);
 

@@ -33,3 +33,4 @@
 		bookService.modifyBook(addBook);
 	}
 %>
+	<jsp:include page="listBooksProc.jsp"/>

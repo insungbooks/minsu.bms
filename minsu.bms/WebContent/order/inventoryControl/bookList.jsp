@@ -119,7 +119,7 @@
 									<td><%=book.getWriter()%></td>
 									<td><%=book.getCompany()%></td>
 									<td><%=book.getPubliDate()%></td>
-									<td><%=book.getBookPrice()%></td>
+									<td><%=book.getBookPrice()%>원</td>
 									<td><button type="submit" formaction="modifyBookProc.jsp">수정</button></td>
 									<td><button type="submit" formaction="deleteBookProc.jsp">삭제</button></td>
 								</tr>

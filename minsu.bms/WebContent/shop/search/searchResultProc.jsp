@@ -14,4 +14,4 @@
 	searchResults = searchService.listSearchResult(searchOption, searchText);
 	request.setAttribute("searchResults", searchResults);
 %>
-	<jsp:forward page="searchResult.jsp"/>
+	<jsp:forward page="searchResultTest.jsp"/>

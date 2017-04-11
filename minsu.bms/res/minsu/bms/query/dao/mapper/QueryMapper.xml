@@ -15,7 +15,7 @@
 	<update id="updateQuery" parameterType="query">
 		update boards set
 		answer = #{answer},
-		separation=#{separation}
+		answer_state=#{answerState}
 		where board_num = #{boardNum}
 	</update>
 	

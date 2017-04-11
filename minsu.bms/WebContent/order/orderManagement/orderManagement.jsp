@@ -78,8 +78,8 @@
 						<li class="nav-header"><strong> 재고관리</strong></li>
 						<li class="active"><a href="orderManagement.jsp"> 주문관리</a></li>
 						<li class="nav-divider"></li>
-							<li class="nav-header"><strong>고객센터</strong></li>
-							<li><a href="../customerCenter/inquiryAnswerList.jsp">문의답하기</a></li>
+						<li class="nav-header"><strong>고객센터</strong></li>
+						<li><a href="../customerCenter/queryList.jsp">문의답하기</a></li>
 					</ul>
 				</nav>
 			</div>

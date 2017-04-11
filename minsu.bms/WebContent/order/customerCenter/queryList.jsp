@@ -78,12 +78,12 @@
             <li><a href="../orderManagement/orderManagement.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
-			<li class="active"><form><button type="submit" formaction="queryListProc.jsp">문의답하기</button></form></li>
+			<li class="active"><a href="../customerCenter/queryList.jsp">문의답하기</a></li>
         </ul>
     </nav>
 </div>
 	<div class="col-md-10">
-		<h2>문의 내역보기</h2>
+		<h2><form><button type="submit" formaction="queryListProc.jsp">문의내역보기</button></form></h2>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -109,15 +109,15 @@
 					<td><%=query.getTitle() %></td>
 					<td><%=query.getReportingDate() %></td>
 					<td><%=query.getAnswerState() %></td>
-					<td><form action="queryProc.jsp"><input type="hidden" name="boardNum" value="<%=query.getBoardNum() %>"/>
+					<td><form action="queryProc.jsp"><input type="hidden" name="boardNum" value="<%=query.getBoardNum()%>"/>
 					<input type="submit" class="btn btn-md" value="답변하기"/>
 					</form></td>
 					
 				</tr>
-				<%
-									}
-							}
-								%>
+<%
+					}
+				}
+%>
 			</tbody>
 		</table>
 	</div>

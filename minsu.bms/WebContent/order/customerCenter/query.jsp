@@ -76,67 +76,71 @@
             <li><a href="../orderManagement/orderManagement.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
-		<li class="active"><form><button type="submit" formaction="queryProc.jsp">문의답하기</button></form></li> </ul>
+		<li class="active"><a href="../customerCenter/queryList.jsp">문의답하기</a></li> </ul>
     </nav>
 		</div>
 
 		<div class="col-md-8">
 			<div class="row">
-			<form class="form" action="queryList.jsp">
+			<form class="form" action="queryResultProc.jsp">
 			
 			<div class="form-group row">
 			<h2>문의 답하기</h2>
 			<hr>
 				
 			</div>
-			<%
-			if(request.getAttribute("answer") != null) { 
-				Query query = (Query)request.getAttribute("answer");
-			
-			%>
+<%
+			if(request.getAttribute("queryList") != null) { 
+				Query queryList = (Query)request.getAttribute("queryList");
+%>
 			<div class="form-group row">
-			<label class="control-label col-md-2" for="className">번 호 : </label>
-				<div class="col-md-2">
-					<input type="text" class="form-control" id="className" name="boardNum" value="<%=query.getBoardNum() %>" readonly/>
+			<label class="control-label col-md-1" for="className">번 호 </label>
+				<div class="col-md-1">
+					<input type="text" class="form-control" id="className" name="boardNum" value="<%=queryList.getBoardNum() %>" readonly/>
 				</div>
-				<label class="control-label col-md-2" for="classification">분 류 : </label>
+				<label class="control-label col-md-1" for="classification">분 류 </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="classification" name="separation" value="<%=query.getSeparation() %>" readonly/>
+					<input type="text" class="form-control" id="classification" name="separation" value="<%=queryList.getSeparation() %>" readonly/>
 				</div>
-				<label class="control-label col-md-2" for="person">작 성 자 : </label>
+				<label class="control-label col-md-1" for="person">ID :</label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="person" name="userId" value="<%=query.getUserId() %>" readonly/>
+					<input type="text" class="form-control" id="person" name="userId" value="<%=queryList.getUserId() %>" readonly/>
 				</div>
-				<label class="control-label col-md-2" for="reportingDate">작 성 일 : </label>
+				<label class="control-label col-md-1" for="reportingDate">날 짜</label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="reportingDate" name="reportingDate" value="<%=query.getReportingDate() %>" readonly/>
+					<input type="text" class="form-control" id="reportingDate" name="reportingDate" value="<%=queryList.getReportingDate() %>" readonly/>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="title">제 목 : </label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="title" name="title" value="<%=query.getTitle() %>" readonly/>
+					<input type="text" class="form-control" id="title" name="title" value="<%=queryList.getTitle() %>" readonly/>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<input class="form-control" rows="10" id="content" name="content" value="<%=query.getContent() %>" readonly/></textarea>
+					<input class="form-control" rows="10" id="content" name="content" value="<%=queryList.getContent() %>" readonly/></textarea>
 				</div>
 			</div>
-			<%
-				
+<%
+			String answer="";
+			if(queryList.getAnswerState().equals("답변완료")){
+				answer=queryList.getAnswer();
 			}
-			%>
 			
+%>
+					
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="answer">답변 내용 : </label>
 				<div class="col-md-10">
-					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="answer"></textarea>
+					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="answer" ><%=answer %></textarea>
 				</div>
 			</div>
-			
+<%
+			}
+%>
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 					<button type="submit" class="btn btn-default" >확인</button>

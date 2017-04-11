@@ -6,10 +6,16 @@
 		from boards
 	</select>
 	
-	<select id="getQuery" parameterType="int" resultType="query">
+	<select id="getQueryNum" parameterType="int" resultType="query">
 		select board_num boardNum, user_id userId, title, content, answer, separation, answer_state answerState, reporting_date reportingDate
 		from boards
 		where board_num = #{boardNum}
+	</select>
+	
+	<select id="getQueryId" parameterType="string" resultType="query">
+		select board_num boardNum, user_id userId, title, content, answer, separation, answer_state answerState, reporting_date reportingDate
+		from boards
+		where user_id = #{userId}
 	</select>
 	
 	<update id="updateQuery" parameterType="query">
@@ -19,4 +25,13 @@
 		where board_num = #{boardNum}
 	</update>
 	
+	<delete id="delQuery" parameterType="int">
+		delete boards where board_num = #{boardNum}
+	</delete>
+	
+	<insert id="addQuery" parameterType="query">
+		insert into boards values (
+		boardnum_seq.nextval, #{userId}, #{title}, #{content}, #{answer,jdbcType=VARCHAR},
+		#{separation}, #{answerState}, #{reportingDate})
+	</insert>
 </mapper>

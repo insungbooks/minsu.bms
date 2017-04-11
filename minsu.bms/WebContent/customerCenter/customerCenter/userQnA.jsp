@@ -84,7 +84,7 @@
 		            <li><a href="shipping.jsp"> 배송/수령일안내</a></li>
 		            <li class="nav-divider"></li>
 		            <li class="nav-header"><strong>문의하기</strong></li>
-		            <li><a href="customerCenter.jsp"> 1:1 문의하기</a></li>
+		            <li><a href="../../guest/customerCenter/query.jsp"> 1:1 문의하기</a></li>
 		        </ul>
 			</nav>
 			<div class="guide">

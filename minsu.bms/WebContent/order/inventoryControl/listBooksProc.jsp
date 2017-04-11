@@ -17,4 +17,4 @@
 	List<Book> books = bookService.listBooks();
 	request.setAttribute("books", books);
 %>
- 	<jsp:forward page="BookList.jsp"/>
+ 	<jsp:forward page="bookList.jsp"/>

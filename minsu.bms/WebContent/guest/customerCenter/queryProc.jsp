@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <%@ page import="java.util.*" %>
 <%@ page import="minsu.bms.config.Configuration"%>
 <%@ page import="minsu.bms.query.dao.mapper.QueryMapper" %>
@@ -8,25 +9,29 @@
 <%@ page import="minsu.bms.query.domain.Query" %>
 <%@ page import="minsu.bms.query.service.QueryService" %>
 <%@ page import="minsu.bms.query.service.QueryServiceImpl" %>
-<!DOCTYPE html>
 <%
 QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
-String answer= request.getParameter("answer");
-int boardNum= Integer.parseInt(request.getParameter("boardNum"));
 
+String title=request.getParameter("title");
+String content=request.getParameter("content");
+String separation=request.getParameter("separation");
+String id=(String)session.getAttribute("login");
 
-if(boardNum!=0&&answer!=null&&!answer.equals("")){
-	Query queryAnswer = queryService.findQueryNum(boardNum);
-	queryAnswer.setAnswer(answer);
-	queryAnswer.setAnswerState("답변완료");
-	queryService.modifyQuery(queryAnswer);
-	
-	List<Query> query = queryService.queryList();
-	request.setAttribute("query", query);
+if(title!=null&&!title.equals("")&&content!=null&&!content.equals("")&&separation!=null&&!separation.equals("")){
+Query query= new Query();
+query.setContent(content);
+query.setTitle(title);
+query.setSeparation(separation);
+query.setUserId(id);
+query.setReportingDate("2016-12-12");
+
+queryService.addQuery(query);
+}
+
+request.setAttribute("id",id);
+
 %>
-<jsp:include page="queryList.jsp"/>
-<%}%>
-
+<jsp:forward page="queryListProc.jsp"/>

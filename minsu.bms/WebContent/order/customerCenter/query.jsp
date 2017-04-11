@@ -69,7 +69,7 @@
             <li><a href="../member/memberList.jsp">회원목록조회</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 주문관리</strong></li>
-            <li><a href="../inventoryControl/BookList.jsp">도서목록조회</a></li>
+            <li><a href="../inventoryControl/listBooksProc.jsp">도서목록조회</a></li>
             <li><a href="../inventoryControl/bookAdd.jsp">도서 추가</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 재고관리</strong></li>
@@ -121,7 +121,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<input class="form-control" rows="10" id="content" name="content" value="<%=queryList.getContent() %>" readonly/></textarea>
+					<input class="form-control" rows="10" id="content" name="content" value="<%=queryList.getContent() %>" readonly/>
 				</div>
 			</div>
 <%

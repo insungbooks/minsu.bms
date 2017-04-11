@@ -63,7 +63,7 @@
             <li><a href="../member/memberList.jsp">회원목록조회</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 주문관리</strong></li>
-            <li><a href="BookList.jsp">도서목록조회</a></li>
+            <li><a href="listBooksProc.jsp">도서목록조회</a></li>
             <li class="active"><a href="bookAdd.jsp">도서 추가</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 재고관리</strong></li>
@@ -160,7 +160,7 @@
 						<input type="text" class="form-control" name="bookPrice" value="<%= book.getBookPrice() %>" placeholder="판매가를 입력하세요.">
 					</div>
 				</div>
-			<button type="submit" formaction="addBook.jsp" style="float:right;">수정</button>
+			<button type="submit" formaction="addBookProc.jsp" style="float:right;">수정</button>
 			</form>
 <%
 	}else {
@@ -223,7 +223,7 @@
 						<input type="text" class="form-control" name="bookPrice" placeholder="판매가를 입력하세요.">
 					</div>
 				</div>
-			<button type="submit" formaction="addBook.jsp" style="float:right;">책추가</button>
+			<button type="submit" formaction="addBookProc.jsp" style="float:right;">책추가</button>
 			</form>
 <%
 	}

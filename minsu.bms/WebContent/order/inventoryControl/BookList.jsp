@@ -75,7 +75,7 @@
 							<li><a href="../member/memberList.jsp">회원목록조회</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 주문관리</strong></li>
-							<li class="active"><a href="BookList.jsp">도서목록조회</a></li>
+							<li class="active"><a href="listBooks.jsp">도서목록조회</a></li>
 							<li><a href="bookAdd.jsp">도서 추가</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 재고관리</strong></li>
@@ -87,10 +87,6 @@
 						</ul>
 					</nav>
 				</div>
-				<form>
-					<button type="submit" formaction="listBooks.jsp">조회</button>
-					<button type="submit" formaction="modifyBook.jsp">수정</button>
-					<button type="submit" formaction="deleteBook.jsp">삭제</button>
 					<div class="col-md-10">
 						<table class="table table-hover">
 							<thead>
@@ -103,6 +99,8 @@
 									<td><strong>출판사</strong></td>
 									<td><strong>출간일</strong></td>
 									<td><strong>정가</strong></td>
+									<td><strong>수정</strong></td>
+									<td><strong>삭제</strong></td>
 								</tr>
 							</thead>
 							<tbody>
@@ -111,8 +109,9 @@
 										List<Book> books = (List<Book>) request.getAttribute("books");
 										for (Book book : books) {
 								%>
+								<form>
 								<tr>
-									<td><input type="checkbox" name="bookCode"
+									<td><input type="hidden" name="bookCode"
 										value="<%=book.getBookCode()%>"></td>
 									<td><%=book.getBookCode()%></td>
 									<td><%=book.getKind()%></td>
@@ -121,13 +120,15 @@
 									<td><%=book.getCompany()%></td>
 									<td><%=book.getPubliDate()%></td>
 									<td><%=book.getBookPrice()%></td>
+									<td><button type="submit" formaction="modifyBook.jsp">수정</button></td>
+									<td><button type="submit" formaction="deleteBook.jsp">삭제</button></td>
 								</tr>
+								</form>
 								<%
 									}
 								}
 								%>
 							</tbody>
-							</form>
 						</table>
 						<div class="row">
 							<div class="col-sm-3"></div>

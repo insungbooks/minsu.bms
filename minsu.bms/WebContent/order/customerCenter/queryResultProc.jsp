@@ -19,11 +19,13 @@ int boardNum= Integer.parseInt(request.getParameter("boardNum"));
 
 
 if(boardNum!=0&&answer!=null&&!answer.equals("")){
-	Query query = queryService.findQuery(boardNum);
-	query.setAnswer(answer);
-	query.setAnswerState("답변완료");
-	queryService.modifyQuery(query);
+	Query queryAnswer = queryService.findQuery(boardNum);
+	queryAnswer.setAnswer(answer);
+	queryAnswer.setAnswerState("답변완료");
+	queryService.modifyQuery(queryAnswer);
 	
+	List<Query> query = queryService.queryList();
+	request.setAttribute("query", query);
 %>
 <jsp:include page="queryList.jsp"/>
 <%}%>

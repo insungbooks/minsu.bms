@@ -21,22 +21,19 @@
     border-right: 1px solid #ddd;
     
 }
-.nav-sidebar a ,button{
+.nav-sidebar a {
     color: #333;
     transition: all 0.08s linear;
     border-radius: 4px 0 0 4px; 
     border:none;
 }
-.nav-sidebar .active a ,button{ 
+.nav-sidebar .active a { 
     cursor: default;
     background-color: rgb(115, 215, 209); 
     color: #fff; 
     text-shadow: 1px 1px 1px #666; 
 }
 .nav-sidebar .active a:hover {
-    background-color: rgb(115, 215, 209);   
-}
-.nav-sidebar .active button:hover {
     background-color: rgb(115, 215, 209);   
 }
 
@@ -46,9 +43,6 @@
     border-left: 1px solid #ddd; 
 }
 .nav-sidebar.pull-right a { 
-    border-radius: 0 4px 4px 0; 
-}
-.nav-sidebar.pull-right button { 
     border-radius: 0 4px 4px 0; 
 }
 
@@ -78,12 +72,12 @@
             <li><a href="../orderManagement/orderManagement.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
-			<li class="active"><a href="../customerCenter/queryList.jsp">문의답하기</a></li>
+			<li class="active"><a href="../customerCenter/queryListProc.jsp">문의답하기</a></li>
         </ul>
     </nav>
 </div>
 	<div class="col-md-10">
-		<h2><form><button type="submit" formaction="queryListProc.jsp">문의내역보기</button></form></h2>
+		<h2>문의 내역 보기</h2>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -101,6 +95,9 @@
 			if (request.getAttribute("query") != null) {
 				List<Query> querys = (List<Query>) request.getAttribute("query");
 				for (Query query : querys) {
+					
+					
+					
 %>
 				<tr>
 					<td><%=query.getBoardNum() %></td>
@@ -110,7 +107,16 @@
 					<td><%=query.getReportingDate() %></td>
 					<td><%=query.getAnswerState() %></td>
 					<td><form action="queryProc.jsp"><input type="hidden" name="boardNum" value="<%=query.getBoardNum()%>"/>
-					<input type="submit" class="btn btn-md" value="답변하기"/>
+					<%
+					String msg="";
+					if(query.getAnswerState()=="답변완료"||query.getAnswerState().equals("답변완료") ){
+							msg="답변수정";
+					}else{ 
+						msg="답변하기";
+					}
+						%>
+					<input type="submit" class="btn btn-md" value="<%=msg%>"/>
+				
 					</form></td>
 					
 				</tr>

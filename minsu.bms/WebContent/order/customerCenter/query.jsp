@@ -76,7 +76,7 @@
             <li><a href="../orderManagement/orderManagement.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
-		<li class="active"><a href="../customerCenter/queryList.jsp">문의답하기</a></li> </ul>
+		<li class="active"><a href="../customerCenter/queryListProc.jsp">문의답하기</a></li> </ul>
     </nav>
 		</div>
 
@@ -144,7 +144,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 					<button type="submit" class="btn btn-default" >확인</button>
-					<a href="queryList.jsp"><button type="button" class="btn btn-default">취소</button></a>
+					<a href="queryListProc.jsp"><button type="button" class="btn btn-default">취소</button></a>
 				</div>
 			</div>
 		</form>

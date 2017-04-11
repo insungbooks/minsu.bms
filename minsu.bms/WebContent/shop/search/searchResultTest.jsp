@@ -109,6 +109,8 @@ article { /*본문*/
 	int startDataNum=0;
 	int endDataNum=0;
 	
+	String searchText=(String)request.getAttribute("searchText");
+	String searchOption=(String)request.getAttribute("searchOption");
 %>
 	<div class="container">
 		<div class="col-md-2"></div>
@@ -232,24 +234,24 @@ article { /*본문*/
 								for(int j=startNum; j<=endNum; j++){
 									if(j==currentNum){
 							%>
-										<li class="active"><a href="searchResultTest.jsp?pageNum=<%= j %>"><%= j %></a></li>
+										<li class="active"><a href="searchResultProc.jsp?searchOption=<%= searchOption %>&searchText=<%= searchText %>&pageNum=<%= j %>"><%= j %></a></li>
 							<%
 									}else{
 							%>
-										<li><a href="searchResultTest.jsp?pageNum=<%= j %>"><%= j %></a></li>
+										<li><a href="searchResultProc.jsp?searchOption=<%= searchOption %>&searchText=<%= searchText %>&pageNum=<%= j %>"><%= j %></a></li>
 							<%	
 									}	
 								}
 							%>
 							<li><a href="#" rel="next">»</a></li>
 							
-						2	<%= currentNum %>
-						1	<%= startNum %>
-						2	<%= endNum %>
-						18	<%= dataNum %>
-						2	<%= totalPageNum %>
-						1	<%= startDataNum %>
-						18	<%= endDataNum %>
+							<%-- <%= currentNum %>
+							<%= startNum %>
+							<%= endNum %>
+							<%= dataNum %>
+							<%= totalPageNum %>
+							<%= startDataNum %>
+							<%= endDataNum %> --%>
 
 						</ul>
 					</div>

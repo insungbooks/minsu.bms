@@ -1,5 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.login.service.SignUp" %>
+<%@ page import="minsu.bms.login.service.SignUpImpl" %>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.login.dao.LoginDao"%>
+<%@ page import="minsu.bms.login.dao.LoginDaoImpl"%>
+<%@ page import="minsu.bms.login.dao.mapper.LoginMapper"%>
+<%@ page import="minsu.bms.login.domain.User"%>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -12,6 +20,13 @@
 </style>
 </head>
 <body>
+<%
+	String id = (String)session.getAttribute("login");
+	LoginMapper loginMapper = Configuration.getMapper(LoginMapper.class);
+	LoginDao loginDao = new LoginDaoImpl(loginMapper);
+	SignUp signUp = new SignUpImpl(loginDao);
+	User user=signUp.findUser(id);
+%>
 	<jsp:include page="../../header.jsp"/>
 <article>
 	<div class="container">
@@ -26,7 +41,7 @@
 						<hr>
 						<input type="text" 
 							class="form-control" name="name"
-							data-rule-required="true" readonly value="dldlstjr" maxlength="30"> 
+							data-rule-required="true" readonly value="<%=user.getUserId() %>" maxlength="30"> 
 						<input type="password"
 							class="form-control" name="resident" 
 							data-rule-required="true" placeholder="비밀번호입력" maxlength="30">

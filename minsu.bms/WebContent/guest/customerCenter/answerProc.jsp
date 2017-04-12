@@ -9,16 +9,16 @@
 <%@ page import="minsu.bms.query.domain.Query" %>
 <%@ page import="minsu.bms.query.service.QueryService" %>
 <%@ page import="minsu.bms.query.service.QueryServiceImpl" %>
-
 <%
 QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
-int boardNum=Integer.parseInt(request.getParameter("boardNum"));
+int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+Query query = queryService.findQueryNum(boardNum);
 
-	Query queryAnswer = queryService.findQueryNum(boardNum);
-	request.setAttribute("queryAnswer", queryAnswer);
+request.setAttribute("query", query);
+
 %>
 <jsp:forward page="answer.jsp"/>
 

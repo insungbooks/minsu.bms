@@ -20,10 +20,17 @@
 		order by board_num
 	</select>
 	
-	<update id="updateQuery" parameterType="query">
+	<update id="updateQueryAnswer" parameterType="query">
 		update boards set
 		answer = #{answer},
 		answer_state=#{answerState}
+		where board_num = #{boardNum}
+	</update>
+
+	<update id="updateQuery" parameterType="query">
+		update boards set
+		title = #{title},
+		content=#{content}
 		where board_num = #{boardNum}
 	</update>
 	

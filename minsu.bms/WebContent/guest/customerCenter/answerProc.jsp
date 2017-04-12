@@ -16,12 +16,14 @@ QueryService queryService = new QueryServiceImpl(queryDao);
 
 int boardNum = Integer.parseInt(request.getParameter("boardNum"));
 Query query = queryService.findQueryNum(boardNum);
-
 request.setAttribute("query", query);
-
+if(query.getAnswerState()=="답변완료"||query.getAnswerState().equals("답변완료")){
 %>
 <jsp:forward page="answer.jsp"/>
-
-
+<%}else if(query.getAnswerState()=="답변전"||query.getAnswerState().equals("답변전")){%>
+<jsp:forward page="queryUpdate.jsp"/>
+<%}else{ %>
+<jsp:forward page="a.jsp"/>
+<%} %>
 
 

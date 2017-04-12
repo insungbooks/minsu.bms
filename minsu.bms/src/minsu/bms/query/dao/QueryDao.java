@@ -10,6 +10,7 @@ public interface QueryDao {
 	Query getQueryNum(int boardNum);
 	List<Query> getQueryId(String userId);
 	int updateQuery(Query query);
+	int updateQueryAnswer(Query query);
 	int addQuery(Query query);
 	public int delQuery(int boardNum);
 }

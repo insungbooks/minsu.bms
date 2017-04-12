@@ -17,16 +17,13 @@ QueryService queryService = new QueryServiceImpl(queryDao);
 String answer= request.getParameter("answer");
 int boardNum= Integer.parseInt(request.getParameter("boardNum"));
 
-
 if(boardNum!=0&&answer!=null&&!answer.equals("")){
 	Query queryAnswer = queryService.findQueryNum(boardNum);
 	queryAnswer.setAnswer(answer);
 	queryAnswer.setAnswerState("답변완료");
-	queryService.modifyQuery(queryAnswer);
+	queryService.modifyQueryAnswer(queryAnswer);
 	
-	List<Query> query = queryService.queryList();
-	request.setAttribute("query", query);
 %>
-<jsp:include page="queryList.jsp"/>
+<jsp:include page="queryListProc.jsp"/>
 <%}%>
 

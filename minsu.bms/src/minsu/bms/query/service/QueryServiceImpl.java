@@ -24,6 +24,9 @@ public class QueryServiceImpl implements QueryService{
 	public boolean modifyQuery(Query query){
 		return queryDao.updateQuery(query)>0;
 	}
+	public boolean modifyQueryAnswer(Query query){
+		return queryDao.updateQueryAnswer(query)>0;
+	}
 	public boolean addQuery(Query query){
 		return queryDao.addQuery(query)>0;
 	}

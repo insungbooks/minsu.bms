@@ -9,6 +9,7 @@ public interface QueryService {
 	Query findQueryNum(int boardNum);
 	List<Query> findQueryId(String userId);
 	boolean modifyQuery(Query query);
+	boolean modifyQueryAnswer(Query query);
 	boolean addQuery(Query query);
 	boolean deleteQuery(int boardNum);
 	

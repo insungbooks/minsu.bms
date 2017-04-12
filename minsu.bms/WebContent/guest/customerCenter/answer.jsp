@@ -2,8 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.query.domain.Query" %>
 <%@ page import="java.util.List"%>
-<%!String updateOK; 
-	Query query;%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -62,12 +61,8 @@
 	<jsp:include page="../../header.jsp"/>
 <%
 			if(request.getAttribute("query") != null) { 
-				query = (Query)request.getAttribute("query");
-			}
-			if(request.getAttribute("updateOK")!= null){
-				updateOK=(String)request.getAttribute("updateOK");
-			}
-					
+				Query query = (Query)request.getAttribute("query");
+				
 %>
 <article>
 
@@ -93,11 +88,8 @@
 			<div class="row">
 			
 			<div class="form-group row">
-			<%if(updateOK=="답변수정하기"){%>
-			<h2>답변수정하기</h2>
-			<%}else { %>
+			
 			<h2>답변보기</h2>
-			<%}%>
 			<hr>
 				
 			</div>
@@ -123,15 +115,14 @@
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="title">제 목 : </label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="title" name="title" value="<%=query.getTitle() %>" 
-					<%if(updateOK=="답변보기"){ %>readonly<%}%>/>
+					<input type="text" class="form-control" id="title" name="title" value="<%=query.getTitle() %>" readonly/>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<input class="form-control" rows="10" id="content" name="content" value="<%=query.getContent() %>" <%if(updateOK=="답변보기"){ %>readonly<%}%>/>
+					<input class="form-control" rows="10" id="content" name="content" value="<%=query.getContent() %>" readonly/>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -148,14 +139,10 @@
 			</div>
 			
 			<div class="form-group">
-				<div class="col-sm-offset-9 col-sm-3">
-					<%if(updateOK=="답변보기"){%>
-					<a href="queryListProc.jsp"><%}else { %><a href="queryUpdateResult.jsp"><%} %><button type="button" class="btn btn-default">확인</button></a>
+				<div class="col-sm-offset-10 col-sm-3">
 					
-					<form action="queryUpdateProc.jsp">
-					<input type="hidden" name="boardNum" value="<%=query.getBoardNum()%>"/>
-					<button type="submit" class="btn btn-default">수정</button>
-					</form>
+					<a href="queryListProc.jsp"><button type="button" class="btn btn-default">확인</button></a>
+					
 				</div>
 				
 			</div>
@@ -163,6 +150,7 @@
 			</div>
 		</div>
 	</article>
+	<%} %>
 <jsp:include page="../../footer.html"/>
 </body>
 </html>

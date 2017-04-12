@@ -122,7 +122,7 @@
 							<label class="control-label col-md-2" for="title">제 목 : </label>
 							<div class="col-md-10">
 								<input type="text" class="form-control" id="title" name="title"
-									value="<%=query.getTitle()%>" />
+									value="<%=query.getTitle()%>" required />
 							</div>
 						</div>
 
@@ -131,7 +131,7 @@
 								: </label>
 							<div class="col-md-10">
 								<input class="form-control" rows="10" id="content"
-									name="content" value="<%=query.getContent()%>" />
+									name="content" value="<%=query.getContent()%>" required/>
 							</div>
 						</div>
 						<div class="form-group row">

@@ -136,13 +136,13 @@
 													<span class="glyphicon glyphicon-remove"
 														aria-hidden="true"></span>
 												</button>
-												<h4 class="modal-title custom_align" id="Heading">회원
+												<h4 class="modal-title custom_align" id="Heading">문의내역
 													삭제</h4>
 											</div>
 											<form action="queryDelProc.jsp" method="post"
 												class="modal-body">
 												<div class="alert alert-danger">
-													<span class="glyphicon glyphicon-warning-sign"></span> 회원을
+													<span class="glyphicon glyphicon-warning-sign"></span> 문의내역을
 													삭제하시겠습니까? <input type="hidden" name="boardNum"
 														value="<%=query.getBoardNum()%>"/>
 												</div>

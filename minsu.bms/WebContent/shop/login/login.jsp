@@ -12,7 +12,6 @@
 </style>
 </head>
 <body>
-<jsp:include page="../../header.jsp"/>
 <article>
 	<div class="container">
 		<div class="row">

@@ -9,11 +9,13 @@ public class Book {
 	private String  publiDate;
 	private String  country;
 	private String  kind;
+	private int		inventory;
+	private int 	salesNum;
 	
 	public Book() {}
 	
 	public Book(String bookCode, String bookName, int bookPrice, String writer, String company,
-				String publiDate, String country, String kind) {
+				String publiDate, String country, String kind, int inventory, int salesNum) {
 		this.bookCode = bookCode;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
@@ -22,6 +24,8 @@ public class Book {
 		this.publiDate = publiDate;
 		this.country = country;
 		this.kind = kind;
+		this.inventory = inventory;
+		this.salesNum = salesNum;
 	}
 
 	public String getBookCode() {
@@ -86,5 +90,21 @@ public class Book {
 
 	public void setKind(String kind) {
 		this.kind = kind;
+	}
+
+	public int getInventory() {
+		return inventory;
+	}
+
+	public void setInventory(int inventory) {
+		this.inventory = inventory;
+	}
+
+	public int getSalesNum() {
+		return salesNum;
+	}
+
+	public void setSalesNum(int salesNum) {
+		this.salesNum = salesNum;
 	}
 }

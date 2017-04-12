@@ -75,7 +75,7 @@
 							<li><a href="../member/memberList.jsp">회원목록조회</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 주문관리</strong></li>
-							<li class="active"><a href="listBooks.jsp">도서목록조회</a></li>
+							<li class="active"><a href="listBooksProc.jsp">도서목록조회</a></li>
 							<li><a href="bookAdd.jsp">도서 추가</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 재고관리</strong></li>
@@ -120,8 +120,8 @@
 									<td><%=book.getCompany()%></td>
 									<td><%=book.getPubliDate()%></td>
 									<td><%=book.getBookPrice()%></td>
-									<td><button type="submit" formaction="modifyBook.jsp">수정</button></td>
-									<td><button type="submit" formaction="deleteBook.jsp">삭제</button></td>
+									<td><button type="submit" formaction="modifyBookProc.jsp">수정</button></td>
+									<td><button type="submit" formaction="deleteBookProc.jsp">삭제</button></td>
 								</tr>
 								</form>
 								<%

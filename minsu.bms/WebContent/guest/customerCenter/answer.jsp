@@ -151,12 +151,11 @@
 				<div class="col-sm-offset-9 col-sm-3">
 					<%if(updateOK=="답변보기"){%>
 					<a href="queryListProc.jsp"><%}else { %><a href="queryUpdateResult.jsp"><%} %><button type="button" class="btn btn-default">확인</button></a>
-					<%if(updateOK=="답변보기"){%>
+					
 					<form action="queryUpdateProc.jsp">
 					<input type="hidden" name="boardNum" value="<%=query.getBoardNum()%>"/>
 					<button type="submit" class="btn btn-default">수정</button>
 					</form>
-					<%} %>
 				</div>
 				
 			</div>

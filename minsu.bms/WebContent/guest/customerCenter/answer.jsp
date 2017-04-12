@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.query.domain.Query" %>
 <%@ page import="java.util.List"%>
+<%!String updateOK; 
+	Query query;%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -59,14 +61,13 @@
 <body>
 	<jsp:include page="../../header.jsp"/>
 <%
-		String updateCheck="readonly";
-		String comment="답변보기";
-			if(request.getAttribute("queryAnswer") != null) { 
-				Query query = (Query)request.getAttribute("queryAnswer");
-				
-				if(query.getSeparation()!="답변전"){
-					updateCheck = "";
-					comment="답변수정하기";
+			if(request.getAttribute("query") != null) { 
+				query = (Query)request.getAttribute("query");
+			}
+			if(request.getAttribute("updateOK")!= null){
+				updateOK=(String)request.getAttribute("updateOK");
+			}
+					
 %>
 <article>
 
@@ -92,13 +93,17 @@
 			<div class="row">
 			
 			<div class="form-group row">
-			<h2><%=comment %></h2>
+			<%if(updateOK=="답변수정하기"){%>
+			<h2>답변수정하기</h2>
+			<%}else { %>
+			<h2>답변보기</h2>
+			<%}%>
 			<hr>
 				
 			</div>
 			<div class="form-group row">
 			<label class="control-label col-md-1" for="className">번 호 </label>
-				<div class="col-md-1">
+				<div class="col-md-2">
 					<input type="text" class="form-control" id="className" name="boardNum" value="<%=query.getBoardNum() %>" readonly/>
 				</div>
 				<label class="control-label col-md-1" for="classification">분 류 </label>
@@ -114,18 +119,19 @@
 					<input type="text" class="form-control" id="reportingDate" name="reportingDate" value="<%=query.getReportingDate() %>" readonly/>
 				</div>
 			</div>
-			<form action="queryUpdateReseut.jsp">
+			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="title">제 목 : </label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="title" name="title" value="<%=query.getTitle() %>" <%=updateCheck %>/>
+					<input type="text" class="form-control" id="title" name="title" value="<%=query.getTitle() %>" 
+					<%if(updateOK=="답변보기"){ %>readonly<%}%>/>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<input class="form-control" rows="10" id="content" name="content" value="<%=query.getContent() %>" <%=updateCheck %>/>
+					<input class="form-control" rows="10" id="content" name="content" value="<%=query.getContent() %>" <%if(updateOK=="답변보기"){ %>readonly<%}%>/>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -136,26 +142,28 @@
 				if(query.getAnswer()!=null && !query.getAnswer().equals("")){
 					answer = query.getAnswer();
 				%>
-					<input class="form-control" rows="10" id="answer" name="answer" value="<%=answer %>" <%=updateCheck %>/>
+					<input class="form-control" rows="10" id="answer" name="answer" value="<%=answer %>" readonly/>
 				<%} %>
 				</div>
 			</div>
 			
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
-					<a href="queryListProc.jsp"><button type="button" class="btn btn-default">확인</button></a>
-					
+					<%if(updateOK=="답변보기"){%>
+					<a href="queryListProc.jsp"><%}else { %><a href="queryUpdateResult.jsp"><%} %><button type="button" class="btn btn-default">확인</button></a>
+					<%if(updateOK=="답변보기"){%>
+					<form action="queryUpdateProc.jsp">
 					<input type="hidden" name="boardNum" value="<%=query.getBoardNum()%>"/>
 					<button type="submit" class="btn btn-default">수정</button>
+					</form>
+					<%} %>
 				</div>
 				
 			</div>
-			</form>
 				</div>
 			</div>
 		</div>
 	</article>
-		<%} }%>
 <jsp:include page="../../footer.html"/>
 </body>
 </html>

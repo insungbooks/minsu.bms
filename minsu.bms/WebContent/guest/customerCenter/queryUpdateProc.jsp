@@ -14,8 +14,14 @@ QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
-
-
-
+int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+Query query=queryService.findQueryNum(boardNum);
+if(query.getAnswerState()=="답변완료"){
+	String updateOK="답변보기";
+	request.setAttribute("updateOK", updateOK);
+}else {
+	String updateOK="답변수정하기";
+	request.setAttribute("updateOK", updateOK);
+}
 %>
-<jsp:include page="queryListProc.jsp"/>
+<jsp:include page="answer.jsp"/>

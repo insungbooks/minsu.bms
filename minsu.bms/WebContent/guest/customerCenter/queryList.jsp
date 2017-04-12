@@ -107,31 +107,58 @@
 						<td><%=query.getReportingDate()%></td>
 						<td><%=query.getAnswerState()%></td>
 						<td>
+						
 							<form action="answerProc.jsp">
-								<input type="hidden" name="boardNum"
-									value="<%=query.getBoardNum()%>" />
+							<input type="hidden" name="boardNum" value="<%=query.getBoardNum() %>"/>
 								<%
 									String msg = "";
-											if (query.getAnswerState() == "답변완료"
-													|| query.getAnswerState().equals("답변완료")) {
+											if (query.getAnswerState() == "답변완료"||query.getAnswerState().equals("답변완료")) {
 												msg = "답변보기";
-											} else {
+											} else if(query.getAnswerState() == "답변전"||query.getAnswerState().equals("답변전")){
 												msg = "답변없음";
 											}
 								%>
 								<input type="submit" class="btn btn-md" value="<%=msg%>" />
 
 							</form>
-
 						</td>
 						<td>
-							<form action="queryDelProc.jsp">
-								<input type="hidden" name="boardNum"
-									value="<%=query.getBoardNum()%>" /> <input type="submit"
-									class="btn btn-md" value="삭제" />
-
-							</form>
-
+									<button class="btn btn-md" data-toggle="modal"
+										data-target="#del<%=query.getBoardNum()%>">삭제</button>
+										
+									<div class="modal fade" id="del<%=query.getBoardNum()%>"
+									role="dialog" aria-labelledby="delete" aria-hidden="true">
+									<div class="modal-dialog">
+										<div class="modal-content">
+											<div class="modal-header">
+												<button type="button" class="close" data-dismiss="modal"
+													aria-hidden="true">
+													<span class="glyphicon glyphicon-remove"
+														aria-hidden="true"></span>
+												</button>
+												<h4 class="modal-title custom_align" id="Heading">회원
+													삭제</h4>
+											</div>
+											<form action="queryDelProc.jsp" method="post"
+												class="modal-body">
+												<div class="alert alert-danger">
+													<span class="glyphicon glyphicon-warning-sign"></span> 회원을
+													삭제하시겠습니까? <input type="hidden" name="boardNum"
+														value="<%=query.getBoardNum()%>"/>
+												</div>
+												<div class="modal-footer ">
+													<button type="submit" class="btn btn-default">
+														<span class="glyphicon glyphicon-ok-sign"></span> 확인
+													</button>
+													<button type="button" class="btn btn-default"
+														data-dismiss="modal">
+														<span class="glyphicon glyphicon-remove"></span> 취소
+													</button>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
 						</td>
 					</tr>
 					<%

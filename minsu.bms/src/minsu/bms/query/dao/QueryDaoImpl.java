@@ -26,6 +26,9 @@ public class QueryDaoImpl implements QueryDao{
 	public int updateQuery(Query query){
 		return queryMapper.updateQuery(query);
 	}
+	public int updateQueryAnswer(Query query){
+		return queryMapper.updateQueryAnswer(query);
+	}
 	
 	public int addQuery(Query query){
 		return queryMapper.addQuery(query);

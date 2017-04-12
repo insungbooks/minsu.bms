@@ -69,7 +69,7 @@
             <li><a href="../member/memberList.jsp">회원목록조회</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 주문관리</strong></li>
-            <li><a href="../inventoryControl/listBooksProc.jsp">도서목록조회</a></li>
+            <li><a href="../inventoryControl/BookList.jsp">도서목록조회</a></li>
             <li><a href="../inventoryControl/bookAdd.jsp">도서 추가</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 재고관리</strong></li>
@@ -95,7 +95,7 @@
 %>
 			<div class="form-group row">
 			<label class="control-label col-md-1" for="className">번 호 </label>
-				<div class="col-md-1">
+				<div class="col-md-2">
 					<input type="text" class="form-control" id="className" name="boardNum" value="<%=queryList.getBoardNum() %>" readonly/>
 				</div>
 				<label class="control-label col-md-1" for="classification">분 류 </label>

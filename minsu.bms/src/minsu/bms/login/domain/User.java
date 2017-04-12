@@ -13,10 +13,10 @@ public class User {
 	
 	public User(){}
 	
-	public User(String id,String pw, String name, int age, String gender, String myNum,
+	public User(String userId,String password, String name, int age, String gender, String myNum,
 				String email, String phoneNum, String address) {
-		this.userId = id;
-		this.password = pw;
+		this.userId = userId;
+		this.password = password;
 		this.name = name;
 		this.age = age;
 		this.gender = gender;

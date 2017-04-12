@@ -135,7 +135,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="answer">답변 내용 : </label>
 				<div class="col-md-10">
-					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="answer" ><%=answer %></textarea>
+					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="answer" required><%=answer %></textarea>
 				</div>
 			</div>
 <%

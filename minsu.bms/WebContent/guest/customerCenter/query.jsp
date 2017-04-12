@@ -119,7 +119,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-2">분 류 </label>
 				<div class="col-md-2">
-					<select class="form-control" id="sel1" name="separation">
+					<select class="form-control" id="sel1" name="separation" required>
 						<option value="구매">구매</option>
 						<option value="환불">환불</option>
 						<option value="배송">배송</option>
@@ -131,14 +131,14 @@
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="title">제 목 : </label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="title" placeholder="제목을 입력하세요." name="title"/>
+					<input type="text" class="form-control" id="title" placeholder="제목을 입력하세요." name="title" required/>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<textarea class="form-control" rows="10" id="content" placeholder="내용을 입력하세요." name="content"></textarea>
+					<textarea class="form-control" rows="10" id="content" placeholder="내용을 입력하세요." name="content" required></textarea>
 				</div>
 			</div>
 			

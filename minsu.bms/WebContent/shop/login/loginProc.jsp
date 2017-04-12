@@ -27,9 +27,9 @@
 		response.sendRedirect("login.jsp?msgld=-1");  // 로그인이 실패할때 파라미터값 하나 전달해주면서 
 												      //다시 로그인 페이지로 이동시켜줌
 	}else { session.setAttribute("login", id);// 성공시 세션값 저장하고 메인페이지로 이동
-		StringBuffer back = (StringBuffer)session.getAttribute("back");
-		back.toString();
-		response.sendRedirect(back.toString());
+		//StringBuffer back = (StringBuffer)session.getAttribute("back");
+		//back.toString();
+		response.sendRedirect("../../main.jsp");
 	}
 %>
 		

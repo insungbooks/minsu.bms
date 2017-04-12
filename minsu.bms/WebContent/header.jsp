@@ -133,7 +133,7 @@ a {
 			<div class="container">
 				<ul class="topul">
 <%
-	session.setAttribute("back", request.getRequestURL());
+	//session.setAttribute("back", request.getRequestURL());
 	String id = ""; 
 	if(session.getAttribute("login")!=null) {		//세션값이 비어있지 않다라면
 		id = (String)session.getAttribute("login"); //세션값 추출하고 저장

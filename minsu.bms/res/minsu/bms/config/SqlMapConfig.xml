@@ -32,6 +32,6 @@
 		<mapper resource="minsu/bms/query/dao/mapper/QueryMapper.xml" />
 		<mapper resource="minsu/bms/delivery/dao/mapper/DeliveryMapper.xml" />
 		<mapper resource="minsu/bms/purchase/dao/mapper/PurchaseMapper.xml" />
-		<mapper resource="minsu/bms/refund/dao/mapper/efundMapper.xml" />
+		<mapper resource="minsu/bms/refund/dao/mapper/RefundMapper.xml" />
 	</mappers>
 </configuration>

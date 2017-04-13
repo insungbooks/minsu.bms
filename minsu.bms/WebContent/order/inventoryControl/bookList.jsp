@@ -99,7 +99,8 @@
 									<td><strong>출판사</strong></td>
 									<td><strong>출간일</strong></td>
 									<td><strong>정가</strong></td>
-									<td><strong>수정</strong></td>
+									<!-- <td><strong>재고수량</strong> -->
+									<td><strong>정보수정</strong></td>
 									<td><strong>삭제</strong></td>
 								</tr>
 							</thead>
@@ -120,8 +121,10 @@
 									<td><%=book.getCompany()%></td>
 									<td><%=book.getPubliDate()%></td>
 									<td><%=book.getBookPrice()%></td>
-									<td><button type="submit" formaction="modifyBookProc.jsp">수정</button></td>
+									<%-- <td><input type="number" name = "inventory" value="<%=book.getInventory()%>"/><button type="submit" formaction="modifyBookProc.jsp">수정</button></td> --%>
+									<td><button type="submit" formaction="modifyBookProc.jsp">정보수정</button></td>
 									<td><button type="submit" formaction="deleteBookProc.jsp">삭제</button></td>
+									
 								</tr>
 								</form>
 								<%

@@ -122,7 +122,7 @@
 				<div class="form-group">
 					<label class="col-md-2" for="bookCode">도서 코드 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="bookCode" value="<%= book.getBookCode()  %>" placeholder="도서 코드를 입력하세요.">
+						<input type="text" class="form-control" name="bookCode" readonly value="<%= book.getBookCode()  %>" placeholder="도서 코드를 입력하세요.">
 					</div>
 				</div>
 				
@@ -160,6 +160,20 @@
 						<input type="text" class="form-control" name="bookPrice" value="<%= book.getBookPrice() %>" placeholder="판매가를 입력하세요.">
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<label class="col-md-2" for="inventory">재고 :</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="inventory" value="<%= book.getInventory() %>" placeholder="재고를 입력하세요.">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-md-10">
+						<input type="hidden" class="form-control" name="salesNum" value="<%= book.getSalesNum() %>" placeholder="판매수량을 입력하세요.">
+					</div>
+				</div>
+				
 			<button type="submit" formaction="addBookProc.jsp" style="float:right;">수정</button>
 			</form>
 <%
@@ -223,6 +237,20 @@
 						<input type="text" class="form-control" name="bookPrice" placeholder="판매가를 입력하세요.">
 					</div>
 				</div>
+				
+				<div class="form-group">
+					<label class="col-md-2" for="inventory">재고 :</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="inventory" placeholder="재고를 입력하세요.">
+					</div>
+				</div>
+				
+				<div class="form-group">
+					<div class="col-md-10">
+						<input type="hidden" class="form-control" name="salesNum" value="0" placeholder="판매수량을 입력하세요.">
+					</div>
+				</div>
+				
 			<button type="submit" formaction="addBookProc.jsp" style="float:right;">책추가</button>
 			</form>
 <%

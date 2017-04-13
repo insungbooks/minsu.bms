@@ -3,13 +3,13 @@
 <mapper namespace="minsu.bms.bookmanagement.dao.mapper.BookMapper">
 	<select id="bookList" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
-			   company, publi_date publiDate, country, kind
+			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum
 		from books
 	</select>
 	
 	<select id="getBook" parameterType="string" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
-			   company, publi_date publiDate, country, kind
+			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum
 		from books
 		where book_code = #{bookCode}
 	</select>
@@ -21,14 +21,14 @@
 	<insert id="addBook" parameterType="book">
 		insert into books values (
 		#{bookCode}, #{bookName}, #{bookPrice}, #{writer}, #{company},
-		#{publiDate}, #{country}, #{kind})
+		#{publiDate}, #{country}, #{kind}, #{inventory}, #{salesNum})
 	</insert>
 	
 	<update id="updateBook" parameterType="book">
 		update books set
 		book_name=#{bookName}, book_price=#{bookPrice},
 		writer=#{writer}, company=#{company}, publi_date=#{publiDate},
-		country=#{country}, kind=#{kind}
+		country=#{country}, kind=#{kind}, inventory=#{inventory}
 		where book_code=#{bookCode}
 	</update>
 </mapper>

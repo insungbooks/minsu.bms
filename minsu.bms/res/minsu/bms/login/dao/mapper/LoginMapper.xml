@@ -7,4 +7,29 @@
 		from users
 		where user_id = #{id}
 	</select>
+	
+	<select id="userList" resultType="user">
+		select user_id userId,password, name, age, gender, my_num myNum,
+		email, phone_num phoneNum, address
+		from users
+	</select>
+	
+	<insert id="addUser" parameterType="user">
+		insert into users values(
+		#{userId}, #{password}, #{name}, #{age}, #{gender}, #{myNum},
+		#{email}, #{phoneNum}, #{address}
+		)
+	</insert>
+	
+	<update id="updateUser" parameterType="user">
+		update users set
+		user_id=#{userId}, password=#{password}, name=#{name},age=#{age},
+		gender=#{gender},my_num=#{myNum},email=#{email},phone_num=#{phoneNum},
+		address=#{address}
+		where user_id=#{userId}
+	</update>
+	
+	<delete id="delUser" parameterType="user">
+		delete users where user_id = #{userId}
+	</delete>
 </mapper>

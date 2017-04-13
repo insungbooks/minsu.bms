@@ -29,7 +29,12 @@
 	}else { session.setAttribute("login", id);// 성공시 세션값 저장하고 메인페이지로 이동
 		//StringBuffer back = (StringBuffer)session.getAttribute("back");
 		//back.toString();
-		response.sendRedirect("../../main.jsp");
+	response.sendRedirect("../../main.jsp");
 	}
 %>
-		
+<%-- <script>
+	history.go(-2);
+</script>
+<%
+	}
+%> --%>

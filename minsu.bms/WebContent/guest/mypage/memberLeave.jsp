@@ -85,7 +85,7 @@ ul {
     </nav>
 				</div>
 				<div class="col-md-10">
-				<form action="../../shop/system/leaveSuccess.jsp">
+				<form action="../../shop/system/leaveSuccessProc.jsp">
 					<div>
 						<h3>회원을 탈퇴합니다.</h3>
 						<hr>

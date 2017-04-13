@@ -331,7 +331,7 @@ footer { /*바닥글*/
 		LoginDao loginDao = new LoginDaoImpl(loginMapper);
 		SignUp signUp = new SignUpImpl(loginDao);
 		User user=signUp.findUser(id);
-	%>					
+%>					
 				</ul>
 			</div>
 		</nav>
@@ -441,15 +441,13 @@ footer { /*바닥글*/
             <li><a href="../../shop/system/idCheck1.html"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 나의 상담</strong></li>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
             <li ><a href="customCenter2.html"> 나의 상담 내역</a></li>
-=======
+
             <li ><a href="../customerCenter/queryListProc.jsp"> 나의 상담 내역</a></li>
->>>>>>> branch 'master' of https://github.com/insungbooks/minsu.bms.git
-=======
+
             <li ><a href="../customerCenter/queryListProc.jsp"> 나의 상담 내역</a></li>
->>>>>>> branch 'master' of https://github.com/insungbooks/minsu.bms.git
+
         </ul>
     </nav>
 				</div>

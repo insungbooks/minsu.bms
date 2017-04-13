@@ -82,8 +82,9 @@
 		<div class="col-md-10">
 			<h2>나의 상담 내역</h2>
 			<table class="table table-hover">
+			<form><button type="submit" formaction="query.jsp" class="btn btn-md" style="float:right;">문의하기</button></form>
 				<thead>
-
+					
 					<tr>
 						<th>번호</th>
 						<th>분류</th>

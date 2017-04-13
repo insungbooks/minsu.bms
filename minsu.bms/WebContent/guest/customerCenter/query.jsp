@@ -111,7 +111,7 @@
 		<div class="col-md-8">
 			<div class="row">
 			<div class="form-group row">
-				<h2>1대1 문의하기</h2>
+				<h2>1:1 문의하기</h2>
 				<hr>
 			</div>
 		
@@ -119,7 +119,7 @@
 			<div class="form-group row">
 				<label class="control-label col-md-2">분 류 </label>
 				<div class="col-md-2">
-					<select class="form-control" id="sel1" name="separation" required>
+					<select class="form-control" id="sel1" name="separation" >
 						<option value="구매">구매</option>
 						<option value="환불">환불</option>
 						<option value="배송">배송</option>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="minsu.bms.refund.dao.mapper.RefundMapper">
+	<select id="refundList" resultType="refund">
+		select refund_num refundNum, refund_now refundNow
+		from refund_state
+	</select>
+	
+	<select id="getRefund" parameterType="int" resultType="refund">
+		select refund_num refundNum, refund_now refundNow
+		from refund_state
+		where refund_num = #{refundNum}
+	</select>
+	
+	<delete id="delRefund" parameterType="int">
+		delete refund_state where refund_num = #{refundNum}
+	</delete>
+	
+	<insert id="addRefund" parameterType="refund">
+		insert into refund_state values (
+		#{refundNum}, #{refundNow})
+	</insert>
+	
+	<update id="updateRefund" parameterType="refund">
+		update refund_state set
+		refund_now=#{refundNow}
+		where refund_num=#{refundNum}
+	</update>
+</mapper>

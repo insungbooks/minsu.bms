@@ -146,6 +146,7 @@
     </div>
     <br>
     <br>
+    <jsp:include page="../../footer.html"/>
     </div>
   <div id="review" class="tab-pane fade">
   <h3>리뷰작성</h3><br>
@@ -164,7 +165,7 @@
 			<strong>평점:</strong> <input type="number" min="1" max= "5" readonly value = "5" style = "width:30px"/>점<br><br>
 			<textarea name="comments" readonly cols="100" rows="3">최고의 작품입니다 꼭 보세요</textarea>	  
 		<br><br>
-   
+   <jsp:include page="../../footer.html"/>
   </div>
   <div id="swapRefund" class="tab-pane fade">
     <h3>교환/환불안내</h3>
@@ -197,16 +198,12 @@
     </table>
     <br>
     <br>
+    <jsp:include page="../../footer.html"/>
   </div>
 </div>	
 </div>
 </div>
 </article>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<br><br><br><br><br><br><br><br><br>
 
-<!-- //구매화면 -->
-	<jsp:include page="../../footer.html"/>
 </body>
 </html>

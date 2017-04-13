@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+<mapper namespace="minsu.bms.delivery.dao.mapper.DeliveryMapper">
+	<select id="deliveryList" resultType="delivery">
+		select delivery_num deliveryNum, delivery_now deliveryNow
+		from delivery_state
+	</select>
+	
+	<select id="getDelivery" parameterType="int" resultType="delivery">
+		select delivery_num deliveryNum, delivery_now deliveryNow
+		from delivery_state
+		where delivery_num = #{deliveryNum}
+	</select>
+	
+	<delete id="delDelivery" parameterType="int">
+		delete delivery_state where delivery_num = #{deliveryNum}
+	</delete>
+	
+	<insert id="addDelivery" parameterType="delivery">
+		insert into delivery_state values (
+		#{deliveryNum}, #{deliveryNow})
+	</insert>
+	
+	<update id="updateDelivery" parameterType="delivery">
+		update delivery_state set
+		delivery_now=#{deliveryNow}
+		where delivery_num=#{deliveryNum}
+	</update>
+</mapper>

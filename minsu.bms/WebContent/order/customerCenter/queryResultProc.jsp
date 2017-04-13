@@ -12,7 +12,7 @@
 <%
 QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
-QueryService queryService = new QueryServiceImpl(queryDao);
+QueryService  queryService = new QueryServiceImpl(queryDao);
 
 String answer= request.getParameter("answer");
 int boardNum= Integer.parseInt(request.getParameter("boardNum"));

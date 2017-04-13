@@ -17,6 +17,14 @@
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
+
+/* 정렬 옵션 버튼 */
+ .orderOption{
+ 	border : none;
+ 	background-color : #fff;
+ 	margin : 15px 0 15px 15px;
+ }
+
 .nav {
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
@@ -122,35 +130,17 @@ article { /*본문*/
 				<nav class="navbar">
 				<div class="row">
 					<div class="nav">
-						<div class="dropdown1">
-							<button class="dropbtn1">판매량순</button>
-							<button class="dropbtn1">상품평순</button>
-							<button class="dropbtn1">평점순</button>
-							<button class="dropbtn1">리뷰순</button>
-							<button class="dropbtn1">출간일순</button>
-							<button class="dropbtn1">저가격순</button>
-							<!-- 옵션선택/품절포함 박스는 왜 길게 나오지?? 고치려는데 잘 안되네 -->
-							<button class="dropbtn1">
-								옵션선택 <span class="glyphicon glyphicon glyphicon-chevron-down"></span>
-							</button>
-							<!-- 
-								 <div class="dropdown-content">
-									<a href="#">옵션1</a>
-									<a href="#">옵션2</a>
-									<a href="#">옵션3</a>
-									<a href="#">옵션4</a>
-								</div>
-								-->
-							<button class="dropbtn1">
-								품절포함 <span class="glyphicon glyphicon glyphicon-chevron-down"></span>
-							</button>
-							<!-- 
-								 <div class="dropdown-content">
-									<a href="#">포함</a>
-									<a href="#">미포함</a>
-								</div>
-								-->
-						</div>
+						<form>
+							<input type="text" name="searchOption" value="<%= searchOption %>" hidden/>
+							<input type="text" name="searchText" value="<%= searchText %>" hidden/>
+							<input type="text" name="pageNum" value="1" hidden/>
+							<button class="orderOption" value="sellCnt" formaction="searchResultProc.jsp">판매량순</button>
+							<button class="orderOption" value="grade" formaction="searchResultProc.jsp">평점순</button>
+							<button class="orderOption" value="reviewCnt" formaction="searchResultProc.jsp">리뷰순</button>
+							<button class="orderOption" value="publishDate" formaction="searchResultProc.jsp">출간일순</button>
+							<button class="orderOption" value="highPrice" formaction="searchResultProc.jsp">높은가격순</button>
+							<button class="orderOption" value="lowPrice" formaction="searchResultProc.jsp">낮은가격순</button>
+						</form>
 					</div>
 				</div>
 				</nav>
@@ -185,7 +175,7 @@ article { /*본문*/
 					if(currentNum==totalPageNum){
 						endDataNum=dataNum;
 					}else{
-						endDataNum=startNum*10;
+						endDataNum=currentNum*10;
 					}
 					for(int i=startDataNum; i<=endDataNum; i++){
 						SearchResult searchResult = searchResults.get(i-1);
@@ -193,7 +183,7 @@ article { /*본문*/
 			<div class="row">
 				<div class="col-md-2">
 					<div>
-						<a href="productInfo.jsp" class="thumbnail"> <img
+						<a href="productInfoProc.jsp?bookCode=<%= searchResult.getBookCode() %>" class="thumbnail"> <img
 							src="../../img/7.jpg">
 						</a>
 					</div>
@@ -206,7 +196,7 @@ article { /*본문*/
 						<a href="productInfo.jsp"><%= searchResult.getWriter() %></a>(지은이)|<a
 							href="productInfo.jsp"><%= searchResult.getCompany() %></a>|<%= searchResult.getPubliDate() %><br>
 						<%= searchResult.getBookPrice() %>원 →<%= searchResult.getBookPrice()*9/10 %>원(10%
-						할인), 마일리지 1,650점(5% 적립)<br> <br> 출고예상일 : 지금 주문하면 <b>3월
+						할인), 마일리지 <%= searchResult.getBookPrice()*9/10/20 %>점(5% 적립)<br> <br> 출고예상일 : 지금 주문하면 <b>3월
 							10일 출고</b>예상 (출고후 1~2일 이내 수령)
 					</p>
 				</div>
@@ -229,29 +219,77 @@ article { /*본문*/
 				<div class="col-sm-6">
 					<div class="text-center" id="searchPageNum">
 						<ul class="pagination pagination-sm" id="pageNum">
-							<li><a href="searchResult.jsp" rel="prev">«</a></li>
 							<%
-								for(int j=startNum; j<=endNum; j++){
-									if(j==currentNum){
+								if (totalPageNum > 10) {
 							%>
-										<li class="active"><a href="searchResultProc.jsp?searchOption=<%= searchOption %>&searchText=<%= searchText %>&pageNum=<%= j %>"><%= j %></a></li>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=1">&laquo;</a></li>
 							<%
-									}else{
+								if (currentNum > 10) {
 							%>
-										<li><a href="searchResultProc.jsp?searchOption=<%= searchOption %>&searchText=<%= searchText %>&pageNum=<%= j %>"><%= j %></a></li>
-							<%	
-									}	
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=currentNum / 10 * 10%>">&lsaquo;</a></li>
+							<%
+								} else {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=1">&lsaquo;</a></li>
+							<%
 								}
 							%>
-							<li><a href="#" rel="next">»</a></li>
+							<%
+								}
+							%>
+							<%
+								if (startNum != 0) {
+									for (int j = startNum; j <= endNum; j++) {
+										if (j == currentNum) {
+							%>
+							<li class="active"><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=j%>"><%=j%></a></li>
+							<%
+										} else {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=j%>"><%=j%></a></li>
+							<%
+										}
+									}
+								}
+							%>
+							<%
+								if (totalPageNum > 10) {
+									if (currentNum / 10 == totalPageNum / 10) {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=endNum%>">&rsaquo;</a></li>
+							<%
+								} else {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=currentNum / 10 * 10 + 11%>">&rsaquo;</a></li>
+							<%
+								}
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=endNum%>">&raquo;</a></li>
+							<%
+								}
+							%>
+							<%-- 
+							<%= currentNum %><br>
+							<%= startNum %><br>
+							<%= endNum %><br>
+							<%= dataNum %><br>
+							<%= totalPageNum %><br>
+							<%= startDataNum %><br>
+							<%= endDataNum %> <br>
 							
-							<%-- <%= currentNum %>
-							<%= startNum %>
-							<%= endNum %>
-							<%= dataNum %>
-							<%= totalPageNum %>
-							<%= startDataNum %>
-							<%= endDataNum %> --%>
+							<<	&laquo;<br>
+							>>	&raquo;<br>
+							<	&lsaquo;<br>
+							>	&rsaquo;<br>
+							 --%>
 
 						</ul>
 					</div>

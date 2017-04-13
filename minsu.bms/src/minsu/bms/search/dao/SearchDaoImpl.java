@@ -19,4 +19,11 @@ public class SearchDaoImpl implements SearchDao{
 	public List<SearchResult> searchBooks(String searchOption, String searchText){
 		return searchMapper.searchBooks(searchOption, searchText);
 	}
+	
+	//책 1권 가져오기
+	//Param : 도서 코드
+	//return : 책
+	public SearchResult getBook(String bookCode){
+		return searchMapper.getBook(bookCode);
+	}
 }

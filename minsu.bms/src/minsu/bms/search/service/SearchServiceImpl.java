@@ -19,4 +19,9 @@ public class SearchServiceImpl implements SearchService{
 	public List<SearchResult> listSearchResult(String searchOption, String searchText){
 		return searchDao.searchBooks(searchOption, searchText);
 	}
+	
+	//책 상세정보
+	public SearchResult bookInfo(String bookCode){
+		return searchDao.getBook(bookCode);
+	}
 }

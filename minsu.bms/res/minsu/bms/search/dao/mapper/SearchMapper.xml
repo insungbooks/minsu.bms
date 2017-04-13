@@ -3,16 +3,47 @@
 <mapper namespace="minsu.bms.search.dao.mapper.SearchMapper">
 	<select id="searchBooks" parameterType="string" resultType="searchResult">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
-			   company, publi_date publiDate, country, kind
+			   company, publi_date publiDate, country, kind, sales_num salesNum
 		from books
-		<if test="searchOption.equals('bookTitle')">
-			where book_name like '%'||#{searchText}||'%'
-		</if>
-		<if test="searchOption.equals('writer')">
-			where writer like '%'||#{searchText}||'%'
-		</if>
-		<if test="searchOption.equals('company')">
-			where company like '%'||#{searchText}||'%'
-		</if>
+		<where>
+			<if test="searchOption.equals('bookTitle')">
+				book_name like '%'||#{searchText}||'%'
+			</if>
+			<if test="searchOption.equals('writer')">
+				writer like '%'||#{searchText}||'%'
+			</if>
+			<if test="searchOption.equals('company')">
+				company like '%'||#{searchText}||'%'
+			</if>
+		</where>
+<!-- 		
+		<choose>
+			<when test="orderOption.equals('sellCnt')">
+				order by 
+			</when>
+			<when test="orderOption.equals('grade')">
+				order by 
+			</when>
+			<when test="orderOption.equals('reviewCnt')">
+				order by 
+			</when>
+			<when test="orderOption.equals('publishDate')">
+				order by 
+			</when>
+			<when test="orderOption.equals('highPrice')">
+				order by 
+			</when>
+			<when test="orderOption.equals('lowPrice')">
+				order by 
+			</when>
+		</choose>
+		 -->
+	</select>
+	
+	<select id="getBook" parameterType="string" resultType="searchResult">
+		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
+			   company, publi_date publiDate, country, kind, sales_num salesNum
+		from books
+		where book_code = #{bookCode}
 	</select>
 </mapper>

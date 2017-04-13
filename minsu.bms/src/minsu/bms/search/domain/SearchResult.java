@@ -9,11 +9,13 @@ public class SearchResult {
 	private String  publiDate;	//출판일
 	private String  country;	//출판 국가(국내/해외)
 	private String  kind;		//분류
+	private int		salesNum;	//판매량
+	//private int		reviewCnt;	//상품평순
 	
 	public SearchResult() {}
 	
 	public SearchResult(String bookCode, String bookName, int bookPrice, String writer, String company,
-				String publiDate, String country, String kind) {
+				String publiDate, String country, String kind, int salesNum) {
 		this.bookCode = bookCode;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
@@ -22,6 +24,7 @@ public class SearchResult {
 		this.publiDate = publiDate;
 		this.country = country;
 		this.kind = kind;
+		this.salesNum = salesNum;
 	}
 
 	public String getBookCode() {
@@ -87,4 +90,20 @@ public class SearchResult {
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
+
+	public int getSalesNum() {
+		return salesNum;
+	}
+
+	public void setSalesNum(int salesNum) {
+		this.salesNum = salesNum;
+	}
+	
+/*	public int getReviewCnt() {
+		return reviewCnt;
+	}
+
+	public void setReviewCnt(int reviewCnt) {
+		this.reviewCnt = reviewCnt;
+	}*/
 }

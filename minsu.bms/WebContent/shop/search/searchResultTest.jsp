@@ -225,19 +225,17 @@ article { /*본문*/
 							<li><a
 								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=1">&laquo;</a></li>
 							<%
-								if (currentNum > 10) {
+									if (currentNum > 10) {
 							%>
 							<li><a
 								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=currentNum / 10 * 10%>">&lsaquo;</a></li>
 							<%
-								} else {
+									} else {
 							%>
 							<li><a
 								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=1">&lsaquo;</a></li>
 							<%
-								}
-							%>
-							<%
+									}
 								}
 							%>
 							<%
@@ -264,12 +262,12 @@ article { /*본문*/
 							<li><a
 								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=endNum%>">&rsaquo;</a></li>
 							<%
-								} else {
+									} else {
 							%>
 							<li><a
 								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=currentNum / 10 * 10 + 11%>">&rsaquo;</a></li>
 							<%
-								}
+									}
 							%>
 							<li><a
 								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=endNum%>">&raquo;</a></li>

@@ -129,52 +129,155 @@
 				<div class="form-group">
 					<label class="col-md-2" for="bookName">도서 제목 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="bookName" value="<%= book.getBookName() %>" placeholder="도서 제목을 입력하세요.">
+						<input type="text" class="form-control" name="bookName" value="<%= book.getBookName() %>" placeholder="도서 제목을 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="author">저자 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="writer" value="<%= book.getWriter() %>" placeholder="저자를 입력하세요.">
+						<input type="text" class="form-control" name="writer" value="<%= book.getWriter() %>" placeholder="저자를 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="publisher">출판사 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="company" value="<%= book.getCompany() %>" placeholder="출판사를 입력하세요.">
+						<input type="text" class="form-control" name="company" value="<%= book.getCompany() %>" placeholder="출판사를 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="publicationDate">출간일 :</label>
 					<div class="col-md-10">
-						<input type="date" class="form-control" name="publiDate" value="<%= book.getPubliDate() %>" placeholder="출간일을 입력하세요.">
+						<input type="date" class="form-control" name="publiDate" value="<%= book.getPubliDate() %>" placeholder="출간일을 입력하세요." required>
 					</div>
 				</div>
 							
 				<div class="form-group">
 					<label class="col-md-2" for="listPrice">판매가 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="bookPrice" value="<%= book.getBookPrice() %>" placeholder="판매가를 입력하세요.">
+						<input type="text" class="form-control" name="bookPrice" value="<%= book.getBookPrice() %>" placeholder="판매가를 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="inventory">재고 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="inventory" value="<%= book.getInventory() %>" placeholder="재고를 입력하세요.">
+						<input type="text" class="form-control" name="inventory" value="<%= book.getInventory() %>" placeholder="재고를 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<div class="col-md-10">
-						<input type="hidden" class="form-control" name="salesNum" value="<%= book.getSalesNum() %>" placeholder="판매수량을 입력하세요.">
+						<input type="hidden" class="form-control" name="salesNum" value="<%= book.getSalesNum() %>" placeholder="판매수량을 입력하세요." required>
 					</div>
 				</div>
-				
-			<button type="submit" formaction="addBookProc.jsp" style="float:right;">수정</button>
+			<br><br>
+			</div>
+			<div class="row">
+				<h3>책 소개</h3>
+				<br>
+				<div class="form-group">
+					<label class="col-md-2" for="introduceContent">소개 내용 :</label>
+					<div class="col-md-9">
+						<textarea class="form-control" rows="10" id="introduceContent" name="bookIntro" placeholder="내용을 입력하세요." required><%= book.getBookIntro() %></textarea>
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 저자 소개 -->
+			<div class="row">
+				<h3>저자 소개</h3>
+				<br>
+				<div class="col-md-9">
+					<textarea class="form-control" rows="10" id="introduceContent" name="writerIntro" placeholder="내용을 입력하세요." required><%= book.getWriterIntro() %></textarea>
+				</div>
+				<div class="com-md-1">
+					<button type="button" class="btn btn-default btn-sm">
+						<span class="glyphicon glyphicon-plus"></span>
+					</button>
+				</div>
+			</div>
+			
+			<!-- 목차 -->
+			<div class="row">
+				<h3>목차</h3>
+				<br>
+				<div class="form-group">
+					<label class="col-md-2" for="pages">큰 목차 :</label>
+					<div class="col-md-6">
+						<input type="text" class="col-md-8 form-control" name = "contents1" value="<%=book.getContents1()%>" placeholder="목차를 입력하세요." required>
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+				</div>
+				<br>
+				<br>
+				<div class="form-group">
+					<label class="col-md-2">작은 목차 :</label>
+					<div class="col-md-6">
+						<input type="text" class="col-md-8 form-control" name = "contents2" value="<%=book.getContents2()%>" placeholder="목차를 입력하세요." required>
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="col-md-2"></label>
+					<div class="col-md-6">
+						<input type="text" class="col-md-8 form-control" name = "contents3" value="<%=book.getContents3()%>" placeholder="목차를 입력하세요." required>
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="col-md-2"></label>
+					<div class="col-md-6">
+						<input type="text" class="col-md-8 form-control" name = "contents4" value="<%=book.getContents4()%>" placeholder="목차를 입력하세요." required>
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- 출판사 서평 -->
+			<div class="row">
+				<h3>출판사 서평</h3>
+				<br>
+				<div class="form-group">
+					<div class="col-md-11">
+						<textarea class="form-control" rows="5" name = "companyEval" placeholder="내용을 입력하세요." required><%= book.getCompanyEval() %></textarea>
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="form-group">
+				<div class="col-sm-offset-9 col-sm-3">
+				<button type="submit" formaction="addBookProc.jsp" style="float:right;">책수정</button>
 			</form>
 <%
 	}else {
@@ -199,83 +302,66 @@
 				<div class="form-group">
 					<label class="col-md-2" for="bookCode">도서 코드 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="bookCode" placeholder="도서 코드를 입력하세요.">
+						<input type="text" class="form-control" name="bookCode" placeholder="도서 코드를 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="bookName">도서 제목 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="bookName" placeholder="도서 제목을 입력하세요.">
+						<input type="text" class="form-control" name="bookName" placeholder="도서 제목을 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="author">저자 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="writer" placeholder="저자를 입력하세요.">
+						<input type="text" class="form-control" name="writer" placeholder="저자를 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="publisher">출판사 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="company" placeholder="출판사를 입력하세요.">
+						<input type="text" class="form-control" name="company" placeholder="출판사를 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="publicationDate">출간일 :</label>
 					<div class="col-md-10">
-						<input type="date" class="form-control" name="publiDate" placeholder="출간일을 입력하세요.">
+						<input type="date" class="form-control" name="publiDate" placeholder="출간일을 입력하세요." required>
 					</div>
 				</div>
 							
 				<div class="form-group">
 					<label class="col-md-2" for="listPrice">판매가 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="bookPrice" placeholder="판매가를 입력하세요.">
+						<input type="text" class="form-control" name="bookPrice" placeholder="판매가를 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<label class="col-md-2" for="inventory">재고 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="inventory" placeholder="재고를 입력하세요.">
+						<input type="text" class="form-control" name="inventory" placeholder="재고를 입력하세요." required>
 					</div>
 				</div>
 				
 				<div class="form-group">
 					<div class="col-md-10">
-						<input type="hidden" class="form-control" name="salesNum" value="0" placeholder="판매수량을 입력하세요.">
+						<input type="hidden" class="form-control" name="salesNum" value="0" placeholder="판매수량을 입력하세요." required>
 					</div>
 				</div>
-				
-			<button type="submit" formaction="addBookProc.jsp" style="float:right;">책추가</button>
-			</form>
-<%
-	}
-%>
 			<br><br>
 			</div>
 			<div class="row">
 				<h3>책 소개</h3>
 				<br>
 				<div class="form-group">
-					<label class="col-md-2" for="introduceTitle">소개 제목 :</label>
-					<div class="col-md-9">
-						<input type="text" class="form-control" id="introduceTitle" placeholder="소개 제목을 입력하세요.">
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-				<div class="form-group">
 					<label class="col-md-2" for="introduceContent">소개 내용 :</label>
 					<div class="col-md-9">
-						<textarea class="form-control" rows="10" id="introduceContent" placeholder="내용을 입력하세요."></textarea>
+						<textarea class="form-control" rows="10" id="introduceContent" name="bookIntro" placeholder="내용을 입력하세요." required></textarea>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -289,53 +375,8 @@
 			<div class="row">
 				<h3>저자 소개</h3>
 				<br>
-				<div class="form-group">
-					<label class="col-md-2">저자가 속한 분야 :</label>
-					<div class="col-md-9">
-						<div class="col-md-3">
-							<select class="form-control" id="sel1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-							</select>
-						</div>
-						<div class="col-md-3">
-							<select class="form-control" id="sel1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-							</select>
-						</div>
-						<div class="col-md-3">
-							<select class="form-control" id="sel1">
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-							</select>
-						</div>
-						<div class="col-md-1">
-							<button type="button" class="btn btn-default btn-sm">
-								<span class="glyphicon glyphicon-plus"></span>
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2">
-					<div>
-						<a href="#" class="thumbnail" >
-							<img src="http://placehold.it/200x300">
-						</a>
-					</div>
-					<div>
-						<input type="button" value="이미지 등록">
-<!-- 이미지등록버튼 중앙 등록 하기 -->
-					</div>
-				</div>
 				<div class="col-md-9">
-					<textarea class="form-control" rows="10" id="introduceContent" placeholder="내용을 입력하세요."></textarea>
+					<textarea class="form-control" rows="10" id="introduceContent" name="writerIntro" placeholder="내용을 입력하세요." required></textarea>
 				</div>
 				<div class="com-md-1">
 					<button type="button" class="btn btn-default btn-sm">
@@ -351,7 +392,7 @@
 				<div class="form-group">
 					<label class="col-md-2" for="pages">큰 목차 :</label>
 					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" placeholder="목차를 입력하세요.">
+						<input type="text" class="col-md-8 form-control" name = "contents1" placeholder="목차를 입력하세요." required> 
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -359,10 +400,12 @@
 						</button>
 					</div>
 				</div>
+				<br>
+				<br>
 				<div class="form-group">
-					<label class="col-md-2"></label>
-					<div class="col-md-5 col-md-offset-1">
-						<input type="text" class="col-md-8 form-control" placeholder="목차를 입력하세요.">
+					<label class="col-md-2">작은 목차 :</label>
+					<div class="col-md-6">
+						<input type="text" class="col-md-8 form-control" name = "contents2" placeholder="목차를 입력하세요." required>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -370,10 +413,11 @@
 						</button>
 					</div>
 				</div>
+				<br>
 				<div class="form-group">
 					<label class="col-md-2"></label>
-					<div class="col-md-5 col-md-offset-1">
-						<input type="text" class="col-md-8 form-control" placeholder="목차를 입력하세요.">
+					<div class="col-md-6">
+						<input type="text" class="col-md-8 form-control" name = "contents3" placeholder="목차를 입력하세요." required>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -381,10 +425,11 @@
 						</button>
 					</div>
 				</div>
+				<br>
 				<div class="form-group">
 					<label class="col-md-2"></label>
-					<div class="col-md-5 col-md-offset-1">
-						<input type="text" class="col-md-8 form-control" placeholder="목차를 입력하세요.">
+					<div class="col-md-6">
+						<input type="text" class="col-md-8 form-control" name = "contents4" placeholder="목차를 입력하세요." required>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -400,7 +445,7 @@
 				<br>
 				<div class="form-group">
 					<div class="col-md-11">
-						<textarea class="form-control" rows="10" placeholder="내용을 입력하세요."></textarea>
+						<textarea class="form-control" rows="5" name = "companyEval" placeholder="내용을 입력하세요." required></textarea>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -409,16 +454,20 @@
 					</div>
 				</div>
 			</div>
+			<br>
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
-					<button type="submit" class="btn btn-default">확인</button>
-					<button type="submit" class="btn btn-default">취소</button>
+				<button type="submit" formaction="addBookProc.jsp" style="float:right;">책추가</button>
+				</form>
+<%
+	}
+%>
 				</div>
 			</div>
-		</form>
 	</div>
 </div>
 </article>
+<br>
 <jsp:include page="../../footer.html"/>
 </body>
 </html>

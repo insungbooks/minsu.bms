@@ -17,7 +17,7 @@
 <style>
 .table {
 	text-align: center;
-}
+} 
 
 /*여기까지*/
 /*사이드바*/
@@ -99,7 +99,7 @@
 									<td><strong>출판사</strong></td>
 									<td><strong>출간일</strong></td>
 									<td><strong>정가</strong></td>
-									<!-- <td><strong>재고수량</strong> -->
+									<td><strong>재고수량</strong>
 									<td><strong>정보수정</strong></td>
 									<td><strong>삭제</strong></td>
 								</tr>
@@ -121,10 +121,9 @@
 									<td><%=book.getCompany()%></td>
 									<td><%=book.getPubliDate()%></td>
 									<td><%=book.getBookPrice()%></td>
-									<%-- <td><input type="number" name = "inventory" value="<%=book.getInventory()%>"/><button type="submit" formaction="modifyBookProc.jsp">수정</button></td> --%>
+									<td><input type="number" name = "inventory" value="<%=book.getInventory()%>" required style="width:50px;"/><button type="submit" formaction="inventoryModProc.jsp">수정</button></td>
 									<td><button type="submit" formaction="modifyBookProc.jsp">정보수정</button></td>
 									<td><button type="submit" formaction="deleteBookProc.jsp">삭제</button></td>
-									
 								</tr>
 								</form>
 								<%
@@ -160,7 +159,6 @@
 			</div>
 		</div>
 	</article>
-
 	<!-- //구매화면 -->
 	<jsp:include page="../../footer.html" />
 </body>

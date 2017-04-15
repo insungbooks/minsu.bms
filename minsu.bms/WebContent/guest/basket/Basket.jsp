@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.basket.domain.Basket"%>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -78,7 +80,7 @@ th, td {
         <ul class="nav">
         	<li class="nav-header"><strong> 주문관리</strong></li>
             <li ><a href="../mypage/orderList.jsp"> 주문조회</a></li>
-            <li class="active"><a href="Basket.jsp"> 장바구니</a></li>
+            <li class="active"><a href="BasketProc.jsp"> 장바구니</a></li>
             <li><a href="../mypage/refundDetail.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
@@ -91,7 +93,6 @@ th, td {
     </nav>
 				</div>
 				<div class="col-md-10">
-					
 						<h2 style="font-weight: bold;">장바구니</h2>
 						<p>주문하실 상품을 선택하세요</p>
 						<p>
@@ -100,8 +101,8 @@ th, td {
 							<thead>
 								<tr>
 									<th><input type="checkbox" name="pre" value="grammer">전체선택</th>
-									<th>상품정보</th>
-									<th>판매가</th>
+									<th>책이름</th>
+									<th>가격</th>
 									<th>수량</th>
 									<th>합계</th>
 									<th>도착예정일</th>
@@ -109,27 +110,36 @@ th, td {
 								</tr>
 							</thead>
 							<tbody>
+<%
+					if(request.getAttribute("listBasket")!=null){
+						List<Basket> listBasket=(List<Basket>)request.getAttribute("listBasket");
+						for (Basket book : listBasket) {		
+%>
 								<tr>
 									<td><input type="checkbox" name="pre" value="grammer"
 										style="margin: 35px;"></td>
 									<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
-											class="img-responsive1"> [도서]아무도아닌
+											class="img-responsive1"> <%=book.getBookName() %>
 									</a></td>
-									<td style="padding: 35px 15px;">10,800원</td>
+									<td style="padding: 35px 15px;"><%=book.getBookPrice() %></td>
 									<td><input type="number" min="0"
 										style="display: block; width: 50px; float: center; margin: 0px 60px;" />
 										<button type="button" class="btn btn-default btn-block"
 											style="display: block; width: 50px; float: center; margin: 0px 60px;">변경</button>
 									</td>
-									<td style="padding: 35px 15px;">10,800원</td>
+									<td style="padding: 35px 15px;"></td>
 									<td style="padding: 35px 15px;">2017년3월19일 도착예정</td>
 									<td class="a">
 										<a href="../purchase/payment.jsp"><button type="button" class="btn btn-default btn-block">바로구매</button></a>
-										<a href="Basket1.jsp"><button type="button" class="btn btn-default btn-block">삭제</button></a>
+									<form>
+									<input type="hidden" name="bookCode" value="<%= book.getBookCode() %>"/>
+									<button type="submit" class="btn btn-default btn-block" formaction="delBasketProc.jsp">삭제</button>
+									</form>
 									</td>
 
-								</tr>
-								
+								</tr>	
+<%}
+} %>							
 							</tbody>
 						</table>
 						<hr class="star-primary">
@@ -138,7 +148,7 @@ th, td {
 							<a href="../purchase/payment.jsp"><button type="button" class="btn btn-default ">회원 구매</button></a>
 						</nav>
 				<br><br>
-				
+
 					<div class="table">
 						<table class="table">
 							<thead>
@@ -149,11 +159,24 @@ th, td {
 									<th>적립예정</th>
 								</tr>
 							</thead>
+<%
+	int sum=0;
+	int delivery = 2500;
+	if(request.getAttribute("listBasket")!=null){
+	List<Basket> listBasket=(List<Basket>)request.getAttribute("listBasket");
+	for (Basket book : listBasket) {	
+		sum += book.getBookPrice();
+		if(sum >29999){
+			delivery = 0;
+		}else delivery = 2500;
+	}
+	}
+%>
 							<tbody>
 								<tr>
-									<td>22,500원</td>
-									<td>2500원</td>
-									<td>25,000원</td>
+									<td><%= sum %></td>
+									<td><%= delivery %></td>
+									<td><%= sum %></td>
 									<td>2500원</td>
 								</tr>
 							</tbody>

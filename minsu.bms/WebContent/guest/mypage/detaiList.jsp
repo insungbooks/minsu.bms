@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.purchase.domain.Purchase"%>
+<%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ page import="minsu.bms.delivery.domain.Delivery"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -27,6 +30,12 @@ th, td {
 <body>
 <jsp:include page="../../header.jsp"/>
 <article>
+<form>
+<%					
+Delivery delivery=(Delivery)request.getAttribute("delivery");
+Book book=(Book)request.getAttribute("book");
+Purchase purchase=(Purchase)request.getAttribute("purchase");
+					%>	
 		<div class="container">
 		<h2 style="font-weight: bold;">상세 주문내역</h2>
 				<hr>
@@ -45,29 +54,19 @@ th, td {
 					</thead>
 					<tbody>
 						<tr>
-							<td style="padding: 35px;">245704</td>
+							<td style="padding: 35px;"><%=purchase.getOrderNum() %></td>
 							<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
-									class="img-responsive1"> [도서]아무도아닌
+									class="img-responsive1"> [<%=book.getKind() %>]<%=book.getBookName() %>
 							</a></td>
-							<td style="padding: 35px;">10,800원</td>
-							<td style="padding: 35px;">1</td>
-							<td><a href="shipment.jsp"><button type="button"
-										class="btn btn-default btn-block">배송조회</button></a></td>
-							<td><a href="../purchase/purchasingCancel.jsp"><button
-										type="button" class="btn btn-default btn-block">환불</button></a></td>
-
-						</tr>
-						<tr>
-							<td style="padding: 35px;">245705</td>
-							<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/oneDictionary.jpg"
-									class="img-responsive1"> [도서]1분상식사전
-							</a></td>
-							<td style="padding: 35px;">11,700원</td>
-							<td style="padding: 35px;">1</td>
-							<td><a href="shipment.jsp"><button type="button"
-										class="btn btn-default btn-block">배송조회</button></a></td>
-							<td><a href="../purchase/purchasingCancel.jsp"><button
-										type="button" class="btn btn-default btn-block">환불</button></a></td>
+							<td style="padding: 35px;"><%=book.getBookPrice() %>원</td>
+							<td style="padding: 35px;"><%=purchase.getOrderCount() %></td>
+							<td>
+							<input type="hidden" name="deliveryNum" value="<%=purchase.getDeliveryNum() %>"> <button type="submit" formaction="shipmentProc.jsp"
+							
+										class="btn btn-default btn-block">배송조회</button></td>
+							<td><input type="hidden" name="orderNum" value="<%=purchase.getOrderNum() %>">
+							<button type="submit" formaction="../purchase/purchasingCancelProc.jsp" class="btn btn-default btn-block">환불</button></td>
+						
 						</tr>
 					</tbody>
 				</table>
@@ -88,44 +87,18 @@ th, td {
 					</thead>
 					<tbody>
 						<tr>
-							<td>무통장입금</td>
-							<td>2016.04.05</td>
+							<td><%=purchase.getPayOption() %></td>
+							<td><%=purchase.getOrderDate() %></td>
 							<td>2000원</td>
 							<td>5000원</td>
 							<th>3000원</th>
-							<td>25000원</td>
+							<td><%=purchase.getPayAmount() %>원</td>
 						</tr>
 					</tbody>
 				</table>
 				</div>
-				<div class="row">
-				<form action="#">
-				<table class="table table-hover">
 				
-					<caption>배송정보</caption>
-					<tr>
-						<th style="float:center;">수취인</th>
-						<td><input type="text" value="이소연" style="width:200px float:left;"/></td>
-					</tr>
-					<tr>
-						<th>연락처</th>
-						
-						<td>
-						<input type="tel" value="010" style="width:50px;"> -<input type="tel" value="1234" style="width:50px;"/>-<input type="tel" value="5678" style="width:50px"/></td>
-					</tr>
-					<tr>
-						<th>배송지</th>
-						<td><input type="text" value="경기도 안산시 상록구 상록길 46-45" style="width:600px"/></td>
-					</tr>
-					<tr>
-						<td colspan = "2">
-						<button type="submit" style="float:right;">배송정보수정</button>
-						<br>
-						</td>
-					</tr>
-				</table>
-				</form>
-				</div>
+				
 				<div class="row">
 				<div style="padding-bottom: 16px;">
 					<button type="button" class="btn" data-toggle="collapse"
@@ -155,6 +128,8 @@ th, td {
 				</div>
 			</div>
 		</div>
+		
+		</form>
 	</article>
 <jsp:include page="../../footer.html"/>
 

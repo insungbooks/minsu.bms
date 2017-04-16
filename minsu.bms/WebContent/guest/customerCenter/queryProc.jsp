@@ -26,7 +26,7 @@ query.setContent(content);//
 query.setTitle(title);//
 query.setSeparation(separation);//
 query.setUserId(id);//
-query.setReportingDate("2016-12-12");
+//query.setReportingDate("2016-12-12");
 
 queryService.addQuery(query);
 }

@@ -15,8 +15,8 @@ private RefundDao refundDao;
 		return refundDao.refundList();
 	}
 	
-	public Refund findRefund(int refundNum){
-		return refundDao.getRefund(refundNum);
+	public Refund findRefund(int orderNum){
+		return refundDao.getRefund(orderNum);
 	}
 	
 	public boolean addRefund(Refund refund){

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="minsu.bms.purchase.domain.Purchase"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -125,19 +127,37 @@
 						<th>상품정보</th>
 						<th>수량</th>
 						<th>주문상태</th>
+						<th>상세보기</th>
 					</tr>
 				</thead>
 				<tbody>
+				<% if(request.getAttribute("purchase")!=null){
+					List<Purchase> purchases = (List<Purchase>)request.getAttribute("purchase");
+				for (Purchase purchase : purchases) {
+    	%>
 					<tr>
-						<td><a href="detaiList.jsp">K00001</a></td>
-						<td>20000원</td>
-						<td>종이여자</td>
-						<td>1</td>
-						<td>배송중</td>
+						<td><%=purchase.getOrderNum() %></td>
+						<td><%=purchase.getPayAmount() %>원</td>
+						<td><%=purchase.getBookCode() %></td>
+						<td><%=purchase.getOrderCount() %></td>
+						<td><%=purchase.getDeliveryNum() %></td>
+						<th>
+						<form action="../mypage/detailListProc.jsp">
+						<input type="hidden" value="<%=purchase.getBookCode() %>" name="bookCode">
+						<input type="hidden" value="<%=purchase.getOrderNum() %>" name="orderNum">
+						<input type="hidden" value="<%=purchase.getDeliveryNum() %>" name="deliveryNum">
+						<button type="submit" class="btn btn-md" >상세보기</button>
+						</form>
+						</th>
 					</tr>
+						<%}
+				}
+				%>
 				</tbody>
 			</table>
 		</div>
+
+	
 	</div>
 	<div class="row">
 		<div class="col-md-2"></div>

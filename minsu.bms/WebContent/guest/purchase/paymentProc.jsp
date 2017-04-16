@@ -28,21 +28,13 @@
 	String bookNum=request.getParameter("bookNum");
 	Book bookInfo = bookService.findBook(bookCode);
 	
-	if(session.getAttribute("login")!=null){
+	//if(session.getAttribute("login")!=null){ 예외처리해야되!
 	String id=(String)session.getAttribute("login");
 	User user = loginService.findUser(id);
 	request.setAttribute("user",user);
-	}else{%>
-	<jsp:include page="../../shop/login/loginProc.jsp"/>
-	<% }
+	
 	request.setAttribute("bookInfo", bookInfo);
 	request.setAttribute("bookNum", bookNum);
-	//}else{
-		//String bookCode = request.getParameter("bookCode");
-		//String bookNum=request.getParameter("bookNum");
-		//바스켓 리스트 가져오기
-		
-	//}
 	
 %>
 <jsp:include page="payment.jsp"/>

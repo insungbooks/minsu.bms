@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.refund.domain.Refund"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -90,75 +92,42 @@
 					</nav>
 				</div>
 				<div class="col-md-10">
-				<h3 style="font-weight: bold;">취소/교환 내역보기</h3>
+				<h3 style="font-weight: bold;">환불 내역보기</h3>
 				<hr>
 					<table class="table">
 						<thead>
 							<tr>
-								<td><input type="checkbox"></td>
-								<td><strong>번호</strong></td>
-								<td><strong>주문상품</strong></td>
-								<td><strong>주문일시</strong></td>
-								<td><strong>결제금액</strong></td>
-								<td><strong>결제방법</strong></td>
-								<td><strong>상태</strong></td>
+								<td><strong>환불번호</strong></td>
+								<td><strong>상품</strong></td>
+								<td><strong>환불일시</strong></td>
+								<td><strong>환불금액</strong></td>
+								<td><strong>환불방법</strong></td>
+								<td><strong>환불사유</strong></td>
+								<td><strong>환불상태</strong></td>
 							</tr>
 						</thead>
 						<tbody>
+						<%if(request.getAttribute("refundList")!=null){
+							List<Refund> refundLists=(List<Refund>)request.getAttribute("refundList");
+							for(Refund refundList: refundLists){
+							%>
+						
 							<tr>
-								<td><input type="checkbox"></td>
-								<td>1</td>
-								<td>너의 이름은</td>
-								<td>08/31 14:30</td>
-								<td>21,000</td>
-								<td>카드</td>
-								<td>취소완료</td>
+								<td><%=refundList.getRefundNum()%></td>
+								<td><%=refundList.getBookName() %></td>
+								<td><%=refundList.getRefundDate() %></td>
+								<td><%=refundList.getRefundAmount() %></td>
+								<td><%=refundList.getCancelType() %></td>
+								<td><%=refundList.getRefundReason() %></td>
+								<td><%=refundList.getRefundNow() %></td>
 							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>2</td>
-								<td>센서티브</td>
-								<td>10/02 15:13</td>
-								<td>18,000</td>
-								<td>계좌이체</td>
-								<td>교환완료</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>3</td>
-								<td>한국사 모험</td>
-								<td>05/21 11:34</td>
-								<td>15,000</td>
-								<td>핸드폰</td>
-								<td>취소완료</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>4</td>
-								<td>열한 계단</td>
-								<td>08/08 07:51</td>
-								<td>12,500</td>
-								<td>카드</td>
-								<td>교환완료</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>5</td>
-								<td>스페셜 솔져</td>
-								<td>04/03 20:08</td>
-								<td>25,000</td>
-								<td>핸드폰</td>
-								<td>취소완료</td>
-							</tr>
-							<tr>
-								<td><input type="checkbox"></td>
-								<td>6</td>
-								<td>원피스</td>
-								<td>06/08 05:55</td>
-								<td>4,500</td>
-								<td>카드</td>
-								<td>교환완료</td>
-							</tr>
+							<from>
+							<input type="hidden" name="refundNum" value="<%=refundList.getRefundNum() %>">
+							<input type="hidden" name="orderNum" value="<%=refundList.getOrderNum() %>">
+							<jsp:include page="refundResultProc.jsp"/>
+							</from>
+							<%}} %>
+							
 						</tbody>
 					</table>
 				</div>

@@ -19,7 +19,7 @@
 	
 	<insert id="addDelivery" parameterType="delivery">
 		insert into delivery_state values (
-		#{deliveryNum}, #{deliveryNow}, #{phoneNum}, #{recipient}, #{sender}, #{address}, #{message})
+		deliverynum1_seq.nextval, #{deliveryNow}, #{phoneNum}, #{recipient}, #{sender}, #{address}, #{message,jdbcType=VARCHAR})
 	</insert>
 	
 	<update id="updateDelivery" parameterType="delivery">

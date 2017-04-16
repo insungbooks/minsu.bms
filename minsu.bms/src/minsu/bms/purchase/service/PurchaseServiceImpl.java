@@ -4,6 +4,7 @@ import java.util.List;
 
 import minsu.bms.purchase.dao.PurchaseDao;
 import minsu.bms.purchase.domain.Purchase;
+import minsu.bms.query.domain.Query;
 
 public class PurchaseServiceImpl implements PurchaseService{
 	private PurchaseDao purchaseDao;
@@ -13,6 +14,14 @@ public class PurchaseServiceImpl implements PurchaseService{
 	}
 	public List<Purchase> listPurchases(){
 		return purchaseDao.purchaseList();
+	}
+	public List<Purchase> findPurchaseList(int orderNum){
+		return purchaseDao.getPurchaseList(orderNum);
+	}
+	
+	public List<Purchase> findPurchaseId(String userId){
+		List<Purchase> purchase = (List<Purchase>)purchaseDao.getPurchaseId(userId);
+			return purchase;
 	}
 	
 	public Purchase findPurchase(int orderNum){
@@ -28,6 +37,9 @@ public class PurchaseServiceImpl implements PurchaseService{
 	
 	public boolean modifyPurchase(Purchase purchase){
 		return purchaseDao.updatePurchase(purchase)>0;
+	}
+	public boolean modifyRefund(Purchase purchase){
+		return purchaseDao.updateRefund(purchase)>0;
 	}
 	
 	public boolean deletePurchase(int orderNum){

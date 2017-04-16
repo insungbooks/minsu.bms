@@ -17,8 +17,8 @@ public class RefundDaoImpl implements RefundDao{
 	public List<Refund> refundList() {
 		return refundMapper.refundList();
 	}
-	public Refund getRefund(int refundNum) {
-		return refundMapper.getRefund(refundNum);
+	public Refund getRefund(int orderNum) {
+		return refundMapper.getRefund(orderNum);
 	}
 	public int addRefund(Refund refund){
 		return refundMapper.addRefund(refund);

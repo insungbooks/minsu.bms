@@ -28,7 +28,7 @@
 
 	<jsp:include page="../../header.jsp" />
 	<article>
-		<form action="../../guest/purchase/paymentProc.jsp">
+		<form>
 			<div class="container">
 				<div class="row">
 					<br> <br>
@@ -64,10 +64,10 @@
 				</div>
 				<hr>
 				<nav class="productInfo">
-					<a href="../../guest/basket/Basket.jsp"><button type="submit"
-							class="btn btn-md">장바구니넣기</button></a> <input type="hidden"
+					<button type="submit" formaction="#" class="btn btn-md">장바구니넣기</button>
+					<input type="hidden"
 						name="bookCode" value="<%=searchResult.getBookCode()%>" />
-					<button type="submit" class="btn btn-md">바로구매하기</button>
+					<button type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-md">바로구매하기</button>
 
 				</nav>
 			</div>

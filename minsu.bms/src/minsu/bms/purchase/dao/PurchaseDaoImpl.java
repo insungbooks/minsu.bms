@@ -4,6 +4,7 @@ import java.util.List;
 
 import minsu.bms.purchase.dao.mapper.PurchaseMapper;
 import minsu.bms.purchase.domain.Purchase;
+import minsu.bms.query.domain.Query;
 
 
 public class PurchaseDaoImpl implements PurchaseDao{
@@ -15,9 +16,15 @@ public class PurchaseDaoImpl implements PurchaseDao{
 	public PurchaseDaoImpl(PurchaseMapper purchaseMapper){
 		this.purchaseMapper = purchaseMapper;
 	}
+	public List<Purchase> getPurchaseId(String userId){
+		return purchaseMapper.getPurchaseId(userId);
+	}
 	
 	public List<Purchase> purchaseList() {
 		return purchaseMapper.purchaseList();
+	}
+	public List<Purchase> getPurchaseList(int orderNum){
+		return purchaseMapper.getPurchaseList(orderNum);
 	}
 	public Purchase getPurchase(int orderNum) {
 		return purchaseMapper.getPurchase(orderNum);
@@ -30,6 +37,9 @@ public class PurchaseDaoImpl implements PurchaseDao{
 	}
 	public int updatePurchase(Purchase purchase) {
 		return purchaseMapper.updatePurchase(purchase);
+	}
+	public int updateRefund(Purchase purchase) {
+		return purchaseMapper.updateRefund(purchase);
 	}
 	public int delPurchase(int orderNum) {
 		return purchaseMapper.delPurchase(orderNum);

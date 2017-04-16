@@ -6,7 +6,7 @@ import minsu.bms.refund.domain.Refund;
 
 public interface RefundService {
 	List<Refund> listRefunds();
-	Refund findRefund(int refundNum);
+	Refund findRefund(int orderNum);
 	boolean addRefund(Refund refund);
 	boolean modifyRefund(Refund refund);
 	boolean deleteRefund(int refundNum);

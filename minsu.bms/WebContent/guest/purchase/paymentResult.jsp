@@ -64,11 +64,15 @@
 	
 	purchaseService.addPurchase(purchase);
 	
+	Delivery delivery=new Delivery();
+	delivery.setDeliveryNow("배송전");
+	delivery.setAddress(address);
+	delivery.setMessage(message);
+	delivery.setPhoneNum(phoneNum);
+	delivery.setRecipient(recipient);
+	delivery.setSender(sender);
 	
-	List<Purchase> purchases = purchaseService.listPurchases();
-	request.setAttribute("purchase", purchases);
+	deliveryService.addDelivery(delivery);
 	
 	
-	
-	
-%><jsp:include page="../mypage/orderList.jsp"/>
+%><jsp:include page="../mypage/orderListProc.jsp"/>

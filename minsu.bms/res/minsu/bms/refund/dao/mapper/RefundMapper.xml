@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="minsu.bms.refund.dao.mapper.RefundMapper">
 	<select id="refundList" resultType="refund">
-		select refund_num refundNum, refund_now refundNow
+		select refund_num refundNum, refund_now refundNow, refund_reason refundReason, cancel_type cancelType, refund_date refundDate, refund_amount refundAmount, book_name bookName, order_num orderNum
 		from refund_state
 	</select>
 	
 	<select id="getRefund" parameterType="int" resultType="refund">
-		select refund_num refundNum, refund_now refundNow
+		select refund_num refundNum, refund_now refundNow, refund_reason refundReason, cancel_type cancelType, refund_date refundDate, refund_amount refundAmount, book_name bookName, order_num orderNum
 		from refund_state
-		where refund_num = #{refundNum}
+		where order_num = #{orderNum}
 	</select>
 	
 	<delete id="delRefund" parameterType="int">
@@ -18,7 +18,7 @@
 	
 	<insert id="addRefund" parameterType="refund">
 		insert into refund_state values (
-		#{refundNum}, #{refundNow})
+		refundnum_seq.nextval, '환불완료', #{refundReason}, #{cancelType}, sysdate, #{refundAmount}, #{bookName}, #{orderNum})
 	</insert>
 	
 	<update id="updateRefund" parameterType="refund">

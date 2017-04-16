@@ -121,11 +121,7 @@
 								<td><%=refundList.getRefundReason() %></td>
 								<td><%=refundList.getRefundNow() %></td>
 							</tr>
-							<from>
-							<input type="hidden" name="refundNum" value="<%=refundList.getRefundNum() %>">
-							<input type="hidden" name="orderNum" value="<%=refundList.getOrderNum() %>">
-							<jsp:include page="refundResultProc.jsp"/>
-							</from>
+							
 							<%}} %>
 							
 						</tbody>

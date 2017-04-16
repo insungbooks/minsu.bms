@@ -41,7 +41,7 @@
 	</update>
 	<update id="updateRefund" parameterType="purchase">
 		update orders set
-		#{refundNum}
+		refund_num=#{refundNum}
 		where order_num=#{orderNum}
 	</update>
 </mapper>

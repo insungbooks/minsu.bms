@@ -25,24 +25,22 @@
 	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
 	
 	int orderNum=(int)request.getAttribute("orderNum");
-
+	Purchase purchase = purchaseService.findPurchase(orderNum);
 	
-	if(request.getAttribute("refundList")!=null){
-		List<Refund> refundList=(List<Refund>)request.getAttribute("refundList");
+	
+	
+		List<Refund> refundList=(List<Refund>)refundService.listRefunds();
 		for(Refund refund : refundList){
-			if(refund.getOrderNum()==orderNum){
+			if(refund.getOrderNum()==purchase.getOrderNum()){
 				
-				Purchase purchase = purchaseService.findPurchase(orderNum);
 				purchase.setRefundNum(refund.getRefundNum());
 				purchaseService.modifyRefund(purchase);
 				
 			}
 		}
-	}
 	
-	
-	List<Refund> refundList=(List<Refund>)refundService.listRefunds();
-	request.setAttribute("refundList", refundList);
+	List<Refund> refund=(List<Refund>)refundService.listRefunds();
+	request.setAttribute("refundList", refund);
 	
 	
 	%>

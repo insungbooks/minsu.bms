@@ -18,6 +18,9 @@ public class PurchaseServiceImpl implements PurchaseService{
 	public Purchase findPurchase(int orderNum){
 		return purchaseDao.getPurchase(orderNum);
 	}
+	public Purchase findBook(String bookCode){
+		return purchaseDao.getBook(bookCode);
+	}
 	
 	public boolean addPurchase(Purchase purchase){
 		return purchaseDao.addPurchase(purchase)>0;

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.purchase.domain.Purchase"%>
+<%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ page import="minsu.bms.login.domain.User"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -63,7 +67,7 @@
 	padding: 20px
 }
 
-.card {
+.payType {
 	background: #FFF none repeat scroll 0% 0%;
 	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3);
 	margin-bottom: 30px;
@@ -118,7 +122,7 @@
 /* /결제확인 버튼 */
 
 /* 카드할인 설명 배경색 */
-.cardDc {
+.payTypeDc {
 	backgound-color: red;
 }
 /* /카드할인 설명 배경색 */
@@ -155,11 +159,27 @@ th, td {
 .payTable tr td {
 	float: left;
 }
-/*//장바구니스타일*/
+th{
+float: center;
+}
+/*
 </style>
 </head>
 <body>
 	<jsp:include page="../../header.jsp" />
+		<% String bookNum1;
+				if(request.getAttribute("bookInfo")!=null){
+					
+					Book book= (Book)request.getAttribute("bookInfo");
+					bookNum1= (String)request.getAttribute("bookNum");
+					int bookNum= Integer.parseInt(bookNum1);
+					if(request.getAttribute("user")!=null){
+						User user=(User)request.getAttribute("user");
+					
+					//for
+				%>
+<form action="paymentResult.jsp">
+<input type="hidden" name="bookCode" value="<%=book.getBookCode() %>"/>
 	<article>
 		<div class="container">
 			<!-- 주문상품목록 -->
@@ -168,34 +188,27 @@ th, td {
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th><input type="checkbox" name="pre" value="grammer">전체선택</th>
 						<th>상품정보</th>
 						<th>판매가</th>
-						<th style="width: 20px;">수량</th>
+						<th>수량</th>
 						<th>합계</th>
 						<th>도착예정일</th>
 					</tr>
 				</thead>
 				<tbody>
+				
 					<tr>
-						<td><input type="checkbox" name="pre" value="grammer"
-							style="margin: 35px;"></td>
 						<td><a href="../../shop/search/productInfo.jsp"> <img
 								src="../../img/nobody.jpg" class="img-responsive1">
-								[도서]아무도아닌
+								[<%=book.getKind()%>]<%=book.getBookName() %>
 						</a></td>
-						<td style="padding: 35px;">10,800원</td>
-						<td><input type="number" min="0"
+						<td style="padding: 35px;"><%= book.getBookPrice() %>원</td>
+						<td style="padding: 35px;"><input type="number" min="0" value="<%=bookNum %>" name="bookNum"
 							style="display: block; width: 50px; float: center; margin: 0px 60px;" />
-							<button type="button" class="btn btn-default btn-block"
-								style="display: block; width: 50px; float: center; margin: 0px 60px;">변경</button>
 						</td>
-						<td style="padding: 35px;">10,800원</td>
-						<td style="padding: 35px;">2017년3월19일 도착예정</td>
-
-
+						<td style="padding: 35px;"><%= book.getBookPrice() %>원</td>
+						<td style="padding: 35px;">2017년3월19일 도착예정</td><!-- 배송에서받아오기 -->
 					</tr>
-
 				</tbody>
 			</table>
 			<hr class="star-primary">
@@ -214,10 +227,10 @@ th, td {
 					</thead>
 					<tbody>
 						<tr>
-							<td>22,500원</td>
+							<td><%=book.getBookPrice() %>원</td>
 							<td>2500원</td>
-							<td>25,000원</td>
-							<td>2500원</td>
+							<td><%=book.getBookPrice()+2500 %>원</td><input type="hidden" name="bookPrice" value="<%=book.getBookPrice()+2500 %>"/>
+							<td><%= (book.getBookPrice()+2500)/10 %>원</td>
 						</tr>
 					</tbody>
 				</table>
@@ -231,154 +244,75 @@ th, td {
 			<h2 style="font-weight: bold;">02.배송지</h2>
 			<hr class="star-primary">
 			<table class="table table-bordered deliveryTable">
-				<!-- 주문자 정보 -->
-				<tr>
-
-
-				</tr>
-				<tr>
-
-				</tr>
-				<tr>
-
-				</tr>
-
-				<!-- 배송방법 -->
-				<tr>
-					<th class="col1">배송방법</th>
-					<td></td>
-					<td class="col3" colspan="3" style="float: left;">
-						<div>
-							<span style="float: left;"><input type="radio"
-								name="delivery" value="normal" checked>[국내]일반 택배</span> <span
-								style="float: left;"><input type="radio" name="delivery"
-								value="convenientStore">편의점 배송</span> <span
-								style="float: left;"><input type="radio" name="delivery"
-								value="overseas">해외 배송</span>
-						</div>
-					</td>
-					<th>주문자 정보</th>
-				</tr>
-
+				
 				<!-- 배송지 정보 -->
 				<tr>
-					<th class="col1" rowspan="3">배송지 정보</th>
+					<th class="col1" rowspan="2">배송지 정보</th>
 					<td class="col2">받으시는 분</td>
 					<td class="col3" style="float: left;"><input type="text"
-						style="width: 100px; float: left;"> <span
+						style="width: 100px; float: left;"name="sender"> <span
 						class="sub_text margin_left10"></span></td>
-					<td class="col4" rowspan="8"><span style="float: left;">보내는
-							분</span> <input style="float: right;" type="text" value="이인석"
-						style="width:110px;"> <span class="sub_text margin_left10"></span>
-						<br>
-					<br> <span style="float: left;"> 연락처 </span> <span
-						style="float: right;"> <select
-							style="height: 26px; width: 50px;">
-								<option value="010" selected>010</option>
-								<option value="011">011</option>
-								<option value="016">016</option>
-								<option value="017">017</option>
-								<option value="018">018</option>
-								<option value="019">019</option>
-						</select> - <input type="text" value="0000" maxlength="4"
-							style="width: 50px;"> - <input type="text" value="0000"
-							maxlength="4" style="width: 50px;">
-					</span> <br>
-					<br> <span style="float: left;"> e-mail </span> <span
-						style="float: right;"> <input type="email"
-							value="loveJY@naver.com" style="width: 175px;">
-					</span></td>
+					<th>주문자 정보</th>
 				</tr>
 				<tr>
 					<td class="col2">연락처</td>
 					<td class="col3" style="float: left;"><span
 						style="float: left;"> <select
-							style="height: 26px; width: 50px;">
+							style="height: 26px; width: 50px;" name="number1">
 								<option value="010">010</option>
 								<option value="011">011</option>
 								<option value="016">016</option>
 								<option value="017">017</option>
 								<option value="018">018</option>
 								<option value="019">019</option>
-						</select> - <input type="text" maxlength="4" style="width: 50px;">
-							- <input type="text" maxlength="4" style="width: 50px;">
+						</select> - <input type="text" maxlength="4" style="width: 50px;" name="number2">
+							- <input type="text" maxlength="4" style="width: 50px;" name="number3">
+					</span></td>
+					<td class="col4" rowspan="8"><span style="float: left;">보내는
+							분</span> <input style="float: right;" type="text" name="recipient" value="<%=user.getName() %>"
+						style="width:200px;" readonly> <span class="sub_text margin_left10"></span>
+						<br>
+					<br> <span style="float: left;"> 연락처 </span> <span
+						style="float: right;"> <input type="text" value="<%=user.getPhoneNum() %>"
+							 style="width: 200px;" readonly>
+					</span> <br>
+					<br> <span style="float: left;"> e-mail </span> <span
+						style="float: right;"> <input type="email"
+							value="<%=user.getEmail() %>" style="width: 200px;" readonly>
 					</span></td>
 				</tr>
 				<tr>
-					<td class="col2">전화번호</td>
-					<td class="col3" style="float: left;"><span
-						style="float: left;"> <select
-							style="height: 26px; width: 50px;">
-								<option value="02">02</option>
-								<option value="031">031</option>
-								<option value="032">032</option>
-								<option value="033">033</option>
-								<option value="041">041</option>
-								<option value="042">042</option>
-								<option value="043">043</option>
-								<option value="044">044</option>
-								<option value="051">051</option>
-								<option value="052">052</option>
-								<option value="053">053</option>
-								<option value="054">054</option>
-								<option value="055">055</option>
-								<option value="061">061</option>
-								<option value="062">062</option>
-								<option value="063">063</option>
-								<option value="064">064</option>
-								<option value="0502">0502</option>
-								<option value="0503">0503</option>
-								<option value="0505">0505</option>
-								<option value="0506">0506</option>
-								<option value="0507">0507</option>
-								<option value="0508">0508</option>
-								<option value="070">070</option>
-						</select> - <input type="text" maxlength="4" style="width: 50px;">
-							- <input type="text" maxlength="4" style="width: 50px;">
-					</span></td>
-				</tr>
-				<tr>
-					<th rowspan="5">배송 주소</th>
+					<th rowspan="4">배송 주소</th>
 					<td rowspan="3">주소</td>
-					<td class="col3" style="float: left;">
+					<td class="col3">
 						<div>
-							<input type="text" style="float: left; width: 100px;"
-								readonly="readonly">
-							<button style="float: left;">우편번호</button>
+						<input type="text" id="sample4_postcode" name="postal" placeholder="우편번호" style="float: left;" readonly>
+						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기" style="float: left;"><br>
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td class="col3" style="float: left;">
 						<div>
-							<input type="text" style="float: left; width: 400px;" value=""
-								readonly="readonly">
+							<input type="text" id="sample4_roadAddress" size=50 placeholder="도로명주소" style="float: left;" readonly>
 						</div>
 					</td>
 				</tr>
 				<tr>
 					<td class="col3" style="float: left;">
 						<div>
-							<input type="text" style="float: left; width: 400px;" value=""
-								placeholder="나머지 주소를 입력하세요.">
+							<input type="text" style="float: left; width: 400px;"
+								placeholder="나머지 주소를 입력하세요." name="address">
 						</div>
 					</td>
 				</tr>
-				<tr>
-					<td>전달메세지</td>
-					<td class="col3" style="float: left;">
-						<div>
-							<input type="text"
-								style="float: left; height: 60px; width: 400px;" value="">
-						</div>
-					</td>
-				</tr>
+				
 				<tr>
 					<td>택배기사 메세지</td>
 					<td class="col3" style="float: left;">
 						<div>
 							<input type="text"
-								style="float: left; height: 60px; width: 400px;" value="">
+								style="float: left; height: 60px; width: 400px;" name="message">
 						</div>
 					</td>
 				</tr>
@@ -390,205 +324,72 @@ th, td {
 			<h2 style="font-weight: bold;">03.결제수단</h2>
 			<hr class="star-primary">
 			<div class="col-md-9">
-				<table class="table payTable">
-					<!-- 결제수단 선택 -->
-					<tbody>
-						<tr>
-							<th>신용카드</th>
-							<td><input type="radio" name="payType" value="card" checked>신용카드</td>
-						</tr>
-						<tr>
-							<th>현금결제</th>
-							<td><input type="radio" name="payType"
-								value="accountTransfer">계좌이체</td>
-							<td><input type="radio" name="payType"
-								value="withoutBankbook">무통장 입금</td>
-						</tr>
-						<tr>
-							<th>기타결제</th>
-							<td><input type="radio" name="payType" value="payPhone">휴대폰
-								결제</td>
-						</tr>
-					</tbody>
-
-					<!-- 카드 선택 시 나와야 할 화면 -->
-					<tbody>
-						<tr>
-							<th>카드선택</th>
-							<td><select style="height: 26px; width: 250px;">
-									<option value="none">결제하실 카드를 선택해주세요</option>
-									<option value="kb">국민KB카드</option>
-									<option value="shinhan">신한카드</option>
-									<option value="nonghyup">농협카드</option>
-									<option value="woori">우리카드</option>
-									<option value="hana">하나카드</option>
-									<option value="bc">비씨카드</option>
-									<option value="hyundai">현대카드</option>
-							</select></td>
-						</tr>
-						<tr>
-							<th>카드구분</th>
-							<td><input type="radio" name="payType2"
-								value="personnalCard">개인카드</td>
-							<td><input type="radio" name="payType2" value="businessCard">법인카드</td>
-						</tr>
-					</tbody>
-
-					<!-- 계좌이체 시 나와야 할 화면 -->
-					<tbody>
-						<tr>
-							<th>계좌이체</th>
-						</tr>
-						<tr>
-							<th rowspan="2">결제안내</th>
-							<td>*주문과 동시에 결제됩니다.</td>
-						</tr>
-						<tr>
-							<td>*공인인증서가 필요합니다.</td>
-						</tr>
-						<tr>
-							<th rowspan="4">현금영수증</th>
-							<td><input type="radio" name="cashReceipt" value="forPerson">개인소득공제용</td>
-							<td><input type="radio" name="cashReceipt"
-								value="forBusiness">사업자 증빙용</td>
-							<td><input type="radio" name="cashReceipt" value="none">미신청</td>
-						</tr>
-
-						<!-- 현금영수증 개인소득 중 휴대폰일 경우 나와야 할 입력 란 -->
-						<tr>
-							<td><select style="height: 26px; width: 100px;">
-									<option value="">휴대폰</option>
-									<option value="">카드 번호</option>
-							</select> <select style="height: 26px; width: 50px;">
-									<option value="010">010</option>
-									<option value="011">011</option>
-									<option value="016">016</option>
-									<option value="017">017</option>
-									<option value="018">018</option>
-									<option value="019">019</option>
-							</select> - <input type="text" maxlength="4" style="width: 50px;">
-								- <input type="text" maxlength="4" style="width: 50px;">
-							</td>
-						</tr>
-
-						<!-- 현금영수증 개인소득 중 카드선택일 경우 나와야 할 입력 란 -->
-						<tr>
-							<td><select style="height: 26px; width: 100px;">
-									<option value="">카드 번호</option>
-									<option value="">휴대폰</option>
-							</select> <input type="text" maxlength="4" style="width: 50px;"> -
-								<input type="text" maxlength="4" style="width: 50px;"> -
-								<input type="text" maxlength="4" style="width: 50px;"> -
-								<input type="text" maxlength="4" style="width: 50px;"></td>
-						</tr>
-
-						<!-- 현금영수증 사업자증빙일 경우 나와야 할 입력 란 -->
-						<tr>
-							<td><select style="height: 26px; width: 100px;">
-									<option value="">사업자 등록 번호</option>
-							</select> <input type="text" maxlength="3" style="width: 40px;"> -
-								<input type="text" maxlength="2" style="width: 30px;"> -
-								<input type="text" maxlength="5" style="width: 70px;"></td>
-						</tr>
-					</tbody>
-
-					<!-- 무통장 입금 선택 시 나와야 할 화면 -->
-					<tbody>
-						<tr>
-							<th>입금은행</th>
-							<td><select style="height: 26px; width: 250px;">
-									<option value="none">은행선택</option>
-									<option value="kbBank">국민KB은행</option>
-									<option value="shinhanBank">신한은행</option>
-									<option value="nonghyupBank">농협은행</option>
-									<option value="wooriBank">우리은행</option>
-									<option value="hanaBank">하나은행</option>
-							</select></td>
-							<td><p>예금주 : (주)인성문고</p></td>
-						</tr>
-						<tr>
-							<th>입금자명</th>
-							<td><input type="text" maxlength="10" style="width: 70px;">
-							</td>
-						</tr>
-						<tr>
-							<th rowspan="4">현금영수증</th>
-							<td><input type="radio" name="cashReceipt" value="forPerson">개인소득공제용</td>
-							<td><input type="radio" name="cashReceipt"
-								value="forBusiness">사업자 증빙용</td>
-							<td><input type="radio" name="cashReceipt" value="none">미신청</td>
-						</tr>
-
-						<!-- 현금영수증 개인소득 중 휴대폰일 경우 나와야 할 입력 란 -->
-						<tr>
-							<td><select style="height: 26px; width: 100px;">
-									<option value="">휴대폰</option>
-									<option value="">카드 번호</option>
-							</select> <select style="height: 26px; width: 50px;">
-									<option value="010">010</option>
-									<option value="011">011</option>
-									<option value="016">016</option>
-									<option value="017">017</option>
-									<option value="018">018</option>
-									<option value="019">019</option>
-							</select> - <input type="text" maxlength="4" style="width: 50px;">
-								- <input type="text" maxlength="4" style="width: 50px;">
-							</td>
-						</tr>
-
-						<!-- 현금영수증 개인소득 중 카드선택일 경우 나와야 할 입력 란 -->
-						<tr>
-							<td><select style="height: 26px; width: 100px;">
-									<option value="">카드 번호</option>
-									<option value="">휴대폰</option>
-							</select> <input type="text" maxlength="4" style="width: 50px;"> -
-								<input type="text" maxlength="4" style="width: 50px;"> -
-								<input type="text" maxlength="4" style="width: 50px;"> -
-								<input type="text" maxlength="4" style="width: 50px;"></td>
-						</tr>
-
-						<!-- 현금영수증 사업자증빙일 경우 나와야 할 입력 란 -->
-						<tr>
-							<td><select style="height: 26px; width: 100px;">
-									<option value="">사업자 등록 번호</option>
-							</select> <input type="text" maxlength="3" style="width: 40px;"> -
-								<input type="text" maxlength="2" style="width: 30px;"> -
-								<input type="text" maxlength="5" style="width: 70px;"></td>
-						</tr>
-					</tbody>
-
-					<!-- 휴대폰 결제시 나와야 할 화면 -->
-					<tbody>
-						<tr>
-							<th>성명</th>
-							<td><input type="text" maxlength="10" style="width: 70px;">
-							</td>
-						</tr>
-						<tr>
-							<th>주민등록번호</th>
-							<td><input type="text" maxlength="6" style="width: 100px;">
-								- <input type="text" maxlength="7" style="width: 120px;">
-							</td>
-						</tr>
-						<tr>
-							<th>휴대폰 번호</th>
-							<td><select style="height: 26px; width: 50px;">
-									<option value="010">010</option>
-									<option value="011">011</option>
-									<option value="016">016</option>
-									<option value="017">017</option>
-									<option value="018">018</option>
-									<option value="019">019</option>
-							</select> - <input type="text" maxlength="4" style="width: 50px;">
-								- <input type="text" maxlength="4" style="width: 50px;">
-							</td>
-						</tr>
-					</tbody>
-				</table>
-
-				<!-- 카드사 별 할인 정보 -->
+				<!-- 결제수단선택 -->
 				<div class="row">
 					<!-- Nav tabs -->
+					<div class="payType">
+					<!-- 	<input type="radio" value="payType" name="card" id="card1"/>
+								<label for="card1">
+								카드결제</label>
+								<input type="radio" name="payType" value="accountTransfer" id="accountTransfer1"/>
+									<label for="accountTransfer1">계좌이체</label>
+									<input type="radio" name="payType" value="mobilePayment" id="mobilePayment1"/>
+									<label for="mobilePayment1">핸드폰결제</label>
+					-->
+					
+						<ul class="nav nav-tabs" role="tablist">
+						
+							<li role="presentation" class="active">
+								<a href="#card" aria-controls="home" role="tab" data-toggle="tab">
+								카드결제
+								</a>
+							</li>
+							<li role="presentation">
+								<a href="#accountTransfer" aria-controls="profile" role="tab" data-toggle="tab">
+									계좌이체
+								</a>
+							</li>
+							<li role="presentation">
+								<a href="#mobilePayment" aria-controls="messages" role="tab" data-toggle="tab">
+									핸드폰결제
+								</a>
+							</li>
+							
+						</ul>
+
+						<div class="tab-content">
+							<div role="tabpanel" class="tab-pane active" id="card">
+							<input type="radio" value="카드결제" name="payType" id="card1"/>
+								<table>
+						<tbody>
+							<tr>
+								<th>카드선택</th>
+								<td><select style="height: 26px; width: 250px;">
+										<option value="none">결제하실 카드를 선택해주세요</option>
+										<option value="kb">국민KB카드</option>
+										<option value="shinhan">신한카드</option>
+										<option value="nonghyup">농협카드</option>
+										<option value="woori">우리카드</option>
+										<option value="hana">하나카드</option>
+										<option value="bc">비씨카드</option>
+										<option value="hyundai">현대카드</option>
+								</select></td>
+							</tr>
+							<tr>
+								<th>카드번호</th>
+								<td><input type="text" maxlength="4" style="width: 50px;">
+									- <input type="text" maxlength="4" style="width: 50px;">
+									- <input type="text" maxlength="4" style="width: 50px;">
+									- <input type="text" maxlength="4" style="width: 50px;">
+								</td>
+							</tr>
+						</tbody>
+						
+					</table>
+					<br><br>
+					<hr>
+					<!-- 카드사 별 할인 정보-->
+				<div class="row">
 					<div class="card">
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active"><a href="#kbCard"
@@ -609,7 +410,7 @@ th, td {
 									style="height: 40px; width: 80px;"></a></li>
 						</ul>
 
-						<!-- Tab panes -->
+						
 						<div class="tab-content">
 							<div role="tabpanel" class="tab-pane active" id="kbCard">
 								<p>
@@ -642,6 +443,49 @@ th, td {
 						</div>
 					</div>
 				</div>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="accountTransfer">
+							<input type="radio" name="payType" value="계좌이체" id="accountTransfer1"/>
+								<table>
+						<tbody>
+							<tr>
+								<th>계좌이체</th>
+								<td><input type="text" maxlength="6" style="width: 100px;">
+									- <input type="text" maxlength="7" style="width: 120px;">
+								</td>
+							</tr>
+
+							
+						</tbody>
+					</table>
+							</div>
+							<div role="tabpanel" class="tab-pane" id="mobilePayment">
+							<input type="radio" name="payType" value="핸드폰결제" id="mobilePayment1"/>
+								<table>
+						<tbody>
+
+							<tr>
+								<th>휴대폰 번호</th>
+								<td><select style="height: 26px; width: 50px;">
+										<option value="010">010</option>
+										<option value="011">011</option>
+										<option value="016">016</option>
+										<option value="017">017</option>
+										<option value="018">018</option>
+										<option value="019">019</option>
+								</select> - <input type="text" maxlength="4" style="width: 50px;">
+									- <input type="text" maxlength="4" style="width: 50px;">
+								</td>
+							</tr>
+						</tbody>
+					</table>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				<!--//카드사 별 할인 정보// -->
+				
 			</div>
 
 			<div class="col-md-3">
@@ -670,8 +514,8 @@ th, td {
 						<div class="row">
 							<div class="paymentBtn">
 								<p>
-									<a href="../mypage/purchaseList.jsp"
-										class="btn btn-outlined btn-pay btn-lg" data-wow-delay="0.7s">결제하기</a>
+									<button type="submit"
+										class="btn btn-outlined btn-pay btn-lg" data-wow-delay="0.7s">결제하기</button>
 								</p>
 							</div>
 						</div>
@@ -679,7 +523,10 @@ th, td {
 				</div>
 			</div>
 		</div>
+
 	</article>
+</form>
+	<%}} %>
 	<jsp:include page="../../footer.html" />
 </body>
 </html>

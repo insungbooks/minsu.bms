@@ -9,6 +9,10 @@ public class LoginServiceImpl implements LoginService {
 	public LoginServiceImpl(LoginDao loginDao) {
 		this.loginDao = loginDao;
 	}
+	public User findUser(String userId){
+		return loginDao.getUser(userId);
+	}
+	
 	
 	public boolean loginCheck(String id, String pw) {
 		User user = loginDao.getUser(id); //loginDao.getUser메서드 실행으로 id값과 같은 유저객체를 찾고 

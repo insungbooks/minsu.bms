@@ -22,6 +22,9 @@ public class PurchaseDaoImpl implements PurchaseDao{
 	public Purchase getPurchase(int orderNum) {
 		return purchaseMapper.getPurchase(orderNum);
 	}
+	public Purchase getBook(String bookCode) {
+		return purchaseMapper.getBook(bookCode);
+	}
 	public int addPurchase(Purchase purchase){
 		return purchaseMapper.addPurchase(purchase);
 	}

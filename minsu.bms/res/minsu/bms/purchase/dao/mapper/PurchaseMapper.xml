@@ -2,14 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="minsu.bms.purchase.dao.mapper.PurchaseMapper">
 	<select id="purchaseList" resultType="purchase">
-		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCood, order_date orderDate, destination, order_count orderCount
+		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCood, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount
 		from orders
+		order by order_num
 	</select>
 	
 	<select id="getPurchase" parameterType="int" resultType="purchase">
-		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCood, order_date orderDate, destination, order_count orderCount
+		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCood, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount
 		from orders
 		where order_num = #{orderNum}
+	</select>
+	
+	<select id="getBook" parameterType="string" resultType="purchase">
+		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
+			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum
+		from books
+		where book_code = #{bookCode}
 	</select>
 	
 	<delete id="delPurchase" parameterType="int">
@@ -18,12 +26,12 @@
 	
 	<insert id="addPurchase" parameterType="purchase">
 		insert into orders values (
-		#{orderNum}, #{deliveryNum}, #{refundNum}, #{userId}, #{bookCode}, #{orderDate}, #{destination}, #{orderCount})
+		ordernum_seq.nextval, deliverynum_seq.nextval, #{refundNum,jdbcType=NUMERIC}, #{userId}, #{bookCode}, sysdate, #{destination}, #{orderCount}, #{payOption}, #{payAmount})
 	</insert>
 	
 	<update id="updatePurchase" parameterType="purchase">
 		update orders set
-		book_code=#{bookCode}, destination=#{destination}, order_count=#{orderCount}
+		book_code=#{bookCode}, destination=#{destination}, order_count=#{orderCount}, pay_option=#{payOption}, pay_amount=#{payAmount}
 		where order_num=#{orderNum}
 	</update>
 </mapper>

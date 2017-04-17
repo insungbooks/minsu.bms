@@ -212,7 +212,7 @@
 				<div class="form-group">
 					<label class="col-md-2" for="pages">큰 목차 :</label>
 					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents1" value="<%=book.getContents1()%>" placeholder="목차를 입력하세요." required>
+						<input type="text" class="col-md-8 form-control" name = "contents" value="<%=book.getContents()%>" placeholder="목차를 입력하세요." required>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -225,7 +225,7 @@
 				<div class="form-group">
 					<label class="col-md-2">작은 목차 :</label>
 					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents2" value="<%=book.getContents2()%>" placeholder="목차를 입력하세요." required>
+						<input type="text" class="col-md-8 form-control" name = "contents1" placeholder="목차를 입력하세요." required>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -237,7 +237,7 @@
 				<div class="form-group">
 					<label class="col-md-2"></label>
 					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents3" value="<%=book.getContents3()%>" placeholder="목차를 입력하세요." required>
+						<input type="text" class="col-md-8 form-control" name = "contents2" placeholder="목차를 입력하세요." required>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -249,7 +249,7 @@
 				<div class="form-group">
 					<label class="col-md-2"></label>
 					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents4" value="<%=book.getContents4()%>" placeholder="목차를 입력하세요." required>
+						<input type="text" class="col-md-8 form-control" name = "contents3" placeholder="목차를 입력하세요." required>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -392,7 +392,7 @@
 				<div class="form-group">
 					<label class="col-md-2" for="pages">큰 목차 :</label>
 					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents1" placeholder="목차를 입력하세요." required> 
+						<input type="text" class="col-md-8 form-control" name = "contents" placeholder="목차를 입력하세요." required> 
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">
@@ -404,6 +404,18 @@
 				<br>
 				<div class="form-group">
 					<label class="col-md-2">작은 목차 :</label>
+					<div class="col-md-6">
+						<input type="text" class="col-md-8 form-control" name = "contents1" placeholder="목차를 입력하세요." required>
+					</div>
+					<div class="col-md-1">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-plus"></span>
+						</button>
+					</div>
+				</div>
+				<br>
+				<div class="form-group">
+					<label class="col-md-2"></label>
 					<div class="col-md-6">
 						<input type="text" class="col-md-8 form-control" name = "contents2" placeholder="목차를 입력하세요." required>
 					</div>
@@ -418,18 +430,6 @@
 					<label class="col-md-2"></label>
 					<div class="col-md-6">
 						<input type="text" class="col-md-8 form-control" name = "contents3" placeholder="목차를 입력하세요." required>
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-				<br>
-				<div class="form-group">
-					<label class="col-md-2"></label>
-					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents4" placeholder="목차를 입력하세요." required>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">

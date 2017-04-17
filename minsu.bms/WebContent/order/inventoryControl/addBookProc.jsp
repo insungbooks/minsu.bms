@@ -27,15 +27,16 @@
 	int salesNum   = Integer.parseInt(request.getParameter("salesNum"));
 	String writerIntro = request.getParameter("writerIntro");
 	String bookIntro = request.getParameter("bookIntro");
+	String contents = request.getParameter("contents");
 	String contents1 = request.getParameter("contents1");
 	String contents2 = request.getParameter("contents2");
 	String contents3 = request.getParameter("contents3");
-	String contents4 = request.getParameter("contents4");
+	String content = "1" + contents + "2" + contents1 + "3" + contents2 + "4" + contents3;
 	String companyEval = request.getParameter("companyEval");
 	
 	Book addBook = new Book(bookCode,bookName,bookPrice,writer,
 							company,publiDate,country,kind,inventory,salesNum,writerIntro,
-							bookIntro,contents1,contents2,contents3,contents4,companyEval);
+							bookIntro,content,companyEval);
 	
 	if(choice.equals("add")) {
 		bookService.addBook(addBook);

@@ -9,6 +9,7 @@ public interface PurchaseDao {
 	List<Purchase> purchaseList();
 	Purchase getPurchase(int orderNum);
 	List<Purchase> getPurchaseList(int orderNum);
+	List<Purchase> getPurchaseBook(String bookCode);
 	List<Purchase> getPurchaseId(String userId);
 	Purchase getBook(String bookCode);
 	int addPurchase(Purchase purchase);

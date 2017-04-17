@@ -156,8 +156,9 @@ article { /*본문*/
 			<%
 				}else{
 					for(SearchResult searchResult : searchResults){
-			%>
+			%><form>
 					<div class="row">
+					
 						<div class="col-md-2">
 							<div>
 								<a href="productInfo.jsp" class="thumbnail"> <img
@@ -177,13 +178,17 @@ article { /*본문*/
 						<div class="col-md-3">
 							<input id="line checkbox" type="checkbox" />
 							<p id="line">수량</p>
-							<input id="line" type="number" size="3" min="0" /> <a
-								href="../../guest/basket/Basket.jsp"><button id="block"
-									type="button" class="btn btn-default btn-md">장바구니</button></a> <a
-								href="../../guest/purchase/payment.jsp"><button id="block"
-									type="button" class="btn btn-default btn-md">바로구매</button></a>
+							<input type="hidden" name="bookCode" value="<%=searchResult.getBookCode() %>"/>
+							<input id="line" type="number" size="3" min="0" name="bookNum"/> 
+							<a href="../../guest/basket/Basket.jsp">
+							<button id="block" type="button" class="btn btn-default btn-md">장바구니</button>
+							</a> 
+							<button type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-default btn-md">바로구매</button>
+						
 						</div>
+						
 					</div>
+					</form>
 			<%
 					}
 				}

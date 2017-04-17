@@ -42,7 +42,7 @@
 	DeliveryDao deliveryDao = new DeliveryDaoImpl(deliveryMapper);
 	DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
 	
-	String address= request.getParameter("address");//도착지
+	String address= request.getParameter("address1")+request.getParameter("address2");//도착지
 	int bookNum= Integer.parseInt(request.getParameter("bookNum"));//수량
 	String payType=request.getParameter("payType");//결제방법
 	String id=(String)session.getAttribute("login");//아이디

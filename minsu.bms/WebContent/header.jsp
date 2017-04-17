@@ -28,12 +28,13 @@ body {
 	top : -150px;
 	transition-property : all;
 }
-.jumbotron {
+/*.jumbotron {
 	padding-top : 30px;
-	background-color:#FFFFFF; /*배경색 흰색*/
-	border: 1px solid black; /*테두리선*/
-	height: 180px; /*높이*/
-}
+	background-color:#FFFFFF; 
+	border: 1px solid black; 
+	height: 180px; 
+	
+}*/
 
 .headlogo {
 	width: 110px;
@@ -165,7 +166,10 @@ a {
 		</nav>
 		<br>
 		<!-- 상단 -->
-		<div class="jumbotron">
+		<div class="jumbotron" style="padding-top: 30px;
+	background-color: #FFFFFF; 
+	border: 1px solid black; 
+	height: 180px; ">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-3">

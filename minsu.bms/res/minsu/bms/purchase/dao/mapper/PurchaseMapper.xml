@@ -23,6 +23,11 @@
 		from orders
 		where order_num = #{orderNum}
 	</select>
+	<select id="getPurchaseBook" parameterType="string" resultType="purchase">
+		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount
+		from orders
+		where book_code = #{bookCode}
+	</select>
 	
 	
 	<delete id="delPurchase" parameterType="int">

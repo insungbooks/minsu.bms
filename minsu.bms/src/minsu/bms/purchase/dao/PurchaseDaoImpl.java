@@ -23,6 +23,9 @@ public class PurchaseDaoImpl implements PurchaseDao{
 	public List<Purchase> purchaseList() {
 		return purchaseMapper.purchaseList();
 	}
+	public List<Purchase> getPurchaseBook(String bookCode){
+		return purchaseMapper.getPurchaseBook(bookCode);
+	}
 	public List<Purchase> getPurchaseList(int orderNum){
 		return purchaseMapper.getPurchaseList(orderNum);
 	}

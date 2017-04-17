@@ -8,6 +8,7 @@ import minsu.bms.query.domain.Query;
 public interface PurchaseService {
 	List<Purchase> listPurchases();
 	Purchase findPurchase(int orderNum);
+	List<Purchase> findPurchaseBook(String bookCode);
 	List<Purchase> findPurchaseList(int orderNum);
 	List<Purchase> findPurchaseId(String userId);
 	Purchase findBook(String bookCode);

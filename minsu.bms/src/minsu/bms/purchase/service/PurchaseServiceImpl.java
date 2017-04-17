@@ -18,6 +18,9 @@ public class PurchaseServiceImpl implements PurchaseService{
 	public List<Purchase> findPurchaseList(int orderNum){
 		return purchaseDao.getPurchaseList(orderNum);
 	}
+	public List<Purchase> findPurchaseBook(String bookCode){
+		return purchaseDao.getPurchaseBook(bookCode);
+	}
 	
 	public List<Purchase> findPurchaseId(String userId){
 		List<Purchase> purchase = (List<Purchase>)purchaseDao.getPurchaseId(userId);

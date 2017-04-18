@@ -114,8 +114,9 @@ th, td {
 <%
 					if(request.getAttribute("listBasket")!=null){
 						List<Basket> listBasket=(List<Basket>)request.getAttribute("listBasket");
-						for (Basket book : listBasket) {		
-%> 
+						
+						for (Basket book : listBasket) {
+%> 							
 								<tr>
 									<td><input type="checkbox" name="bookCode" value="<%= book.getBookCode() %> "
 										style="margin: 35px;"></td>
@@ -128,8 +129,9 @@ th, td {
 									</td>
 									<td style="padding: 35px 15px;"><%=book.getBookPrice()*book.getBookCount() %></td>
 									<td style="padding: 35px 15px;">2017년3월19일 도착예정</td>
-								</tr>	
-<%}
+								</tr>
+								<input type="hidden" name="basketNum" value="<%=book.getBasketNum() %>"/>	
+<%}							
 } %>							
 							</tbody>
 						</table>

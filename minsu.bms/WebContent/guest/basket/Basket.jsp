@@ -165,14 +165,14 @@ th, td {
 			delivery = 0;
 		}else delivery = 2500;
 	}
-	}
+	}int bo=(sum+delivery)/10;
 %>
 							<tbody>
 								<tr>
 									<td><%= sum %></td>
 									<td><%= delivery %></td>
 									<td><%= sum+delivery %></td>
-									<td>2500원</td>
+									<td><%= bo %>원</td>
 								</tr>
 							</tbody>
 						</table>

@@ -41,41 +41,33 @@
 	BasketDao basketDao = new BasketDaoImpl(basketMapper);
 	BasketService basketService = new BasketServiceImpl(basketDao);
 	
-	
+	String bookCode = request.getParameter("bookCode");
 	if(session.getAttribute("login")!=null){
 	String id=(String)session.getAttribute("login");
 	User user = loginService.findUser(id);
 	request.setAttribute("user",user);
 	}else{%>
 	<jsp:include page="../../shop/login/login.jsp"/>	
-<% 	}
-	
-	request.getParameterValues("basketNum");	
-	
-	
-	
-	
-	
-	boolean TypeCheck=false;
-	if(request.getParameterValues("bookCode")!=null){
-		String[] bookCodes = request.getParameterValues("bookCode");
-		String[] bookNum=request.getParameterValues("bookNum");
-		List<Book> bookInfo = null;
-		for(String bookCode : bookCodes){
-			Book book=bookService.findBook(bookCode);
-			bookInfo.add(book);
-		}
-		request.setAttribute("bookNum", bookNum);
+<% 	}List<Basket> basket=null;
+	if(request.getParameterValues("basketNum")!=null){
+		String[] basketNums = request.getParameterValues("basketNum");
+		for(String basketNum : basketNums){
+			Basket baskets = (Basket)basketService.findBasket(basketNum);
+			basket.add(baskets);
+		}request.setAttribute("basket", basket);
+	}else{
+		String bookNum=request.getParameter("bookNum");
+		Book bookInfo = bookService.findBook(bookCode);
+
+		String id=(String)session.getAttribute("login");
+		User user = loginService.findUser(id);
+		request.setAttribute("user",user);
+
 		request.setAttribute("bookInfo", bookInfo);
-	}else if(request.getParameter("bookCode")!=null){
-		String bookCode = request.getParameter("bookCode");
-		String bookNum= request.getParameter("bookNum");
-		Book bookInfo = (Book)bookService.findBook(bookCode);
 		request.setAttribute("bookNum", bookNum);
-		request.setAttribute("bookInfo", bookInfo);
-		TypeCheck=true;
 	}
-	request.setAttribute("TypeCheck", TypeCheck);
+	request.setAttribute("bookCode", bookCode);
+	
 	
 %>
 <jsp:include page="payment.jsp"/>

@@ -16,7 +16,7 @@
 	
 	String id = (String)session.getAttribute("login");
 	String delCode = request.getParameter("bookCode");
-	basketService.findBasket(basketNum);
+	//basketService.findBasket(basketNum);
 	basketService.deleteBasket(delCode);
 	List<Basket> baskets = basketService.listBaskets(id);
 	request.setAttribute("delBasket", baskets);

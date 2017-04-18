@@ -3,6 +3,7 @@
 <%@ page import="minsu.bms.purchase.domain.Purchase"%>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <%@ page import="minsu.bms.login.domain.User"%>
+<%@ page import="minsu.bms.basket.domain.Basket"%>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -224,12 +225,9 @@ text-align:center;
 	<form action="paymentResult.jsp">
 
 	<article>
-	<%	Book book=null;
-		List<Book> bookList = null;
-		int bookNum= Integer.parseInt((String)request.getAttribute("bookNum"));
-		if(request.getAttribute("user")!=null){
+	<%	if(request.getAttribute("user")!=null){
 		User user=(User)request.getAttribute("user");
-				
+				Book book=(Book)request.getAttribute("bookCode");
 				%>
 
 		<div class="container">
@@ -247,41 +245,25 @@ text-align:center;
 					</tr>
 				</thead>
 				<tbody>
-				<%if(request.getAttribute("bookInfo")!=null){
-					if((boolean)request.getAttribute("TypeCheck")==true){
-						book = (Book)request.getAttribute("bookInfo");%>
+				<%if(request.getAttribute("basket")!=null){
+					List<Basket> baskets = (List<Basket>)request.getAttribute("basket");
+					for(Basket basket: baskets){
+%>
 						<tr>
 						<td><a href="../../shop/search/productInfo.jsp"> <img
 								src="../../img/nobody.jpg" class="img-responsive1">
-								[<%=book.getKind()%>]<%=book.getBookName() %>
+								[<%=book.getKind()%>]<%=basket.getBookName() %>
 						</a></td>
-						<td style="padding: 35px;"><%= book.getBookPrice() %>원</td>
-						<td style="padding: 35px;"><input type="number" min="0" value="<%=bookNum %>" name="bookNum"
+						<td style="padding: 35px;"><%= basket.getBookPrice() %>원</td>
+						<td style="padding: 35px;"><input type="number" min="0" value="<%=basket.getBookCount() %>" name="bookNum"
 							style="display: block; width: 50px; float: center; margin: 0px 60px;" />
 						</td>
-						<td style="padding: 35px;"><%= book.getBookPrice() %>원</td>
+						<td style="padding: 35px;"><%= basket.getBookPrice()*basket.getBookCount() %>원</td>
 						<td style="padding: 35px;">2017년3월19일 도착예정</td><!-- 배송에서받아오기 -->
 					</tr>
 					<input type="hidden" name="bookCode" value="<%=book.getBookCode() %>"/>
 						<% 
-					}else if((boolean)request.getAttribute("TypeCheck")!=true){
-					 	bookList= (List<Book>)request.getAttribute("bookInfo");
-					}
-					for(Book books:bookList){ %>
-					<tr>
-						<td><a href="../../shop/search/productInfo.jsp"> <img
-								src="../../img/nobody.jpg" class="img-responsive1">
-								[<%=books.getKind()%>]<%=books.getBookName() %>
-						</a></td>
-						<td style="padding: 35px;"><%= books.getBookPrice() %>원</td>
-						<td style="padding: 35px;"><input type="number" min="0" value="<%=bookNum %>" name="bookNum"
-							style="display: block; width: 50px; float: center; margin: 0px 60px;" />
-						</td>
-						<td style="padding: 35px;"><%= books.getBookPrice() %>원</td>
-						<td style="padding: 35px;">2017년3월19일 도착예정</td><!-- 배송에서받아오기 -->
-					</tr>
-					<input type="hidden" name="bookCode" value="<%=books.getBookCode() %>"/>
-					<%}}%>
+					}%>
 				</tbody>
 			</table>
 			<hr class="star-primary">
@@ -505,7 +487,7 @@ text-align:center;
 		
 	</article>
 </form>
-<%}%> 
+<%}}%> 
 	<jsp:include page="../../footer.html" />
 </body>
 </html>

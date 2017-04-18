@@ -180,7 +180,7 @@ article { /*본문*/
 							<p id="line">수량</p>
 							<input type="hidden" name="bookCode" value="<%=searchResult.getBookCode() %>"/>
 							<input id="line" type="number" size="3" min="0" name="bookNum"/> 
-							<a href="../../guest/basket/Basket.jsp">
+							<a href="../../guest/basket/BasketProc.jsp">
 							<button id="block" type="button" class="btn btn-default btn-md">장바구니</button>
 							</a> 
 							<button type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-default btn-md">바로구매</button>

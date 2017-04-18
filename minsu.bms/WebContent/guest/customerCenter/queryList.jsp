@@ -67,7 +67,7 @@
 				<ul class="nav">
 					<li class="nav-header"><strong> 주문관리</strong></li>
 					<li><a href="orderList.jsp"> 주문조회</a></li>
-					<li><a href="../basket/Basket.jsp"> 장바구니</a></li>
+					<li><a href="../basket/BasketProc.jsp"> 장바구니</a></li>
 					<li><a href="refundDetail.jsp">취소/교환내역</a></li>
 					<li class="nav-divider"></li>
 					<li class="nav-header"><strong> 나의 정보</strong></li>

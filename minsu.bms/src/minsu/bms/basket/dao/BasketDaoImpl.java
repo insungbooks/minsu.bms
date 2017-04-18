@@ -18,8 +18,8 @@ public class BasketDaoImpl implements BasketDao{
 		return basketMapper.getBaskets(userId);
 	}
 	
-	public Basket getBook(String bookCode){
-		return basketMapper.getBook(bookCode);
+	public Basket getBook(String basketNum){
+		return basketMapper.getBook(basketNum);
 	}
 	
 	public int addBasket(Basket basket){

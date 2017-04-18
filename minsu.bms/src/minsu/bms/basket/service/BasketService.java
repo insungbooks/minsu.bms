@@ -8,5 +8,5 @@ public interface BasketService {
 	List<Basket> listBaskets(String userId);
 	Basket findBasket(String basketNum);
 	boolean plusBasket(Basket basket);
-	boolean deleteBasket(String bookCode);
+	boolean deleteBasket(Basket basket);
 }

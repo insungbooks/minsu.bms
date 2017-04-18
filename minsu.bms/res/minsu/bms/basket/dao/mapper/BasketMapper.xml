@@ -3,23 +3,24 @@
 <mapper namespace="minsu.bms.basket.dao.mapper.BasketMapper">
 	<select id="getBaskets" parameterType ="string" resultType="basket"> <!-- 아이디값과 일치하는 데이터를 찾으면 user객체로 맵핑해서 리턴 -->
 		select basket_num basketNum, user_id userId, book_code bookCode, 
-			   book_name bookName, book_price bookPrice
+			   book_name bookName, book_price bookPrice, book_count bookCount
 		from baskets
 		where user_id = #{userId}
 	</select>
 	
-<select id="getBook" parameterType="string">
-		select book_code bookCode
-		from books
+	<select id="getbasket" parameterType="string">
+		select basket_num basketNum, user_id userId, book_code bookCode, 
+			   book_name bookName, book_price bookPrice, book_count bookCount
+		from baskets
 		where book_code = #{bookCode}
 	</select>
 	
-	<delete id="delBasket" parameterType="string">
-		delete baskets where book_code = #{bookCode}
+	<delete id="delBasket" parameterType="int">
+		delete baskets where basket_num = #{basketNum}
 	</delete>
 	
-	<insert id="addBasket" parameterType="string">
+	<insert id="addBasket" parameterType="basket">
 		insert into baskets values(
-		#{basketNum}, #{userId}, #{bookCode}, #{bookName}, #{bookPrice})
+		basketnum_seq.nextval, #{userId}, #{bookCode}, #{bookName}, #{bookPrice}, #{bookCount})
 	</insert>
 </mapper>

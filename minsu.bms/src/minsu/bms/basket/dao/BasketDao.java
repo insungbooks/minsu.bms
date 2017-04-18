@@ -7,6 +7,6 @@ import minsu.bms.basket.domain.Basket;
 public interface BasketDao {
 	List<Basket> getBaskets(String userId);
 	Basket getBook(String bookCode);
-	int addBasket(String bookCode);
+	int addBasket(Basket basket);
 	int delBasket(String bookCode);
 }

@@ -6,11 +6,12 @@ public class Basket {
 	private String	bookCode;	//책 코드
 	private String	bookName;	//책 이름
 	private int		bookPrice;	//책 가격
+	private int 	bookCount; 
 	
 	public Basket(){}
 	
 	public Basket(int basketNum, String userId,
-			String bookCode, String bookName, int bookPrice){
+			String bookCode, String bookName, int bookPrice,int bookCount){
 		this.basketNum = basketNum;
 		this.userId = userId;
 		this.bookCode = bookCode;
@@ -57,4 +58,13 @@ public class Basket {
 	public void setBookPrice(int bookPrice) {
 		this.bookPrice = bookPrice;
 	}
+
+	public int getBookCount() {
+		return bookCount;
+	}
+
+	public void setBookCount(int bookCount) {
+		this.bookCount = bookCount;
+	}
+	
 }

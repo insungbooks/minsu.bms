@@ -16,12 +16,12 @@ public class BasketServiceImpl implements BasketService{
 		return basketDao.getBaskets(userId);
 	}
 	
-	public Basket findBook(String userId){
+	public Basket findBasket(String userId,String bookCode){
 		return basketDao.getBook(userId);
 	}
 
-	public boolean plusBasket(String bookCode){
-		return basketDao.addBasket(bookCode)>0;
+	public boolean plusBasket(Basket basket){
+		return basketDao.addBasket(basket)>0;
 	}
 	
 	public boolean deleteBasket(String bookCode){

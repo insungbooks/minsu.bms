@@ -6,7 +6,7 @@ import minsu.bms.basket.domain.Basket;
 
 public interface BasketService {
 	List<Basket> listBaskets(String userId);
-	Basket findBook(String userId);
-	boolean plusBasket(String bookCode);
+	Basket findBasket(String basketNum);
+	boolean plusBasket(Basket basket);
 	boolean deleteBasket(String bookCode);
 }

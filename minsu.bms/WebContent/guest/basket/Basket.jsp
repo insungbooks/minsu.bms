@@ -123,10 +123,10 @@ th, td {
 											class="img-responsive1"> <%=book.getBookName() %>
 									</a></td>
 									<td style="padding: 35px 15px;"><%=book.getBookPrice() %></td>
-									<td><input type="number" min="0" value="1" name="bookNum"
+									<td><input type="number" min="0" value="<%=book.getBookCount() %>" name="bookNum"
 										style="display: block; width: 50px; float: center; margin:30px 60px;" />
 									</td>
-									<td style="padding: 35px 15px;"></td>
+									<td style="padding: 35px 15px;"><%=book.getBookPrice()*book.getBookCount() %></td>
 									<td style="padding: 35px 15px;">2017년3월19일 도착예정</td>
 								</tr>	
 <%}
@@ -169,7 +169,7 @@ th, td {
 								<tr>
 									<td><%= sum %></td>
 									<td><%= delivery %></td>
-									<td><%= sum %></td>
+									<td><%= sum+delivery %></td>
 									<td>2500원</td>
 								</tr>
 							</tbody>

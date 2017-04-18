@@ -115,7 +115,7 @@ th, td {
 					if(request.getAttribute("listBasket")!=null){
 						List<Basket> listBasket=(List<Basket>)request.getAttribute("listBasket");
 						for (Basket book : listBasket) {		
-%>
+%> 
 								<tr>
 									<td><input type="checkbox" name="bookCode" value="<%= book.getBookCode() %> "
 										style="margin: 35px;"></td>

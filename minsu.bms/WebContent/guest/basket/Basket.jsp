@@ -97,46 +97,37 @@ th, td {
 						<p>주문하실 상품을 선택하세요</p>
 						<p>
 						<hr class="star-primary">
+						<form>
 						<table class="table table-hover">
 							<thead>
 								<tr>
-									<th><input type="checkbox" name="pre" value="grammer">전체선택</th>
-									<th>책이름</th>
-									<th>가격</th>
-									<th>수량</th>
-									<th>합계</th>
-									<th>도착예정일</th>
-									<th>선택</th>
+									<th style="text-align:center;"><input type="checkbox" name="pre" value="grammer">전체선택</th>
+									<th style="text-align:center;">책이름</th>
+									<th style="text-align:center;">가격</th>
+									<th style="text-align:center;">수량</th>
+									<th style="text-align:center;">합계</th>
+									<th style="text-align:center;">도착예정일</th>
 								</tr>
 							</thead>
 							<tbody>
+							
 <%
 					if(request.getAttribute("listBasket")!=null){
 						List<Basket> listBasket=(List<Basket>)request.getAttribute("listBasket");
 						for (Basket book : listBasket) {		
 %>
 								<tr>
-									<td><input type="checkbox" name="pre" value="grammer"
+									<td><input type="checkbox" name="bookCode" value="<%= book.getBookCode() %> "
 										style="margin: 35px;"></td>
 									<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 											class="img-responsive1"> <%=book.getBookName() %>
 									</a></td>
 									<td style="padding: 35px 15px;"><%=book.getBookPrice() %></td>
-									<td><input type="number" min="0"
-										style="display: block; width: 50px; float: center; margin: 0px 60px;" />
-										<button type="button" class="btn btn-default btn-block"
-											style="display: block; width: 50px; float: center; margin: 0px 60px;">변경</button>
+									<td><input type="number" min="0" value="1" name="bookNum"
+										style="display: block; width: 50px; float: center; margin:30px 60px;" />
 									</td>
 									<td style="padding: 35px 15px;"></td>
 									<td style="padding: 35px 15px;">2017년3월19일 도착예정</td>
-									<td class="a">
-										<a href="../purchase/payment.jsp"><button type="button" class="btn btn-default btn-block">바로구매</button></a>
-									<form>
-									<input type="hidden" name="bookCode" value="<%= book.getBookCode() %>"/>
-									<button type="submit" class="btn btn-default btn-block" formaction="delBasketProc.jsp">삭제</button>
-									</form>
-									</td>
-
 								</tr>	
 <%}
 } %>							
@@ -145,8 +136,10 @@ th, td {
 						<hr class="star-primary">
 						<nav class="buynav">
 							<a href="../../main.jsp"><button type="button" class="btn btn-default ">쇼핑계속하기</button></a>
-							<a href="../purchase/payment.jsp"><button type="button" class="btn btn-default ">회원 구매</button></a>
+							<button type="submit" class="btn btn-default" formaction="delBasketProc.jsp">삭제하기</button>
+							<button type="submit" formaction="../purchase/paymentProc.jsp" class="btn btn-default ">구매하기</button>
 						</nav>
+						</form>
 				<br><br>
 
 					<div class="table">

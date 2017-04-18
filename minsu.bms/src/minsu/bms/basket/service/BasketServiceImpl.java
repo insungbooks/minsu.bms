@@ -24,7 +24,7 @@ public class BasketServiceImpl implements BasketService{
 		return basketDao.addBasket(basket)>0;
 	}
 	
-	public boolean deleteBasket(String bookCode){
-		return basketDao.delBasket(bookCode)>0;
+	public boolean deleteBasket(Basket basket){
+		return basketDao.delBasket(basket)>0;
 	}
 }

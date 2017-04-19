@@ -12,6 +12,7 @@
 		<typeAlias alias="delivery" type="minsu.bms.delivery.domain.Delivery"/>
 		<typeAlias alias="purchase" type="minsu.bms.purchase.domain.Purchase"/>
 		<typeAlias alias="refund" type="minsu.bms.refund.domain.Refund"/>
+		<typeAlias alias="order" type="minsu.bms.orderManagement.domain.Order"/>
 	</typeAliases>	
 
 	<environments default="development">
@@ -35,5 +36,6 @@
 		<mapper resource="minsu/bms/delivery/dao/mapper/DeliveryMapper.xml" />
 		<mapper resource="minsu/bms/purchase/dao/mapper/PurchaseMapper.xml" />
 		<mapper resource="minsu/bms/refund/dao/mapper/RefundMapper.xml" />
+		<mapper resource="minsu/bms/orderManagement/dao/mapper/OrderMapper.xml" />
 	</mappers>
 </configuration>

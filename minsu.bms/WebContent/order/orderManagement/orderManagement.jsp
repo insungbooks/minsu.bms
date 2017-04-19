@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.orderManagement.domain.Order" %>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -76,7 +78,7 @@
 						<li><a href="../inventoryControl/bookAdd.jsp">도서 추가</a></li>
 						<li class="nav-divider"></li>
 						<li class="nav-header"><strong> 재고관리</strong></li>
-						<li class="active"><a href="orderManagement.jsp"> 주문관리</a></li>
+						<li class="active"><a href="orderManagementProc.jsp"> 주문관리</a></li>
 						<li class="nav-divider"></li>
 						<li class="nav-header"><strong>고객센터</strong></li>
 						<li><a href="../customerCenter/queryListProc.jsp">문의답하기</a></li>
@@ -91,18 +93,18 @@
 					</div>
 					<div class="col-md-2"></div>
 					<div class="col-md-5">
-						<form class="form-horizontal col-md-12" id="orderDate" action="#"
-							method="post">
+						<form class="form-horizontal col-md-12" id="orderDate" action="orderManagementProc.jsp"
+							method="POST">
 							<div class="form-group registration-date">
 								<div class="input-group registration-date-time">
 									<span class="input-group-addon" id="basic-addon1"><span
 										class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-									<input class="form-control" name="registration_date1"
-										id="registration-date1" type="date"> <span
+									<input class="form-control" name="registrationDate1"
+										id="registration-date1" type="date" value="<%= request.getParameter("registrationDate1") %>"> <span
 										class="input-group-addon" id="basic-addon1">~</span> 
 										<input
-										class="form-control" name="registration_date2"
-										id="registration-date2" type="date"> <span
+										class="form-control" name="registrationDate2"
+										id="registration-date2" type="date" value="<%= request.getParameter("registrationDate2") %>"> <span
 										class="input-group-btn">
 										<button class="btn btn-default" type="submit">확인</button>
 									</span>
@@ -121,45 +123,50 @@
 							<th>상품코드</th>
 							<th>주문수량</th>
 							<th>배송상황</th><!-- 자바코드로 구현(기창이오빠말) -->
+							<th>지불방법</th>
+							<th>책가격</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>xotn</td>
-							<td>1</td>
-							<td>2016-04-04</td>
-							<td>경기도안산시상록구</td>
-							<td>N111</td>
-							<td>2</td>
-							<td>배송완료</td>
-						</tr>
-						<tr>
-							<td>dlstjr</td>
-							<td>2</td>
-							<td>2016.04.05</td>
-							<td>경기도안양시</td>
-							<td>N122</td>
-							<td>5</td>
-							<td>배송완료</td>
-						</tr>
-						
+						<%			
+									if (request.getAttribute("orders") != null) {
+										List<Order> orders = (List<Order>) request.getAttribute("orders");
+										int totalPrice=0 ;
+										for (Order order : orders) {
+											 totalPrice += order.getPayAmount();
+								%>
+								<tr>
+									<td><%=order.getUserId()%></td>
+									<td><%=order.getOrderNum()%></td>
+									<td><%=order.getOrderDate()%></td>
+									<td><%=order.getDestination()%></td>
+									<td><%=order.getBookCode()%></td>
+									<td><%=order.getOrderCount()%></td>
+									<td><%=order.getDeliveryNum()%></td>
+									<td><%=order.getPayOption() %></td>				
+									<td><%=order.getPayAmount() %></td>
+								</tr>
+								<%
+									}
+								%>
 					</tbody>
 					<tfoot>
 						<tr>
-							<td colspan="5">
+							<td colspan="7">
 							</td>
 							<th>총 금액 :</th>
-							<td>860,000원</td>
+							<td><%= totalPrice %></td>
+							
+							<%
+								} 
+							%>
+							
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 		</div>
-
-
 	</article>
-
-
 
 	<!-- //구매화면 -->
 	<jsp:include page="../../footer.html"/>

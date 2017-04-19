@@ -239,13 +239,12 @@ text-align:center;
 						<th style="padding:0px 80px;">도착예정일</th>
 					</tr>
 				</thead>
+				<tbody>
 				<%		
 						if(request.getAttribute("bookInfo")!=null) {
 						Book book=(Book)request.getAttribute("bookInfo");
 						int num = Integer.parseInt((String)request.getAttribute("bookNum")); 
 				%>
-				
-				<tbody>
 				<tr>
 						<td><a href="../../shop/search/productInfo.jsp"> <img
 								src="../../img/nobody.jpg" class="img-responsive1">
@@ -293,7 +292,6 @@ text-align:center;
 					List<Basket> baskets = (List<Basket>)request.getAttribute("basket");
 					for(Basket basket: baskets){
 %>
-				<tbody>
 						<tr>
 						<td><a href="../../shop/search/productInfo.jsp"> <img
 								src="../../img/nobody.jpg" class="img-responsive1">
@@ -307,6 +305,7 @@ text-align:center;
 						<td style="padding: 35px;">2017년3월19일 도착예정</td><!-- 배송에서받아오기 -->
 					</tr>
 				</tbody>
+				}
 			</table>
 			<hr class="star-primary">
 		</div>

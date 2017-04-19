@@ -18,7 +18,7 @@ public class BasketDaoImpl implements BasketDao{
 		return basketMapper.getBaskets(userId);
 	}
 	
-	public List<Basket> getBasket(String basketNum){
+	public Basket getBasket(int basketNum){
 		return basketMapper.getBasket(basketNum);
 	}
 	

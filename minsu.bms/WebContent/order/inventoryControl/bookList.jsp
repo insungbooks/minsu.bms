@@ -79,7 +79,7 @@
 							<li><a href="bookAdd.jsp">도서 추가</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 재고관리</strong></li>
-							<li><a href="../orderManagement/orderManagement.jsp">
+							<li><a href="../orderManagement/orderManagementProc.jsp">
 									주문관리</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong>고객센터</strong></li>

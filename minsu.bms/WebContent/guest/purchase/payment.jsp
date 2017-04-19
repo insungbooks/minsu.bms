@@ -239,12 +239,13 @@ text-align:center;
 						<th style="padding:0px 80px;">도착예정일</th>
 					</tr>
 				</thead>
-				<tbody>
 				<%		
 						if(request.getAttribute("bookInfo")!=null) {
 						Book book=(Book)request.getAttribute("bookInfo");
 						int num = Integer.parseInt((String)request.getAttribute("bookNum")); 
 				%>
+				
+				<tbody>
 				<tr>
 						<td><a href="../../shop/search/productInfo.jsp"> <img
 								src="../../img/nobody.jpg" class="img-responsive1">
@@ -290,8 +291,10 @@ text-align:center;
 %>
 <%				if(request.getAttribute("basket")!=null){
 					List<Basket> baskets = (List<Basket>)request.getAttribute("basket");
-					for(Basket basket: baskets){
+					int basketMoney=0;
 %>
+				<tbody>
+				<%for(Basket basket: baskets){ %>
 						<tr>
 						<td><a href="../../shop/search/productInfo.jsp"> <img
 								src="../../img/nobody.jpg" class="img-responsive1">
@@ -304,8 +307,9 @@ text-align:center;
 						<td style="padding: 35px;"><%= basket.getBookPrice()*basket.getBookCount() %>원</td>
 						<td style="padding: 35px;">2017년3월19일 도착예정</td><!-- 배송에서받아오기 -->
 					</tr>
+					
+					<%basketMoney = basket.getBookPrice()+basketMoney; } %>
 				</tbody>
-				}
 			</table>
 			<hr class="star-primary">
 		</div>
@@ -323,10 +327,10 @@ text-align:center;
 					</thead>
 					<tbody>
 						<tr>
-							<td><%=basket.getBookPrice() %>원</td>
+							<td><%=basketMoney %>원</td>
 							<td>2500원</td>
-							<td><%=basket.getBookPrice()+2500 %>원</td><input type="hidden" name="bookPrice" value="<%=basket.getBookPrice()+2500 %>"/>
-							<td><%= (basket.getBookPrice()+2500)/10 %>원</td>
+							<td><%=basketMoney+2500 %>원</td><input type="hidden" name="bookPrice" value="<%=basketMoney+2500 %>"/>
+							<td><%= (basketMoney+2500)/10 %>원</td>
 						</tr>
 					</tbody>
 				</table>
@@ -500,20 +504,16 @@ text-align:center;
 					<table class="table divForPay">
 						<tbody>
 							<tr>
-								<td>상품수</td>
-								<td>1종 2개</td>
-							</tr>
-							<tr>
 								<td>상품금액</td>
-								<td>27000</td>
+								<td><%=basketMoney %>원</td>
 							</tr>
 							<tr>
 								<td>배송비</td>
-								<td>3000</td>
+								<td>2500원</td>
 							</tr>
 							<tr>
 								<td>최종결제금액</td>
-								<td>300000</td>
+								<td><%=basketMoney+2500 %>원</td>
 							</tr>
 						</tbody>
 					</table>
@@ -533,7 +533,7 @@ text-align:center;
 		
 	</article>
 </form>
-<%}}%> 
+<%}%> 
 	<jsp:include page="../../footer.html" />
 </body>
 </html>

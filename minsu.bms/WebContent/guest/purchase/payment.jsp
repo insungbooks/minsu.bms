@@ -225,12 +225,6 @@ text-align:center;
 	<form action="paymentResult.jsp">
 
 	<article>
-	<%	if(request.getAttribute("user")!=null){
-		User user=(User)request.getAttribute("user");
-		if(request.getAttribute("bookInfo")!=null){
-				Book book=(Book)request.getAttribute("bookInfo");
-				%>
-
 		<div class="container">
 			<!-- 주문상품목록 -->
 			<h2 style="font-weight: bold;">01.주문상품목록</h2>
@@ -245,52 +239,31 @@ text-align:center;
 						<th style="padding:0px 80px;">도착예정일</th>
 					</tr>
 				</thead>
+				<%		
+						if(request.getAttribute("bookInfo")!=null) {
+						Book book=(Book)request.getAttribute("bookInfo");
+						int num = Integer.parseInt((String)request.getAttribute("bookNum")); 
+				%>
+				
 				<tbody>
-				<%if(request.getAttribute("basket")!=null){
-					List<Basket> baskets = (List<Basket>)request.getAttribute("basket");
-					for(Basket basket: baskets){
-%>
-						<tr>
-						<td><a href="../../shop/search/productInfo.jsp"> <img
-								src="../../img/nobody.jpg" class="img-responsive1">
-								[<%=book.getKind()%>]<%=basket.getBookName() %>
-						</a></td>
-						<td style="padding: 35px;"><%= basket.getBookPrice() %>원</td>
-						<td style="padding: 35px;"><input type="number" min="0" value="<%=basket.getBookCount() %>" name="bookNum"
-							style="display: block; width: 50px; float: center; margin: 0px 60px;" />
-						</td>
-						<td style="padding: 35px;"><%= basket.getBookPrice()*basket.getBookCount() %>원</td>
-						<td style="padding: 35px;">2017년3월19일 도착예정</td><!-- 배송에서받아오기 -->
-					</tr>
-					<input type="hidden" name="bookCode" value="<%=book.getBookCode() %>"/>
-						<% 
-					}}else{
-						int bookNum=1;
-						if(request.getParameter("bookNum")!=null){
-						 bookNum =Integer.parseInt(request.getParameter("bookNum"));}
-					%>
-					<tr>
+				<tr>
 						<td><a href="../../shop/search/productInfo.jsp"> <img
 								src="../../img/nobody.jpg" class="img-responsive1">
 								[<%=book.getKind()%>]<%=book.getBookName() %>
 						</a></td>
 						<td style="padding: 35px;"><%= book.getBookPrice() %>원</td>
-						<td style="padding: 35px;"><input type="number" min="0" value="<%=bookNum %>" name="bookNum"
+						<td style="padding: 35px;"><input type="number" min="0" value="<%= num %>" name="bookNum"
 							style="display: block; width: 50px; float: center; margin: 0px 60px;" />
 						</td>
-						<td style="padding: 35px;"><%= book.getBookPrice()*bookNum %>원</td>
+						<td style="padding: 35px;"><%= book.getBookPrice()*num %>원</td>
 						<td style="padding: 35px;">2017년3월19일 도착예정</td><!-- 배송에서받아오기 -->
-					</tr>
-					<input type="hidden" name="bookCode" value="<%=book.getBookCode() %>"/>
-					<%					
-					
-					}%>
+				</tr>
+						<input type="hidden" name="bookCode" value="<%=book.getBookCode() %>">
 				</tbody>
 			</table>
 			<hr class="star-primary">
-		</div>
-
-		<div class="container">
+			</div>
+			<div class="container">
 			<div class="table-responsive">
 				<table class="table">
 					<thead>
@@ -313,8 +286,58 @@ text-align:center;
 			</div>
 			<hr>
 		</div>
+<% 		
+		}
+%>
+<%				if(request.getAttribute("basket")!=null){
+					List<Basket> baskets = (List<Basket>)request.getAttribute("basket");
+					for(Basket basket: baskets){
+%>
+				<tbody>
+						<tr>
+						<td><a href="../../shop/search/productInfo.jsp"> <img
+								src="../../img/nobody.jpg" class="img-responsive1">
+								[문학]<%=basket.getBookName() %>
+						</a></td>
+						<td style="padding: 35px;"><%= basket.getBookPrice() %>원</td>
+						<td style="padding: 35px;"><input type="number" min="0" value="<%=basket.getBookCount() %>" name="bookNum"
+							style="display: block; width: 50px; float: center; margin: 0px 60px;" />
+						</td>
+						<td style="padding: 35px;"><%= basket.getBookPrice()*basket.getBookCount() %>원</td>
+						<td style="padding: 35px;">2017년3월19일 도착예정</td><!-- 배송에서받아오기 -->
+					</tr>
+				</tbody>
+			</table>
+			<hr class="star-primary">
+		</div>
 
-
+		<div class="container">
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
+						<tr>
+							<th style="padding:0px 85px;">총 상품금액</th>
+							<th style="padding:0px 85px;">배송비</th>
+							<th style="padding:0px 85px;">결제 예정금액</th>
+							<th style="padding:0px 85px;">적립예정</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><%=basket.getBookPrice() %>원</td>
+							<td>2500원</td>
+							<td><%=basket.getBookPrice()+2500 %>원</td><input type="hidden" name="bookPrice" value="<%=basket.getBookPrice()+2500 %>"/>
+							<td><%= (basket.getBookPrice()+2500)/10 %>원</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<hr>
+		</div>
+<%
+		if(request.getAttribute("user")!=null){
+				User user=(User)request.getAttribute("user");
+%>
 		<div class="container">
 			<!-- 배송지 정보 -->
 			<h2 style="font-weight: bold;">02.배송지</h2>
@@ -349,14 +372,17 @@ text-align:center;
 						style="width:200px;" readonly> <span class="sub_text margin_left10"></span>
 						<br>
 					<br> <span style="float: left;"> 연락처 </span> <span
-						style="float: right;"> <input type="text" value="<%=user.getPhoneNum() %>"
+						style="float: right;"> <input type="text" value="<%= user.getPhoneNum() %>"
 							 style="width: 200px;" readonly>
 					</span> <br>
 					<br> <span style="float: left;"> e-mail </span> <span
 						style="float: right;"> <input type="email"
-							value="<%=user.getEmail() %>" style="width: 200px;" readonly>
+							value="<%= user.getEmail() %>" style="width: 200px;" readonly>
 					</span></td>
 				</tr>
+<%
+		}
+%>
 				<tr>
 					<th rowspan="4">배송 주소</th>
 					<td rowspan="3">주소</td>

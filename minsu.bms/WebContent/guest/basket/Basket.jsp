@@ -118,7 +118,7 @@ th, td {
 						for (Basket book : listBasket) {
 %> 							
 								<tr>
-									<td><input type="checkbox" name="basketNum" value="<%= book.getBasketNum() %> "
+									<td><input type="checkbox" name="basketNum" value="<%= book.getBasketNum() %>"
 										style="margin: 35px;"></td>
 									<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 											class="img-responsive1"> <%=book.getBookName() %>

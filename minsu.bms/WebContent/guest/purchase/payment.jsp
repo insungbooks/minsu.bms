@@ -227,7 +227,8 @@ text-align:center;
 	<article>
 	<%	if(request.getAttribute("user")!=null){
 		User user=(User)request.getAttribute("user");
-				Book book=(Book)request.getAttribute("bookCode");
+		if(request.getAttribute("bookInfo")!=null){
+				Book book=(Book)request.getAttribute("bookInfo");
 				%>
 
 		<div class="container">
@@ -263,6 +264,26 @@ text-align:center;
 					</tr>
 					<input type="hidden" name="bookCode" value="<%=book.getBookCode() %>"/>
 						<% 
+					}}else{
+						int bookNum=1;
+						if(request.getParameter("bookNum")!=null){
+						 bookNum =Integer.parseInt(request.getParameter("bookNum"));}
+					%>
+					<tr>
+						<td><a href="../../shop/search/productInfo.jsp"> <img
+								src="../../img/nobody.jpg" class="img-responsive1">
+								[<%=book.getKind()%>]<%=book.getBookName() %>
+						</a></td>
+						<td style="padding: 35px;"><%= book.getBookPrice() %>원</td>
+						<td style="padding: 35px;"><input type="number" min="0" value="<%=bookNum %>" name="bookNum"
+							style="display: block; width: 50px; float: center; margin: 0px 60px;" />
+						</td>
+						<td style="padding: 35px;"><%= book.getBookPrice()*bookNum %>원</td>
+						<td style="padding: 35px;">2017년3월19일 도착예정</td><!-- 배송에서받아오기 -->
+					</tr>
+					<input type="hidden" name="bookCode" value="<%=book.getBookCode() %>"/>
+					<%					
+					
 					}%>
 				</tbody>
 			</table>

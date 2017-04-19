@@ -118,7 +118,7 @@ th, td {
 						for (Basket book : listBasket) {
 %> 							
 								<tr>
-									<td><input type="checkbox" name="bookCode" value="<%= book.getBookCode() %> "
+									<td><input type="checkbox" name="basketNum" value="<%= book.getBasketNum() %> "
 										style="margin: 35px;"></td>
 									<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 											class="img-responsive1"> <%=book.getBookName() %>
@@ -130,7 +130,6 @@ th, td {
 									<td style="padding: 35px 15px;"><%=book.getBookPrice()*book.getBookCount() %></td>
 									<td style="padding: 35px 15px;">2017년3월19일 도착예정</td>
 								</tr>
-								<input type="hidden" name="basketNum" value="<%=book.getBasketNum() %>"/>	
 <%}							
 } %>							
 							</tbody>

@@ -8,7 +8,7 @@
 		where user_id = #{userId}
 	</select>
 	
-	<select id="getBasket" parameterType="string">
+	<select id="getBasket" parameterType="string" resultType="basket">
 		select basket_num basketNum, user_id userId, book_code bookCode, 
 			   book_name bookName, book_price bookPrice, book_count bookCount
 		from baskets

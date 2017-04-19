@@ -17,6 +17,7 @@ public class Basket {
 		this.bookCode = bookCode;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
+		this.bookCount = bookCount;
 	}
 	
 	public int getBasketNum() {

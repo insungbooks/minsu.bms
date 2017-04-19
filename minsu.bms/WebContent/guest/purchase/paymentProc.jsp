@@ -41,25 +41,27 @@
 	BasketDao basketDao = new BasketDaoImpl(basketMapper);
 	BasketService basketService = new BasketServiceImpl(basketDao);
 	
-	String bookCode = request.getParameter("bookCode");
+	String bookCode ="";
 	if(session.getAttribute("login")!=null){
 	String id=(String)session.getAttribute("login");
 	User user = loginService.findUser(id);
 	request.setAttribute("user",user);
 	}else{%>
 	<jsp:include page="../../shop/login/login.jsp"/>	
-<% 	}List<Basket> basket=null;
+<% 	}
+	List<Basket> basket=null;
 	if(request.getParameterValues("basketNum")!=null){
 		String[] basketNums = request.getParameterValues("basketNum");
 		for(String basketNum : basketNums){
-			Basket baskets = (Basket)basketService.findBasket(basketNum);
-			basket.add(baskets);
-		}request.setAttribute("basket", basket);
+			List<Basket> baskets = (List<Basket>)basketService.findBasket(basketNum);
+		}
+		
+		request.setAttribute("basket", basket);
 	}else{
-		String bookNum=request.getParameter("bookNum");
+		String bookNum = request.getParameter("bookNum");
 		Book bookInfo = bookService.findBook(bookCode);
 
-		String id=(String)session.getAttribute("login");
+		String id = (String)session.getAttribute("login");
 		User user = loginService.findUser(id);
 		request.setAttribute("user",user);
 

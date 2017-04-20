@@ -4,14 +4,14 @@
 	<select id="bookList" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
 			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum,
-			   writer_intro writerIntro, book_intro bookIntro, contents, company_eval companyEval
+			   book_intro bookIntro, contents, company_eval companyEval
 		from books
 	</select>
 	
 	<select id="getBook" parameterType="string" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
 			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum,
-			   writer_intro writerIntro, book_intro bookIntro, contents, company_eval companyEval
+			   book_intro bookIntro, contents, company_eval companyEval
 		from books
 		where book_code = #{bookCode}
 	</select>
@@ -24,7 +24,7 @@
 		insert into books values (
 		#{bookCode}, #{bookName}, #{bookPrice}, #{writer}, #{company},
 		#{publiDate}, #{country}, #{kind}, #{inventory}, #{salesNum},
-		#{writerIntro}, #{bookIntro}, #{contents}, #{companyEval})
+		#{bookIntro}, #{contents}, #{companyEval})
 	</insert>
 	
 	<update id="updateBook" parameterType="book">
@@ -32,7 +32,7 @@
 		book_name=#{bookName}, book_price=#{bookPrice},
 		writer=#{writer}, company=#{company}, publi_date=#{publiDate},
 		country=#{country}, kind=#{kind}, inventory=#{inventory},
-		writer_intro=#{writerIntro}, book_intro=#{bookIntro}, contents=#{contents},
+		book_intro=#{bookIntro}, contents=#{contents},
 		company_eval=#{companyEval}
 		where book_code=#{bookCode}
 	</update>

@@ -11,7 +11,6 @@ public class Book {
 	private String  kind;
 	private int		inventory;
 	private int 	salesNum;
-	private String	writerIntro;
 	private String	bookIntro;
 	private String	contents;
 	private String	companyEval;
@@ -20,7 +19,7 @@ public class Book {
 	
 	public Book(String bookCode, String bookName, int bookPrice, String writer, String company,
 				String publiDate, String country, String kind, int inventory, int salesNum,
-				String writerIntro,String bookIntro,String contents,String companyEval) {
+				String bookIntro,String contents,String companyEval) {
 		this.bookCode = bookCode;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
@@ -31,7 +30,6 @@ public class Book {
 		this.kind = kind;
 		this.inventory = inventory;
 		this.salesNum = salesNum;
-		this.writerIntro = writerIntro;
 		this.bookIntro = bookIntro;
 		this.contents = contents;
 		this.companyEval = companyEval; 
@@ -115,14 +113,6 @@ public class Book {
 
 	public void setSalesNum(int salesNum) {
 		this.salesNum = salesNum;
-	}
-
-	public String getWriterIntro() {
-		return writerIntro;
-	}
-
-	public void setWriterIntro(String writerIntro) {
-		this.writerIntro = writerIntro;
 	}
 
 	public String getBookIntro() {

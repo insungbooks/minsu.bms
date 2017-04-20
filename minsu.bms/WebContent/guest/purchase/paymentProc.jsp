@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
-<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
 <%@ page import="minsu.bms.config.Configuration"%>
 <%@ page import="minsu.bms.bookmanagement.dao.BookDao"%>
 <%@ page import="minsu.bms.bookmanagement.dao.BookDaoImpl"%>
 <%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <%@ page import="java.util.*" %>
 <%@ page import="minsu.bms.login.service.LoginService"%>
@@ -41,18 +41,21 @@
 	BasketDao basketDao = new BasketDaoImpl(basketMapper);
 	BasketService basketService = new BasketServiceImpl(basketDao);
 	
-	String bookCode = request.getParameter("bookCode");
-	if(session.getAttribute("login")!=null){
-			String id=(String)session.getAttribute("login");
-			User user = loginService.findUser(id);
-			request.setAttribute("user",user);
-	}else{
-%>
-	<jsp:include page="../../shop/login/login.jsp"/>	
-<% 	
+	String bookNum="1";
+	if(request.getParameter("bookNum")!=null){
+		bookNum = request.getParameter("bookNum");
+		request.setAttribute("bookNum", bookNum);
 	}
-%>
-<%
+	
+	if(session.getAttribute("login")!=null){
+	String id=(String)session.getAttribute("login");
+	User user = loginService.findUser(id);
+	request.setAttribute("user",user);
+	}else{%>
+	<jsp:include page="../../shop/login/login.jsp"/>	
+<% 	}
+	
+	
 	List<Basket> basket= new ArrayList<Basket>();
 	if(request.getParameterValues("basketNum")!=null){
 		String[] basketNums = request.getParameterValues("basketNum");
@@ -62,16 +65,14 @@
 			baskets = basketService.findBasket(num);
 			basket.add(baskets);
 		}request.setAttribute("basket", basket);
-	}
-	
-	/* if(!bookCode.equals("") || bookCode!=null) {
-		String bookNum=request.getParameter("bookNum");
-		Book bookInfo = bookService.findBook(bookCode);
-
-		String id=(String)session.getAttribute("login");
-		
+	}else if(request.getParameter("bookCode")!=null){
+		String bookCode = request.getParameter("bookCode");
+		Book bookInfo = (Book)bookService.findBook(bookCode);
 		request.setAttribute("bookInfo", bookInfo);
-		request.setAttribute("bookNum", bookNum);
-	} */
+		
+	}	
+	
+	request.setAttribute("bookNum", bookNum);
+	
 %>
 <jsp:include page="payment.jsp"/>

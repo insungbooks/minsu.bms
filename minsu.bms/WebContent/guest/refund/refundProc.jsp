@@ -14,6 +14,7 @@
 <%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
 <%
 	PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
@@ -24,16 +25,13 @@
 	BookService bookService = new BookServiceImpl(bookDao);
 	
 	int orderNum = Integer.parseInt(request.getParameter("orderNum"));
-	List<Purchase> purchases = (List<Purchase>)purchaseService.findPurchaseList(orderNum);
-	
 	Purchase purchase = purchaseService.findPurchase(orderNum);
 	String bookCode = purchase.getBookCode();
-	
+
 	Book book= (Book)bookService.findBook(bookCode);
-	
-	request.setAttribute("purchases", purchases);
+
+	request.setAttribute("purchase", purchase);
 	request.setAttribute("book", book);
-	
-	
-	
-	%><jsp:include page="purchasingCancel.jsp"/>
+
+
+	%><jsp:include page="refund.jsp"/>

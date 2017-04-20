@@ -29,6 +29,7 @@
 	String reason= request.getParameter("reason");
 	String cancelType =request.getParameter("cancelType");
 	int orderNum= Integer.parseInt(request.getParameter("orderNum"));
+	String id=(String)session.getAttribute("login");
 	
 	Refund refund =new Refund();
 	refund.setCancelType(cancelType);
@@ -36,10 +37,21 @@
 	refund.setRefundAmount(refundAmount);
 	refund.setBookName(bookName);
 	refund.setOrderNum(orderNum);
+	refund.setUserId(id);
+	
 	refundService.addRefund(refund);
+	
+	Purchase purchase = purchaseService.findPurchase(orderNum);
+	
+	if(refund.getOrderNum()== purchase.getOrderNum()){
+		
+		purchase.setRefundNum(refund.getRefundNum());
+		purchaseService.modifyRefund(purchase);
+	
+	}
 
-	List<Refund> refundList=(List<Refund>)refundService.listRefunds();
-	request.setAttribute("orderNum", orderNum);
-	request.setAttribute("refundList", refundList);
+	List<Refund> refunds=(List<Refund>)refundService.listRefunds(id);
+	request.setAttribute("refundList", refunds);
+	
 	%>
-	<jsp:include page="refundResultProc.jsp"/>
+	<jsp:include page="refundList.jsp"/>

@@ -18,4 +18,6 @@
 	List<Purchase> purchases = (List<Purchase>)purchaseService.findPurchaseId(id);
 	request.setAttribute("purchase", purchases);
 	
+	
+	
 	%><jsp:include page="orderList.jsp"/>

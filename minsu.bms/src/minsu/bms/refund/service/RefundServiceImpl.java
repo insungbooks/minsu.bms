@@ -11,8 +11,8 @@ private RefundDao refundDao;
 	public RefundServiceImpl(RefundDao refundDao) {
 		this.refundDao = refundDao;
 	}
-	public List<Refund> listRefunds(){
-		return refundDao.refundList();
+	public List<Refund> listRefunds(String userId){
+		return refundDao.refundList(userId);
 	}
 	
 	public Refund findRefund(int orderNum){

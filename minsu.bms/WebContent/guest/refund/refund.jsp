@@ -29,7 +29,9 @@ li{
 	<article>
 	<form>
 	<% Book book = (Book)request.getAttribute("book");
-	
+			if(request.getAttribute("purchase")!=null){
+		Purchase purchase = (Purchase)request.getAttribute("purchase");
+
 	%>
 <div class="container">
 
@@ -38,19 +40,17 @@ li{
 		<table class="table table-hover" >
 			<thead>
 				<tr>
-					<th style="float:center;"><input type="checkbox" name="pre" value="grammer">선택</th>
+					<th>주문번호</th>
+					<th>주문날짜</th>
 					<th style="float:center;">상품정보</th>
 					<th style="text-area : center; float:center;">수량</th>
 					<th style="float:center;">합계</th>
 				</tr>
 			</thead>
 			<tbody>
-			<%		if(request.getAttribute("purchases")!=null){
-				List<Purchase> purchases=(List<Purchase>)request.getAttribute("purchases");
-				for(Purchase purchase : purchases){
- %>
 				<tr>
-					<td><input type="checkbox" name="pre" value="grammer" style="margin:35px;"></td>
+					<td><%=purchase.getOrderNum() %></td>
+					<td><%=purchase.getOrderDate() %></td>
 					<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 							class="img-responsive1" > [<%=book.getKind()%>]<%=book.getBookName() %>
 					</a></td>
@@ -61,7 +61,7 @@ li{
 				<input type="hidden" name="orderNum" value="<%=purchase.getOrderNum() %>">
 				<input type="hidden" name="bookName" value="<%=book.getBookName() %>"/>
 				<input type="hidden" name="payAmount" value="<%=purchase.getPayAmount() %>"/>
-				<%} }%>
+			
 </tbody>
 </table>
 </div>
@@ -97,14 +97,15 @@ li{
 						<nav style="float:right;">
 						
 						
-						<button class="btn btn-md" type="submit" formaction="../../guest/mypage/refundDetailProc.jsp">환불하기</button>
-						<button class="btn btn-md" type="submit" formaction="../mypage/purchaseList.jsp">취소하기</button>
+						<button class="btn btn-md" type="submit" formaction="refundDetailProc.jsp">환불하기</button>
+						<button class="btn btn-md" type="submit" formaction="../order/orderListProc.jsp">취소하기</button>
 						</nav>
 					</div>
 				</div>
 			</div>
 		</div>
 		<br> <br>
+		<%} %>
 		</form>
 	</article>
 	<br><br><br>

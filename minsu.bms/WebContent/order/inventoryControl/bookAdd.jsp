@@ -196,7 +196,7 @@
 				<h3>저자 소개</h3>
 				<br>
 				<div class="col-md-9">
-					<textarea class="form-control" rows="10" id="introduceContent" name="writerIntro" placeholder="내용을 입력하세요." required><%= book.getWriterIntro() %></textarea>
+					<textarea class="form-control" rows="10" id="introduceContent" name="writerIntro" placeholder="내용을 입력하세요." required></textarea>
 				</div>
 				<div class="com-md-1">
 					<button type="button" class="btn btn-default btn-sm">

@@ -35,7 +35,7 @@
 	String companyEval = request.getParameter("companyEval");
 	
 	Book addBook = new Book(bookCode,bookName,bookPrice,writer,
-							company,publiDate,country,kind,inventory,salesNum,writerIntro,
+							company,publiDate,country,kind,inventory,salesNum,
 							bookIntro,content,companyEval);
 	
 	if(choice.equals("add")) {

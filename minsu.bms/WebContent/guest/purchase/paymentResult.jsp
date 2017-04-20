@@ -60,7 +60,7 @@
 	String phoneNum= request.getParameter("number1")+"-"+request.getParameter("number2")+"-"+request.getParameter("number3");//핸드폰번호
 	String message= request.getParameter("message");//배송메세지
 	int bookPrice = Integer.parseInt(request.getParameter("bookPrice"));//결제금액
-	
+	int deliveryPrice=Integer.parseInt(request.getParameter("deliveryPrice"));//배송비
 	
 	if(request.getParameterValues("bookCodeList")!=null){
 		String[] bookCodes = request.getParameterValues("bookCodeList");
@@ -77,6 +77,7 @@
 			purchase.setDestination(address);
 			purchase.setPayOption(payType);
 			purchase.setPayAmount(bookPrice1);
+			purchase.setDeliveryPrice(deliveryPrice);
 			purchaseService.addPurchase(purchase);
 			
 			Delivery delivery=new Delivery();
@@ -86,6 +87,7 @@
 			delivery.setPhoneNum(phoneNum);
 			delivery.setRecipient(recipient);
 			delivery.setSender(sender);
+			
 			
 			deliveryService.addDelivery(delivery);
 			}
@@ -100,6 +102,7 @@
 	purchase.setDestination(address);
 	purchase.setPayOption(payType);
 	purchase.setPayAmount(bookPrice);
+	purchase.setDeliveryPrice(deliveryPrice);
 	
 	purchaseService.addPurchase(purchase);
 	
@@ -114,8 +117,6 @@
 	deliveryService.addDelivery(delivery);
 	
 	}
-	
-	
 	
 	
 %><jsp:include page="../order/orderListProc.jsp"/>

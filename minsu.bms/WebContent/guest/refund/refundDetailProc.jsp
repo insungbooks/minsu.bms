@@ -30,6 +30,7 @@
 	String cancelType =request.getParameter("cancelType");
 	int orderNum= Integer.parseInt(request.getParameter("orderNum"));
 	String id=(String)session.getAttribute("login");
+	Purchase purchase = purchaseService.findPurchase(orderNum);
 	
 	Refund refund =new Refund();
 	refund.setCancelType(cancelType);
@@ -38,14 +39,15 @@
 	refund.setBookName(bookName);
 	refund.setOrderNum(orderNum);
 	refund.setUserId(id);
-	
+
 	refundService.addRefund(refund);
-	
-	Purchase purchase = purchaseService.findPurchase(orderNum);
-	
-	if(refund.getOrderNum()== purchase.getOrderNum()){
+
+	Refund refund2 = refundService.findRefund(orderNum);
+	int refundNum = refund2.getRefundNum();
+	System.out.print(refundNum);
+	if(refund2.getOrderNum()== purchase.getOrderNum()){
 		
-		purchase.setRefundNum(refund.getRefundNum());
+		purchase.setRefundNum(refundNum);
 		purchaseService.modifyRefund(purchase);
 	
 	}

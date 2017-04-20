@@ -2,29 +2,35 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="minsu.bms.purchase.dao.mapper.PurchaseMapper">
 	<select id="purchaseList" resultType="purchase">
-		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount
+		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
 		from orders
 		order by order_num
 	</select>
 	
 	<select id="getPurchase" parameterType="int" resultType="purchase">
-		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount
+		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
 		from orders
 		where order_num = #{orderNum}
 	</select>
 	<select id="getPurchaseId" parameterType="string" resultType="purchase">
-		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount
+		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
 		from orders
 		where user_id = #{userId}
-		order by order_num
+		order by order_date
+	</select>
+	<select id="getPurchaseSearch" parameterType="string" resultType="purchase">
+		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
+		from orders
+		where order_date between #{date1} and #{date2}
+		order by order_date
 	</select>
 	<select id="getPurchaseList" parameterType="int" resultType="purchase">
-		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount
+		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
 		from orders
 		where order_num = #{orderNum}
 	</select>
 	<select id="getPurchaseBook" parameterType="string" resultType="purchase">
-		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount
+		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
 		from orders
 		where book_code = #{bookCode}
 	</select>
@@ -36,7 +42,7 @@
 	
 	<insert id="addPurchase" parameterType="purchase">
 		insert into orders values (
-		ordernum_seq.nextval, deliverynum_seq.nextval, #{refundNum,jdbcType=NUMERIC}, #{userId}, #{bookCode}, to_char(sysdate,'yyyy"-"mm"-"dd'), #{destination}, #{orderCount}, #{payOption}, #{payAmount})
+		ordernum_seq.nextval, deliverynum_seq.nextval, #{refundNum,jdbcType=NUMERIC}, #{userId}, #{bookCode}, to_char(sysdate,'yyyy"-"mm"-"dd'), #{destination}, #{orderCount}, #{payOption}, #{payAmount}, #{deliveryPrice,jdbcType=NUMERIC})
 	</insert>
 	
 	<update id="updatePurchase" parameterType="purchase">

@@ -15,12 +15,19 @@
 <%@ page import="minsu.bms.delivery.dao.DeliveryDaoImpl"%>
 <%@ page import="minsu.bms.delivery.dao.mapper.DeliveryMapper"%>
 <%@ page import="minsu.bms.delivery.domain.Delivery"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Calendar" %>
+
 <%BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
 BookDao bookDao = new BookDaoImpl(bookMapper);
 BookService bookService = new BookServiceImpl(bookDao); 
 DeliveryMapper deliveryMapper = Configuration.getMapper(DeliveryMapper.class);
-	DeliveryDao deliveryDao = new DeliveryDaoImpl(deliveryMapper);
-	DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);%>
+DeliveryDao deliveryDao = new DeliveryDaoImpl(deliveryMapper);
+DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
+	
+	%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -86,7 +93,7 @@ th {
         <ul class="nav">
         	<li class="nav-header"><strong> 주문관리</strong></li>
             <li class="active"><a href="orderListProc.jsp"> 주문조회</a></li>
-            <li><a href="../basket/Basket.jsp"> 장바구니</a></li>
+            <li><a href="../basket/BasketProc.jsp"> 장바구니</a></li>
             <li><a href="../refund/refundListProc.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
@@ -101,49 +108,48 @@ th {
 		<div class="col-md-10">
 			<h3 style="font-weight: bold;">주문조회</h3>
 			<hr>
-			<form class="form" action="#" method="post">
+			<form class="form" action="orderListSearchProc.jsp" method="get">
+			
 				<table class="table table-bordered">
 					<tr>
 						<td>기간조회</td>
 						<td>
 							<div class="btn-group btn-group-sm">
-								<button type="button" class="btn btn-default">1주일</button>
-								<button type="button" class="btn btn-default">1개월</button>
-								<button type="button" class="btn btn-default">3개월</button>
-								<button type="button" class="btn btn-default">1년</button>
-								<button type="button" class="btn btn-default">3년</button>
+								<button type="submit" class="btn btn-default">1주일</button>
+								<button type="submit" class="btn btn-default">1개월</button>
+								<button type="submit" class="btn btn-default">3개월</button>
+								<button type="submit" class="btn btn-default">1년</button>
+								<button type="submit" class="btn btn-default">3년</button>
 							</div>
 						</td>
 						<td>
 							<div class="form-group registration-date">
 						    	<div class="input-group registration-date-time">
 						    		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-						    		<input class="form-control" name="registration_date" id="registration-date" type="date">
+						    		<input class="form-control" name="date1" type="date">
 						    		<span class="input-group-addon" id="basic-addon1">~</span>
-						    		<input class="form-control" name="registration_date" id="registration-date" type="date">
+						    		<input class="form-control" name="date2" type="date">
 						    		
 						    	</div>
 						    </div>
 						</td>
-						<td rowspan="2">
+						<td >
 							<span class="input-group-btn">
 				    	    	<button class="btn btn-default" type="submit">조회</button>
 				            </span>
 						</td>
 					</tr>
-					<tr>
-						<td>상품조회</td>
-<!-- 뭘,왜 입력? -->		<td colspan="2">상품명을 입력하세요 </td>
-					</tr>
+					
 				</table>
 			</form>
 			
 			
-			<p><small>yyyy-mm-dd ~ yyyy-mm-dd 까지의 주문 총 1건</small></p>
+			<p><small><%=request.getParameter("date1") %> ~ <%=request.getParameter("date2") %>까지의 주문 총 1건</small></p>
 			<table class="table table-bordered" id="orderList">
 				<thead>
 					<tr>
 						<th>주문번호</th>
+						<th>주문날짜</th>
 						<th>상품정보</th>
 						<th>수량</th>
 						<th>결제금액</th>
@@ -163,10 +169,15 @@ th {
     	%>
 					<tr>
 						<td><%=purchase.getOrderNum() %></td>
+						<td><%=purchase.getOrderDate() %></td>
 						<td><%=book.getBookName() %></td>
 						<td><%=purchase.getOrderCount() %></td>
 						<td><%=purchase.getPayAmount() %>원</td>
+						<%if(purchase.getRefundNum()==0){ %>
 						<td><%=delivery.getDeliveryNow() %></td>
+						<%}else if(purchase.getRefundNum()!=0){%>
+						<td>환불완료 </td>
+						<%} %>
 						<th>
 						<form action="../order/detailListProc.jsp">
 						<input type="hidden" value="<%=purchase.getBookCode() %>" name="bookCode">

@@ -19,7 +19,9 @@ public class PurchaseDaoImpl implements PurchaseDao{
 	public List<Purchase> getPurchaseId(String userId){
 		return purchaseMapper.getPurchaseId(userId);
 	}
-	
+	public List<Purchase> getPurchaseSearch(String date1, String date2){
+		return purchaseMapper.getPurchaseSearch(date1, date2);
+	}
 	public List<Purchase> purchaseList() {
 		return purchaseMapper.purchaseList();
 	}

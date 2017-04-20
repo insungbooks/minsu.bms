@@ -5,8 +5,9 @@
 <%@ page import="minsu.bms.login.domain.User"%>
 <%@ page import="minsu.bms.basket.domain.Basket"%>
 <%@ page import="java.util.*"%>
+<%@ page import="java.text.DecimalFormat"%>
 <%!String bookNum1;
-int basketMoney=0; %>
+	%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -227,13 +228,17 @@ th {
 /
 *
 </style>
+
 </head>
 <body>
 	<jsp:include page="../../header.jsp" />
 	<%
-					if(request.getAttribute("user")!=null){
-						User user=(User)request.getAttribute("user");
-				%>
+	int basketMoney = 0;
+	int delivery = 2500;
+	int sumMoney = 0;
+		if (request.getAttribute("user") != null) {
+			User user = (User) request.getAttribute("user");
+	%>
 	<form action="paymentResult.jsp">
 		<article>
 			<div class="container">
@@ -243,55 +248,92 @@ th {
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th>상품정보</th>
-							<th>판매가</th>
-							<th>수량</th>
-							<th>합계</th>
-							<th>도착예정일</th>
+							<th style="text-align: center;">상품정보</th>
+							<th style="text-align: center;">판매가</th>
+							<th style="text-align: center;">수량</th>
+							<th style="text-align: center;">합계</th>
+							<th style="text-align: center;">도착예정일</th>
 						</tr>
 					</thead>
 					<tbody>
-						<%if(request.getAttribute("bookInfo")!=null){
-					
-					Book book= (Book)request.getAttribute("bookInfo");
-					bookNum1= (String)request.getAttribute("bookNum");
-					int bookNum= Integer.parseInt(bookNum1);
-%>
+						<%
+							DecimalFormat df = new DecimalFormat("00");
+								Calendar currentCalendar = Calendar.getInstance();
+
+								//현재 날짜 구하기
+								String strYear = Integer.toString(currentCalendar
+										.get(Calendar.YEAR));
+								String strMonth = df
+										.format(currentCalendar.get(Calendar.MONTH) + 1);
+								String strDay = df
+										.format(currentCalendar.get(Calendar.DATE) + 3);
+								String strDate = strYear + "년" + strMonth + "월" + strDay + "일";
+
+								if (request.getAttribute("bookInfo") != null) {
+
+									Book book = (Book) request.getAttribute("bookInfo");
+									bookNum1 = (String) request.getAttribute("bookNum");
+									int bookNum = Integer.parseInt(bookNum1);
+						%>
 						<tr>
 							<td><a href="../../shop/search/productInfo.jsp"> <img
-									src="../../img/nobody.jpg" class="img-responsive1"> [<%=book.getKind()%>]<%=book.getBookName() %>
+									src="../../img/nobody.jpg" class="img-responsive1"> [<%=book.getKind()%>]<%=book.getBookName()%>
 							</a></td>
-							<td style="padding: 35px;"><%= book.getBookPrice() %>원</td>
+							<td style="padding: 35px;"><%=book.getBookPrice()%>원</td>
 							<td style="padding: 35px;"><input type="number" min="0"
-								value="<%=bookNum %>" name="bookNum"
+								value="<%=bookNum%>" name="bookNum"
 								style="display: block; width: 50px; float: center; margin: 0px 60px;" />
 							</td>
-							<td style="padding: 35px;"><%= book.getBookPrice() %>원</td>
+							<td style="padding: 35px;"><%=book.getBookPrice()%>원</td>
 							<td style="padding: 35px;">2017년3월19일 도착예정</td>
 							<!-- 배송에서받아오기 -->
-							<input type="hidden" name="bookCode" value="<%=book.getBookCode() %>" />
-							<%basketMoney = book.getBookPrice()*bookNum; %>
+							<input type="hidden" name="bookCode"
+								value="<%=book.getBookCode()%>" />
+							<%
+								basketMoney = book.getBookPrice() * bookNum;
+										if (basketMoney > 29999) {
+											delivery = 0;
+										}
+										sumMoney = basketMoney + delivery;
+							%>
 						</tr>
-						<%}else if(request.getAttribute("basket")!=null){
-					List<Basket> baskets = (List<Basket>)request.getAttribute("basket");
-					for(Basket basket: baskets){
-%><tr>
+						<%
+							} else if (request.getAttribute("basket") != null) {
+									List<Basket> baskets = (List<Basket>) request
+											.getAttribute("basket");
+									for (Basket basket : baskets) {
+						%><tr>
 							<td><a href="../../shop/search/productInfo.jsp"> <img
-									src="../../img/nobody.jpg" class="img-responsive1"> [문학]<%=basket.getBookName() %>
+									src="../../img/nobody.jpg" class="img-responsive1"> [문학]<%=basket.getBookName()%>
 							</a></td>
-							<td style="padding: 35px;"><%= basket.getBookPrice() %>원</td>
+							<td style="padding: 35px;"><%=basket.getBookPrice()%>원</td>
 							<td style="padding: 35px;"><input type="number" min="0"
-								value="<%=basket.getBookCount() %>" name="bookNum"
-								style="display: block; width: 50px; float: center; margin: 0px 60px;" />
-							</td>
-							<td style="padding: 35px;"><%= basket.getBookPrice()*basket.getBookCount() %>원</td>
-							<td style="padding: 35px;">2017년3월19일 도착예정</td>
+								value="<%=basket.getBookCount()%>" name="bookNum"
+								style="display: block; width: 50px; float: center; margin: 0px 60px;"
+								readonly /></td>
+							<td style="padding: 35px;"><%=basket.getBookPrice() * basket.getBookCount()%>원</td>
+							<td style="padding: 35px;"><%=strDate%> 도착예정</td>
 							<!-- 배송에서받아오기 -->
-							<input type="hidden" name="bookCodeList" value="<%=basket.getBookCode() %>" />
-							<input type="hidden" name="bookPriceList" value="<%=basket.getBookPrice()*basket.getBookCount() %>" />
-							<input type="hidden" name="bookNumList" value="<%=basket.getBookCount() %>" />
+							<input type="hidden" name="bookCodeList"
+								value="<%=basket.getBookCode()%>" />
+							<input type="hidden" name="bookPriceList"
+								value="<%=basket.getBookPrice() * basket.getBookCount()%>" />
+							<input type="hidden" name="bookNumList"
+								value="<%=basket.getBookCount()%>" />
+
+							<%
+								basketMoney += basket.getBookPrice() * basket.getBookCount();
+							
+									}
+									if (basketMoney > 29999) {
+										delivery = 0;
+									}
+									sumMoney = basketMoney + delivery;
+												}
+		
+		
+							%>
 						</tr>
-						<%basketMoney = basket.getBookPrice()+basketMoney; } }%>
 					</tbody>
 				</table>
 				<hr class="star-primary">
@@ -310,12 +352,11 @@ th {
 						</thead>
 						<tbody>
 							<tr>
-								<td><%=basketMoney %>원</td>
-								<td>2500원</td>
-								<td><%=basketMoney+2500 %>원</td>
-								<input type="hidden" name="bookPrice"
-									value="<%= basketMoney+2500 %>" />
-								<td><%= (basketMoney+2500)/10 %>원</td>
+								<td><%=basketMoney%>원</td>
+								<td><%=delivery%>원</td>
+								<td><%=sumMoney%>원</td>
+								<input type="hidden" name="bookPrice" value="<%=sumMoney%>" />
+								<td><%=sumMoney / 10%>원</td>
 							</tr>
 						</tbody>
 					</table>
@@ -356,14 +397,14 @@ th {
 						</span></td>
 						<td class="col4" rowspan="8"><span style="float: left;">보내는
 								분</span> <input style="float: right;" type="text" name="recipient"
-							value="<%=user.getName() %>" style="width:200px;" readonly>
+							value="<%=user.getName()%>" style="width:200px;" readonly>
 							<span class="sub_text margin_left10"></span> <br> <br>
 							<span style="float: left;"> 연락처 </span> <span
 							style="float: right;"> <input type="text"
-								value="<%=user.getPhoneNum() %>" style="width: 200px;" readonly>
+								value="<%=user.getPhoneNum()%>" style="width: 200px;" readonly>
 						</span> <br> <br> <span style="float: left;"> e-mail </span> <span
 							style="float: right;"> <input type="email"
-								value="<%=user.getEmail() %>" style="width: 200px;" readonly>
+								value="<%=user.getEmail()%>" style="width: 200px;" readonly>
 						</span></td>
 					</tr>
 					<tr>
@@ -382,7 +423,8 @@ th {
 						<td class="col3" style="float: left;">
 							<div>
 								<input type="text" id="sample4_roadAddress" size=50
-									placeholder="도로명주소" name="address1" style="float: left;" readonly>
+									placeholder="도로명주소" name="address1" style="float: left;"
+									readonly>
 							</div>
 						</td>
 					</tr>
@@ -579,15 +621,15 @@ th {
 							<tbody>
 								<tr>
 									<td>상품금액</td>
-									<td><%=basketMoney %>원</td>
+									<td><%=basketMoney%>원</td>
 								</tr>
 								<tr>
 									<td>배송비</td>
-									<td>2500원</td>
+									<td><%=delivery%>원</td><input type="hidden" name="deliveryPrice" value="<%=delivery %>"/>
 								</tr>
 								<tr>
 									<td>최종결제금액</td>
-									<td><%=basketMoney+2500 %>원</td>
+									<td><%=sumMoney%>원</td>
 								</tr>
 							</tbody>
 						</table>
@@ -607,7 +649,9 @@ th {
 
 		</article>
 	</form>
-<%} %>
+	<%
+		}
+	%>
 	<jsp:include page="../../footer.html" />
 </body>
 </html>

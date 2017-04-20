@@ -19,7 +19,7 @@
 	
 	<insert id="addDelivery" parameterType="delivery">
 		insert into delivery_state values (
-		deliverynum1_seq.nextval, #{deliveryNow}, #{phoneNum}, #{recipient}, #{sender}, #{address}, #{message,jdbcType=VARCHAR})
+		deliverynum1_seq.nextval, #{deliveryNow}, #{phoneNum}, #{recipient}, #{sender}, #{address}, #{message,jdbcType=VARCHAR}, to_char(sysdate+3,'yyyy"-"mm"-"dd'))
 	</insert>
 	
 	<update id="updateDelivery" parameterType="delivery">

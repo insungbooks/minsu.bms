@@ -34,7 +34,7 @@
 	<tr>
 	<%if(request.getAttribute("delivery")!=null){
 		Delivery delivery = (Delivery)request.getAttribute("delivery");
-		request.getAttribute("orderDate");
+		
 	%>
 		<td><%= delivery.getDeliveryNum()%></td>
 		<td><%= delivery.getDeliveryNow()%></td>
@@ -43,7 +43,7 @@
 		<td><%= delivery.getPhoneNum() %></td>
 		<td><%= delivery.getAddress() %></td>
 		<td><%= delivery.getMessage() %></td>
-		<td><%= %>
+		<td><%= delivery.getDeliveryDate() %></td>
 		<%} %>
 		</tr>
 	</tbody>

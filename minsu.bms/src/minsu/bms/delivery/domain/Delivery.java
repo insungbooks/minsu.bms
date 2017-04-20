@@ -8,11 +8,12 @@ public class Delivery {
 	private String sender;//받는사람
 	private String address;//주소
 	private String message;//배송메세지
+	private String deliveryDate;//배송날짜
 	
 
 	public Delivery(){}
 	
-	public Delivery(int deliveryNum, String deliveryNow, String phoneNum, String recipient, String sender, String address, String message){
+	public Delivery(int deliveryNum, String deliveryNow, String phoneNum, String recipient, String sender, String address, String message, String deliveryDate){
 		this.deliveryNum=deliveryNum;
 		this.deliveryNow=deliveryNow;
 		this.phoneNum=phoneNum;
@@ -20,6 +21,7 @@ public class Delivery {
 		this.sender=sender;
 		this.address=address;
 		this.message=message;
+		this.deliveryDate=deliveryDate;
 	}
 
 	public int getDeliveryNum() {
@@ -76,6 +78,14 @@ public class Delivery {
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public String getDeliveryDate() {
+		return deliveryDate;
+	}
+
+	public void setDeliveryDate(String deliveryDate) {
+		this.deliveryDate = deliveryDate;
 	}
 	
 }

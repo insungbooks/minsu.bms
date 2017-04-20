@@ -25,7 +25,9 @@
 	
 	int deliveryNum = Integer.parseInt(request.getParameter("deliveryNum"));
 	Delivery delivery = (Delivery)deliveryService.findDelivery(deliveryNum);
+	String orderDate=request.getParameter("orderDate");
 	
+	request.setAttribute("orderDate", orderDate);
 	request.setAttribute("delivery", delivery);
 		
 %><jsp:include page="shipment.jsp"/>

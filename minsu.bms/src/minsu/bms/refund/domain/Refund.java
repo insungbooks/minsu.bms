@@ -9,10 +9,11 @@ public class Refund {
 	private int refundAmount;//환불금액
 	private String bookName;//환불상품
 	private int orderNum;//주문번호
+	private String userId;//환불자
 	
 	public Refund(){}
 	
-	public Refund(int refundNum, String refundNow, String refundReason, String cancelType, String refundDate, int refundAmount, String bookName, int orderNum){
+	public Refund(int refundNum, String refundNow, String refundReason, String cancelType, String refundDate, int refundAmount, String bookName, int orderNum, String userId){
 		this.refundNum=refundNum;
 		this.refundNow=refundNow;
 		this.refundReason=refundReason;
@@ -21,6 +22,7 @@ public class Refund {
 		this.refundDate=refundDate;
 		this.bookName=bookName;
 		this.orderNum=orderNum;
+		this.userId=userId;
 	}
 
 	public int getRefundNum() {
@@ -85,6 +87,14 @@ public class Refund {
 
 	public void setOrderNum(int orderNum) {
 		this.orderNum = orderNum;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 	
 }

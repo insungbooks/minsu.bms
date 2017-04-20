@@ -24,24 +24,10 @@
 	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
 	
-	int orderNum=(int)request.getAttribute("orderNum");
-	Purchase purchase = purchaseService.findPurchase(orderNum);
-	
-	
-	
-		List<Refund> refundList=(List<Refund>)refundService.listRefunds();
-		for(Refund refund : refundList){
-			if(refund.getOrderNum()==purchase.getOrderNum()){
-				
-				purchase.setRefundNum(refund.getRefundNum());
-				purchaseService.modifyRefund(purchase);
-				
-			}
-		}
-	
-	List<Refund> refund=(List<Refund>)refundService.listRefunds();
-	request.setAttribute("refundList", refund);
+	String id=(String)session.getAttribute("login");
+	List<Refund> refunds=(List<Refund>)refundService.listRefunds(id);
+	request.setAttribute("refundList", refunds);
 	
 	
 	%>
-	<jsp:include page="refundDetail.jsp"/>
+	<jsp:include page="refundList.jsp"/>

@@ -2,6 +2,25 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
 <%@ page import="minsu.bms.purchase.domain.Purchase"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDao"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDaoImpl"%>
+<%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
+<%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ page import="minsu.bms.delivery.service.DeliveryService"%>
+<%@ page import="minsu.bms.delivery.service.DeliveryServiceImpl"%>
+<%@ page import="minsu.bms.delivery.dao.DeliveryDao"%>
+<%@ page import="minsu.bms.delivery.dao.DeliveryDaoImpl"%>
+<%@ page import="minsu.bms.delivery.dao.mapper.DeliveryMapper"%>
+<%@ page import="minsu.bms.delivery.domain.Delivery"%>
+<%BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
+BookDao bookDao = new BookDaoImpl(bookMapper);
+BookService bookService = new BookServiceImpl(bookDao); 
+DeliveryMapper deliveryMapper = Configuration.getMapper(DeliveryMapper.class);
+	DeliveryDao deliveryDao = new DeliveryDaoImpl(deliveryMapper);
+	DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -52,7 +71,9 @@
 }
 
 /*//사이드바*/
-
+th {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -64,9 +85,9 @@
 		<nav class="nav-sidebar">
         <ul class="nav">
         	<li class="nav-header"><strong> 주문관리</strong></li>
-            <li class="active"><a href="orderList.jsp"> 주문조회</a></li>
+            <li class="active"><a href="orderListProc.jsp"> 주문조회</a></li>
             <li><a href="../basket/Basket.jsp"> 장바구니</a></li>
-            <li><a href="refundDetail.jsp">취소/교환내역</a></li>
+            <li><a href="../refund/refundListProc.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
            	<li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
@@ -123,9 +144,9 @@
 				<thead>
 					<tr>
 						<th>주문번호</th>
-						<th>주문금액</th>
 						<th>상품정보</th>
 						<th>수량</th>
+						<th>결제금액</th>
 						<th>주문상태</th>
 						<th>상세보기</th>
 					</tr>
@@ -133,16 +154,21 @@
 				<tbody>
 				<% if(request.getAttribute("purchase")!=null){
 					List<Purchase> purchases = (List<Purchase>)request.getAttribute("purchase");
+					
 				for (Purchase purchase : purchases) {
+					String bookCode=purchase.getBookCode();
+					Book book = bookService.findBook(bookCode);
+					int deliveryNum = purchase.getDeliveryNum();
+					Delivery delivery =deliveryService.findDelivery(deliveryNum);
     	%>
 					<tr>
 						<td><%=purchase.getOrderNum() %></td>
-						<td><%=purchase.getPayAmount() %>원</td>
-						<td><%=purchase.getBookCode() %></td>
+						<td><%=book.getBookName() %></td>
 						<td><%=purchase.getOrderCount() %></td>
-						<td><%=purchase.getDeliveryNum() %></td>
+						<td><%=purchase.getPayAmount() %>원</td>
+						<td><%=delivery.getDeliveryNow() %></td>
 						<th>
-						<form action="../mypage/detailListProc.jsp">
+						<form action="../order/detailListProc.jsp">
 						<input type="hidden" value="<%=purchase.getBookCode() %>" name="bookCode">
 						<input type="hidden" value="<%=purchase.getOrderNum() %>" name="orderNum">
 						<input type="hidden" value="<%=purchase.getDeliveryNum() %>" name="deliveryNum">
@@ -180,6 +206,7 @@
 	</div>
 </div>
 </article>
+
 <jsp:include page="../../footer.html"/>
 </body>
 </html>

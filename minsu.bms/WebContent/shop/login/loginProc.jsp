@@ -32,9 +32,3 @@
 	response.sendRedirect("../../main.jsp");
 	}
 %>
-<%-- <script>
-	history.go(-2);
-</script>
-<%
-	}
-%> --%>

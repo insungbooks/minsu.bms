@@ -4,29 +4,48 @@ public class SearchResult {
 	private String  bookCode;	//도서 코드
 	private String  bookName;	//도서 제목
 	private int 	bookPrice;	//도서 가격
+	private String	bookIntro;	//도서 소개
 	private String  writer;		//저자
+	private String	writerIntro;//저자 소개
 	private String  company;	//출판사
 	private String  publiDate;	//출판일
 	private String  country;	//출판 국가(국내/해외)
 	private String  kind;		//분류
 	private int		salesNum;	//판매량
-	//private int		reviewCnt;	//상품평순
+	private int		reviewCnt;	//상품평순
+	private String	companyEval;//출판사 서평
 	
-	public SearchResult() {}
-	
-	public SearchResult(String bookCode, String bookName, int bookPrice, String writer, String company,
-				String publiDate, String country, String kind, int salesNum) {
+	public SearchResult(){}
+
+	public SearchResult(String bookCode, String bookName, int bookPrice, String	bookIntro, String writer,String writerIntro, String company,
+			String publiDate, String contents, String companyEval) {
 		this.bookCode = bookCode;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
+		this.bookIntro = bookIntro;
 		this.writer = writer;
+		this.writerIntro=writerIntro;
 		this.company = company;
 		this.publiDate = publiDate;
-		this.country = country;
-		this.kind = kind;
-		this.salesNum = salesNum;
+		this.companyEval=companyEval;
 	}
-
+	
+	
+/*	this.bookCode = bookCode;
+	this.bookName = bookName;
+	this.bookPrice = bookPrice;
+	this.bookIntro = bookIntro;
+	this.writer = writer;
+	this.writerIntro=writerIntro;
+	this.company = company;
+	this.publiDate = publiDate;
+	this.country = country;
+	this.kind = kind;
+	this.salesNum = salesNum;
+	this.reviewCnt=reviewCnt;*/
+	
+	
+	
 	public String getBookCode() {
 		return bookCode;
 	}
@@ -59,6 +78,14 @@ public class SearchResult {
 		this.writer = writer;
 	}
 
+	public String getWriterIntro() {
+		return writerIntro;
+	}
+
+	public void setWriterIntro(String writerIntro) {
+		this.writerIntro = writerIntro;
+	}
+	
 	public String getCompany() {
 		return company;
 	}
@@ -99,11 +126,27 @@ public class SearchResult {
 		this.salesNum = salesNum;
 	}
 	
-/*	public int getReviewCnt() {
+	public int getReviewCnt() {
 		return reviewCnt;
 	}
 
 	public void setReviewCnt(int reviewCnt) {
 		this.reviewCnt = reviewCnt;
-	}*/
+	}
+
+	public String getBookIntro() {
+		return bookIntro;
+	}
+
+	public void setBookIntro(String bookIntro) {
+		this.bookIntro = bookIntro;
+	}
+
+	public String getCompanyEval() {
+		return companyEval;
+	}
+
+	public void setCompanyEval(String companyEval) {
+		this.companyEval = companyEval;
+	}
 }

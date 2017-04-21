@@ -28,10 +28,7 @@
 	String em2 = request.getParameter("email2");
 	String email = em1+"@"+em2;
 	
- 	String ph1 = request.getParameter("phoneNum1"); 
- 	String ph2 = request.getParameter("phoneNum2"); 
- 	String ph3 = request.getParameter("phoneNum3"); 
- 	String phoneNum = ph1+"-"+ph2+"-"+ph3;
+ 	String phoneNum = request.getParameter("phoneNum"); 
 	
  	String address = request.getParameter("address");
 	

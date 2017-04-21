@@ -12,14 +12,14 @@ public class Book {
 	private int		inventory;
 	private int 	salesNum;
 	private String	bookIntro;
-	private String	contents;
 	private String	companyEval;
+	private String 	img;
 	
 	public Book() {}
 	
 	public Book(String bookCode, String bookName, int bookPrice, String writer, String company,
 				String publiDate, String country, String kind, int inventory, int salesNum,
-				String bookIntro,String contents,String companyEval) {
+				String bookIntro,String companyEval, String img) {
 		this.bookCode = bookCode;
 		this.bookName = bookName;
 		this.bookPrice = bookPrice;
@@ -31,8 +31,8 @@ public class Book {
 		this.inventory = inventory;
 		this.salesNum = salesNum;
 		this.bookIntro = bookIntro;
-		this.contents = contents;
 		this.companyEval = companyEval; 
+		this.img = img;
 	}
 
 	public String getBookCode() {
@@ -123,19 +123,19 @@ public class Book {
 		this.bookIntro = bookIntro;
 	}
 
-	public String getContents() {
-		return contents;
-	}
-
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
-
 	public String getCompanyEval() {
 		return companyEval;
 	}
 
 	public void setCompanyEval(String companyEval) {
 		this.companyEval = companyEval;
+	}
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
 	}
 }

@@ -16,8 +16,35 @@
 		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
 		from orders
 		where user_id = #{userId}
-		order by order_date Desc
+		order by order_date desc
 	</select>
+	
+	<select id="getPurchasePage" parameterType="page" resultMap="purchaseMap">
+		<![CDATA[
+		select * from (
+			select rownum as rnum, x.* from(
+				select * from orders
+				order by order_num desc
+			)x where rownum <= #{rowCnt}*#{currentPage}
+		) where rnum > 10*(#{currentPage}-1)
+		]]>
+	</select>
+	
+	<resultMap id="purchaseMap" type="purchase">
+		<id property="orderNum"				column="order_num" />
+		<result property="deliveryNum"		column="delivery_num" />
+		<result property="refundNum"		column="refund_num" />
+		<result property="userId"			column="user_id" />
+		<result property="bookCode"			column="book_code" />
+		<result property="orderDate"		column="order_date" />
+		<result property="destination"		column="destination" />
+		<result property="orderCount"		column="order_count" />
+		<result property="payOption"		column="pay_option" />
+		<result property="payAmount"		column="pay_amount" />
+		<result property="deliveryPrice"	column="delivery_price" />
+	</resultMap>
+	
+	
 	<select id="getPurchaseSearch" parameterType="string" resultType="purchase">
 		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
 		from orders

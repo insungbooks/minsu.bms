@@ -144,11 +144,10 @@
 								<td>${refund.bookName}</td>
 								<td>${refund.refundDate}</td>
 								<td>${refund.refundAmount}</td>
-								<td>${refund.vancelType}</td>
+								<td>${refund.cancelType}</td>
 								<td>${refund.refundReason}</td>
 								<td>${refund.refundNow}</td>
 							</tr>
-							
 							</c:forEach>
 						</tbody>
 					</table>

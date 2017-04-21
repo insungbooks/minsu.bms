@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import minsu.bms.paging.domain.Page;
 import minsu.bms.purchase.domain.Purchase;
 
 public interface PurchaseMapper {
@@ -12,6 +13,7 @@ public interface PurchaseMapper {
 	List<Purchase> getPurchaseList(int orderNum);
 	List<Purchase> getPurchaseBook(String bookCode);
 	List<Purchase> getPurchaseId(String userId);
+	List<Purchase> getPurchasePage(Page page);
 	List<Purchase> getPurchaseSearch(@Param("date1")String date1, @Param("date2")String date2);
 	Purchase getBook(String bookCode);
 	int addPurchase(Purchase purchase);

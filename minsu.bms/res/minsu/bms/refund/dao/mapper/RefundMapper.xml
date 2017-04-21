@@ -19,14 +19,15 @@
 	</select>
 	
 	<resultMap id="refundMap" type="refund">
-		<id property="refundNum"		column="refund_num"/>
-		<result property="refundNow"	column="refund_now"/>
-		<result property="refundReason"	column="refund_reason"/>
-		<result property="cancelType"	column="cancel_type"/>
-		<result property="refundDate"	column="refund_date"/>
-		<result property="bookName"		column="book_name"/>
-		<result property="orderNum"		column="order_num"/>
-		<result property="userId"		column="user_id"/>
+		<id property="refundNum"		column="refund_num" />
+		<result property="refundNow"	column="refund_now" />
+		<result property="refundReason"	column="refund_reason" />
+		<result property="cancelType"	column="cancel_type" />
+		<result property="refundAmount"	column="refund_amount" />
+		<result property="refundDate"	column="refund_date" />
+		<result property="bookName"		column="book_name" />
+		<result property="orderNum"		column="order_num" />
+		<result property="userId"		column="user_id" />
 	</resultMap>
 	
 	<select id="getRefund" parameterType="int" resultType="refund">

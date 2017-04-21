@@ -2,6 +2,7 @@ package minsu.bms.purchase.dao;
 
 import java.util.List;
 
+import minsu.bms.paging.domain.Page;
 import minsu.bms.purchase.dao.mapper.PurchaseMapper;
 import minsu.bms.purchase.domain.Purchase;
 import minsu.bms.query.domain.Query;
@@ -24,6 +25,9 @@ public class PurchaseDaoImpl implements PurchaseDao{
 	}
 	public List<Purchase> purchaseList() {
 		return purchaseMapper.purchaseList();
+	}
+	public List<Purchase> getPurchasePage(Page page){
+		return purchaseMapper.getPurchasePage(page);
 	}
 	public List<Purchase> getPurchaseBook(String bookCode){
 		return purchaseMapper.getPurchaseBook(bookCode);

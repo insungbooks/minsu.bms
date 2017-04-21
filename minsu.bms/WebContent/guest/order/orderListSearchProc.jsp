@@ -17,22 +17,59 @@
 	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
 	
-	//DecimalFormat df = new DecimalFormat("00");
     
 	
-	 if(request.getParameter("date1")!=null ||request.getParameter("date2")!=null){
+	 if(request.getParameter("date1") != null
+				&& !request.getParameter("date1").equals("")
+				&& request.getParameter("date2") != null
+				&& !request.getParameter("date2").equals("")){
 		 String date1= request.getParameter("date1");
 		 String date2= request.getParameter("date2");
-		 List<Purchase> purchase = purchaseService.findPurchaseSearch(date1, date2);
-			request.setAttribute("purchase", purchase);
+		 List<Purchase> purchase1 = purchaseService.findPurchaseSearch(date1, date2);
+			request.setAttribute("purchase1", purchase1);
+			request.setAttribute("date1", date1);
+			request.setAttribute("date2", date2);
 			
 	 }else{
-		 String date1 = PurchaseServiceImpl.getDate(-7);
-			SimpleDateFormat sd = new SimpleDateFormat("yyyy-MM-dd");
+		 DecimalFormat df = new DecimalFormat("00");
+			Calendar currentCalendar = Calendar.getInstance();
+			String date1="";
+			String date2="";
+			//현재 날짜 구하기
+			String strYear = Integer.toString(currentCalendar
+					.get(Calendar.YEAR));
+			String strMonth = df.format(currentCalendar
+					.get(Calendar.MONTH) + 1);
+			String strMonth31 = df.format(currentCalendar
+					.get(Calendar.MONTH));
+			String strMonth90 = df.format(currentCalendar
+					.get(Calendar.MONTH) - 2);
+			String strDay = df.format(currentCalendar
+					.get(Calendar.DATE));
+			String strDay7 = df.format(currentCalendar
+					.get(Calendar.DATE) - 7);
+			String date = strYear +"-"+ strMonth  +"-"+ strDay;
+			String date7 = strYear +"-"+strMonth +"-"+strDay7;
+			String date31 = strYear+"-"+strMonth31  +"-"+ strDay;
+			String date90 = strYear +"-"+ strMonth90 +"-"+ strDay;
+			
+			if (request.getParameter("date7") != null) {
+				date1 = date7.trim();
+				date2 = date.trim();
 
-			String date2 = sd.format(new Date()); 
-			List<Purchase> purchase = purchaseService.findPurchaseSearch(date1, date2);
-			request.setAttribute("purchase", purchase);
+			} else if (request.getParameter("date31") != null) {
+				date1 = date31.trim();
+				date2 = date.trim();
+
+			} else if(request.getParameter("date90") != null) {
+				date1 = date90.trim();
+				date2 = date.trim();
+			}
+			
+			List<Purchase> purchase2 = purchaseService.findPurchaseSearch(date1, date2);
+			request.setAttribute("purchase2", purchase2);
+			request.setAttribute("date1", date1);
+			request.setAttribute("date2", date2);
 		
 	 }
 	

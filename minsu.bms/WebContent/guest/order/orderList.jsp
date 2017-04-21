@@ -16,6 +16,12 @@
 <%@ page import="minsu.bms.delivery.dao.mapper.DeliveryMapper"%>
 <%@ page import="minsu.bms.delivery.domain.Delivery"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="minsu.bms.purchase.service.PurchaseService"%>
+<%@ page import="minsu.bms.purchase.service.PurchaseServiceImpl"%>
+<%@ page import="minsu.bms.purchase.dao.PurchaseDao"%>
+<%@ page import="minsu.bms.purchase.dao.PurchaseDaoImpl"%>
+<%@ page import="minsu.bms.purchase.dao.mapper.PurchaseMapper"%>
+<%@ page import="minsu.bms.purchase.domain.Purchase"%>
 <%@ page import="java.text.DecimalFormat" %>
 <%@ page import="java.text.SimpleDateFormat" %>
 <%@ page import="java.util.Calendar" %>
@@ -26,6 +32,9 @@ BookService bookService = new BookServiceImpl(bookDao);
 DeliveryMapper deliveryMapper = Configuration.getMapper(DeliveryMapper.class);
 DeliveryDao deliveryDao = new DeliveryDaoImpl(deliveryMapper);
 DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
+PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
+PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
+PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
 	
 	%>
 <!DOCTYPE html>
@@ -115,12 +124,9 @@ th {
 						<td>기간조회</td>
 						<td>
 							<div class="btn-group btn-group-sm">
-								<button type="submit" class="btn btn-default">1주일</button>
-								<button type="submit" class="btn btn-default">1개월</button>
-								<button type="submit" class="btn btn-default">3개월</button>
-								<button type="submit" class="btn btn-default">1년</button>
-								<button type="submit" class="btn btn-default">3년</button>
-							</div>
+								<input type="submit" name="date7" value="1주일" class="btn btn-default"/>
+								<input type="submit" name="date31" value="1개월" class="btn btn-default"/>
+								<input type="submit" name="date90" value="3개월" class="btn btn-default"/></div>
 						</td>
 						<td>
 							<div class="form-group registration-date">
@@ -142,9 +148,17 @@ th {
 					
 				</table>
 			</form>
+			<%List<Purchase> purchases=null;
+			if(request.getAttribute("purchase1")!=null){
+				purchases = (List<Purchase>)request.getAttribute("purchase1");
+			}else if(request.getAttribute("purchase2")!=null){
+				purchases = (List<Purchase>)request.getAttribute("purchase2");
+			}else {
+				String id=(String)session.getAttribute("login");
+				purchases = (List<Purchase>)purchaseService.findPurchaseId(id);
+			}%>
 			
-			
-			<p><small><%=request.getParameter("date1") %> ~ <%=request.getParameter("date2") %>까지의 주문 총 1건</small></p>
+			<p><small><%=request.getAttribute("date1") %> ~ <%=request.getAttribute("date2") %>까지의 주문 총 <%=purchases.size() %>건</small></p>
 			<table class="table table-bordered" id="orderList">
 				<thead>
 					<tr>
@@ -158,8 +172,7 @@ th {
 					</tr>
 				</thead>
 				<tbody>
-				<% if(request.getAttribute("purchase")!=null){
-					List<Purchase> purchases = (List<Purchase>)request.getAttribute("purchase");
+				<% 
 					
 				for (Purchase purchase : purchases) {
 					String bookCode=purchase.getBookCode();
@@ -188,7 +201,7 @@ th {
 						</th>
 					</tr>
 						<%}
-				}
+				
 				%>
 				</tbody>
 			</table>

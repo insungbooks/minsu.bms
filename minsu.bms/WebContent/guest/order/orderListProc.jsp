@@ -16,7 +16,7 @@
 	
 	String id=(String)session.getAttribute("login");
 	List<Purchase> purchases = (List<Purchase>)purchaseService.findPurchaseId(id);
-	request.setAttribute("purchase", purchases);
+	request.setAttribute("purchase3", purchases);
 	
 	
 	%><jsp:include page="orderList.jsp"/>

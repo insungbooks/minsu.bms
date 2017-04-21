@@ -132,7 +132,7 @@ th {
 						    		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
 						    		<input class="form-control" name="date1" type="date">
 						    		<span class="input-group-addon" id="basic-addon1">~</span>
-						    		<input class="form-control" name="date2" type="date">
+						    		<input class="form-control" name="date2"  type="date">
 						    		
 						    	</div>
 						    </div>

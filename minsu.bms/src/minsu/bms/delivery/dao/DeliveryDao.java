@@ -9,5 +9,6 @@ public interface DeliveryDao {
 	Delivery getDelivery(int deliveryNum);
 	int addDelivery(Delivery delivery);
 	int updateDelivery(Delivery delivery);
+	int updateDeliveryNow(Delivery delivery);
 	int delDelivery(int deliveryNum);
 }

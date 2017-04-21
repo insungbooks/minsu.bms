@@ -29,4 +29,9 @@
 		address=#{address}, message=#{message}
 		where delivery_num=#{deliveryNum}
 	</update>
+	<update id="updateDeliveryNow" parameterType="delivery">
+		update delivery_state set
+		delivery_now=#{deliveryNow}
+		where delivery_num=#{deliveryNum}
+	</update>
 </mapper>

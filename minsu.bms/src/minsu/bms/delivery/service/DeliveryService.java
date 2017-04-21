@@ -9,5 +9,6 @@ public interface DeliveryService {
 	Delivery findDelivery(int deliveryNum);
 	boolean addDelivery(Delivery delivery);
 	boolean modifyDelivery(Delivery delivery);
+	boolean modifyDeliveryNow(Delivery delivery);
 	boolean deleteDelivery(int deliveryNum);
 }

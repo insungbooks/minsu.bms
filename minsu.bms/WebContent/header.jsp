@@ -151,7 +151,7 @@ a {
 					<li class="topli"><a href="../../shop/login/logoutProc.jsp">로그아웃</a></li>
 					<li class="topli"><a>적립금 : 650점</a></li>
 					<li class="topli"><a href="../../guest/basket/BasketProc.jsp">장바구니</a></li>
-					<li class="topli"><a href="../../guest/order/orderListProc.jsp">마이페이지</a></li>
+					<li class="topli"><a href="../../guest/order/orderList.jsp">마이페이지</a></li>
 					<% }else { %>
 					<!-- 세션값이 없다라면 실행 (로그인 안된상태) -->
 					<li class="topli"><a
@@ -159,7 +159,7 @@ a {
 					<li class="topli"><a
 						href="../../guest/signUp/signUp.jsp">회원가입</a></li>
 					<li class="topli"><a href="../../guest/basket/BasketProc.jsp">장바구니</a></li>
-					<li class="topli"><a href="../../guest/order/orderListProc.jsp">마이페이지</a></li>
+					<li class="topli"><a href="../../guest/order/orderList.jsp">마이페이지</a></li>
 					<% } %>
 				</ul>
 			</div>

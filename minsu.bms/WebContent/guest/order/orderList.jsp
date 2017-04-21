@@ -130,9 +130,9 @@ th {
 							<div class="form-group registration-date">
 						    	<div class="input-group registration-date-time">
 						    		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-						    		<input class="form-control" name="date1" value="<%=request.getAttribute("date1") %>" type="date">
+						    		<input class="form-control" name="date1" type="date">
 						    		<span class="input-group-addon" id="basic-addon1">~</span>
-						    		<input class="form-control" name="date2" value="<%=request.getAttribute("date2") %>" type="date">
+						    		<input class="form-control" name="date2"  type="date">
 						    		
 						    	</div>
 						    </div>

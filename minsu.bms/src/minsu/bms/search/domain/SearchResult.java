@@ -13,7 +13,6 @@ public class SearchResult {
 	private String  kind;		//분류
 	private int		salesNum;	//판매량
 	private int		reviewCnt;	//상품평순
-	private String	contents;	//목차
 	private String	companyEval;//출판사 서평
 	
 	public SearchResult(){}
@@ -28,7 +27,6 @@ public class SearchResult {
 		this.writerIntro=writerIntro;
 		this.company = company;
 		this.publiDate = publiDate;
-		this.contents = contents;
 		this.companyEval=companyEval;
 	}
 	
@@ -142,14 +140,6 @@ public class SearchResult {
 
 	public void setBookIntro(String bookIntro) {
 		this.bookIntro = bookIntro;
-	}
-
-	public String getContents() {
-		return contents;
-	}
-
-	public void setContents(String contents) {
-		this.contents = contents;
 	}
 
 	public String getCompanyEval() {

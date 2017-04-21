@@ -3,14 +3,23 @@
 <%@ page import="minsu.bms.search.service.SearchService"%>
 <%@ page import="minsu.bms.search.service.SearchServiceImpl"%>
 <%@ page import="minsu.bms.search.domain.SearchResult"%>
+<%@ page import="minsu.bms.review.service.ReviewService"%>
+<%@ page import="minsu.bms.review.service.ReviewServiceImpl"%>
+<%@ page import="minsu.bms.review.domain.Review"%>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%
 	SearchService searchService=new SearchServiceImpl();
+/* 	ReviewService reviewService=new ReviewServiceImpl(); */
 	
 	String bookCode=request.getParameter("bookCode");
 	SearchResult searchResult=searchService.bookInfo(bookCode);
-	
 	request.setAttribute("searchResult", searchResult);
+	
+/* 	if(reviewService.listReviews(bookCode)!=null || reviewService.listReviews(bookCode).size()>0){
+		List<Review> reviews=reviewService.listReviews(bookCode);
+		request.setAttribute("reviews", reviews);
+	} */
 %>
 	<jsp:forward page="productInfo.jsp?bookCode=<%= searchResult.getBookCode() %>"/>

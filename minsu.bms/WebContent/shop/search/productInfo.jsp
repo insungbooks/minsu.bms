@@ -128,11 +128,6 @@
 						<em><%= searchResult.getWriter() %></em><br>
 						<%= searchResult.getWriterIntro() %>
 					</div>
-					<h3>목차</h3>
-					<div class="text" style="border: 1px solid black;">
-						<p><%= searchResult.getContents() %></p>
-					</div>
-					<hr>
 					<h3>출판사 서평</h3>
 					<div class="text" style="border: 1px solid black;">
 						<%= searchResult.getCompanyEval() %>

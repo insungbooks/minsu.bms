@@ -15,11 +15,8 @@ public class BookDaoImpl implements BookDao {
 		this.bookMapper = bookMapper;
 	}
 	
-	public List<Book> bookList() {
-		return bookMapper.bookList();
-	}
-	public List<Book> bookList1(Page page) {
-		return bookMapper.bookList1(page);
+	public List<Book> bookList(Page page) {
+		return bookMapper.bookList(page);
 	}
 	public Book getBook(String bookCode) {
 		return bookMapper.getBook(bookCode);

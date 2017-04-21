@@ -1,8 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ page import="minsu.bms.paging.domain.Page" %>
+<%@ page import="minsu.bms.paging.service.PageService" %>
+<%@ page import="minsu.bms.paging.service.PageServiceImpl" %>
+<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDao"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDaoImpl"%>
+<%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
 <%@ page import="java.util.List"%>
 <!DOCTYPE html>
+<%
+	Page myPage = null;
+	String currentPage = request.getParameter("currentPage");
+	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
+	else myPage = new Page();
+	
+	PageService pageService = new PageServiceImpl(5, myPage);
+	pageContext.setAttribute("pageMaker", pageService);
+	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
+	BookDao bookDao = new BookDaoImpl(bookMapper);
+	BookService bookService = new BookServiceImpl(bookDao);
+	pageContext.setAttribute("posts", bookService.listBooks1(myPage));
+%>
 <html lang="ko">
 <head>
 <title>책목록조회</title>
@@ -75,7 +98,7 @@
 							<li><a href="../member/memberList.jsp">회원목록조회</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 주문관리</strong></li>
-							<li class="active"><a href="listBooksProc.jsp">도서목록조회</a></li>
+							<li class="active"><a href="bookList.jsp">도서목록조회</a></li>
 							<li><a href="bookAdd.jsp">도서 추가</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 재고관리</strong></li>
@@ -105,53 +128,52 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%
+								<%-- <%
 									if (request.getAttribute("books") != null) {
 										List<Book> books = (List<Book>) request.getAttribute("books");
 										for (Book book : books) {
-								%>
+									
+								%> --%>
+								<c:forEach var="book" items="${posts}">
 								<form>
 								<tr>
 									<td><input type="hidden" name="bookCode"
-										value="<%=book.getBookCode()%>"></td>
-									<td><%=book.getBookCode()%></td>
-									<td><%=book.getKind()%></td>
-									<td><%=book.getBookName()%></td>
-									<td><%=book.getWriter()%></td>
-									<td><%=book.getCompany()%></td>
-									<td><%=book.getPubliDate()%></td>
-									<td><%=book.getBookPrice()%></td>
-									<td><input type="number" name = "inventory" value="<%=book.getInventory()%>" required style="width:50px;"/><button type="submit" formaction="inventoryModProc.jsp">수정</button></td>
+										value="${book.bookCode}"></td>
+									<td>${book.bookCode}</td>
+									<td>${book.kind}</td>
+									<td>${book.bookName}</td>
+									<td>${book.writer}</td>
+									<td>${book.company}</td>
+									<td>${book.publiDate}</td>
+									<td>${book.bookPrice}</td>
+									<td><input type="number" name = "inventory" value="${book.inventory}" required style="width:50px;"/><button type="submit" formaction="inventoryModProc.jsp">수정</button></td>
 									<td><button type="submit" formaction="modifyBookProc.jsp">정보수정</button></td>
 									<td><button type="submit" formaction="deleteBookProc.jsp">삭제</button></td>
 								</tr>
 								</form>
-								<%
-									}
-								}
-								%>
+							</c:forEach>
 							</tbody>
 						</table>
 						<div class="row">
 							<div class="col-sm-3"></div>
 							<div class="col-sm-6">
-								<div class="text-center" id="searchPageNum">
-									<!-- 페이지숫자 테두리 없는게 더 깔끔하겠지? 내일 고칠게/  그리고 이게 검색된책들 아래가 아니고, 위에 오는게 맞아? -->
-									<ul class="pagination pagination-sm" id="pageNum">
-										<li><a href="#" rel="prev">«</a></li>
-										<li class="active"><a href="#">1</a></li>
-										<li><a href="#">2</a></li>
-										<li><a href="#">3</a></li>
-										<li><a href="#">4</a></li>
-										<li><a href="#">5</a></li>
-										<li><a href="#">6</a></li>
-										<li><a href="#">7</a></li>
-										<li><a href="#">8</a></li>
-										<li><a href="#">9</a></li>
-										<li><a href="#">10</a></li>
-										<li><a href="#" rel="next">»</a></li>
-									</ul>
-								</div>
+								<div class="text-center">
+			<ul class="pagination">
+				<c:if test="${pageMaker.prev}">
+					<li><a href="bookList.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a></li>
+				</c:if>
+				
+				<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+					<li <c:out value="${pageMaker.page.currentPage==idx ? 'class=active' :''}"/>>
+						<a href="bookList.jsp?currentPage=${idx}">${idx}</a>
+					</li>
+				</c:forEach>
+				
+				<c:if test="${pageMaker.next}">
+					<li><a href="bookList.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
+				</c:if>
+			</ul>
+		</div>
 								<div class="col-sm-3"></div>
 							</div>
 						</div>

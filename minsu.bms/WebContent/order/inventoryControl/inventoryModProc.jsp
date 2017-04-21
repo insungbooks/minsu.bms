@@ -20,5 +20,5 @@
 	modBook.setInventory(inventory);
 	bookService.modifyBook(modBook);
 %>
-	<jsp:include page="listBooksProc.jsp"/>
+	<jsp:include page="bookList.jsp"/>
 	

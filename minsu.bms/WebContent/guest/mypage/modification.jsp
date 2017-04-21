@@ -15,7 +15,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
     function sample4_execDaumPostcode() {
@@ -67,6 +67,22 @@
             }
         }).open();
     }
+    
+    $(function(){
+        $('#pw').keyup(function(){
+         $('font[name=check]').text('');
+        }); 
+
+        $('#password').keyup(function(){
+         if($('#pw').val()!=$('#password').val()){
+          $('font[name=check]').text('');
+          $('font[name=check]').html("다시 확인해주세요");
+         }else{
+          $('font[name=check]').text('');
+          $('font[name=check]').html("비밀번호 맞음");
+         }
+        }); 
+       });
 </script>
 </head>
 <body>
@@ -111,6 +127,7 @@
 				<div class="col-md-10">
 				<form action="../../shop/system/updateSuccessProc.jsp">
 				<h4 style="padding-top: 16px;">회원정보 수정</h4>
+				*표시만 수정가능
 				<section class="infoInput">
 					<table class="table table-bordered">
 						<tbody>
@@ -123,12 +140,14 @@
 								<td><input type="text" readOnly="readOnly" value="<%=user.getUserId()%>" name="id"></td>
 							</tr>
 							<tr>
-								<th>비 밀 번 호</th>
-								<td><input type="password" placeholder="password" required/>대,소문자,특수기호, 숫자 사용가능</td>
+								<th>비 밀 번 호 *</th>
+								<td><input type="password" placeholder="password" name ="pw" id="pw" required/>대,소문자,특수기호, 숫자 사용가능</td>
 							</tr>
 							<tr>
-								<th>비 밀 번 호 확 인</th>
-								<td><input type="password" placeholder="password" name="password" required/></td>
+								<th>비 밀 번 호 확 인 *</th>
+								<td><input type="password" placeholder="password" name="password" id="password" required/>
+								<font name="check" size="2" color="red"></font> 
+								</td>
 							</tr>
 							<tr>
 								<th>주민등록번호</th>
@@ -144,43 +163,33 @@
 							if(gender.equals("여")){%>
 							<tr>
 								<th>성 별</th>
-								<td><input type="radio" name="sex" checked="checked"/>여 <input type="radio"
+								<td><input type="radio" name="sex" checked="checked" value="여"/>여 <input type="radio"
 									name="sex" disabled/>남</td>
 							</tr>
 							<%}else{ %>
 							<tr>
 								<th>성 별</th>
 								<td><input type="radio" name="sex" disabled/>여 <input type="radio"
-									name="sex" checked="checked"/>남</td>
+									name="sex" checked="checked" value="남"/>남</td>
 							</tr>
 							<%}%>
 							<tr>
-								<th>핸드폰 번호</th>
-								<td><input type="tel" list="mobileNum" name="phoneNum1" required> <datalist
-										id="mobileNum">
-										<option value="010"></option>
-										<option value="019"></option>
-										<option value="017"></option>
-										<option value="016"></option>
-									</datalist>-<input type="tel" name="phoneNum2" required/>-<input type="tel" name="phoneNum3" required/>
+								<th>핸드폰 번호 *</th>
+								<td><input type="text" name="phoneNum" required Maxlength="13" placeholder="' - '포함 입력하세요" 
+									value="<%=user.getPhoneNum() %>" required></td>
 								 
 							</tr>
 								<tr>
-								<th>E-Mail</th>
-								<td><input type="text" name="email1" required>@<input type="text"
-									list="emailList" name="email2" required> <datalist id="emailList">
-										<option value="naver.com"></option>
-										<option value="daum.net"></option>
-										<option value="hanmail.net"></option>
-										<option value="gmail.net"></option>
-									</datalist></td>
+								<th>E-Mail *</th>
+								<td><input type="text" name="email" required value="<%=user.getEmail() %>"></td>
 							</tr>
 							
 							<tr>
-								<th>주 소</th>
+								<th>주 소 *</th>
 								<td><input type="text" id="sample4_postcode" name="postal" placeholder="우편번호" required>
-								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
-								<input type="text" id="sample4_roadAddress" name="address" size=50 placeholder="도로명주소" required>
+								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호로 찾기"><br>
+								<input type="text" id="sample4_roadAddress" name="address" size=50 placeholder="도로명주소" required
+									value="<%=user.getAddress()%>">
 								</td>
 							</tr>
 						</tbody>

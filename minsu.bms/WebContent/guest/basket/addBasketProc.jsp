@@ -35,7 +35,6 @@
 	bookCount = Integer.parseInt(request.getParameter("bookNum"));
 	}//수량
 	
-	
 	Basket basket=new Basket();
 	basket.setBookCode(addCode);
 	basket.setBookCount(bookCount);
@@ -44,7 +43,6 @@
 	basket.setUserId(id);
 	
 	basketService.plusBasket(basket);
-	
 	
 %>
  	<jsp:forward page="BasketProc.jsp"/>

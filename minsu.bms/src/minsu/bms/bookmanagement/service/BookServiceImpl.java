@@ -12,13 +12,9 @@ public class BookServiceImpl implements BookService {
 	public BookServiceImpl(BookDao bookDao) {
 		this.bookDao = bookDao;
 	}
-	
-	public List<Book> listBooks(){
-		return bookDao.bookList();
-	}
-	
-	public List<Book> listBooks1(Page page){
-		return bookDao.bookList1(page);
+
+	public List<Book> listBooks(Page page){
+		return bookDao.bookList(page);
 	}
 	
 	public Book findBook(String bookCode){

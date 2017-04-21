@@ -24,7 +24,7 @@
 	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
 	BookDao bookDao = new BookDaoImpl(bookMapper);
 	BookService bookService = new BookServiceImpl(bookDao);
-	pageContext.setAttribute("posts", bookService.listBooks1(myPage));
+	pageContext.setAttribute("posts", bookService.listBooks(myPage));
 %>
 <html lang="ko">
 <head>
@@ -128,12 +128,6 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%-- <%
-									if (request.getAttribute("books") != null) {
-										List<Book> books = (List<Book>) request.getAttribute("books");
-										for (Book book : books) {
-									
-								%> --%>
 								<c:forEach var="book" items="${posts}">
 								<form>
 								<tr>

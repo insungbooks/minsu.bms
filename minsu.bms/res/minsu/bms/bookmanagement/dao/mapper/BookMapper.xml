@@ -25,12 +25,13 @@
 		<result property="salesNum"		column="sales_num"/>
 		<result property="bookIntro"	column="book_intro"/>
 		<result property="companyEval"	column="company_eval"/>
+		<result property="img"			column="img"/>
 	</resultMap>
 	
 	<select id="getBook" parameterType="string" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
 			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum,
-			   book_intro bookIntro, company_eval companyEval
+			   book_intro bookIntro, company_eval companyEval, img
 		from books
 		where book_code = #{bookCode}
 	</select>
@@ -43,7 +44,7 @@
 		insert into books values (
 		#{bookCode}, #{bookName}, #{bookPrice}, #{writer}, #{company},
 		#{publiDate}, #{country}, #{kind}, #{inventory}, #{salesNum},
-		#{bookIntro}, #{companyEval})
+		#{bookIntro}, #{companyEval}, 1)
 	</insert>
 	
 	<update id="updateBook" parameterType="book">

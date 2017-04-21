@@ -14,11 +14,11 @@
 	BasketDao basketDao = new BasketDaoImpl(basketMapper);
 	BasketService basketService = new BasketServiceImpl(basketDao);
 	
-	String id = (String)session.getAttribute("login");
+	/* String id = (String)session.getAttribute("login");
 	String delCode = request.getParameter("bookCode");
 	basketService.findBasket(basketNum);
 	basketService.deleteBasket(delCode);
 	List<Basket> baskets = basketService.listBaskets(id);
-	request.setAttribute("delBasket", baskets);
+	request.setAttribute("delBasket", baskets); */
 %>
  	<jsp:forward page="Basket.jsp"/>

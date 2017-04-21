@@ -15,6 +15,7 @@
 </style>
 </head>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script>
     function sample4_execDaumPostcode() {
         new daum.Postcode({
@@ -65,6 +66,25 @@
             }
         }).open();
     }
+    
+ 
+  
+     $(function(){
+      $('#pw').keyup(function(){
+       $('font[name=check]').text('');
+      }); 
+
+      $('#password').keyup(function(){
+       if($('#pw').val()!=$('#password').val()){
+        $('font[name=check]').text('');
+        $('font[name=check]').html("다시 확인해주세요");
+       }else{
+        $('font[name=check]').text('');
+        $('font[name=check]').html("비밀번호 맞음");
+       }
+      }); 
+     });
+
 </script>
 <body>
 <jsp:include page="../../header.jsp"/>
@@ -104,7 +124,7 @@
 								준용합니다」</p>
 
 						</section>
-						<input type="checkbox"> 동의합니다.
+						<input type="checkbox" required> 동의합니다.
 					</div>
 					<div class="col-sm-6">
 						<ul>
@@ -118,7 +138,7 @@
 							<p>- 보존 기간 : 1년</p>
 
 						</section>
-						<input type="checkbox"> 동의합니다.
+						<input type="checkbox" required> 동의합니다.
 					</div>
 				</div>
 				<hr>
@@ -138,19 +158,21 @@
 							</tr>
 							<tr>
 								<th>비 밀 번 호</th>
-								<td><input type="password" placeholder="password" required/></td>
+								<td><input type="password" placeholder="password" name="pw" id="pw" required/></td>
 							</tr>
 							<tr>
 								<th>비 밀 번 호 확 인</th>
-								<td><input type="password" placeholder="password" name="password" required/></td>
+								<td><input type="password" placeholder="password" name="password" id="password" required/>
+								<font name="check" size="2" color="red"></font> 
+								</td>
 							</tr>
 							<tr>
 								<th>주민등록번호</th>
-								<td><input type="number"  name="myNum1" required/>-<input type="number"  name="myNum2" required/></td>
+								<td><input type="text"  name="myNum1" required Maxlength="6"/>-<input type="text"  name="myNum2" required Maxlength="7"/></td>
 							</tr>
 							<tr>
 								<th>나 이</th>
-								<td><input type="number"  name="age" required/></td>
+								<td><input type="text"  name="age" required/ Maxlength="3"></td>
 							</tr>
 							<tr>
 								<th>성 별</th>
@@ -159,13 +181,7 @@
 							</tr>
 							<tr>
 								<th>핸드폰 번호</th>
-								<td><input type="tel" list="mobileNum" name="phoneNum1" required> <datalist
-										id="mobileNum">
-										<option value="010"></option>
-										<option value="019"></option>
-										<option value="017"></option>
-										<option value="016"></option>
-									</datalist>-<input type="tel" name="phoneNum2" required/>-<input type="tel" name="phoneNum3" required/>
+								<td><input type="text" name="phoneNum" required Maxlength="13" placeholder="' - '포함 입력하세요" required> </td>
 								 
 							</tr>
 							<tr>
@@ -182,7 +198,7 @@
 							<tr>
 								<th>주 소</th>
 								<td><input type="text" id="sample4_postcode" name="postal" placeholder="우편번호" required>
-								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br>
+								<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호로 찾기"><br>
 								<input type="text" id="sample4_roadAddress" name="address" size=50 placeholder="도로명주소" required>
 								</td>
 							</tr>

@@ -27,6 +27,12 @@
 <%@ page import="minsu.bms.delivery.dao.DeliveryDaoImpl"%>
 <%@ page import="minsu.bms.delivery.dao.mapper.DeliveryMapper"%>
 <%@ page import="minsu.bms.delivery.domain.Delivery"%>
+<%@ page import="minsu.bms.basket.service.BasketService"%>
+<%@ page import="minsu.bms.basket.service.BasketServiceImpl"%>
+<%@ page import="minsu.bms.basket.dao.BasketDao"%>
+<%@ page import="minsu.bms.basket.dao.BasketDaoImpl"%>
+<%@ page import="minsu.bms.basket.dao.mapper.BasketMapper"%>
+<%@ page import="minsu.bms.basket.domain.Basket"%>
 <!DOCTYPE html>
 <%
 	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
@@ -41,19 +47,54 @@
 	DeliveryMapper deliveryMapper = Configuration.getMapper(DeliveryMapper.class);
 	DeliveryDao deliveryDao = new DeliveryDaoImpl(deliveryMapper);
 	DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
+	BasketMapper basketMapper = Configuration.getMapper(BasketMapper.class);
+	BasketDao basketDao = new BasketDaoImpl(basketMapper);
+	BasketService basketService = new BasketServiceImpl(basketDao);
 	
 	String address= request.getParameter("address1")+request.getParameter("address2");//도착지
 	int bookNum= Integer.parseInt(request.getParameter("bookNum"));//수량
 	String payType=request.getParameter("payType");//결제방법
 	String id=(String)session.getAttribute("login");//아이디
-	String bookCode=request.getParameter("bookCode");//책코드
 	String recipient= request.getParameter("recipient");//보내는사람
 	String sender= request.getParameter("sender");//받는사람
-	String phoneNum= request.getParameter("number1")+request.getParameter("number2")+request.getParameter("number3");//핸드폰번호
+	String phoneNum= request.getParameter("number1")+"-"+request.getParameter("number2")+"-"+request.getParameter("number3");//핸드폰번호
 	String message= request.getParameter("message");//배송메세지
 	int bookPrice = Integer.parseInt(request.getParameter("bookPrice"));//결제금액
+	int deliveryPrice=Integer.parseInt(request.getParameter("deliveryPrice"));//배송비
 	
+	if(request.getParameterValues("bookCodeList")!=null){
+		String[] bookCodes = request.getParameterValues("bookCodeList");
+		String[] bookNums=request.getParameterValues("bookNumList");
+		String[] bookPriceNums=request.getParameterValues("bookPriceList");
+		for(int i=0;i<bookCodes.length;i++){
+			int bookNum1 = Integer.parseInt(bookNums[i]);
+			int bookPrice1= Integer.parseInt(bookPriceNums[i]);
+			
+			Purchase purchase= new Purchase();//주문생성
+			purchase.setBookCode(bookCodes[i]);
+			purchase.setOrderCount(bookNum1);
+			purchase.setUserId(id);
+			purchase.setDestination(address);
+			purchase.setPayOption(payType);
+			purchase.setPayAmount(bookPrice1);
+			purchase.setDeliveryPrice(deliveryPrice);
+			purchaseService.addPurchase(purchase);
+			
+			Delivery delivery=new Delivery();
+			delivery.setDeliveryNow("배송전");
+			delivery.setAddress(address);
+			delivery.setMessage(message);
+			delivery.setPhoneNum(phoneNum);
+			delivery.setRecipient(recipient);
+			delivery.setSender(sender);
+			
+			
+			deliveryService.addDelivery(delivery);
+			}
+		}
+	else if(request.getParameter("bookCode")!=null){
 	
+	String bookCode=request.getParameter("bookCode");
 	Purchase purchase= new Purchase();//주문생성
 	purchase.setBookCode(bookCode);
 	purchase.setOrderCount(bookNum);
@@ -61,11 +102,12 @@
 	purchase.setDestination(address);
 	purchase.setPayOption(payType);
 	purchase.setPayAmount(bookPrice);
+	purchase.setDeliveryPrice(deliveryPrice);
 	
 	purchaseService.addPurchase(purchase);
 	
 	Delivery delivery=new Delivery();
-	delivery.setDeliveryNow("배송전");
+	delivery.setDeliveryNow("배송중");
 	delivery.setAddress(address);
 	delivery.setMessage(message);
 	delivery.setPhoneNum(phoneNum);
@@ -74,5 +116,7 @@
 	
 	deliveryService.addDelivery(delivery);
 	
+	}
 	
-%><jsp:include page="../mypage/orderListProc.jsp"/>
+	
+%><jsp:include page="../order/orderList.jsp"/>

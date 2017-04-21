@@ -79,9 +79,9 @@ th, td {
 				<nav class="nav-sidebar">
         <ul class="nav">
         	<li class="nav-header"><strong> 주문관리</strong></li>
-            <li ><a href="../mypage/orderList.jsp"> 주문조회</a></li>
+            <li ><a href="../order/orderListProc.jsp"> 주문조회</a></li>
             <li class="active"><a href="BasketProc.jsp"> 장바구니</a></li>
-            <li><a href="../mypage/refundDetail.jsp">취소/교환내역</a></li>
+            <li><a href="../refund/refundListProc.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
             <li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
@@ -114,10 +114,11 @@ th, td {
 <%
 					if(request.getAttribute("listBasket")!=null){
 						List<Basket> listBasket=(List<Basket>)request.getAttribute("listBasket");
-						for (Basket book : listBasket) {		
-%> 
+						
+						for (Basket book : listBasket) {
+%> 							
 								<tr>
-									<td><input type="checkbox" name="bookCode" value="<%= book.getBookCode() %> "
+									<td><input type="checkbox" name="basketNum" value="<%= book.getBasketNum() %>"
 										style="margin: 35px;"></td>
 									<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 											class="img-responsive1"> <%=book.getBookName() %>
@@ -128,8 +129,8 @@ th, td {
 									</td>
 									<td style="padding: 35px 15px;"><%=book.getBookPrice()*book.getBookCount() %></td>
 									<td style="padding: 35px 15px;">2017년3월19일 도착예정</td>
-								</tr>	
-<%}
+								</tr>
+<%}							
 } %>							
 							</tbody>
 						</table>
@@ -163,14 +164,14 @@ th, td {
 			delivery = 0;
 		}else delivery = 2500;
 	}
-	}
+	}int bo=(sum+delivery)/10;
 %>
 							<tbody>
 								<tr>
 									<td><%= sum %></td>
 									<td><%= delivery %></td>
 									<td><%= sum+delivery %></td>
-									<td>2500원</td>
+									<td><%= bo %>원</td>
 								</tr>
 							</tbody>
 						</table>

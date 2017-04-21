@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
-<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
 <%@ page import="minsu.bms.config.Configuration"%>
 <%@ page import="minsu.bms.bookmanagement.dao.BookDao"%>
 <%@ page import="minsu.bms.bookmanagement.dao.BookDaoImpl"%>
 <%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <%@ page import="java.util.*" %>
 <%@ page import="minsu.bms.login.service.LoginService"%>
@@ -14,6 +14,18 @@
 <%@ page import="minsu.bms.login.dao.LoginDaoImpl"%>
 <%@ page import="minsu.bms.login.dao.mapper.LoginMapper"%>
 <%@ page import="minsu.bms.login.domain.User"%>
+<%@ page import="minsu.bms.purchase.service.PurchaseService"%>
+<%@ page import="minsu.bms.purchase.service.PurchaseServiceImpl"%>
+<%@ page import="minsu.bms.purchase.dao.PurchaseDao"%>
+<%@ page import="minsu.bms.purchase.dao.PurchaseDaoImpl"%>
+<%@ page import="minsu.bms.purchase.dao.mapper.PurchaseMapper"%>
+<%@ page import="minsu.bms.purchase.domain.Purchase"%>
+<%@ page import="minsu.bms.basket.service.BasketService"%>
+<%@ page import="minsu.bms.basket.service.BasketServiceImpl"%>
+<%@ page import="minsu.bms.basket.dao.BasketDao"%>
+<%@ page import="minsu.bms.basket.dao.BasketDaoImpl"%>
+<%@ page import="minsu.bms.basket.dao.mapper.BasketMapper"%>
+<%@ page import="minsu.bms.basket.domain.Basket"%>
 <!DOCTYPE html>
 <%
 	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
@@ -22,18 +34,43 @@
 	LoginMapper loginMapper = Configuration.getMapper(LoginMapper.class);
 	LoginDao loginDao = new LoginDaoImpl(loginMapper);
 	LoginService loginService = new LoginServiceImpl(loginDao); 
+	PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
+	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
+	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
+	BasketMapper basketMapper = Configuration.getMapper(BasketMapper.class);
+	BasketDao basketDao = new BasketDaoImpl(basketMapper);
+	BasketService basketService = new BasketServiceImpl(basketDao);
 	
-	//if(request.getParameter("paymentSingle")!=null){
-	String bookCode = request.getParameter("bookCode");
-	String bookNum=request.getParameter("bookNum");
-	Book bookInfo = bookService.findBook(bookCode);
+	String bookNum="1";
+	if(request.getParameter("bookNum")!=null){
+		bookNum = request.getParameter("bookNum");
+		request.setAttribute("bookNum", bookNum);
+	}
 	
-	//if(session.getAttribute("login")!=null){ 예외처리해야되!
+	if(session.getAttribute("login")!=null){
 	String id=(String)session.getAttribute("login");
 	User user = loginService.findUser(id);
 	request.setAttribute("user",user);
+	}else{%>
+	<jsp:include page="../../shop/login/login.jsp"/>	
+<% 	}
 	
-	request.setAttribute("bookInfo", bookInfo);
+	
+	List<Basket> basket= new ArrayList<Basket>();
+	if(request.getParameterValues("basketNum")!=null){
+		String[] basketNums = request.getParameterValues("basketNum");
+		for(String basketNum : basketNums){
+			int num = Integer.parseInt(basketNum);
+			Basket baskets = null;
+			baskets = basketService.findBasket(num);
+			basket.add(baskets);
+		}request.setAttribute("basket", basket);
+	}else if(request.getParameter("bookCode")!=null){
+		String bookCode = request.getParameter("bookCode");
+		Book bookInfo = (Book)bookService.findBook(bookCode);
+		request.setAttribute("bookInfo", bookInfo);
+	}	
+	
 	request.setAttribute("bookNum", bookNum);
 	
 %>

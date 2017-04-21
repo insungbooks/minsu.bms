@@ -6,8 +6,8 @@ import minsu.bms.search.domain.SearchResult;
 
 public interface SearchService {
 	//도서 목록
-	List<SearchResult> listSearchResult(String searchOption, String searchText);
+	List<SearchResult> listSearchResult(String searchOption, String searchText, String orderOption);
 	
-	//책 상세정보
+	//도서 정보
 	SearchResult bookInfo(String bookCode);
 }

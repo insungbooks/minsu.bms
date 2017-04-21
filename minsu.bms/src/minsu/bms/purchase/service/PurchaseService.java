@@ -11,6 +11,7 @@ public interface PurchaseService {
 	List<Purchase> findPurchaseBook(String bookCode);
 	List<Purchase> findPurchaseList(int orderNum);
 	List<Purchase> findPurchaseId(String userId);
+	List<Purchase> findPurchaseSearch(String date1, String date2);
 	Purchase findBook(String bookCode);
 	boolean addPurchase(Purchase purchase);
 	boolean modifyPurchase(Purchase purchase);

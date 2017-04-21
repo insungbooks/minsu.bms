@@ -16,8 +16,8 @@ public class BasketServiceImpl implements BasketService{
 		return basketDao.getBaskets(userId);
 	}
 	
-	public Basket findBasket(String bookNum){
-		return basketDao.getBook(bookNum);
+	public Basket findBasket(int bookNum){
+		return basketDao.getBasket(bookNum);
 	}
 
 	public boolean plusBasket(Basket basket){

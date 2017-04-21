@@ -44,12 +44,12 @@ Purchase purchase=(Purchase)request.getAttribute("purchase");
 					<caption>주문정보</caption>
 					<thead>
 						<tr>
-							<th>주문번호</th>
-							<th>주문상품</th>
-							<th>결제금액</th>
-							<th style="text-area: center;">수량</th>
-							<th>배송조회</th>
-							<th>교환/환불</th>
+							<th style="text-align: center;">주문번호</th>
+							<th style="text-align: center;">주문상품</th>
+							<th style="text-align: center;">수량</th>
+							<th style="text-align: center;">결제금액</th>
+							<th style="text-align: center;">배송조회</th>
+							<th style="text-align: center;">교환/환불</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -58,14 +58,22 @@ Purchase purchase=(Purchase)request.getAttribute("purchase");
 							<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
 									class="img-responsive1"> [<%=book.getKind() %>]<%=book.getBookName() %>
 							</a></td>
-							<td style="padding: 35px;"><%=book.getBookPrice() %>원</td>
 							<td style="padding: 35px;"><%=purchase.getOrderCount() %></td>
+							<td style="padding: 35px;"><%=purchase.getPayAmount() %>원</td>
 							<td>
-							<input type="hidden" name="deliveryNum" value="<%=purchase.getDeliveryNum() %>"> <button type="submit" formaction="shipmentProc.jsp"
+							<input type="hidden" name="deliveryNum" value="<%=purchase.getDeliveryNum() %>"> 
+							<button type="submit" formaction="../shipment/shipmentProc.jsp"
 							
-										class="btn btn-default btn-block">배송조회</button></td>
-							<td><input type="hidden" name="orderNum" value="<%=purchase.getOrderNum() %>">
-							<button type="submit" formaction="../purchase/purchasingCancelProc.jsp" class="btn btn-default btn-block">환불</button></td>
+										class="btn btn-default btn-block" style="margin-top:15px;">배송조회</button></td>
+							<td>
+							<input type="hidden" name="orderNum" value="<%=purchase.getOrderNum() %>">
+							<%if(purchase.getRefundNum()==0){
+							%>
+							<button type="submit" formaction="../refund/refundProc.jsp" class="btn btn-default btn-block" style="margin-top:15px;">환불하기</button>
+							<%}else{ %>
+							<button type="button" class="btn btn-default btn-block" style="margin-top:15px;">환불완료</button>
+							<%} %>
+							</td>
 						
 						</tr>
 					</tbody>
@@ -76,12 +84,11 @@ Purchase purchase=(Purchase)request.getAttribute("purchase");
 					<caption>결제정보</caption>
 					<thead>
 						<tr>
-							<th>결제방식</th>
-							<th>구매일시</th>
-							<th>적립금</th>
-							<th>할인금액</th>
-							<th>배송비</th>
-							<th>결제금액</th>
+							<th style="text-align: center;">결제방식</th>
+							<th style="text-align: center;">구매일시</th>
+							<th style="text-align: center;">적립금</th>
+							<th style="text-align: center;">배송비</th>
+							<th style="text-align: center;">결제금액</th>
 
 						</tr>
 					</thead>
@@ -89,9 +96,8 @@ Purchase purchase=(Purchase)request.getAttribute("purchase");
 						<tr>
 							<td><%=purchase.getPayOption() %></td>
 							<td><%=purchase.getOrderDate() %></td>
-							<td>2000원</td>
-							<td>5000원</td>
-							<th>3000원</th>
+							<td><%=purchase.getPayAmount()/10 %>원</td>
+							<th style="text-align: center;"><%=purchase.getDeliveryPrice() %>원</th>
 							<td><%=purchase.getPayAmount() %>원</td>
 						</tr>
 					</tbody>

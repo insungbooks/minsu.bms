@@ -10,12 +10,19 @@
 	String searchText = request.getParameter("searchText");
 	String searchOption = request.getParameter("searchOption");
 	String pageNum = request.getParameter("pageNum");
+	String orderOption="";
+	if(request.getParameter("orderOption") == null || request.getParameter("orderOption").equals("")){
+		orderOption = "salesNum";
+	}else{
+		orderOption = request.getParameter("orderOption");
+	}
 	
 	List<SearchResult> searchResults = null;
-	searchResults = searchService.listSearchResult(searchOption, searchText);
+	searchResults = searchService.listSearchResult(searchOption, searchText, orderOption);
 	request.setAttribute("searchResults", searchResults);
 	request.setAttribute("searchText", searchText);
 	request.setAttribute("searchOption", searchOption);
+	request.setAttribute("orderOption", orderOption);
 	request.setAttribute("pageNum", pageNum);
 %>
-	<jsp:forward page="searchResultTest.jsp?searchOption=<%= searchOption %>&searchText=<%= searchText %>&pageNum=<%= pageNum %>"/>
+	<jsp:forward page="searchResultTest.jsp?searchOption=<%= searchOption %>&searchText=<%= searchText %>&pageNum=<%= pageNum %>&orderOption=<%= orderOption %>"/>

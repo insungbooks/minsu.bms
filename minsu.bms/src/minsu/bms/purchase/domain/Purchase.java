@@ -10,11 +10,12 @@ public class Purchase {
 	private String destination;//도착주소
 	private int orderCount;//주문수량
 	private String payOption;//결제방법
-	private int payAmount;//결제금액
+	private int payAmount;//결제합계
+	private int deliveryPrice;//배송비
 	
 	public Purchase(){}
 	
-	public Purchase(int orderNum, int deliveryNum, int refundNum, String userId, String bookCode, String orderDate, String destination, int orderCount, String payOption, int payAmount){
+	public Purchase(int orderNum, int deliveryNum, int refundNum, String userId, String bookCode, String orderDate, String destination, int orderCount, String payOption, int payAmount, int deliveryPrice){
 		this.orderNum=orderNum;
 		this.deliveryNum=deliveryNum;
 		this.refundNum=refundNum;
@@ -25,6 +26,7 @@ public class Purchase {
 		this.orderCount=orderCount;
 		this.payOption=payOption;
 		this.payAmount=payAmount;
+		this.deliveryPrice=deliveryPrice;
 	}
 
 	public int getOrderNum() {
@@ -105,6 +107,14 @@ public class Purchase {
 
 	public void setPayAmount(int payAmount) {
 		this.payAmount = payAmount;
+	}
+
+	public int getDeliveryPrice() {
+		return deliveryPrice;
+	}
+
+	public void setDeliveryPrice(int deliveryPrice) {
+		this.deliveryPrice = deliveryPrice;
 	}
 	
 	

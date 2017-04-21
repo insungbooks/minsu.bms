@@ -73,11 +73,11 @@
 							<li class="active"><a href="memberList.jsp">회원목록조회</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 주문관리</strong></li>
-							<li><a href="../inventoryControl/listBooksProc.jsp">도서목록조회</a></li>
+							<li><a href="../inventoryControl/bookList.jsp">도서목록조회</a></li>
 							<li><a href="../inventoryControl/bookAdd.jsp">도서 추가</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 재고관리</strong></li>
-							<li><a href="../orderManagement/orderManagement.jsp">
+							<li><a href="../orderManagement/orderManagementProc.jsp">
 									주문관리</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong>고객센터</strong></li>

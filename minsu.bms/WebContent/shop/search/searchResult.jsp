@@ -158,7 +158,6 @@ article { /*본문*/
 					for(SearchResult searchResult : searchResults){
 			%><form>
 					<div class="row">
-					
 						<div class="col-md-2">
 							<div>
 								<a href="productInfo.jsp" class="thumbnail"> <img
@@ -170,7 +169,7 @@ article { /*본문*/
 							<a href="productInfo.jsp">[<%= searchResult.getKind() %>]</a> <br> <br>
 							<p>
 								[<%= searchResult.getCountry() %>도서]<a href="productInfo.jsp"><%= searchResult.getBookName() %></a><br> <a
-									href="productInfo.jsp"><%= searchResult.getWriter() %></a>(지은이)|<a href="productInfo.jsp"><%= searchResult.getCompany() %></a>|<%= searchResult.getPubliDate() %><br>
+									href="productInfo.jsp"><%= searchResult.getWriter() %></a>(지은이) | <a href="productInfo.jsp"><%= searchResult.getCompany() %></a> | <%= searchResult.getPubliDate() %><br>
 								<%= searchResult.getBookPrice() %>원 →<%= searchResult.getBookPrice()*9/10 %>원(10% 할인), 마일리지 1,650점(5% 적립)<br> <br>
 								출고예상일 : 지금 주문하면 <b>3월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
 							</p>

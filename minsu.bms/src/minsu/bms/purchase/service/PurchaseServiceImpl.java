@@ -1,10 +1,13 @@
 package minsu.bms.purchase.service;
 
+import java.util.Calendar;
 import java.util.List;
 
 import minsu.bms.purchase.dao.PurchaseDao;
 import minsu.bms.purchase.domain.Purchase;
-import minsu.bms.query.domain.Query;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class PurchaseServiceImpl implements PurchaseService{
 	private PurchaseDao purchaseDao;
@@ -25,6 +28,10 @@ public class PurchaseServiceImpl implements PurchaseService{
 	public List<Purchase> findPurchaseId(String userId){
 		List<Purchase> purchase = (List<Purchase>)purchaseDao.getPurchaseId(userId);
 			return purchase;
+	}
+	public List<Purchase> findPurchaseSearch(String date1, String date2){
+		List<Purchase> purchase = (List<Purchase>)purchaseDao.getPurchaseSearch(date1, date2);
+		return purchase;
 	}
 	
 	public Purchase findPurchase(int orderNum){
@@ -48,4 +55,5 @@ public class PurchaseServiceImpl implements PurchaseService{
 	public boolean deletePurchase(int orderNum){
 		return purchaseDao.delPurchase(orderNum)>0;
 	}
+	
 }

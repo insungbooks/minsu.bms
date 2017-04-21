@@ -1,7 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
+<%@ page import="minsu.bms.purchase.service.PurchaseService"%>
+<%@ page import="minsu.bms.purchase.service.PurchaseServiceImpl"%>
+<%@ page import="minsu.bms.purchase.dao.PurchaseDao"%>
+<%@ page import="minsu.bms.purchase.dao.PurchaseDaoImpl"%>
+<%@ page import="minsu.bms.purchase.dao.mapper.PurchaseMapper"%>
 <%@ page import="minsu.bms.purchase.domain.Purchase"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDao"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDaoImpl"%>
+<%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
+<%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ page import="minsu.bms.delivery.service.DeliveryService"%>
+<%@ page import="minsu.bms.delivery.service.DeliveryServiceImpl"%>
+<%@ page import="minsu.bms.delivery.dao.DeliveryDao"%>
+<%@ page import="minsu.bms.delivery.dao.DeliveryDaoImpl"%>
+<%@ page import="minsu.bms.delivery.dao.mapper.DeliveryMapper"%>
+<%@ page import="minsu.bms.delivery.domain.Delivery"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.text.DecimalFormat" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Calendar" %>
+
+<%BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
+BookDao bookDao = new BookDaoImpl(bookMapper);
+BookService bookService = new BookServiceImpl(bookDao); 
+DeliveryMapper deliveryMapper = Configuration.getMapper(DeliveryMapper.class);
+DeliveryDao deliveryDao = new DeliveryDaoImpl(deliveryMapper);
+DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
+PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
+PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
+PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
+	%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -52,7 +85,9 @@
 }
 
 /*//사이드바*/
-
+th {
+	text-align: center;
+}
 </style>
 </head>
 <body>
@@ -64,9 +99,9 @@
 		<nav class="nav-sidebar">
         <ul class="nav">
         	<li class="nav-header"><strong> 주문관리</strong></li>
-            <li class="active"><a href="orderList.jsp"> 주문조회</a></li>
-            <li><a href="../basket/Basket.jsp"> 장바구니</a></li>
-            <li><a href="refundDetail.jsp">취소/교환내역</a></li>
+            <li class="active"><a href="orderListProc.jsp"> 주문조회</a></li>
+            <li><a href="../basket/BasketProc.jsp"> 장바구니</a></li>
+            <li><a href="../refund/refundListProc.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
            	<li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
@@ -80,69 +115,76 @@
 		<div class="col-md-10">
 			<h3 style="font-weight: bold;">주문조회</h3>
 			<hr>
-			<form class="form" action="#" method="post">
+			<form class="form" action="orderListSearchProc.jsp" method="get">
+			
 				<table class="table table-bordered">
 					<tr>
 						<td>기간조회</td>
 						<td>
 							<div class="btn-group btn-group-sm">
-								<button type="button" class="btn btn-default">1주일</button>
-								<button type="button" class="btn btn-default">1개월</button>
-								<button type="button" class="btn btn-default">3개월</button>
-								<button type="button" class="btn btn-default">1년</button>
-								<button type="button" class="btn btn-default">3년</button>
-							</div>
+								<input type="submit" name="date7" value="1주일" class="btn btn-default"/>
+								<input type="submit" name="date31" value="1개월" class="btn btn-default"/>
+								<input type="submit" name="date90" value="3개월" class="btn btn-default"/></div>
 						</td>
 						<td>
 							<div class="form-group registration-date">
 						    	<div class="input-group registration-date-time">
 						    		<span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></span>
-						    		<input class="form-control" name="registration_date" id="registration-date" type="date">
+						    		<input class="form-control" name="date1" type="date">
 						    		<span class="input-group-addon" id="basic-addon1">~</span>
-						    		<input class="form-control" name="registration_date" id="registration-date" type="date">
+						    		<input class="form-control" name="date2"  type="date">
 						    		
 						    	</div>
 						    </div>
 						</td>
-						<td rowspan="2">
+						<td >
 							<span class="input-group-btn">
 				    	    	<button class="btn btn-default" type="submit">조회</button>
 				            </span>
 						</td>
 					</tr>
-					<tr>
-						<td>상품조회</td>
-<!-- 뭘,왜 입력? -->		<td colspan="2">상품명을 입력하세요 </td>
-					</tr>
+					
 				</table>
 			</form>
-			
-			
-			<p><small>yyyy-mm-dd ~ yyyy-mm-dd 까지의 주문 총 1건</small></p>
+			<% 
+				if(request.getAttribute("purchases")!=null){
+					List<Purchase> purchases= (List<Purchase>)request.getAttribute("purchases");%>
+			<p><small><%=request.getAttribute("date1") %> ~ <%=request.getAttribute("date2") %>까지의 주문 총 <%=purchases.size() %>건 검색완료</small></p>
 			<table class="table table-bordered" id="orderList">
 				<thead>
 					<tr>
 						<th>주문번호</th>
-						<th>주문금액</th>
+						<th>주문날짜</th>
 						<th>상품정보</th>
 						<th>수량</th>
+						<th>결제금액</th>
 						<th>주문상태</th>
 						<th>상세보기</th>
 					</tr>
 				</thead>
 				<tbody>
-				<% if(request.getAttribute("purchase")!=null){
-					List<Purchase> purchases = (List<Purchase>)request.getAttribute("purchase");
+				<% 
+				
+					
 				for (Purchase purchase : purchases) {
+					String bookCode=purchase.getBookCode();
+					Book book = bookService.findBook(bookCode);
+					int deliveryNum = purchase.getDeliveryNum();
+					Delivery delivery =deliveryService.findDelivery(deliveryNum);
     	%>
 					<tr>
 						<td><%=purchase.getOrderNum() %></td>
-						<td><%=purchase.getPayAmount() %>원</td>
-						<td><%=purchase.getBookCode() %></td>
+						<td><%=purchase.getOrderDate() %></td>
+						<td><%=book.getBookName() %></td>
 						<td><%=purchase.getOrderCount() %></td>
-						<td><%=purchase.getDeliveryNum() %></td>
+						<td><%=purchase.getPayAmount() %>원</td>
+						<%if(purchase.getRefundNum()==0){ %>
+						<td><%=delivery.getDeliveryNow() %></td>
+						<%}else if(purchase.getRefundNum()!=0){%>
+						<td>환불완료 </td>
+						<%} %>
 						<th>
-						<form action="../mypage/detailListProc.jsp">
+						<form action="../order/detailListProc.jsp">
 						<input type="hidden" value="<%=purchase.getBookCode() %>" name="bookCode">
 						<input type="hidden" value="<%=purchase.getOrderNum() %>" name="orderNum">
 						<input type="hidden" value="<%=purchase.getDeliveryNum() %>" name="deliveryNum">
@@ -180,6 +222,7 @@
 	</div>
 </div>
 </article>
+
 <jsp:include page="../../footer.html"/>
 </body>
 </html>

@@ -63,11 +63,11 @@
             <li><a href="../member/memberList.jsp">회원목록조회</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 주문관리</strong></li>
-            <li><a href="listBooksProc.jsp">도서목록조회</a></li>
+            <li><a href="bookList.jsp">도서목록조회</a></li>
             <li class="active"><a href="bookAdd.jsp">도서 추가</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 재고관리</strong></li>
-            <li><a href="../orderManagement/orderManagement.jsp"> 주문관리</a></li>
+            <li><a href="../orderManagement/orderManagementProc.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
 			<li><a href="../customerCenter/queryListProc.jsp">문의답하기</a></li>
@@ -190,75 +190,7 @@
 					</div>
 				</div>
 			</div>
-			
-			<!-- 저자 소개 -->
-			<div class="row">
-				<h3>저자 소개</h3>
-				<br>
-				<div class="col-md-9">
-					<textarea class="form-control" rows="10" id="introduceContent" name="writerIntro" placeholder="내용을 입력하세요." required><%= book.getWriterIntro() %></textarea>
-				</div>
-				<div class="com-md-1">
-					<button type="button" class="btn btn-default btn-sm">
-						<span class="glyphicon glyphicon-plus"></span>
-					</button>
-				</div>
-			</div>
-			
-			<!-- 목차 -->
-			<div class="row">
-				<h3>목차</h3>
-				<br>
-				<div class="form-group">
-					<label class="col-md-2" for="pages">큰 목차 :</label>
-					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents" value="<%=book.getContents()%>" placeholder="목차를 입력하세요." required>
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="form-group">
-					<label class="col-md-2">작은 목차 :</label>
-					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents1" placeholder="목차를 입력하세요." required>
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-				<br>
-				<div class="form-group">
-					<label class="col-md-2"></label>
-					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents2" placeholder="목차를 입력하세요." required>
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-				<br>
-				<div class="form-group">
-					<label class="col-md-2"></label>
-					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents3" placeholder="목차를 입력하세요." required>
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-			</div>
-			
+
 			<!-- 출판사 서평 -->
 			<div class="row">
 				<h3>출판사 서평</h3>
@@ -362,74 +294,6 @@
 					<label class="col-md-2" for="introduceContent">소개 내용 :</label>
 					<div class="col-md-9">
 						<textarea class="form-control" rows="10" id="introduceContent" name="bookIntro" placeholder="내용을 입력하세요." required></textarea>
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-			</div>
-			
-			<!-- 저자 소개 -->
-			<div class="row">
-				<h3>저자 소개</h3>
-				<br>
-				<div class="col-md-9">
-					<textarea class="form-control" rows="10" id="introduceContent" name="writerIntro" placeholder="내용을 입력하세요." required></textarea>
-				</div>
-				<div class="com-md-1">
-					<button type="button" class="btn btn-default btn-sm">
-						<span class="glyphicon glyphicon-plus"></span>
-					</button>
-				</div>
-			</div>
-			
-			<!-- 목차 -->
-			<div class="row">
-				<h3>목차</h3>
-				<br>
-				<div class="form-group">
-					<label class="col-md-2" for="pages">큰 목차 :</label>
-					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents" placeholder="목차를 입력하세요." required> 
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-				<br>
-				<br>
-				<div class="form-group">
-					<label class="col-md-2">작은 목차 :</label>
-					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents1" placeholder="목차를 입력하세요." required>
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-				<br>
-				<div class="form-group">
-					<label class="col-md-2"></label>
-					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents2" placeholder="목차를 입력하세요." required>
-					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-default btn-sm">
-							<span class="glyphicon glyphicon-plus"></span>
-						</button>
-					</div>
-				</div>
-				<br>
-				<div class="form-group">
-					<label class="col-md-2"></label>
-					<div class="col-md-6">
-						<input type="text" class="col-md-8 form-control" name = "contents3" placeholder="목차를 입력하세요." required>
 					</div>
 					<div class="col-md-1">
 						<button type="button" class="btn btn-default btn-sm">

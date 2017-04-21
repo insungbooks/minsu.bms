@@ -11,6 +11,7 @@ public interface PurchaseDao {
 	List<Purchase> getPurchaseList(int orderNum);
 	List<Purchase> getPurchaseBook(String bookCode);
 	List<Purchase> getPurchaseId(String userId);
+	List<Purchase> getPurchaseSearch(String date1, String date2);
 	Purchase getBook(String bookCode);
 	int addPurchase(Purchase purchase);
 	int updatePurchase(Purchase purchase);

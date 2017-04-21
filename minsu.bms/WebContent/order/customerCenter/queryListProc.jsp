@@ -14,11 +14,8 @@ QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
-
 List<Query> query = queryService.queryList();
 request.setAttribute("query", query);
-
-
 
 %>
 <jsp:forward page="queryList.jsp"/>

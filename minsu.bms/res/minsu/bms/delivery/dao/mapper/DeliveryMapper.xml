@@ -2,13 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="minsu.bms.delivery.dao.mapper.DeliveryMapper">
 	<select id="deliveryList" resultType="delivery">
-		select delivery_num deliveryNum, delivery_now deliveryNow, phone_num phoneNum, recipient, sender, address, message
+		select delivery_num deliveryNum, delivery_now deliveryNow, phone_num phoneNum, recipient, sender, address, message, delivery_date deliveryDate
 		from delivery_state
 		order by delivery_num
 	</select>
 	
 	<select id="getDelivery" parameterType="int" resultType="delivery">
-		select delivery_num deliveryNum, delivery_now deliveryNow, phone_num phoneNum, recipient, sender, address, message
+		select delivery_num deliveryNum, delivery_now deliveryNow, phone_num phoneNum, recipient, sender, address, message, delivery_date deliveryDate
 		from delivery_state
 		where delivery_num = #{deliveryNum}
 	</select>
@@ -19,7 +19,7 @@
 	
 	<insert id="addDelivery" parameterType="delivery">
 		insert into delivery_state values (
-		deliverynum1_seq.nextval, #{deliveryNow}, #{phoneNum}, #{recipient}, #{sender}, #{address}, #{message,jdbcType=VARCHAR})
+		deliverynum1_seq.nextval, #{deliveryNow}, #{phoneNum}, #{recipient}, #{sender}, #{address}, #{message,jdbcType=VARCHAR}, to_char(sysdate+3,'yyyy"-"mm"-"dd'))
 	</insert>
 	
 	<update id="updateDelivery" parameterType="delivery">
@@ -27,6 +27,11 @@
 		delivery_now=#{deliveryNow}, phone_num=#{phoneNum}, 
 		recipient=#{recipient}, sender=#{sender}, 
 		address=#{address}, message=#{message}
+		where delivery_num=#{deliveryNum}
+	</update>
+	<update id="updateDeliveryNow" parameterType="delivery">
+		update delivery_state set
+		delivery_now=#{deliveryNow}
 		where delivery_num=#{deliveryNum}
 	</update>
 </mapper>

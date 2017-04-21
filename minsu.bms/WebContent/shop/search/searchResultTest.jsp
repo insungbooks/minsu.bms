@@ -119,6 +119,7 @@ article { /*본문*/
 	
 	String searchText=(String)request.getAttribute("searchText");
 	String searchOption=(String)request.getAttribute("searchOption");
+	String orderOption=(String)request.getAttribute("orderOption");
 %>
 	<div class="container">
 		<div class="col-md-2"></div>
@@ -190,12 +191,11 @@ article { /*본문*/
 					</div>
 				</div>
 				<div class="col-md-7">
-					<a href="productInfo.jsp">[<%= searchResult.getKind() %>]
-					</a> <br> <br>
+					<p>[<%= searchResult.getKind() %>]
+					</p><br> <br>
 					<p>
-						[<%= searchResult.getCountry() %>도서]<a href="productInfo.jsp"><%= searchResult.getBookName() %></a><br>
-						<a href="productInfo.jsp"><%= searchResult.getWriter() %></a>(지은이)|<a
-							href="productInfo.jsp"><%= searchResult.getCompany() %></a>|<%= searchResult.getPubliDate() %><br>
+						[<%= searchResult.getCountry() %>도서]<a href="productInfoProc.jsp?bookCode=<%= searchResult.getBookCode() %>"><%= searchResult.getBookName() %></a><br>
+						<span><%= searchResult.getWriter() %></span>(지은이) | <span><%= searchResult.getCompany() %></span> | <%= searchResult.getPubliDate() %><br>
 						<%= searchResult.getBookPrice() %>원 →<%= searchResult.getBookPrice()*9/10 %>원(10%
 						할인), 마일리지 <%= searchResult.getBookPrice()*9/10/20 %>점(5% 적립)<br> <br> 출고예상일 : 지금 주문하면 <b>3월
 							10일 출고</b>예상 (출고후 1~2일 이내 수령)
@@ -204,9 +204,8 @@ article { /*본문*/
 				<div class="col-md-3">
 					<input id="line checkbox" type="checkbox" />
 					<input type="hidden" name="bookCode" value="<%=searchResult.getBookCode() %>"/>
-							 <a
-						href="../../guest/basket/Basket.jsp"><button id="block"
-							type="button" class="btn btn-default btn-md">장바구니</button></a> 
+							 <button id="block"
+							type="submit" formaction="../../guest/basket/addBasketProc.jsp" class="btn btn-default btn-md">장바구니</button> 
 					<button id="block" type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-default btn-md">바로구매</button>
 						
 				</div>

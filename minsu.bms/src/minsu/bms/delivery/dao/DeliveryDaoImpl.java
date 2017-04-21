@@ -26,6 +26,9 @@ public class DeliveryDaoImpl implements DeliveryDao{
 	public int updateDelivery(Delivery delivery) {
 		return deliveryMapper.updateDelivery(delivery);
 	}
+	public int updateDeliveryNow(Delivery delivery){
+		return deliveryMapper.updateDeliveryNow(delivery);
+	}
 	public int delDelivery(int deliveryNum) {
 		return deliveryMapper.delDelivery(deliveryNum);
 	}

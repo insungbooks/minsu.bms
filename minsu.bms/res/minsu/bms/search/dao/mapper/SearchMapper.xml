@@ -2,48 +2,54 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
 <mapper namespace="minsu.bms.search.dao.mapper.SearchMapper">
 	<select id="searchBooks" parameterType="string" resultType="searchResult">
-		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
-			   company, publi_date publiDate, country, kind, sales_num salesNum
-		from books
-		<where>
-			<if test="searchOption.equals('bookTitle')">
-				book_name like '%'||#{searchText}||'%'
-			</if>
-			<if test="searchOption.equals('writer')">
-				writer like '%'||#{searchText}||'%'
-			</if>
-			<if test="searchOption.equals('company')">
-				company like '%'||#{searchText}||'%'
-			</if>
-		</where>
-<!-- 		
-		<choose>
+		select a.book_code bookCode, a.book_name bookName, a.book_price bookPrice, a.writer writer,
+			   a.company company, a.publi_date publiDate, a.country country, a.kind kind, a.sales_num salesNum
+		<if test="searchOption.equals('bookTitle')">
+			from books a 
+			where a.book_name like '%'||#{searchText}||'%'
+			order by salesNum desc
+		</if>
+		<if test="searchOption.equals('writer')">
+			from books a 
+			where a.writer like '%'||#{searchText}||'%'
+		</if>
+		<if test="searchOption.equals('company')">
+			from books a 
+			where a.company like '%'||#{searchText}||'%'
+		</if>
+		<!-- <choose>
 			<when test="orderOption.equals('sellCnt')">
-				order by 
+				order by salesNum desc
 			</when>
 			<when test="orderOption.equals('grade')">
-				order by 
+				order by grade desc
 			</when>
 			<when test="orderOption.equals('reviewCnt')">
-				order by 
+					, NVL(b.reviewCnt,0) as reviewCnt
+				from books a left join (select count(book_code) as reviewCnt, book_code
+                 						from reviews
+              							group by book_code) b
+				on a.book_code = b.book_code
+				order by reviewCnt desc
 			</when>
 			<when test="orderOption.equals('publishDate')">
-				order by 
+				order by publiDate desc
 			</when>
 			<when test="orderOption.equals('highPrice')">
-				order by 
+				order by price desc
 			</when>
 			<when test="orderOption.equals('lowPrice')">
-				order by 
+				order by price
 			</when>
-		</choose>
-		 -->
+		</choose> -->
 	</select>
 	
 	<select id="getBook" parameterType="string" resultType="searchResult">
-		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
-			   company, publi_date publiDate, country, kind, sales_num salesNum
-		from books
-		where book_code = #{bookCode}
+		select a.book_code bookCode, a.book_name bookName, a.book_price bookPrice, a.book_intro bookIntro, 
+			   a.writer writer, b.writer_intro writerIntro, a.company company, 
+			   a.publi_date publiDate, a.contents contents, a.company_eval companyEval
+		from books a join writers b
+		on a.writer=b.writer_name
+		where a.book_code=#{bookCode}
 	</select>
 </mapper>

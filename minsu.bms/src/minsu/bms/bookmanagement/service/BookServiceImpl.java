@@ -4,6 +4,7 @@ import java.util.List;
 
 import minsu.bms.bookmanagement.dao.BookDao;
 import minsu.bms.bookmanagement.domain.Book;
+import minsu.bms.paging.domain.Page;
 
 public class BookServiceImpl implements BookService {
 	private BookDao bookDao;
@@ -11,9 +12,9 @@ public class BookServiceImpl implements BookService {
 	public BookServiceImpl(BookDao bookDao) {
 		this.bookDao = bookDao;
 	}
-	
-	public List<Book> listBooks(){
-		return bookDao.bookList();
+
+	public List<Book> listBooks(Page page){
+		return bookDao.bookList(page);
 	}
 	
 	public Book findBook(String bookCode){

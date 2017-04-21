@@ -8,7 +8,7 @@ public class Query {
 	private String content;		
 	private String answer;		
 	private String answerState;	//답변상태
-	private String reportingDate;
+	private String reportingDate; //작성일
 	
 	public Query() {}
 	

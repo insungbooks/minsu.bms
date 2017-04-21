@@ -26,7 +26,6 @@ query.setContent(content);//
 query.setTitle(title);//
 query.setSeparation(separation);//
 query.setUserId(id);//
-//query.setReportingDate("2016-12-12");
 
 queryService.addQuery(query);
 }
@@ -34,4 +33,4 @@ queryService.addQuery(query);
 request.setAttribute("id",id);
 
 %>
-<jsp:forward page="queryListProc.jsp"/>
+<jsp:forward page="queryList.jsp"/>

@@ -162,11 +162,7 @@
 						우리를 이끌어갈 것이기 때문이다. 독재자를 평화적인 방법으로 쫓아낼 수 있는 국민이라면 무슨 일이든 못하겠는가. 어떤
 						어려움이든 극복하지 못하겠는가.』</div>
 					<hr>
-					<h3>이 책이 속한 분야</h3>
-					<div class="text" style="border: 1px solid black;">
-						<P>사회 > 정치/외교 > 정치일반</P>
-						<p>사회 > 정치/외교 > 각국정치</p>
-					</div>
+					
 					<br> <br>
 					<jsp:include page="../../footer.html" />
 				</div>

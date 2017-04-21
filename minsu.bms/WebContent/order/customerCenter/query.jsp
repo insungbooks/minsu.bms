@@ -1,7 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.query.dao.mapper.QueryMapper" %>
+<%@ page import="minsu.bms.query.dao.QueryDao" %>
+<%@ page import="minsu.bms.query.dao.QueryDaoImpl" %>
 <%@ page import="minsu.bms.query.domain.Query" %>
-<%@ page import="java.util.List"%>
+<%@ page import="minsu.bms.query.service.QueryService" %>
+<%@ page import="minsu.bms.query.service.QueryServiceImpl" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%
+QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
+QueryDao queryDao = new QueryDaoImpl(queryMapper);
+QueryService queryService = new QueryServiceImpl(queryDao);
+
+int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+Query queryList = queryService.findQueryNum(boardNum);
+
+request.setAttribute("query", queryList);
+
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -76,7 +94,7 @@
             <li><a href="../orderManagement/orderManagementProc.jsp"> 주문관리</a></li>
             <li class="nav-divider"></li>
 			<li class="nav-header"><strong>고객센터</strong></li>
-		<li class="active"><a href="../customerCenter/queryListProc.jsp">문의답하기</a></li> </ul>
+		<li class="active"><a href="../customerCenter/queryList.jsp">문의답하기</a></li> </ul>
     </nav>
 		</div>
 
@@ -89,62 +107,51 @@
 			<hr>
 				
 			</div>
-<%
-			if(request.getAttribute("queryList") != null) { 
-				Query queryList = (Query)request.getAttribute("queryList");
-%>
+
 			<div class="form-group row">
 			<label class="control-label col-md-1" for="className">번 호 </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="className" name="boardNum" value="<%=queryList.getBoardNum() %>" readonly/>
+					<input type="text" class="form-control" id="className" name="boardNum" value="${query.boardNum}" readonly/>
 				</div>
 				<label class="control-label col-md-1" for="classification">분 류 </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="classification" name="separation" value="<%=queryList.getSeparation() %>" readonly/>
+					<input type="text" class="form-control" id="classification" name="separation" value="${query.separation}" readonly/>
 				</div>
 				<label class="control-label col-md-1" for="person">ID :</label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="person" name="userId" value="<%=queryList.getUserId() %>" readonly/>
+					<input type="text" class="form-control" id="person" name="userId" value="${query.userId}" readonly/>
 				</div>
 				<label class="control-label col-md-1" for="reportingDate">날 짜</label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="reportingDate" name="reportingDate" value="<%=queryList.getReportingDate() %>" readonly/>
+					<input type="text" class="form-control" id="reportingDate" name="reportingDate" value="${query.reportingDate}" readonly/>
 				</div>
 			</div>
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="title">제 목 : </label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="title" name="title" value="<%=queryList.getTitle() %>" readonly/>
+					<input type="text" class="form-control" id="title" name="title" value="${query.title}" readonly/>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<input class="form-control" rows="10" id="content" name="content" value="<%=queryList.getContent() %>" readonly/>
+					<input class="form-control" rows="10" id="content" name="content" value="${query.content}" readonly/>
 				</div>
 			</div>
-<%
-			String answer="";
-			if(queryList.getAnswerState().equals("답변완료")){
-				answer=queryList.getAnswer();
-			}
-			
-%>
+			<c:if test="${query.answerState=='답변완료'}"><c:set var="answer" value="${query.answer}" scope="page" /></c:if>
+
 					
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="answer">답변 내용 : </label>
 				<div class="col-md-10">
-					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="answer" required><%=answer %></textarea>
+					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="answer" required>${answer}</textarea>
 				</div>
 			</div>
-<%
-			}
-%>
 			<div class="form-group">
 				<div class="col-sm-offset-9 col-sm-3">
 					<button type="submit" class="btn btn-default" >확인</button>
-					<a href="queryListProc.jsp"><button type="button" class="btn btn-default">취소</button></a>
+					<a href="queryList.jsp"><button type="button" class="btn btn-default">취소</button></a>
 				</div>
 			</div>
 		</form>

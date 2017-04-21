@@ -17,8 +17,5 @@
 	String delCode = request.getParameter("bookCode");
 	
 	bookService.deleteBook(delCode);
-	
-	List<Book> books = bookService.listBooks();
-	request.setAttribute("books", books);
 %>
  	<jsp:forward page="bookList.jsp"/>

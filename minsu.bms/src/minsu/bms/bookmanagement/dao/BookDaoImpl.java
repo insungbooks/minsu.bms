@@ -4,6 +4,7 @@ import java.util.List;
 
 import minsu.bms.bookmanagement.dao.mapper.BookMapper;
 import minsu.bms.bookmanagement.domain.Book;
+import minsu.bms.paging.domain.Page;
 
 public class BookDaoImpl implements BookDao {
 	BookMapper bookMapper;
@@ -16,6 +17,9 @@ public class BookDaoImpl implements BookDao {
 	
 	public List<Book> bookList() {
 		return bookMapper.bookList();
+	}
+	public List<Book> bookList1(Page page) {
+		return bookMapper.bookList1(page);
 	}
 	public Book getBook(String bookCode) {
 		return bookMapper.getBook(bookCode);

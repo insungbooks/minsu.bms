@@ -8,6 +8,33 @@
 		from books
 	</select>
 	
+	<select id="bookList1" parameterType="page" resultMap="bookMap">
+		<![CDATA[
+		select * from (
+			select rownum as rnum, x.* from(
+				select * from books
+				order by book_price
+			)x where rownum <= #{rowCnt}*#{currentPage}
+		) where rnum > #{rowCnt}*(#{currentPage}-1)
+		]]>
+	</select>
+	
+	<resultMap id="bookMap" type="book">
+		<id property="bookCode"			column="book_code"/>
+		<result property="bookName"		column="book_name"/>
+		<result property="bookPrice"	column="book_price"/>
+		<result property="writer"		column="writer"/>
+		<result property="company"		column="company"/>
+		<result property="publiDate"	column="publi_date"/>
+		<result property="country"		column="country"/>
+		<result property="kind"			column="kind"/>
+		<result property="inventory"	column="inventory"/>
+		<result property="salesNum"		column="sales_num"/>
+		<result property="bookIntro"	column="book_intro"/>
+		<result property="contents"		column="contents"/>
+		<result property="companyEval"	column="company_eval"/>
+	</resultMap>
+	
 	<select id="getBook" parameterType="string" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
 			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum,

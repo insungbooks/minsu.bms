@@ -26,7 +26,9 @@ public class DeliveryServiceImpl implements DeliveryService{
 	public boolean modifyDelivery(Delivery delivery){
 		return deliveryDao.updateDelivery(delivery)>0;
 	}
-	
+	public boolean modifyDeliveryNow(Delivery delivery){
+		return deliveryDao.updateDeliveryNow(delivery)>0;
+	}
 	public boolean deleteDelivery(int deliveryNum){
 		return deliveryDao.delDelivery(deliveryNum)>0;
 	}

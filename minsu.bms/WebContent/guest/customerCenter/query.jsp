@@ -115,7 +115,7 @@
 				<hr>
 			</div>
 		
-			<form class="form" action="queryAddProc.jsp">
+			<form class="form" action="queryProc.jsp">
 			<div class="form-group row">
 				<label class="control-label col-md-2">분 류 </label>
 				<div class="col-md-2">

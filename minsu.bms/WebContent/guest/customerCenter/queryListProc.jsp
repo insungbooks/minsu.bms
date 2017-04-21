@@ -9,21 +9,14 @@
 <%@ page import="minsu.bms.query.domain.Query" %>
 <%@ page import="minsu.bms.query.service.QueryService" %>
 <%@ page import="minsu.bms.query.service.QueryServiceImpl" %>
+
 <%
 QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
-int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-String title = request.getParameter("title");
-String content = request.getParameter("content");
+	String id=(String)session.getAttribute("login");
+	List<Query> querys = (List<Query>)queryService.findQueryId(id);
+	request.setAttribute("querys",querys);
 
-if(boardNum!=0&&title!=null&&!title.equals("")&&content!=null&&!content.equals("")){
-Query query = queryService.findQueryNum(boardNum);
-query.setTitle(title);
-query.setContent(content);
-queryService.modifyQuery(query);
-
-%>
-<jsp:include page="queryListProc.jsp"/>
-<%} %>
+%><jsp:forward page="queryList.jsp"/>

@@ -15,15 +15,15 @@ QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
 int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-String title = request.getParameter("title");
-String content = request.getParameter("content");
-
-if(boardNum!=0&&title!=null&&!title.equals("")&&content!=null&&!content.equals("")){
 Query query = queryService.findQueryNum(boardNum);
-query.setTitle(title);
-query.setContent(content);
-queryService.modifyQuery(query);
-
+request.setAttribute("query", query);
+if(query.getAnswerState()=="답변완료"||query.getAnswerState().equals("답변완료")){
 %>
-<jsp:include page="queryListProc.jsp"/>
+<jsp:forward page="answer.jsp"/>
+<%}else if(query.getAnswerState()=="답변전"||query.getAnswerState().equals("답변전")){%>
+<jsp:forward page="queryUpdate.jsp"/>
+<%}else{ %>
+<jsp:forward page="a.jsp"/>
 <%} %>
+
+

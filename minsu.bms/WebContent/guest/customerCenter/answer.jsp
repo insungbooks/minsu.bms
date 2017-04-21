@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.query.domain.Query" %>
 <%@ page import="java.util.List"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -58,100 +59,98 @@
 </head>
 <body>
 	<jsp:include page="../../header.jsp"/>
-
+<%
+			if(request.getAttribute("query") != null) { 
+				Query query = (Query)request.getAttribute("query");
+				
+%>
 <article>
 
 	<div class="container">
 		<div class="col-md-2">
 			<nav class="nav-sidebar">
         <ul class="nav">
-        	<li class="nav-header"><strong> 회원관리</strong></li>
-            <li><a href="../member/memberList.jsp">회원목록조회</a></li>
+        	<li class="nav-header"><strong> 주문관리</strong></li>
+            <li ><a href="orderList.jsp"> 주문조회</a></li>
+            <li><a href="../basket/BasketProc.jsp"> 장바구니</a></li>
+            <li><a href="refundDetail.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
-     		<li class="nav-header"><strong> 주문관리</strong></li>
-            <li><a href="../inventoryControl/bookList.jsp">도서목록조회</a></li>
-            <li><a href="../inventoryControl/bookAdd.jsp">도서 추가</a></li>
+     		<li class="nav-header"><strong> 나의 정보</strong></li>
+            <li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
+            <li><a href="../../shop/system/idCheck1.jsp"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
-            <li class="nav-header"><strong> 재고관리</strong></li>
-            <li><a href="../orderManagement/orderManagementProc.jsp"> 주문관리</a></li>
-            <li class="nav-divider"></li>
-			<li class="nav-header"><strong>고객센터</strong></li>
-		<li class="active"><a href="../customerCenter/queryListProc.jsp">문의답하기</a></li> </ul>
+            <li class="nav-header"><strong> 나의 상담</strong></li>
+            <li class="active"><a href="queryListProc.jsp"> 나의 상담 내역</a></li>
+        </ul>
     </nav>
 		</div>
-
 		<div class="col-md-8">
 			<div class="row">
-			<form class="form" action="queryResultProc.jsp">
 			
 			<div class="form-group row">
-			<h2>문의 답하기</h2>
+			
+			<h2>답변보기</h2>
 			<hr>
 				
 			</div>
-<%
-			if(request.getAttribute("queryList") != null) { 
-				Query queryList = (Query)request.getAttribute("queryList");
-%>
 			<div class="form-group row">
 			<label class="control-label col-md-1" for="className">번 호 </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="className" name="boardNum" value="<%=queryList.getBoardNum() %>" readonly/>
+					<input type="text" class="form-control" id="className" name="boardNum" value="<%=query.getBoardNum() %>" readonly/>
 				</div>
 				<label class="control-label col-md-1" for="classification">분 류 </label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="classification" name="separation" value="<%=queryList.getSeparation() %>" readonly/>
+					<input type="text" class="form-control" id="classification" name="separation" value="<%=query.getSeparation() %>" readonly/>
 				</div>
 				<label class="control-label col-md-1" for="person">ID :</label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="person" name="userId" value="<%=queryList.getUserId() %>" readonly/>
+					<input type="text" class="form-control" id="person" name="userId" value="<%=query.getUserId() %>" readonly/>
 				</div>
 				<label class="control-label col-md-1" for="reportingDate">날 짜</label>
 				<div class="col-md-2">
-					<input type="text" class="form-control" id="reportingDate" name="reportingDate" value="<%=queryList.getReportingDate() %>" readonly/>
+					<input type="text" class="form-control" id="reportingDate" name="reportingDate" value="<%=query.getReportingDate() %>" readonly/>
 				</div>
 			</div>
+			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="title">제 목 : </label>
 				<div class="col-md-10">
-					<input type="text" class="form-control" id="title" name="title" value="<%=queryList.getTitle() %>" readonly/>
+					<input type="text" class="form-control" id="title" name="title" value="<%=query.getTitle() %>" readonly/>
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="content">문의 내용 : </label>
 				<div class="col-md-10">
-					<input class="form-control" rows="10" id="content" name="content" value="<%=queryList.getContent() %>" readonly/>
+					<input class="form-control" rows="10" id="content" name="content" value="<%=query.getContent() %>" readonly/>
 				</div>
 			</div>
-<%
-			String answer="";
-			if(queryList.getAnswerState().equals("답변완료")){
-				answer=queryList.getAnswer();
-			}
-			
-%>
-					
 			<div class="form-group row">
 				<label class="control-label col-md-2" for="answer">답변 내용 : </label>
 				<div class="col-md-10">
-					<textarea class="form-control" rows="10" id="answer" placeholder="답변을 입력하세요." name="answer" required><%=answer %></textarea>
+				<%
+				String answer="";
+				if(query.getAnswer()!=null && !query.getAnswer().equals("")){
+					answer = query.getAnswer();
+				%>
+					<input class="form-control" rows="10" id="answer" name="answer" value="<%=answer %>" readonly/>
+				<%} %>
 				</div>
 			</div>
-<%
-			}
-%>
+			
 			<div class="form-group">
-				<div class="col-sm-offset-9 col-sm-3">
-					<button type="submit" class="btn btn-default" >확인</button>
-					<a href="queryListProc.jsp"><button type="button" class="btn btn-default">취소</button></a>
+				<div class="col-sm-offset-10 col-sm-3">
+					
+					<a href="queryListProc.jsp"><button type="button" class="btn btn-default">확인</button></a>
+					
 				</div>
+				
 			</div>
-		</form>
 				</div>
 			</div>
 		</div>
 	</article>
+	<%} %>
 <jsp:include page="../../footer.html"/>
 </body>
 </html>

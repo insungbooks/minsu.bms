@@ -2,12 +2,10 @@ package minsu.bms.query.service;
 
 import java.util.List;
 
-import minsu.bms.query.domain.Page;
 import minsu.bms.query.domain.Query;
 
 public interface QueryService {
-	List<Query> queryList(String userId, Page page);
-	List<Query> queryLists(Page page);
+	List<Query> queryList();
 	Query findQueryNum(int boardNum);
 	List<Query> findQueryId(String userId);
 	boolean modifyQuery(Query query);

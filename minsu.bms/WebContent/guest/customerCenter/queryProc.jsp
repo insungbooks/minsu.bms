@@ -14,16 +14,24 @@ QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
-int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-String title = request.getParameter("title");
-String content = request.getParameter("content");
 
-if(boardNum!=0&&title!=null&&!title.equals("")&&content!=null&&!content.equals("")){
-Query query = queryService.findQueryNum(boardNum);
-query.setTitle(title);
-query.setContent(content);
-queryService.modifyQuery(query);
+String title=request.getParameter("title");
+String content=request.getParameter("content");
+String separation=request.getParameter("separation");
+String id=(String)session.getAttribute("login");
+
+if(title!=null&&!title.equals("")&&content!=null&&!content.equals("")&&separation!=null&&!separation.equals("")){
+Query query= new Query();
+query.setContent(content);//
+query.setTitle(title);//
+query.setSeparation(separation);//
+query.setUserId(id);//
+//query.setReportingDate("2016-12-12");
+
+queryService.addQuery(query);
+}
+
+request.setAttribute("id",id);
 
 %>
-<jsp:include page="queryListProc.jsp"/>
-<%} %>
+<jsp:forward page="queryListProc.jsp"/>

@@ -14,8 +14,7 @@
 		<typeAlias alias="refund" type="minsu.bms.refund.domain.Refund"/>
 		<typeAlias alias="order" type="minsu.bms.orderManagement.domain.Order"/>
 		<typeAlias alias="page" type="minsu.bms.paging.domain.Page" />
-		<typeAlias alias="review" type="minsu.bms.review.domain.Review"/>
-		<typeAlias alias="page" type="minsu.bms.query.domain.Page" /> 
+		<typeAlias alias="review" type="minsu.bms.review.domain.Review"/> 
 	</typeAliases>	
 		
 	<environments default="development">
@@ -42,6 +41,5 @@
 		<mapper resource="minsu/bms/orderManagement/dao/mapper/OrderMapper.xml" />
 		<mapper resource="minsu/bms/paging/dao/mapper/PageMapper.xml" />
 		<mapper resource="minsu/bms/review/dao/mapper/ReviewMapper.xml" />
-		<mapper resource="minsu/bms/query/dao/mapper/PageMapper.xml"/>
 	</mappers>
 </configuration>

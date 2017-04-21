@@ -86,7 +86,7 @@
            					<li><a href="../../shop/system/idCheck1.jsp"> 회원 탈퇴</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 나의 상담</strong></li>
-							<li><a href="../customerCenter/queryList.jsp"> 나의 상담
+							<li><a href="../customerCenter/queryListProc.jsp"> 나의 상담
 									내역</a></li>
 						</ul>
 					</nav>

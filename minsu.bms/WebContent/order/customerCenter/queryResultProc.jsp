@@ -24,6 +24,6 @@ if(boardNum!=0&&answer!=null&&!answer.equals("")){
 	queryService.modifyQueryAnswer(queryAnswer);
 	
 %>
-<jsp:include page="queryListProc.jsp"/>
+<jsp:include page="queryList.jsp"/>
 <%}%>
 

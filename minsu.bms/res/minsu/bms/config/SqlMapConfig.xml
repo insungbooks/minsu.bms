@@ -14,7 +14,7 @@
 		<typeAlias alias="refund" type="minsu.bms.refund.domain.Refund"/>
 		<typeAlias alias="order" type="minsu.bms.orderManagement.domain.Order"/>
 		<typeAlias alias="page" type="minsu.bms.paging.domain.Page" />
-		<typeAlias alias="review" type="minsu.bms.review.domain.Review"/> 
+		<typeAlias alias="review" type="minsu.bms.review.domain.Review"/>
 	</typeAliases>	
 		
 	<environments default="development">

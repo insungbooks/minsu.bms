@@ -59,4 +59,7 @@
 	request.setAttribute("date2", "끝");
 	}
 	
+	
+	
+	
 	%><jsp:include page="orderList.jsp"/>

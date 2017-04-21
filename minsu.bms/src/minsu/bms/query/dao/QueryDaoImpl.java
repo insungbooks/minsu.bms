@@ -2,19 +2,26 @@ package minsu.bms.query.dao;
 
 import java.util.List;
 
-import minsu.bms.bookmanagement.domain.Book;
+import minsu.bms.config.Configuration;
+import minsu.bms.paging.domain.Page;
 import minsu.bms.query.dao.mapper.QueryMapper;
 import minsu.bms.query.domain.Query;
 
 public class QueryDaoImpl implements QueryDao{
 	QueryMapper queryMapper;
 	
+	
+	
 	public QueryDaoImpl(QueryMapper queryMapper){
 		this.queryMapper = queryMapper;
 	}
 	
-	public List<Query> queryList(){
-		return queryMapper.queryList();
+	public QueryDaoImpl() {
+		this.queryMapper = Configuration.getMapper(QueryMapper.class);
+	}
+	
+	public List<Query> queryList(Page page){
+		return queryMapper.queryList(page);
 	}
 	public Query getQueryNum(int boardNum){
 		return queryMapper.getQueryNum(boardNum);

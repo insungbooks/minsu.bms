@@ -69,6 +69,7 @@
 		String bookCode = request.getParameter("bookCode");
 		Book bookInfo = (Book)bookService.findBook(bookCode);
 		request.setAttribute("bookInfo", bookInfo);
+		
 	}	
 	
 	request.setAttribute("bookNum", bookNum);

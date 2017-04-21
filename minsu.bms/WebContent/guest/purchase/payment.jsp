@@ -282,13 +282,12 @@ th {
 							<td style="padding: 35px;"><%=book.getBookPrice()%>원</td>
 							<td style="padding: 35px;"><input type="number" min="0"
 								value="<%=bookNum%>" name="bookNum"
-								style="display: block; width: 50px; float: center; margin: 0px 60px;" />
+								style="display: block; width: 50px; float: center; margin: 0px 60px;" readonly/>
 							</td>
 							<td style="padding: 35px;"><%=book.getBookPrice()%>원</td>
 							<td style="padding: 35px;">2017년3월19일 도착예정</td>
 							<!-- 배송에서받아오기 -->
-							<input type="hidden" name="bookCode"
-								value="<%=book.getBookCode()%>" />
+							<input type="hidden" name="bookCode" value="<%=book.getBookCode()%>" />
 							<%
 								basketMoney = book.getBookPrice() * bookNum;
 										if (basketMoney > 29999) {
@@ -299,8 +298,7 @@ th {
 						</tr>
 						<%
 							} else if (request.getAttribute("basket") != null) {
-									List<Basket> baskets = (List<Basket>) request
-											.getAttribute("basket");
+									List<Basket> baskets = (List<Basket>) request.getAttribute("basket");
 									for (Basket basket : baskets) {
 						%><tr>
 							<td><a href="../../shop/search/productInfo.jsp"> <img
@@ -314,24 +312,18 @@ th {
 							<td style="padding: 35px;"><%=basket.getBookPrice() * basket.getBookCount()%>원</td>
 							<td style="padding: 35px;"><%=strDate%> 도착예정</td>
 							<!-- 배송에서받아오기 -->
-							<input type="hidden" name="bookCodeList"
-								value="<%=basket.getBookCode()%>" />
-							<input type="hidden" name="bookPriceList"
-								value="<%=basket.getBookPrice() * basket.getBookCount()%>" />
-							<input type="hidden" name="bookNumList"
-								value="<%=basket.getBookCount()%>" />
+							<input type="hidden" name="bookCodeList" value="<%=basket.getBookCode()%>" />
+							<input type="hidden" name="bookPriceList" value="<%=basket.getBookPrice() * basket.getBookCount()%>" />
+							<input type="hidden" name="bookNumList" value="<%=basket.getBookCount()%>" />
 
 							<%
 								basketMoney += basket.getBookPrice() * basket.getBookCount();
-							
 									}
 									if (basketMoney > 29999) {
 										delivery = 0;
 									}
 									sumMoney = basketMoney + delivery;
-												}
-		
-		
+									}
 							%>
 						</tr>
 					</tbody>

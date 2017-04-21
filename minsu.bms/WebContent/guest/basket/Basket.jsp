@@ -81,7 +81,7 @@ th, td {
         	<li class="nav-header"><strong> 주문관리</strong></li>
             <li ><a href="../order/orderListProc.jsp"> 주문조회</a></li>
             <li class="active"><a href="BasketProc.jsp"> 장바구니</a></li>
-            <li><a href="../refund/refundListProc.jsp">취소/교환내역</a></li>
+            <li><a href="../refund/refundList.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
             <li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>

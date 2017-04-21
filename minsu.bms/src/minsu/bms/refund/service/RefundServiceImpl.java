@@ -2,6 +2,7 @@ package minsu.bms.refund.service;
 
 import java.util.List;
 
+import minsu.bms.paging.domain.Page;
 import minsu.bms.refund.dao.RefundDao;
 import minsu.bms.refund.domain.Refund;
 
@@ -13,6 +14,9 @@ private RefundDao refundDao;
 	}
 	public List<Refund> listRefunds(String userId){
 		return refundDao.refundList(userId);
+	}
+	public List<Refund> listRefundPage(String userId,Page page){
+		return refundDao.refundListPage(page);
 	}
 	
 	public Refund findRefund(int orderNum){

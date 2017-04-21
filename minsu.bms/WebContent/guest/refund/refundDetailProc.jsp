@@ -52,8 +52,6 @@
 	
 	}
 
-	List<Refund> refunds=(List<Refund>)refundService.listRefunds(id);
-	request.setAttribute("refundList", refunds);
 	
 	%>
 	<jsp:include page="refundList.jsp"/>

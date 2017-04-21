@@ -81,7 +81,7 @@
 			purchaseService.addPurchase(purchase);
 			
 			Delivery delivery=new Delivery();
-			delivery.setDeliveryNow("배송전");
+			delivery.setDeliveryNow("배송중");
 			delivery.setAddress(address);
 			delivery.setMessage(message);
 			delivery.setPhoneNum(phoneNum);
@@ -119,4 +119,4 @@
 	}
 	
 	
-%><jsp:include page="../order/orderListProc.jsp"/>
+%><jsp:include page="../order/orderList.jsp"/>

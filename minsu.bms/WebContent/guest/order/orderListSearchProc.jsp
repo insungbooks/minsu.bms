@@ -17,7 +17,7 @@
 	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
 	
-    
+	
 	
 	 if(request.getParameter("date1") != null
 				&& !request.getParameter("date1").equals("")
@@ -25,8 +25,8 @@
 				&& !request.getParameter("date2").equals("")){
 		 String date1= request.getParameter("date1");
 		 String date2= request.getParameter("date2");
-		 List<Purchase> purchase1 = purchaseService.findPurchaseSearch(date1, date2);
-			request.setAttribute("purchase1", purchase1);
+		 List<Purchase> purchases = purchaseService.findPurchaseSearch(date1, date2);
+			request.setAttribute("purchases", purchases);
 			request.setAttribute("date1", date1);
 			request.setAttribute("date2", date2);
 			
@@ -55,19 +55,19 @@
 			
 			if (request.getParameter("date7") != null) {
 				date1 = date7.trim();
-				date2 = date.trim();
+				date2 = strYear +"-"+ strMonth  +"-"+ strDay;
 
 			} else if (request.getParameter("date31") != null) {
 				date1 = date31.trim();
-				date2 = date.trim();
+				date2 = strYear +"-"+ strMonth  +"-"+ strDay;
 
-			} else if(request.getParameter("date90") != null) {
+			} else if (request.getParameter("date90") != null)  {
 				date1 = date90.trim();
-				date2 = date.trim();
+				date2 = strYear +"-"+ strMonth  +"-"+ strDay;
 			}
 			
-			List<Purchase> purchase2 = purchaseService.findPurchaseSearch(date1, date2);
-			request.setAttribute("purchase2", purchase2);
+			List<Purchase> purchases = purchaseService.findPurchaseSearch(date1, date2);
+			request.setAttribute("purchases", purchases);
 			request.setAttribute("date1", date1);
 			request.setAttribute("date2", date2);
 		

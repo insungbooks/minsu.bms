@@ -56,33 +56,4 @@ public class PurchaseServiceImpl implements PurchaseService{
 		return purchaseDao.delPurchase(orderNum)>0;
 	}
 	
-	public static String getCurrentDate() {
-
-        String returnStr = "";
-        DecimalFormat df = new DecimalFormat("00");
-        Calendar cal = Calendar.getInstance();
-        int year = cal.get(Calendar.YEAR);
-        int month = cal.get(Calendar.MONTH) + 1;
-        int day = cal.get(Calendar.DAY_OF_MONTH);
-        String monthStr = ((month < 10) ? "0" : "") + month;
-        String dayStr = ((day < 10) ? "0" : "") + day;
-        returnStr = year + "-" + monthStr + "-" + dayStr;
-        return returnStr;
-
-    }
-	
-	public static String getDate(int addDate){
-	     DecimalFormat df = new DecimalFormat("00");
-	     Calendar currentCalendar = Calendar.getInstance();
-	     
-	     currentCalendar.add(currentCalendar.DATE, addDate);
-	     
-	     String strYear   = Integer.toString(currentCalendar.get(Calendar.YEAR));
-	     String strMonth  = df.format(currentCalendar.get(Calendar.MONTH) + 1);
-	     String strDay   = df.format(currentCalendar.get(Calendar.DATE));
-	     String strDate = strYear + strMonth + strDay;
-	        
-	     return strDate;
-	    }
-
 }

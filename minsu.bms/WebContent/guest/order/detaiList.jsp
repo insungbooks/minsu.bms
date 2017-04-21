@@ -62,20 +62,18 @@ Purchase purchase=(Purchase)request.getAttribute("purchase");
 							<td style="padding: 35px;"><%=purchase.getPayAmount() %>원</td>
 							<td>
 							<input type="hidden" name="deliveryNum" value="<%=purchase.getDeliveryNum() %>"> 
-							<input type="hidden" name="orderDate" value="<%=purchase.getOrderDate() %>"> 
 							<button type="submit" formaction="../shipment/shipmentProc.jsp"
 							
 										class="btn btn-default btn-block" style="margin-top:15px;">배송조회</button></td>
-							<td><input type="hidden" name="orderNum" value="<%=purchase.getOrderNum() %>">
-							<%
-								if(purchase.getRefundNum()==0){
+							<td>
+							<input type="hidden" name="orderNum" value="<%=purchase.getOrderNum() %>">
+							<%if(purchase.getRefundNum()==0){
 							%>
-							
 							<button type="submit" formaction="../refund/refundProc.jsp" class="btn btn-default btn-block" style="margin-top:15px;">환불하기</button>
-						<%}else{ %>
-						<button type="button" class="btn btn-default btn-block" style="margin-top:15px;">환불완료</button>
-						<%} %>
-						</td>
+							<%}else{ %>
+							<button type="button" class="btn btn-default btn-block" style="margin-top:15px;">환불완료</button>
+							<%} %>
+							</td>
 						
 						</tr>
 					</tbody>

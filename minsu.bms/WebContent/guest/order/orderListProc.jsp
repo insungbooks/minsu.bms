@@ -14,9 +14,12 @@
 	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
 	
+	if(session.getAttribute("login")!=null){
 	String id=(String)session.getAttribute("login");
 	List<Purchase> purchases = (List<Purchase>)purchaseService.findPurchaseId(id);
-	request.setAttribute("purchase3", purchases);
-	
+	request.setAttribute("purchases", purchases);
+	request.setAttribute("date1", "처음");
+	request.setAttribute("date2", "끝");
+	}
 	
 	%><jsp:include page="orderList.jsp"/>

@@ -16,13 +16,13 @@
 		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
 		from orders
 		where user_id = #{userId}
-		order by order_date
+		order by order_date Desc
 	</select>
 	<select id="getPurchaseSearch" parameterType="string" resultType="purchase">
 		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice
 		from orders
 		where order_date between #{date1} and #{date2}
-		order by order_date
+		order by order_date Desc
 	</select>
 	<select id="getPurchaseList" parameterType="int" resultType="purchase">
 		select order_num orderNum, delivery_num deliveryNum, refund_num refundNum, user_id userId, book_code bookCode, order_date orderDate, destination, order_count orderCount, pay_option payOption, pay_amount payAmount, delivery_price deliveryPrice

@@ -28,10 +28,11 @@
 	String writerIntro = request.getParameter("writerIntro");
 	String bookIntro = request.getParameter("bookIntro");
 	String companyEval = request.getParameter("companyEval");
+	String img = "1";
 	
 	Book addBook = new Book(bookCode,bookName,bookPrice,writer,
 							company,publiDate,country,kind,inventory,salesNum,
-							bookIntro,companyEval);
+							bookIntro,companyEval,img);
 	
 	if(choice.equals("add")) {
 		bookService.addBook(addBook);

@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <%@ page import="minsu.bms.paging.domain.Page" %>
-<%@ page import="minsu.bms.paging.service.PageService" %>
-<%@ page import="minsu.bms.paging.service.PageServiceImpl" %>
+<%@ page import="minsu.bms.paging.service.BookPageService" %>
+<%@ page import="minsu.bms.paging.service.BookPageServiceImpl" %>
 <%@ page import="minsu.bms.bookmanagement.service.BookService"%>
 <%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
 <%@ page import="minsu.bms.config.Configuration"%>
@@ -19,7 +19,7 @@
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
 	else myPage = new Page();
 	
-	PageService pageService = new PageServiceImpl(5, myPage);
+	BookPageService pageService = new BookPageServiceImpl(5, myPage);
 	pageContext.setAttribute("pageMaker", pageService);
 	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
 	BookDao bookDao = new BookDaoImpl(bookMapper);

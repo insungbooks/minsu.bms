@@ -4,8 +4,8 @@
 <%@ page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="minsu.bms.paging.domain.Page"%>
-<%@ page import="minsu.bms.paging.service.PageService"%>
-<%@ page import="minsu.bms.paging.service.PageServiceImpl"%>
+<%@ page import="minsu.bms.paging.service.QueryPageService"%>
+<%@ page import="minsu.bms.paging.service.QueryPageServiceImpl"%>
 <%@ page import="minsu.bms.config.Configuration"%>
 <%@ page import="minsu.bms.query.dao.mapper.QueryMapper"%>
 <%@ page import="minsu.bms.query.dao.QueryDao"%>
@@ -21,8 +21,8 @@
 	else
 		myPage = new Page();
 
-	PageService pageService = new PageServiceImpl(5, myPage);
-	pageContext.setAttribute("pageMaker", pageService);
+	QueryPageService querypageService = new QueryPageServiceImpl(5, myPage);
+	pageContext.setAttribute("pageMaker", querypageService);
 
 	QueryMapper queryMapper = Configuration
 			.getMapper(QueryMapper.class);

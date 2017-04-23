@@ -4,7 +4,7 @@ import minsu.bms.paging.dao.PageDao;
 import minsu.bms.paging.dao.PageDaoImpl;
 import minsu.bms.paging.domain.Page;
 
-public class PageServiceImpl implements PageService {
+public class UserPageServiceImpl implements UserPageService {
 	private PageDao pageDao;
 	
 	private int startPage;
@@ -15,7 +15,7 @@ public class PageServiceImpl implements PageService {
 	private int pageNumCnt;
 	private Page page;
 	
-	public PageServiceImpl(int pageNumCnt, Page page) {
+	public UserPageServiceImpl(int pageNumCnt, Page page) {
 		this.pageDao = new PageDaoImpl();
 		this.totRowCnt = getTotRowCnt();
 		this.pageNumCnt = pageNumCnt;
@@ -24,8 +24,9 @@ public class PageServiceImpl implements PageService {
 	}
 	
 	private int getTotRowCnt(){
-		return pageDao.getTotRowCnt();
+		return pageDao.getTotRowCntUser();
 	}
+	
 	
 	private void init() {
 		endPage = (int)(Math.ceil(page.getCurrentPage()/(double)pageNumCnt)*pageNumCnt);

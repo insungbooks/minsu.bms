@@ -13,9 +13,10 @@
 	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
 	BookDao bookDao = new BookDaoImpl(bookMapper);
 	BookService bookService = new BookServiceImpl(bookDao);
+	String country = request.getParameter("country");
+	String kind = request.getParameter("kind");
+	List<Book> categoryBookList = bookService.categoryBookList(country, kind);
 	
-	List<Book> bestBookList = bookService.bestBookList();
-	
-	request.setAttribute("best", bestBookList);
+	request.setAttribute("books", categoryBookList);
 %>
-	<jsp:include page="bestBook.jsp"/>
+	<jsp:include page="besidesBook.jsp"/>

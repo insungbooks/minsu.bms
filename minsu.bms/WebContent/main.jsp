@@ -80,6 +80,40 @@ a {
 	text-decoration: none; /* 밑줄 없앰 */
 	color: #000000; /*검정색*/
 }
+.btn11{
+	text-decoration: none; /* 밑줄 없앰 */
+	color: #000000; /*검정색*/
+	border: none;
+	background-color: rgb(115, 215, 209);
+	font-family:고딕체;
+	text-indent:-50px;
+	line-height:0px;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;
+	border-radius:0px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	color:#000000;
+	width:173px;
+	height:0px;
+	padding:19px;
+	border-color:#73d7d0;
+	border-width:0px;
+	border-style:solid;
+}
+
+.btn11:active {
+	position:relative;
+	top:3px
+}
+
+.btn11:hover {
+background-color: rgb(56, 194, 188);
+}
+
+
 
 .topul { /*위ul*/
 	padding-top: 20px; /*위에여백*/
@@ -97,7 +131,7 @@ a {
 	border-left: none;
 }
 
-.topli a { /*위li 링크*/
+.topli a{ /*위li 링크*/
 	margin: 0 10px 0 10px; /* 메뉴 글자 간격 */
 }
 
@@ -321,10 +355,26 @@ footer { /*바닥글*/
 									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="category/domesticBook/literatureBook.jsp">문학</a> <a
-										href="category/domesticBook/humanitiesBook.jsp">인문</a> <a
-										href="category/domesticBook/referenceBook.jsp">참고서</a> <a
-										href="category/domesticBook/besidesBook.jsp">기타</a>
+									<form>
+									<input type="hidden" name ="country" value="domestic">
+									<input type="hidden" name ="kind" value="문학">
+									<button type="submit" class="btn11" formaction="category/domesticBook/categoryList.jsp" style="none" >문학</button>
+									</form>
+									<form>
+									<input type="hidden" name ="country" value="domestic">
+									<input type="hidden" name ="kind" value="인문">
+									<button type="submit" class="btn11" formaction="category/domesticBook/categoryList.jsp" style="none" >인문</button>
+									</form>
+									<form>
+									<input type="hidden" name ="country" value="domestic">
+									<input type="hidden" name ="kind" value="참고서">
+									<button type="submit" class="btn11" formaction="category/domesticBook/categoryList.jsp" style="none" >참고서</button>
+									</form>
+									<form>
+									<input type="hidden" name ="country" value="domestic">
+									<input type="hidden" name ="kind" value="기타">
+									<button type="submit" class="btn11" formaction="category/domesticBook/categoryList.jsp" style="none" >기타</button>
+									</form>
 								</div>
 							</div>
 							<div class="dropdown">
@@ -332,10 +382,26 @@ footer { /*바닥글*/
 									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="category/foreignBook/literatureBook.jsp">문학</a> <a
-										href="category/foreignBook/humanitiesBook.jsp">인문</a> <a
-										href="category/foreignBook/referenceBook.jsp">참고서</a> <a
-										href="category/domesticBook/besidesBook.jsp">기타</a>
+									<form>
+									<input type="hidden" name ="country" value="domestic">
+									<input type="hidden" name ="kind" value="문학">
+									<button type="submit" class="btn11" formaction="category/foreignBook/categoryList.jsp" style="none" >문학</button>
+									</form>
+									<form>
+									<input type="hidden" name ="country" value="domestic">
+									<input type="hidden" name ="kind" value="인문">
+									<button type="submit" class="btn11" formaction="category/foreignBook/categoryList.jsp" style="none" >인문</button>
+									</form>
+									<form>
+									<input type="hidden" name ="country" value="domestic">
+									<input type="hidden" name ="kind" value="참고서">
+									<button type="submit" class="btn11" formaction="category/foreignBook/categoryList.jsp" style="none" >참고서</button>
+									</form>
+									<form>
+									<input type="hidden" name ="country" value="domestic">
+									<input type="hidden" name ="kind" value="기타">
+									<button type="submit" class="btn11" formaction="category/foreignBook/categoryList.jsp" style="none" >기타</button>
+									</form>
 								</div>
 							</div>
 						</div>

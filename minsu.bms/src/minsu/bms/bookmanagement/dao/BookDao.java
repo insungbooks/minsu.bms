@@ -13,4 +13,7 @@ public interface BookDao {
 	int delBook(String bookCode);
 	
 	List<Book> bestBookList();
+	List<Book> newBookList();
+	List<Book> saleBookList();
+	List<Book> categoryBookList(String country, String kind);
 }

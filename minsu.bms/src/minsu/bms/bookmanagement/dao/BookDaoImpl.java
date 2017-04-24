@@ -33,4 +33,13 @@ public class BookDaoImpl implements BookDao {
 	public List<Book> bestBookList(){
 		return bookMapper.bestBookList();
 	}
+	public List<Book> newBookList(){
+		return bookMapper.newBookList();
+	}
+	public List<Book> saleBookList(){
+		return bookMapper.saleBookList();
+	}
+	public List<Book> categoryBookList(String country, String kind) {
+		return bookMapper.categoryBookList(country, kind);
+	}
 }

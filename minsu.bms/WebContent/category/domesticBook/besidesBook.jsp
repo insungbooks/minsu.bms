@@ -1,6 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -95,249 +96,103 @@
 			<div class="row">
 				<h3>▶ 베스트셀러</h3>
 				<div class="col-md-1"></div>
+<%
+	request.getAttribute("books");
+		if(request.getAttribute("books")!=null) {
+			List<Book> books = (List<Book>)request.getAttribute("books");
+			for(int i = 0; i<5; i++){
+				Book book = books.get(i);
+%>
 				<div class="col-md-2">
 					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG1.jpg" style="width: 150px; height: 150px">
+						src="<%=book.getImg() %>" style="width: 150px; height: 150px">
 					</a>
 					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">5년 후 나에게</a></b></div>
-							<div class="author"><p>정지현</p></div>
-							<div class="price"><p>14,800원</p></div>
+							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp"><%= book.getBookName() %></a></b></div>
+							<div class="author"><p><%= book.getWriter() %></p></div>
+							<div class="price"><p><%= book.getBookPrice() %></p></div>
 						</div>
 				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG2.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">혜민스님의 따뜻한응원</a></b></div>
-							<div class="author"><p>혜민</p></div>
-							<div class="price"><p>14,000원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG3.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">보리 국어사전</a></b></div>
-							<div class="author"><p>윤구병</p></div>
-							<div class="price"><p>60,000원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG4.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">30일간의 글씨연습</a></b></div>
-							<div class="author"><p>이해수</p></div>
-							<div class="price"><p>12,000원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG5.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">부릉부릉 자동차가좋아</a></b></div>
-							<div class="author"><p>황윤영</p></div>
-							<div class="price"><p>15,000원</p></div>
-						</div>
-				</div>
-				<div class="col-md-1"></div>
+<%}} %>
+			<div class="col-md-1"></div>
 			</div>
-
+			
 			<!--MD추천작-->
 			<div class="row">
 				<h3>▶ MD추천작</h3>
 				<div class="col-md-1"></div>
+<%
+	request.getAttribute("books");
+		if(request.getAttribute("books")!=null) {
+			List<Book> books = (List<Book>)request.getAttribute("books");
+			for(int i = 5; i<10; i++){
+				Book book = books.get(i);
+%>
 				<div class="col-md-2">
 					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG6.jpg" style="width: 150px; height: 150px">
+						src="<%=book.getImg() %>" style="width: 150px; height: 150px">
 					</a>
 					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">블로노트</a></b></div>
-							<div class="author"><p>타블로</p></div>
-							<div class="price"><p>13,000원</p></div>
+							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp"><%= book.getBookName() %></a></b></div>
+							<div class="author"><p><%= book.getWriter() %></p></div>
+							<div class="price"><p><%= book.getBookPrice() %></p></div>
 						</div>
 				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG7.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">롱맨 영영한사전</a></b></div>
-							<div class="author"><p>금성출판사</p></div>
-							<div class="price"><p>35,000원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG8.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">동아 현대활용옥편</a></b></div>
-							<div class="author"><p>동아출판</p></div>
-							<div class="price"><p>21,000원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG9.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">10미터만 더 뛰어봐!</a></b></div>
-							<div class="author"><p>김영식</p></div>
-							<div class="price"><p>12,000원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG10.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">어린이 첫 그림 속담사전</a></b></div>
-							<div class="author"><p>글송이</p></div>
-							<div class="price"><p>10,000원</p></div>
-						</div>
-				</div>
-				<div class="col-md-1"></div>
+<%}} %>
+			<div class="col-md-1"></div>
 			</div>
-
+			
 			<!--신간-->
 			<div class="row">
 				<h3>▶ N E W</h3>
 				<div class="col-md-1"></div>
-				<div class="col-md-2">
-
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG11.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">날마다 미니멀 라이프</a></b></div>
-							<div class="author"><p>박미현</p></div>
-							<div class="price"><p>13,800원</p></div>
-						</div>
-				</div>
+<%
+	request.getAttribute("books");
+		if(request.getAttribute("books")!=null) {
+			List<Book> books = (List<Book>)request.getAttribute("books");
+			for(int i = 10; i<15; i++){
+				Book book = books.get(i);
+%>
 				<div class="col-md-2">
 					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG12.jpg" style="width: 150px; height: 150px">
+						src="<%=book.getImg() %>" style="width: 150px; height: 150px">
 					</a>
 					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">천연발효빵 만들기</a></b></div>
-							<div class="author"><p>최화영</p></div>
-							<div class="price"><p>18,000원</p></div>
+							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp"><%= book.getBookName() %></a></b></div>
+							<div class="author"><p><%= book.getWriter() %></p></div>
+							<div class="price"><p><%= book.getBookPrice() %></p></div>
 						</div>
 				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG13.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">동화로 만나는 프랑수자수</a></b></div>
-							<div class="author"><p>박성희</p></div>
-							<div class="price"><p>15,800원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG14.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">한입에 캐릭터 도시락</a></b></div>
-							<div class="author"><p>박선희</p></div>
-							<div class="price"><p>8,800원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG15.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">DIY 천연화장품</a></b></div>
-							<div class="author"><p>이혜리</p></div>
-							<div class="price"><p>15,000원</p></div>
-						</div>
-				</div>
-				<div class="col-md-1"></div>
+<%}} %>
+			<div class="col-md-1"></div>
 			</div>
-
 			<!--오늘의도서-->
 			<div class="row">
 				<h3>▶ 오늘의 도서</h3>
 				<div class="col-md-1"></div>
+			<%
+	request.getAttribute("books");
+		if(request.getAttribute("books")!=null) {
+			List<Book> books = (List<Book>)request.getAttribute("books");
+			for(int i = 15; i<20; i++){
+				Book book = books.get(i);
+%>
 				<div class="col-md-2">
 					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG16.jpg" style="width: 150px; height: 150px">
+						src="<%=book.getImg() %>" style="width: 150px; height: 150px">
 					</a>
 					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">무한도전 컬러링북</a></b></div>
-							<div class="author"><p>무한도전</p></div>
-							<div class="price"><p>12,600원</p></div>
+							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp"><%= book.getBookName() %></a></b></div>
+							<div class="author"><p><%= book.getWriter() %></p></div>
+							<div class="price"><p><%= book.getBookPrice() %></p></div>
 						</div>
 				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG17.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">스티커 아트북:네이처</a></b></div>
-							<div class="author"><p>싸이프레스</p></div>
-							<div class="price"><p>13,860원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG18.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">윅트</a></b></div>
-							<div class="author"><p>권현정</p></div>
-							<div class="price"><p>11,700원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG19.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">내 아이 키 10cm 더 키우기</a></b></div>
-							<div class="author"><p>김부용</p></div>
-							<div class="price"><p>13,500원</p></div>
-						</div>
-				</div>
-				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="../../img/kG/kG20.jpg" style="width: 150px; height: 150px">
-					</a>
-					<div class="text">
-							<div class="classification"><p>[기타]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp">면역이 암을 이긴다</a></b></div>
-							<div class="author"><p>이시형</p></div>
-							<div class="price"><p>13,500원</p></div>
-						</div>
-				</div>
-				<div class="col-md-1"></div>
+<%}} %>
+			<div class="col-md-1"></div>
 			</div>
 		</div>
 	</div>

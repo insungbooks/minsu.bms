@@ -25,9 +25,16 @@
 	
 	String id = (String)session.getAttribute("login");//아이디
 	
-	if(request.getParameterValues("bookCode") != null) {
+	/* if(request.getParameterValues("bookCode") != null) {
 		String[] bookCodes = request.getParameterValues("bookCode");
+		List<Basket> baskets = basketService.listBaskets(id);
 		for(String bookCode:bookCodes) {
+			for(Basket basket:baskets) {
+				if(basket.getBookCode().equals(bookCode)){
+					basket.setBookCount(basket.getBookCount()+1);
+					basketService.modifyBasket(basket);
+				}
+			}
 			Book book = bookService.findBook(bookCode);
 			Basket basket=new Basket();
 			basket.setBookCode(bookCode);
@@ -35,23 +42,38 @@
 			basket.setBookName(book.getBookName());
 			basket.setBookPrice(book.getBookPrice());
 			basket.setUserId(id);
-			basketService.plusBasket(basket);
+			basketService.plusBasket(basket); 
 		}
-	}else if(request.getParameter("bookCode") != null) {
+	} */ if(request.getParameter("bookCode") != null) {
 		String addCode = request.getParameter("bookCode");//책코드
-		Book book = bookService.findBook(addCode);
-		int bookCount=1;
+		List<Basket> baskets = basketService.listBaskets(id);
+		boolean test = false;
+		int bookCount = 1;
+		Basket basket = null;
 		if(request.getParameter("bookNum")!=null){
 			bookCount = Integer.parseInt(request.getParameter("bookNum"));
-		}//수량
+		}
+		for(Basket basket1:baskets) {
+			if(basket1.getBookCode().equals(addCode)){
+				basket1.setBookCount(basket1.getBookCount()+bookCount);
+				basket = basket1;
+				test = true;
+			}
+		}
+		if(test) {
+			basketService.modifyBasket(basket);
+		}else {
+		 Book book = bookService.findBook(addCode);
 		
-		Basket basket=new Basket();
-		basket.setBookCode(addCode);
-		basket.setBookCount(bookCount);
-		basket.setBookName(book.getBookName());
-		basket.setBookPrice(book.getBookPrice());
-		basket.setUserId(id);
-		basketService.plusBasket(basket);
+		 Basket addbasket = new Basket();
+		addbasket.setBookCode(addCode);
+		addbasket.setBookCount(bookCount);
+		addbasket.setBookName(book.getBookName());
+		addbasket.setBookPrice(book.getBookPrice());
+		addbasket.setUserId(id);
+		basketService.plusBasket(addbasket);  
+		}
 	}
+		
 %>
  	<jsp:forward page="BasketProc.jsp"/>

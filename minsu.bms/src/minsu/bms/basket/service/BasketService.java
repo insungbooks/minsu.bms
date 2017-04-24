@@ -9,4 +9,5 @@ public interface BasketService {
 	Basket findBasket(int basketNum);
 	boolean plusBasket(Basket basket);
 	boolean deleteBasket(int basketNum);
+	boolean modifyBasket(Basket basket);
 }

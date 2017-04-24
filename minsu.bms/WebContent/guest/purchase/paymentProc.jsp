@@ -70,6 +70,10 @@
 		Book bookInfo = (Book)bookService.findBook(bookCode);
 		request.setAttribute("bookInfo", bookInfo);
 		
+	}else {
+%>
+		<jsp:forward page="../basket/BasketProc.jsp?del=1"/>
+<%
 	}	
 	
 	request.setAttribute("bookNum", bookNum);

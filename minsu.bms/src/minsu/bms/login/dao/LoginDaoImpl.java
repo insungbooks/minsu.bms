@@ -19,6 +19,12 @@ public class LoginDaoImpl implements LoginDao {
 	public User getUser(String id) { 
 		return loginMapper.getUser(id);
 	}
+	public User getUserId(String name, String myNum){
+		return loginMapper.getUserId(name, myNum);
+	}
+	public User getUserPw(String userId, String name, String myNum){
+		return loginMapper.getUserPw(userId, name, myNum);
+	}
 	public int addUser(User user){
 		return loginMapper.addUser(user);
 	}

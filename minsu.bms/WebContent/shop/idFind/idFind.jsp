@@ -24,18 +24,17 @@
 						<h2>아이디 찾기</h2>
 						<hr>
 						<input type="text" 
-							class="form-control" name="name"
-							 placeholder="이름" maxlength="30"> 
+							class
+							="form-control" name="name" data-rule-required="true"
+							 placeholder="이름" maxlength="30" required> 
 						<input type="text"
-							class="form-control" name="myNum" 
-							 placeholder="주민등록번호" maxlength="30">
+							class="form-control" name="myNum" data-rule-required="true" 
+							 placeholder="주민등록번호" maxlength="30" required>
 						<br>
-						<nav class="Finds" style="float:right;">
-						<button type="submit" formaction="../../customerCenter/frequent10.jsp" class="btn btn-md" >고객센터</button>
+						<nav class="Finds" style="float:right; margin-bottom:10px; margin-right:10px;">
 						<button type="submit" formaction="idFindProc.jsp" class="btn btn-md">아이디찾기</button>
-			
+						<button type="submit" formaction="../../customerCenter/customerCenter/frequent10.jsp" class="btn btn-md" >고객센터</button>
 						</nav>
-					
 					</div>
 				</div>
 				</form>	

@@ -9,6 +9,13 @@ public class Review {
 	
 	public Review() {}
 	
+	public Review(String userId, String bookCode, String reviewContent, int gpa){
+		this.userId=userId;
+		this.bookCode=bookCode;
+		this.reviewContent=reviewContent;
+		this.gpa=gpa;
+	}
+	
 	public Review(String userId, String bookCode, String reviewContent, String creationDate, int gpa){
 		this.userId=userId;
 		this.bookCode=bookCode;

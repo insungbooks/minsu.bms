@@ -241,8 +241,7 @@ footer { /*바닥글*/
 %>
 					<% if(id.equals("insung")) { %>
 					<!-- 세센값의 아이디가 관리자 아이디와 같다면 밑에 코드 출력  -->
-					<li class="topli"><a
-						href="shop/login/logoutProc.jsp">로그아웃</a></li>
+					<li class="topli"><a href="shop/login/logoutProc.jsp">로그아웃</a></li>
 					<li class="topli"><a
 						href="order/member/memberList.jsp">관리자페이지</a></li>
 					<% }else if(!id.equals("")) { %>

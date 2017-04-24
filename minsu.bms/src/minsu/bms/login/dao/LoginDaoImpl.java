@@ -7,15 +7,6 @@ import minsu.bms.login.domain.User;
 
 public class LoginDaoImpl implements LoginDao {
 	
-	private String userId;
-	private String password;  
-	private String name;      
-	private int age;      
-	private String gender;
-	private String myNum;
-	private String email;     
-	private String phoneNum; 
-	private String address;
 	private LoginMapper loginMapper;
 	
 	public LoginDaoImpl(){}
@@ -26,6 +17,12 @@ public class LoginDaoImpl implements LoginDao {
 	
 	public User getUser(String id) { 
 		return loginMapper.getUser(id);
+	}
+	public User getUserId(String name, String myNum){
+		return loginMapper.getUserId(name, myNum);
+	}
+	public User getUserPw(String userId, String name, String myNum){
+		return loginMapper.getUserPw(userId, name, myNum);
 	}
 	public int addUser(User user){
 		return loginMapper.addUser(user);

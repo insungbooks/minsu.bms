@@ -26,7 +26,7 @@
 
 								<br>
 								<p>아이디는</p>
-								<p>insungJY 입니다.</p>
+								<p><%=request.getAttribute("userId") %>입니다.</p>
 								<br>
 							</div>
 							<div class="row">

@@ -24,13 +24,13 @@
 						<h2>비밀번호 찾기</h2>
 						<hr>
 						<input type="text" 
-							class="form-control" name= "id" 	 data-rule-required="true" 
+							class="form-control" name= "userId" 	 data-rule-required="true" 
 							placeholder="아이디" maxlength="30"> 
 						<input type="text"
 							class="form-control" name= "name"	 data-rule-required="true"
 							placeholder="이름" 	maxlength="30">
 						<input type="text"
-							class="form-control" name="resident" data-rule-required="true"
+							class="form-control" name="myNum" data-rule-required="true"
 							placeholder="주민번호-제외" maxlength="30">
 						<br>
 					</div>

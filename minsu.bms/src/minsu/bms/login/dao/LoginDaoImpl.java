@@ -4,6 +4,7 @@ import java.util.List;
 
 import minsu.bms.login.dao.mapper.LoginMapper;
 import minsu.bms.login.domain.User;
+import minsu.bms.paging.domain.Page;
 
 public class LoginDaoImpl implements LoginDao {
 	
@@ -32,6 +33,9 @@ public class LoginDaoImpl implements LoginDao {
 	}
 	public List<User> userList(){
 		return loginMapper.userList();
+	}
+	public List<User> userListPage(Page page){
+		return loginMapper.userListPage(page);
 	}
 	public int delUser(User user){
 		return loginMapper.delUser(user);

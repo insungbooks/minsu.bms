@@ -119,4 +119,4 @@
 	}
 	
 	
-%><jsp:include page="../order/orderList.jsp"/>
+%><jsp:include page="../order/orderListProc.jsp"/>

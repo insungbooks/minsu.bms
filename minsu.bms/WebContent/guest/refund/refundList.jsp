@@ -9,8 +9,8 @@
 <%@ page import="minsu.bms.config.Configuration"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="minsu.bms.paging.domain.Page"%>
-<%@ page import="minsu.bms.paging.service.PageService"%>
-<%@ page import="minsu.bms.paging.service.PageServiceImpl"%>
+<%@ page import="minsu.bms.paging.service.RefundPageService"%>
+<%@ page import="minsu.bms.paging.service.RefundPageServiceImpl"%>
 <%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
@@ -20,7 +20,7 @@
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
 	else myPage = new Page();
 	
-	PageService pageService = new PageServiceImpl(5, myPage);
+	RefundPageService pageService = new RefundPageServiceImpl(5, myPage);
 	pageContext.setAttribute("pageMaker", pageService);
 
 	RefundMapper refundMapper = Configuration.getMapper(RefundMapper.class);

@@ -1,8 +1,10 @@
 package minsu.bms.refund.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import minsu.bms.paging.domain.Page;
+import minsu.bms.query.domain.Query;
 import minsu.bms.refund.dao.RefundDao;
 import minsu.bms.refund.domain.Refund;
 
@@ -16,7 +18,13 @@ private RefundDao refundDao;
 		return refundDao.refundList(userId);
 	}
 	public List<Refund> listRefundPage(String userId,Page page){
-		return refundDao.refundListPage(page);
+		List<Refund> RefundList= new ArrayList<Refund>();
+		 List<Refund> RefundLists =refundDao.refundListPage(page);
+		 for(Refund Refund :RefundLists){
+			 if(Refund.getUserId().equals(userId)){
+				 RefundList.add(Refund);
+			 } 
+		}return RefundList;
 	}
 	
 	public Refund findRefund(int orderNum){

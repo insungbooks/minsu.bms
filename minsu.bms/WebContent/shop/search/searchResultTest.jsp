@@ -205,7 +205,7 @@ article { /*본문*/
 					<input id="line checkbox" type="checkbox" />
 					<input type="hidden" name="bookCode" value="<%=searchResult.getBookCode() %>"/>
 							 <button id="block"
-							type="submit" formaction="../../guest/basket/addBasketProc.jsp" class="btn btn-default btn-md">장바구니</button> 
+							type="submit" formaction="../../guest/basket/addBasketProc.jsp" class="btn btn-default btn-md">장바구니</button>
 					<button id="block" type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-default btn-md">바로구매</button>
 						
 				</div>

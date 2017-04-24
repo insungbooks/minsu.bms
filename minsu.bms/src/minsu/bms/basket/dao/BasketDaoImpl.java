@@ -29,4 +29,7 @@ public class BasketDaoImpl implements BasketDao{
 	public int delBasket(int basketNum){
 		return basketMapper.delBasket(basketNum);
 	}
+	public int updateBasket(Basket basket){
+		return basketMapper.updateBasket(basket);
+	}
 }

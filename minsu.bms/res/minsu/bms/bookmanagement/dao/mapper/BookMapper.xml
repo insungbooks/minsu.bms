@@ -58,7 +58,7 @@
 		book_name=#{bookName}, book_price=#{bookPrice},
 		writer=#{writer}, company=#{company}, publi_date=#{publiDate},
 		country=#{country}, kind=#{kind}, inventory=#{inventory},
-		book_intro=#{bookIntro}, company_eval=#{companyEval}
+		book_intro=#{bookIntro}, company_eval=#{companyEval}, sales_num=#{salesNum}
 		where book_code=#{bookCode}
 	</update>
 </mapper>

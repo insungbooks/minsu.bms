@@ -23,4 +23,11 @@
 		insert into baskets values(
 		basketnum_seq.nextval, #{userId}, #{bookCode}, #{bookName}, #{bookPrice}, #{bookCount})
 	</insert>
+	
+	<update id="updateBasket" parameterType="basket">
+		update baskets set
+		book_count = #{bookCount}
+		where basket_num=#{basketNum}
+	</update>
+
 </mapper>

@@ -114,13 +114,7 @@
             <li><a href="../../shop/system/idCheck1.html"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 나의 상담</strong></li>
-
-            <li ><a href="customCenter2.html"> 나의 상담 내역</a></li>
-
             <li ><a href="../customerCenter/queryListProc.jsp"> 나의 상담 내역</a></li>
-
-            <li ><a href="../customerCenter/queryListProc.jsp"> 나의 상담 내역</a></li>
-
         </ul>
     </nav>
 				</div>
@@ -207,8 +201,5 @@
 		<br>
 		<!-- 바닥글 -->
 	<jsp:include page="../../footer.html"/>
-
-
-
 </body>
 </html>

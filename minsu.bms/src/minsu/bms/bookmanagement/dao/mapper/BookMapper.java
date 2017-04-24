@@ -10,4 +10,6 @@ public interface BookMapper {
 	int addBook(Book book);
 	int updateBook(Book book);
 	int delBook(String bookCode);
+	
+	List<Book> bestBookList();
 }

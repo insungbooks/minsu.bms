@@ -24,25 +24,34 @@
 	BookService bookService = new BookServiceImpl(bookDao);
 	
 	String id = (String)session.getAttribute("login");//아이디
-	String addCode = request.getParameter("bookCode");//책코드
-
-	Book book = bookService.findBook(addCode);
-	String bookName = book.getBookName();//책이름
-	int bookPrice = book.getBookPrice();//책가격
 	
-	int bookCount=1;
-	if(request.getParameter("bookNum")!=null){
-	bookCount = Integer.parseInt(request.getParameter("bookNum"));
-	}//수량
-	
-	Basket basket=new Basket();
-	basket.setBookCode(addCode);
-	basket.setBookCount(bookCount);
-	basket.setBookName(bookName);
-	basket.setBookPrice(bookPrice);
-	basket.setUserId(id);
-	
-	basketService.plusBasket(basket);
-	
+	if(request.getParameterValues("bookCode") != null) {
+		String[] bookCodes = request.getParameterValues("bookCode");
+		for(String bookCode:bookCodes) {
+			Book book = bookService.findBook(bookCode);
+			Basket basket=new Basket();
+			basket.setBookCode(bookCode);
+			basket.setBookCount(1);
+			basket.setBookName(book.getBookName());
+			basket.setBookPrice(book.getBookPrice());
+			basket.setUserId(id);
+			basketService.plusBasket(basket);
+		}
+	}else if(request.getParameter("bookCode") != null) {
+		String addCode = request.getParameter("bookCode");//책코드
+		Book book = bookService.findBook(addCode);
+		int bookCount=1;
+		if(request.getParameter("bookNum")!=null){
+			bookCount = Integer.parseInt(request.getParameter("bookNum"));
+		}//수량
+		
+		Basket basket=new Basket();
+		basket.setBookCode(addCode);
+		basket.setBookCount(bookCount);
+		basket.setBookName(book.getBookName());
+		basket.setBookPrice(book.getBookPrice());
+		basket.setUserId(id);
+		basketService.plusBasket(basket);
+	}
 %>
  	<jsp:forward page="BasketProc.jsp"/>

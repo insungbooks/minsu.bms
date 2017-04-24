@@ -26,7 +26,7 @@ public class BasketDaoImpl implements BasketDao{
 		return basketMapper.addBasket(basket);
 	}
 	
-	public int delBasket(Basket basket){
-		return basketMapper.delBasket(basket);
+	public int delBasket(int basketNum){
+		return basketMapper.delBasket(basketNum);
 	}
 }

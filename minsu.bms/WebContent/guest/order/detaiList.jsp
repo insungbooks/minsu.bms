@@ -134,11 +134,8 @@ Purchase purchase=(Purchase)request.getAttribute("purchase");
 				</div>
 			</div>
 		</div>
-		
 		</form>
 	</article>
 <jsp:include page="../../footer.html"/>
-
-
 </body>
 </html>

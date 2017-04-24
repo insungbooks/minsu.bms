@@ -148,8 +148,8 @@ article { /*본문*/
 			</div>
 			<div class="row">
 				<div id="optBtn">
-					<a href="#" class="btn btn-default btn-sm">전체선택</a> <a href="#"
-						class="btn btn-default btn-sm">장바구니 담기</a>
+					<a href="#" class="btn btn-default btn-sm">전체선택</a> 
+					<a href="#" class="btn btn-default btn-sm">장바구니 담기</a>
 				</div>
 			</div>
 			<br>
@@ -207,7 +207,6 @@ article { /*본문*/
 							 <button id="block"
 							type="submit" formaction="../../guest/basket/addBasketProc.jsp" class="btn btn-default btn-md">장바구니</button> 
 					<button id="block" type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-default btn-md">바로구매</button>
-						
 				</div>
 			</div>
 			</form>

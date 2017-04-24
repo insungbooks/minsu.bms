@@ -14,11 +14,23 @@
 	BasketDao basketDao = new BasketDaoImpl(basketMapper);
 	BasketService basketService = new BasketServiceImpl(basketDao);
 	
-	/* String id = (String)session.getAttribute("login");
-	String delCode = request.getParameter("bookCode");
-	//basketService.findBasket(basketNum);
-	//basketService.deleteBasket(delCode);
-	List<Basket> baskets = basketService.listBaskets(id);
-	request.setAttribute("delBasket", baskets); */
+	String id = (String)session.getAttribute("login");
+	
+	
+	
+	String[] basketNums = request.getParameterValues("basketNum");
+	if(basketNums != null) {
+		for(String basketNum : basketNums) {
+			int delnum = Integer.parseInt(basketNum);
+			basketService.deleteBasket(delnum);
+		}
+	}else if(request.getParameter("basketNum")!=null) {
+		int delnum = Integer.parseInt(request.getParameter("basketNum"));
+			basketService.deleteBasket(delnum);
+	}else {
 %>
- 	<jsp:forward page="Basket.jsp"/>
+		<jsp:forward page="BasketProc.jsp?del=1"/>
+<%
+	}
+%>
+ 	<jsp:include page="BasketProc.jsp"/>

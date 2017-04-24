@@ -32,4 +32,8 @@ public class BookServiceImpl implements BookService {
 	public boolean deleteBook(String bookCode){
 		return bookDao.delBook(bookCode)>0;
 	}
+	
+	public List<Book> bestBookList(){
+		return bookDao.bestBookList();
+	}
 }

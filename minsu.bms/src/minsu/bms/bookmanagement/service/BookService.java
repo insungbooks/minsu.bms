@@ -11,4 +11,6 @@ public interface BookService {
 	boolean addBook(Book book);
 	boolean modifyBook(Book book);
 	boolean deleteBook(String bookCode);
+	
+	List<Book> bestBookList();
 }

@@ -4,6 +4,7 @@
 	<select id="getReviews" parameterType="string" resultType="review">
 		select user_id userId, book_code bookCode, review_content reviewContent, creation_date creationDate, gpa
 		from reviews
-		where book_code=#{bookCode};
+		where book_code=#{bookCode}
+		order by creation_date
 	</select>
 </mapper>

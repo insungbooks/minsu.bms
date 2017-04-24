@@ -2,6 +2,8 @@ package minsu.bms.review.dao.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
+
 import minsu.bms.review.domain.Review;
 
 public interface ReviewMapper {
@@ -9,4 +11,7 @@ public interface ReviewMapper {
 	//Param : 도서 코드
 	//return : 리뷰 배열
 	List<Review> getReviews(String bookCode);
+	
+	@Insert("insert into reviews values(reviewnum_seq.nextval, #{userId}, #{bookCode}, #{reviewContent}, sysdate, #{gpa})")
+	int addReview(Review review);
 }

@@ -15,7 +15,7 @@
 		where basket_num = #{basketNum}
 	</select>
 	
-	<delete id="delBasket" parameterType="basket">
+	<delete id="delBasket" parameterType="int">
 		delete baskets where basket_num = #{basketNum}
 	</delete>
 	

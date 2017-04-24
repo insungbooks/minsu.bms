@@ -30,4 +30,7 @@ public class BookDaoImpl implements BookDao {
 	public int delBook(String bookCode) {
 		return bookMapper.delBook(bookCode);
 	}
+	public List<Book> bestBookList(){
+		return bookMapper.bestBookList();
+	}
 }

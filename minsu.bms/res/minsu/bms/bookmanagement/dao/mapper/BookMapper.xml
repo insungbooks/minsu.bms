@@ -28,6 +28,12 @@
 		<result property="img"			column="img"/>
 	</resultMap>
 	
+	<select id="bestBookList" resultMap="bookMap" >
+	<![CDATA[
+		SELECT * FROM ( SELECT * FROM books ORDER BY sales_num DESC ) WHERE ROWNUM <= 10
+	]]>
+	</select>
+	
 	<select id="getBook" parameterType="string" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
 			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum,

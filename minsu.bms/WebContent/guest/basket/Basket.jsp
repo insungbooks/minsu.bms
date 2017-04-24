@@ -110,7 +110,6 @@ th, td {
 								</tr>
 							</thead>
 							<tbody>
-							
 <%
 					if(request.getAttribute("listBasket")!=null){
 						List<Basket> listBasket=(List<Basket>)request.getAttribute("listBasket");
@@ -205,9 +204,17 @@ th, td {
 					</div>
 				</div>
 			</div>
-		</div>
-
 	</article>
+<%
+	String del = request.getParameter("del");
+	if(del != null && !del.equals("") && del.equals("1")) {
+%>
+<script>
+alert("삭제할 제품을 선택해주세요.");	//경고창과 함께 스크립트 언어로 출력
+</script>
+<%
+	}
+%>
 	<!-- //장바구니 -->
 <jsp:include page="../../footer.html"/>
 </body>

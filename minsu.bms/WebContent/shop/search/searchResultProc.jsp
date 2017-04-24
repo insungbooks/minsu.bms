@@ -25,4 +25,4 @@
 	request.setAttribute("orderOption", orderOption);
 	request.setAttribute("pageNum", pageNum);
 %>
-	<jsp:forward page="searchResultTest.jsp?searchOption=<%= searchOption %>&searchText=<%= searchText %>&pageNum=<%= pageNum %>&orderOption=<%= orderOption %>"/>
+	<jsp:forward page="searchResult.jsp?searchOption=<%= searchOption %>&searchText=<%= searchText %>&pageNum=<%= pageNum %>&orderOption=<%= orderOption %>"/>

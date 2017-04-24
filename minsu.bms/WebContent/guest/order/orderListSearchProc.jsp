@@ -17,8 +17,6 @@
 	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
 	
-	
-	
 	 if(request.getParameter("date1") != null
 				&& !request.getParameter("date1").equals("")
 				&& request.getParameter("date2") != null
@@ -73,6 +71,4 @@
 		
 	 }
 	
-	
-
-	%><jsp:include page="orderList.jsp"/>
+%><jsp:include page="orderList.jsp"/>

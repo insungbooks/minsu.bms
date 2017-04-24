@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.search.domain.SearchResult"%>
-<%@ page import="java.util.List" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,10 +10,21 @@
 <title>검색결과</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 <style>
+
+/* 정렬 옵션 버튼 */
+ .orderOption{
+ 	border : none;
+ 	background-color : #fff;
+ 	margin : 15px 0 15px 15px;
+ }
+
 .nav {
 	border-top: 1px solid black;
 	border-bottom: 1px solid black;
@@ -85,64 +96,57 @@
 	width: 150px;
 }
 /*search end*/
-
 article { /*본문*/
 	background-color: white;
 	height: 400px;
 }
-
 </style>
 </head>
 <body>
-<jsp:include page="../../header.jsp"/>
-<article>
+	<jsp:include page="../../header.jsp" />
+	<article> 
 <%
 	List<SearchResult> searchResults = (List<SearchResult>)request.getAttribute("searchResults");
+	
+	String pageNum=request.getParameter("pageNum");
+	int currentNum=0;
+	int startNum=0;
+	int endNum=0;
+	int dataNum=0;
+	int totalPageNum=0;
+	int startDataNum=0;
+	int endDataNum=0;
+	
+	String searchText=(String)request.getAttribute("searchText");
+	String searchOption=(String)request.getAttribute("searchOption");
+	String orderOption=(String)request.getAttribute("orderOption");
 %>
 	<div class="container">
 		<div class="col-md-2"></div>
 		<div class="col-md-10">
-			<p>총 <%= searchResults.size() %>개의 상품이 검색되었습니다.</p>
+			<p>
+				총 <%= searchResults.size() %>개의 상품이 검색되었습니다.
+			</p>
 			<div class="navbar">
 				<nav class="navbar">
-					<div class="row">
-						<div class="nav">
-							<div class="dropdown1">
-								<button class="dropbtn1">판매량순</button>
-								<button class="dropbtn1">상품평순</button>
-								<button class="dropbtn1">평점순</button>
-								<button class="dropbtn1">리뷰순</button>
-								<button class="dropbtn1">출간일순</button>
-								<button class="dropbtn1">저가격순</button>
-								<!-- 옵션선택/품절포함 박스는 왜 길게 나오지?? 고치려는데 잘 안되네 -->
-								<button class="dropbtn1">
-									옵션선택 <span class="glyphicon glyphicon glyphicon-chevron-down"></span>
-								</button>
-								<!-- 
-								 <div class="dropdown-content">
-									<a href="#">옵션1</a>
-									<a href="#">옵션2</a>
-									<a href="#">옵션3</a>
-									<a href="#">옵션4</a>
-								</div>
-								-->
-								<button class="dropbtn1">
-									품절포함 <span class="glyphicon glyphicon glyphicon-chevron-down"></span>
-								</button>
-								<!-- 
-								 <div class="dropdown-content">
-									<a href="#">포함</a>
-									<a href="#">미포함</a>
-								</div>
-								-->
-							</div>
-						</div>
+				<div class="row">
+					<div class="nav">
+						<form>
+							<input type="text" name="searchOption" value="<%= searchOption %>" hidden/>
+							<input type="text" name="searchText" value="<%= searchText %>" hidden/>
+							<input type="text" name="pageNum" value="1" hidden/>
+							<button class="orderOption" value="sellCnt" formaction="searchResultProc.jsp">판매량순</button>
+							<button class="orderOption" value="grade" formaction="searchResultProc.jsp">평점순</button>
+							<button class="orderOption" value="reviewCnt" formaction="searchResultProc.jsp">리뷰순</button>
+							<button class="orderOption" value="publishDate" formaction="searchResultProc.jsp">출간일순</button>
+							<button class="orderOption" value="highPrice" formaction="searchResultProc.jsp">높은가격순</button>
+							<button class="orderOption" value="lowPrice" formaction="searchResultProc.jsp">낮은가격순</button>
+						</form>
 					</div>
+				</div>
 				</nav>
 			</div>
-
 			<div class="row">
-
 				<div id="optBtn">
 					<a href="#" class="btn btn-default btn-sm">전체선택</a> <a href="#"
 						class="btn btn-default btn-sm">장바구니 담기</a>
@@ -152,42 +156,61 @@ article { /*본문*/
 			<%
 				if(searchResults == null || searchResults.size()==0){
 			%>
-					<p>검색 결과가 없습니다.</p>
+			<p>검색 결과가 없습니다.</p>
 			<%
 				}else{
-					for(SearchResult searchResult : searchResults){
-			%><form>
-					<div class="row">
-						<div class="col-md-2">
-							<div>
-								<a href="productInfo.jsp" class="thumbnail"> <img
-									src="../../img/7.jpg">
-								</a>
-							</div>
-						</div>
-						<div class="col-md-7">
-							<a href="productInfo.jsp">[<%= searchResult.getKind() %>]</a> <br> <br>
-							<p>
-								[<%= searchResult.getCountry() %>도서]<a href="productInfo.jsp"><%= searchResult.getBookName() %></a><br> <a
-									href="productInfo.jsp"><%= searchResult.getWriter() %></a>(지은이) | <a href="productInfo.jsp"><%= searchResult.getCompany() %></a> | <%= searchResult.getPubliDate() %><br>
-								<%= searchResult.getBookPrice() %>원 →<%= searchResult.getBookPrice()*9/10 %>원(10% 할인), 마일리지 1,650점(5% 적립)<br> <br>
-								출고예상일 : 지금 주문하면 <b>3월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
-							</p>
-						</div>
-						<div class="col-md-3">
-							<input id="line checkbox" type="checkbox" />
-							<p id="line">수량</p>
-							<input type="hidden" name="bookCode" value="<%=searchResult.getBookCode() %>"/>
-							<input id="line" type="number" size="3" min="0" name="bookNum"/> 
-							<a href="../../guest/basket/BasketProc.jsp">
-							<button id="block" type="button" class="btn btn-default btn-md">장바구니</button>
-							</a> 
-							<button type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-default btn-md">바로구매</button>
-						
-						</div>
-						
+					if(pageNum == null || pageNum.equals("")){
+						currentNum=1;
+					}else{
+						currentNum=Integer.parseInt(pageNum);
+					}
+					dataNum=searchResults.size();
+					totalPageNum=(dataNum-1)/10+1;
+					startNum=(currentNum/10)*10+1;
+					if(startNum/10 == totalPageNum/10){
+						endNum=totalPageNum;
+					}else{
+						endNum=startNum+9;
+					}
+					startDataNum=(currentNum-1)*10+1;
+					if(currentNum==totalPageNum){
+						endDataNum=dataNum;
+					}else{
+						endDataNum=currentNum*10;
+					}
+					for(int i=startDataNum; i<=endDataNum; i++){
+						SearchResult searchResult = searchResults.get(i-1);
+			%>
+			<form>
+			<div class="row">
+				<div class="col-md-2">
+					<div>
+						<a href="productInfoProc.jsp?bookCode=<%= searchResult.getBookCode() %>" class="thumbnail"> <img
+							src="../../img/7.jpg">
+						</a>
 					</div>
-					</form>
+				</div>
+				<div class="col-md-7">
+					<p>[<%= searchResult.getKind() %>]
+					</p><br> <br>
+					<p>
+						[<%= searchResult.getCountry() %>도서]<a href="productInfoProc.jsp?bookCode=<%= searchResult.getBookCode() %>"><%= searchResult.getBookName() %></a><br>
+						<span><%= searchResult.getWriter() %></span>(지은이) | <span><%= searchResult.getCompany() %></span> | <%= searchResult.getPubliDate() %><br>
+						<%= searchResult.getBookPrice() %>원 →<%= searchResult.getBookPrice()*9/10 %>원(10%
+						할인), 마일리지 <%= searchResult.getBookPrice()*9/10/20 %>점(5% 적립)<br> <br> 출고예상일 : 지금 주문하면 <b>3월
+							10일 출고</b>예상 (출고후 1~2일 이내 수령)
+					</p>
+				</div>
+				<div class="col-md-3">
+					<input id="line checkbox" type="checkbox" />
+					<input type="hidden" name="bookCode" value="<%=searchResult.getBookCode() %>"/>
+							 <button id="block"
+							type="submit" formaction="../../guest/basket/addBasketProc.jsp" class="btn btn-default btn-md">장바구니</button> 
+					<button id="block" type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-default btn-md">바로구매</button>
+						
+				</div>
+			</div>
+			</form>
 			<%
 					}
 				}
@@ -196,20 +219,77 @@ article { /*본문*/
 				<div class="col-sm-3"></div>
 				<div class="col-sm-6">
 					<div class="text-center" id="searchPageNum">
-						<!-- 페이지숫자 테두리 없는게 더 깔끔하겠지? 내일 고칠게/  그리고 이게 검색된책들 아래가 아니고, 위에 오는게 맞아? -->
 						<ul class="pagination pagination-sm" id="pageNum">
-							<li><a href="searchResult.jsp" rel="prev">«</a></li>
-							<li class="active"><a href="searchResult.jsp">1</a></li>
-							<li><a href="searchResult.jsp">2</a></li>
-							<!--  <li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">6</a></li>
-							<li><a href="#">7</a></li>
-							<li><a href="#">8</a></li>
-							<li><a href="#">9</a></li>
-							<li><a href="#">10</a></li>-->
-							<li><a href="#" rel="next">»</a></li>
+							<%
+								if (totalPageNum > 10) {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=1">&laquo;</a></li>
+							<%
+									if (currentNum > 10) {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=currentNum / 10 * 10%>">&lsaquo;</a></li>
+							<%
+									} else {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=1">&lsaquo;</a></li>
+							<%
+									}
+								}
+							%>
+							<%
+								if (startNum != 0) {
+									for (int j = startNum; j <= endNum; j++) {
+										if (j == currentNum) {
+							%>
+							<li class="active"><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=j%>"><%=j%></a></li>
+							<%
+										} else {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=j%>"><%=j%></a></li>
+							<%
+										}
+									}
+								}
+							%>
+							<%
+								if (totalPageNum > 10) {
+									if (currentNum / 10 == totalPageNum / 10) {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=endNum%>">&rsaquo;</a></li>
+							<%
+									} else {
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=currentNum / 10 * 10 + 11%>">&rsaquo;</a></li>
+							<%
+									}
+							%>
+							<li><a
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=endNum%>">&raquo;</a></li>
+							<%
+								}
+							%>
+							<%-- 
+							<%= currentNum %><br>
+							<%= startNum %><br>
+							<%= endNum %><br>
+							<%= dataNum %><br>
+							<%= totalPageNum %><br>
+							<%= startDataNum %><br>
+							<%= endDataNum %> <br>
+							
+							<<	&laquo;<br>
+							>>	&raquo;<br>
+							<	&lsaquo;<br>
+							>	&rsaquo;<br>
+							 --%>
+
 						</ul>
 					</div>
 					<div class="col-sm-3"></div>
@@ -217,7 +297,7 @@ article { /*본문*/
 			</div>
 		</div>
 	</div>
-</article>
-<jsp:include page="../../footer.html"/>
+	</article>
+	<jsp:include page="../../footer.html" />
 </body>
 </html>

@@ -68,11 +68,9 @@
 				</div>
 				<hr>
 				<nav class="productInfo">
+					<input type="hidden" name="bookCode" value="<%=bookCode%>" />
 					<button type="submit" formaction="../../guest/basket/addBasketProc.jsp" class="btn btn-md">장바구니넣기</button>
-					<input type="hidden"
-						name="bookCode" value="<%=bookCode%>" />
 					<button type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-md">바로구매하기</button>
-
 				</nav>
 			</div>
 		</form>

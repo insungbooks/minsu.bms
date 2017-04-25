@@ -60,9 +60,11 @@
 					</p>
 				</div>
 				<div class="col-md-3">
-					
-					<a href="../../guest/basket/Basket.jsp"><button id="block" type="button" class="btn btn-default btn-md">장바구니</button></a>
-					<a href="../../guest/purchase/payment.jsp"><button id="block" type="button" class="btn btn-default btn-md">바로구매</button></a>
+				<form>
+					<input type="hidden" name="bookCode" value = "${bestBook.bookCode}">
+					<button id="block" type="submit" formaction="../../guest/basket/addBasketProc.jsp"  class="btn btn-default btn-md">장바구니</button>
+					<button id="block" type="submit" formaction="../../shop/search/productInfoProc.jsp" class="btn btn-default btn-md">바로구매</button>
+				</form>
 				</div>
 			</div>
 	<hr>

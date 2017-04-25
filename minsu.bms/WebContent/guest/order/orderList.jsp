@@ -34,7 +34,8 @@ DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
 PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
 PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
-	%>
+
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -93,6 +94,16 @@ th {
 <body>
 	<jsp:include page="../../header.jsp"/>
 <article>
+<%
+	String id = (String)session.getAttribute("login");
+	if(id == null) {
+%>
+	<script>
+		window.location.href="../../shop/login/login.jsp";
+	</script>
+<% 
+	}
+%>
 	<div class="container">
 	<div class="row">
 		<div class="col-md-2">

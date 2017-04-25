@@ -32,7 +32,7 @@
 </script>
 <% } %>
 <%
-	 boolean test1 = false;
+	/*  boolean test1 = false;
 	 Basket basket5 = null;
  	 if(id != null && request.getParameterValues("bookCodes") != null) {
 		String[] bookCodes = request.getParameterValues("bookCodes");
@@ -60,7 +60,7 @@
 			basketService.plusBasket(basket); 
 			}
 		}
-	} else if(id != null && request.getParameter("bookCode") != null) {
+	} else */ if(id != null && request.getParameter("bookCode") != null) {
 		String addCode = request.getParameter("bookCode");//책코드
 		List<Basket> baskets = basketService.listBaskets(id);
 		boolean test = false;

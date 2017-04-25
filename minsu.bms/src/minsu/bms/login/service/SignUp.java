@@ -1,7 +1,6 @@
 package minsu.bms.login.service;
 
 import java.util.List;
-
 import minsu.bms.login.domain.User;
 
 public interface SignUp {

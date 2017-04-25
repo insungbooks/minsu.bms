@@ -10,7 +10,21 @@ public class PageDaoImpl implements PageDao {
 		this.pageMapper = Configuration.getMapper(PageMapper.class);
 	}
 	
-	public int getTotRowCnt() {
-		return pageMapper.getTotRowCnt();
+	public int getTotRowCntBook() {
+		return pageMapper.getTotRowCntBook();
 	}
+	public int getTotRowCntQuery() {
+		return pageMapper.getTotRowCntQuery();
+	}
+	public int getTotRowCntUser() {
+		return pageMapper.getTotRowCntUser();
+	}
+	public int getTotRowCntRefund() {
+		return pageMapper.getTotRowCntRefund();
+	}
+	public int getTotRowCntOrder() {
+		return pageMapper.getTotRowCntOrder();
+	}
+	
+	
 }

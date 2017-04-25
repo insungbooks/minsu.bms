@@ -1,5 +1,32 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ page import="java.util.List"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="minsu.bms.paging.domain.Page"%>
+<%@ page import="minsu.bms.paging.service.UserPageService"%>
+<%@ page import="minsu.bms.paging.service.UserPageServiceImpl"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.login.dao.LoginDao"%>
+<%@ page import="minsu.bms.login.dao.LoginDaoImpl"%>
+<%@ page import="minsu.bms.login.dao.mapper.LoginMapper"%>
+<%@ page import="minsu.bms.login.domain.User"%>
+<%@ page import="minsu.bms.login.service.MemberService"%>
+<%@ page import="minsu.bms.login.service.MemberServiceImpl"%>
+<%
+	Page myPage = null;
+	String currentPage = request.getParameter("currentPage");
+	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
+	else myPage = new Page();
+	
+	UserPageService userpageService = new UserPageServiceImpl(5, myPage);
+	pageContext.setAttribute("pageMaker", userpageService);
+	
+	LoginMapper loginMapper = Configuration.getMapper(LoginMapper.class);
+	LoginDao loginDao = new LoginDaoImpl(loginMapper);
+	MemberService memberService = new MemberServiceImpl(loginDao);
+	
+	pageContext.setAttribute("memberList", memberService.memberListPage(myPage));
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -81,7 +108,7 @@
 									주문관리</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong>고객센터</strong></li>
-							<li><a href="../customerCenter/queryListProc.jsp">문의답하기</a></li>
+							<li><a href="../customerCenter/queryList.jsp">문의답하기</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -89,99 +116,46 @@
 					<table class="table">
 						<thead>
 							<tr>
-								<td><strong>번호</strong></td>
-								<td><strong>체크박스</strong></td>
+								<td><strong>아이디</strong></td>
 								<td><strong>이름</strong></td>
-								<td><strong>회원 등급</strong></td>
-								<td><strong>구매 횟수</strong></td>
-								<td><strong>구매 금액</strong></td>
-								<td><strong>마지막 방문일</strong></td>
-								<td><strong>비고</strong></td>
+								<td><strong>성별</strong></td>
+								<td><strong>나이</strong></td>
+								<td><strong>이메일</strong></td>
+								<td><strong>핸드폰번호</strong></td>
+								<td><strong>주소</strong></td>
 							</tr>
 						</thead>
 						<tbody>
+						<c:forEach var="member" items="${memberList}">
 							<tr>
-								<td>1</td>
-								<td><input type="checkbox"></td>
-								<td>강민수</td>
-								<td>일반</td>
-								<td>3</td>
-								<td>30,000</td>
-								<td>03-02</td>
-								<td></td>
+								<td>${member.userId}</td>
+								<td>${member.name}</td>
+								<td>${member.gender}</td>
+								<td>${member.age}</td>
+								<td>${member.email}</td>
+								<td>${member.phoneNum}</td>
+								<td>${member.address}</td>
 							</tr>
-							<tr>
-								<td>2</td>
-								<td><input type="checkbox"></td>
-								<td>윤종은</td>
-								<td>일반</td>
-								<td>3</td>
-								<td>30,000</td>
-								<td>03-02</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>3</td>
-								<td><input type="checkbox"></td>
-								<td>권기창</td>
-								<td>일반</td>
-								<td>3</td>
-								<td>30,000</td>
-								<td>03-02</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>4</td>
-								<td><input type="checkbox"></td>
-								<td>구태수</td>
-								<td>일반</td>
-								<td>3</td>
-								<td>30,000</td>
-								<td>03-02</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>5</td>
-								<td><input type="checkbox"></td>
-								<td>박주한</td>
-								<td>일반</td>
-								<td>3</td>
-								<td>30,000</td>
-								<td>03-02</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>6</td>
-								<td><input type="checkbox"></td>
-								<td>배창헌</td>
-								<td>일반</td>
-								<td>3</td>
-								<td>30,000</td>
-								<td>03-02</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td><input type="checkbox"></td>
-								<td>이인석</td>
-								<td>일반</td>
-								<td>3</td>
-								<td>30,000</td>
-								<td>03-02</td>
-								<td></td>
-							</tr>
-							<tr>
-								<td>7</td>
-								<td><input type="checkbox"></td>
-								<td>이소연</td>
-								<td>VIP</td>
-								<td>3</td>
-								<td>30,000</td>
-								<td>03-02</td>
-								<td></td>
-							</tr>
+							</c:forEach>
 						</tbody>
 					</table>
+					<div class="text-center">
+										<ul class="pagination">
+											<c:if test="${pageMaker.prev}">
+												<li><a href="memberList.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a></li>
+											</c:if>
+											
+											<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+												<li <c:out value="${pageMaker.page.currentPage==idx ? 'class=active' :''}"/>>
+													<a href="memberList.jsp?currentPage=${idx}">${idx}</a>
+												</li>
+											</c:forEach>
+											
+											<c:if test="${pageMaker.next}">
+												<li><a href="memberList.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
+											</c:if>
+										</ul>
+											</div>
 				</div>
 			</div>
 		</div>

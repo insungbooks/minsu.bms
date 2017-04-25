@@ -81,7 +81,7 @@
 			purchaseService.addPurchase(purchase);
 			
 			Delivery delivery=new Delivery();
-			delivery.setDeliveryNow("배송전");
+			delivery.setDeliveryNow("배송중");
 			delivery.setAddress(address);
 			delivery.setMessage(message);
 			delivery.setPhoneNum(phoneNum);
@@ -90,6 +90,12 @@
 			
 			
 			deliveryService.addDelivery(delivery);
+			
+			Book book = bookService.findBook(bookCodes[i]);
+			book.setInventory(book.getInventory()-bookNum1);
+			book.setSalesNum(book.getSalesNum()+bookNum1);
+			bookService.modifyBook(book);
+			
 			}
 		}
 	else if(request.getParameter("bookCode")!=null){
@@ -116,7 +122,11 @@
 	
 	deliveryService.addDelivery(delivery);
 	
+	Book book = bookService.findBook(bookCode);
+	book.setInventory(book.getInventory()-bookNum);
+	book.setSalesNum(book.getSalesNum()+bookNum);
+	bookService.modifyBook(book);
+	
 	}
 	
-	
-%><jsp:include page="../order/orderList.jsp"/>
+%><jsp:include page="../order/orderListProc.jsp"/>

@@ -1,6 +1,9 @@
 package minsu.bms.bookmanagement.dao.mapper;
 
 import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import minsu.bms.bookmanagement.domain.Book;
 import minsu.bms.paging.domain.Page;
 
@@ -10,4 +13,10 @@ public interface BookMapper {
 	int addBook(Book book);
 	int updateBook(Book book);
 	int delBook(String bookCode);
+	
+	List<Book> bestBookList();
+	List<Book> newBookList();
+	List<Book> saleBookList();
+	List<Book> domesticBookList(@Param("kind")String kind);
+	List<Book> foreignBookList(@Param("kind")String kind);
 }

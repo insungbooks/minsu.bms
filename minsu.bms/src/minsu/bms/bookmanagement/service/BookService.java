@@ -11,4 +11,10 @@ public interface BookService {
 	boolean addBook(Book book);
 	boolean modifyBook(Book book);
 	boolean deleteBook(String bookCode);
+	
+	List<Book> bestBookList();
+	List<Book> newBookList();
+	List<Book> saleBookList();
+	List<Book> domesticBookList(String kind);
+	List<Book> foreignBookList(String kind);
 }

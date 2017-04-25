@@ -47,7 +47,7 @@
 	<select id="getBook" parameterType="string" resultType="searchResult">
 		select a.book_code bookCode, a.book_name bookName, a.book_price bookPrice, a.book_intro bookIntro, 
 			   a.writer writer, b.writer_intro writerIntro, a.company company, 
-			   a.publi_date publiDate, a.contents contents, a.company_eval companyEval
+			   a.publi_date publiDate, a.company_eval companyEval
 		from books a join writers b
 		on a.writer=b.writer_name
 		where a.book_code=#{bookCode}

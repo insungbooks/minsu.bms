@@ -11,4 +11,10 @@ public interface BookDao {
 	int addBook(Book book);
 	int updateBook(Book book);
 	int delBook(String bookCode);
+	
+	List<Book> bestBookList();
+	List<Book> newBookList();
+	List<Book> saleBookList();
+	List<Book> domesticBookList(String kind);
+	List<Book> foreignBookList(String kind);
 }

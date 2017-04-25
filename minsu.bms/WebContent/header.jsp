@@ -226,10 +226,10 @@ a {
 									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="../../category/domesticBook/literatureBook.jsp">문학</a> 
-									<a href="../../category/domesticBook/humanitiesBook.jsp">인문</a> 
-									<a href="../../category/domesticBook/referenceBook.jsp">참고서</a>
-									<a href="../../category/domesticBook/besidesBook.jsp">기타</a>
+									<a href="../../category/domesticBook/categoryList.jsp?kind=k1">문학</a> 
+									<a href="../../category/domesticBook/categoryList.jsp?kind=k2">인문</a> 
+									<a href="../../category/domesticBook/categoryList.jsp?kind=k3">참고서</a>
+									<a href="../../category/domesticBook/categoryList.jsp?kind=k4">기타</a>
 								</div>
 							</div>
 							<div class="dropdown">
@@ -237,10 +237,10 @@ a {
 									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="../../category/foreignBook/literatureBook.jsp">문학</a> 
-									<a href="../../category/foreignBook/humanitiesBook.jsp">인문</a> 
-									<a href="../../category/foreignBook/referenceBook.jsp">참고서</a>
-									<a href="../../category/domesticBook/besidesBook.jsp">기타</a>
+									<a href="../../category/foreignBook/categoryList.jsp?kind=f1">문학</a> 
+									<a href="../../category/foreignBook/categoryList.jsp?kind=f2">인문</a> 
+									<a href="../../category/foreignBook/categoryList.jsp?kind=f3">참고서</a>
+									<a href="../../category/foreignBook/categoryList.jsp?kind=f4">기타</a>
 								</div>
 							</div>
 						</div>
@@ -249,9 +249,8 @@ a {
 			</nav>
 		</div>
 	</div>
-	
 	<!-- //메뉴바 -->
-
+	
 	<!-- //상단 -->
 </body>
 </html>

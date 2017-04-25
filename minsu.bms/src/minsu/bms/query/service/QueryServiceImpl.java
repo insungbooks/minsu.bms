@@ -1,6 +1,8 @@
 package minsu.bms.query.service;
 
+import java.util.ArrayList;
 import java.util.List;
+import minsu.bms.paging.domain.Page;
 import minsu.bms.query.dao.QueryDao;
 import minsu.bms.query.domain.Query;
 
@@ -11,9 +13,19 @@ public class QueryServiceImpl implements QueryService{
 		this.queryDao = queryDao;
 	}
 	
-	public List<Query> queryList(){
-		return queryDao.queryList();
+	public List<Query> queryList(String userId,Page page){
+		List<Query> queryList= new ArrayList<Query>();
+		 List<Query> queryLists =queryDao.queryList(page);
+		 for(Query query :queryLists){
+			 if(query.getUserId().equals(userId)){
+				 queryList.add(query);
+			 } 
+		}return queryList;
 	}
+	public List<Query> queryLists(Page page){
+		return queryDao.queryList(page);
+	}
+	
 	public Query findQueryNum(int boardNum){
 		return queryDao.getQueryNum(boardNum);
 	}

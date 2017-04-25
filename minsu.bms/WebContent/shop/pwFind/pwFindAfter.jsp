@@ -21,26 +21,25 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-5">
 						<div class="row" style="border: 1px solid black;">
-							<div class="col-md-8">
+							<div class="col-md-12">
 								<h2>비밀번호 찾기</h2>
 								<hr>
 
 								<br>
-								<p>비밀번호는</p>
-								<p>insung12 입니다.</p>
+								<p><%=request.getAttribute("msg1")%></p>
+								<p><%=request.getAttribute("msg2") %></p>
 								<br>
 							</div>
+							<form>
 							<div class="row">
 								<div class="col-md-12">
-									<nav class="Finds" style="float: right;">
-										<a
-											href="../login/login.jsp"><input
-											type="button" value="로그인하기" /></a> <a
-											href="../../main.jsp"><input
-											type="button" value="홈으로가기" /></a>
+									<nav class="Finds" style="float: right; margin-bottom:10px; margin-right:10px;">
+										<button type="submit" class="btn btn-md" formaction="../login/login.jsp">로그인하기</button>
+										<button type="submit" class="btn btn-md" formaction="../../main.jsp">홈으로가기</button>
 									</nav>
 								</div>
 							</div>
+							</form>
 				</div>
 			</div>
 			<div class="col-md-5">

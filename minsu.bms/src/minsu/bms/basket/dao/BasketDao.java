@@ -8,5 +8,6 @@ public interface BasketDao {
 	List<Basket> getBaskets(String userId);
 	Basket getBasket(int basketNum);
 	int addBasket(Basket basket);
-	int delBasket(Basket basket);
+	int updateBasket(Basket basket);
+	int delBasket(int basketNum);
 }

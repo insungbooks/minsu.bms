@@ -25,12 +25,89 @@
 		<result property="salesNum"		column="sales_num"/>
 		<result property="bookIntro"	column="book_intro"/>
 		<result property="companyEval"	column="company_eval"/>
+		<result property="img"			column="img"/>
 	</resultMap>
+	
+	<select id="bestBookList" resultMap="bookMap" >
+	<![CDATA[
+		SELECT * FROM ( SELECT * FROM books ORDER BY sales_num DESC ) WHERE ROWNUM <= 10
+	]]>
+	</select>
+	
+	<select id="newBookList" resultMap="bookMap">
+	<![CDATA[
+	SELECT * FROM ( SELECT * FROM books ORDER BY publi_date DESC ) WHERE ROWNUM <= 10
+	]]>
+	</select>
+	
+	<select id="saleBookList" resultMap="bookMap">
+	<![CDATA[
+	SELECT * FROM ( SELECT * FROM books ORDER BY book_price) WHERE ROWNUM <= 10
+	]]>
+	</select>
+	
+	<select id="domesticBookList" parameterType="string" resultMap="bookMap">
+		select * 
+		from books
+		where country = '국내'
+	<if test="kind.equals('k1')">
+		and kind = '문학'
+	</if>
+	<if test="kind.equals('k2')">
+		and kind = '인문'
+	</if>
+	<if test="kind.equals('k3')">
+		and kind = '참고서'
+	</if>
+	<if test="kind.equals('k4')">
+		and kind = '기타'
+	</if>
+	</select>
+	
+	<select id="foreignBookList" parameterType="string" resultMap="bookMap">
+		select * 
+		from books
+		where country = '해외'
+	<if test="kind.equals('f1')">
+		and kind = '문학'
+	</if>
+	<if test="kind.equals('f2')">
+		and kind = '인문'
+	</if>
+	<if test="kind.equals('f3')">
+		and kind = '참고서'
+	</if>
+	<if test="kind.equals('f4')">
+		and kind = '기타'
+	</if>
+	</select>
+	
+	<!-- <select id="categoryBookList" parameterType="string" resultMap="bookMap">
+	select * from books
+	<if test="country.equals('domestic')">
+	where country = '국내'
+	</if>
+	<if test="country.equals('foreign')">
+	where country = '해외'
+	</if>
+	<if test="kind.equals('문학')">
+	and kind = '문학'
+	</if>
+	<if test="kind.equals('인문')">
+	and kind = '인문'
+	</if>
+	<if test="kind.equals('참고서')">
+	and kind = '참고서'
+	</if>
+	<if test="kind.equals('기타')">
+	and kind = '기타'
+	</if>
+	</select> -->
 	
 	<select id="getBook" parameterType="string" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
 			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum,
-			   book_intro bookIntro, company_eval companyEval
+			   book_intro bookIntro, company_eval companyEval, img
 		from books
 		where book_code = #{bookCode}
 	</select>
@@ -43,7 +120,7 @@
 		insert into books values (
 		#{bookCode}, #{bookName}, #{bookPrice}, #{writer}, #{company},
 		#{publiDate}, #{country}, #{kind}, #{inventory}, #{salesNum},
-		#{bookIntro}, #{companyEval})
+		#{bookIntro}, #{companyEval}, 1)
 	</insert>
 	
 	<update id="updateBook" parameterType="book">
@@ -51,7 +128,7 @@
 		book_name=#{bookName}, book_price=#{bookPrice},
 		writer=#{writer}, company=#{company}, publi_date=#{publiDate},
 		country=#{country}, kind=#{kind}, inventory=#{inventory},
-		book_intro=#{bookIntro}, company_eval=#{companyEval}
+		book_intro=#{bookIntro}, company_eval=#{companyEval}, sales_num=#{salesNum}
 		where book_code=#{bookCode}
 	</update>
 </mapper>

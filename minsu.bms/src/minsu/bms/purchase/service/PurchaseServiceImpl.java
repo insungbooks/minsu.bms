@@ -1,10 +1,14 @@
 package minsu.bms.purchase.service;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import minsu.bms.paging.domain.Page;
 import minsu.bms.purchase.dao.PurchaseDao;
 import minsu.bms.purchase.domain.Purchase;
+import minsu.bms.query.domain.Query;
+
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -28,6 +32,15 @@ public class PurchaseServiceImpl implements PurchaseService{
 	public List<Purchase> findPurchaseId(String userId){
 		List<Purchase> purchase = (List<Purchase>)purchaseDao.getPurchaseId(userId);
 			return purchase;
+	}
+	public List<Purchase> findPurchasePage(String userId, Page page){
+		List<Purchase> purchaseList= new ArrayList<Purchase>();
+		 List<Purchase> purchaseLists =purchaseDao.getPurchasePage(page);
+		 for(Purchase purchase :purchaseLists){
+			 if(purchase.getUserId().equals(userId)){
+				 purchaseList.add(purchase);
+			 } 
+		}return purchaseList;
 	}
 	public List<Purchase> findPurchaseSearch(String date1, String date2){
 		List<Purchase> purchase = (List<Purchase>)purchaseDao.getPurchaseSearch(date1, date2);

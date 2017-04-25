@@ -14,8 +14,23 @@ QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 QueryDao queryDao = new QueryDaoImpl(queryMapper);
 QueryService queryService = new QueryServiceImpl(queryDao);
 
-List<Query> query = queryService.queryList();
-request.setAttribute("query", query);
+
+String title=request.getParameter("title");
+String content=request.getParameter("content");
+String separation=request.getParameter("separation");
+String id=(String)session.getAttribute("login");
+
+if(title!=null&&!title.equals("")&&content!=null&&!content.equals("")&&separation!=null&&!separation.equals("")){
+Query query= new Query();
+query.setContent(content);//
+query.setTitle(title);//
+query.setSeparation(separation);//
+query.setUserId(id);//
+
+queryService.addQuery(query);
+}
+
+request.setAttribute("id",id);
 
 %>
 <jsp:forward page="queryList.jsp"/>

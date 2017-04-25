@@ -24,7 +24,6 @@ query.setTitle(title);
 query.setContent(content);
 queryService.modifyQuery(query);
 
-
 %>
-<jsp:include page="queryListProc.jsp"/>
+<jsp:include page="queryList.jsp"/>
 <%} %>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.search.domain.SearchResult"%>
+<%@ page import="minsu.bms.review.domain.Review" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -23,7 +25,9 @@
 </head>
 <body>
 	<%
-		SearchResult searchResult = (SearchResult) request.getAttribute("searchResult");
+		SearchResult searchResult = (SearchResult)request.getAttribute("searchResult");
+		List<Review> reviews = (List<Review>)request.getAttribute("reviews");
+		String bookCode = searchResult.getBookCode();
 	%>
 
 	<jsp:include page="../../header.jsp" />
@@ -64,11 +68,9 @@
 				</div>
 				<hr>
 				<nav class="productInfo">
+					<input type="hidden" name="bookCode" value="<%=bookCode%>" />
 					<button type="submit" formaction="../../guest/basket/addBasketProc.jsp" class="btn btn-md">장바구니넣기</button>
-					<input type="hidden"
-						name="bookCode" value="<%=searchResult.getBookCode()%>" />
 					<button type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-md">바로구매하기</button>
-
 				</nav>
 			</div>
 		</form>
@@ -128,11 +130,6 @@
 						<em><%= searchResult.getWriter() %></em><br>
 						<%= searchResult.getWriterIntro() %>
 					</div>
-					<h3>목차</h3>
-					<div class="text" style="border: 1px solid black;">
-						<p><%= searchResult.getContents() %></p>
-					</div>
-					<hr>
 					<h3>출판사 서평</h3>
 					<div class="text" style="border: 1px solid black;">
 						<%= searchResult.getCompanyEval() %>
@@ -143,26 +140,47 @@
 				<div id="review" class="tab-pane fade">
 					<h3>리뷰작성</h3>
 					<br>
-					<form>
-						<strong>아이디:</strong> <input type="text" style="width: 100px" />
+					
+					<form action="productInfoProc.jsp?bookCode=<%= bookCode %>" method="post">
+						<strong>아이디:</strong> 
+						
+					<%
+					if(session.getAttribute("login")!=null){
+					%>
+						<%= session.getAttribute("login") %>
+					<%}else{ %>
+						<span>로그인을 해주세요</span>	
+					<%} %>
 						<strong>평점:</strong> <input type="number" min="1" max="5"
-							placeholder="1~5" style="width: 50px" />점<br> <br>
+							placeholder="1~5" name="gpa" style="width: 50px" required/>점<br> <br>
 						<textarea name="comments" cols="100" rows="3"
-							placeholder="리뷰내용을 작성하시오."></textarea>
+							placeholder="리뷰내용을 작성하시오." required></textarea>
+					
+					<%
+						if(session.getAttribute("login")!=null){
+					%>
 						<input type="submit" value="입력" />
+					<%
+						}else{
+					%>
+						<button formaction="../login/login.jsp">입력</button>
+					<%
+						}
+					%>
 					</form>
+					
 					<hr>
-					<strong>아이디:</strong> <input type="text" style="width: 100px"
-						readonly value="깍현골" /> <strong>평점:</strong> <input type="number"
-						min="1" max="5" readonly value="3" style="width: 30px" />점<br>
-					<br>
-					<textarea name="comments" readonly cols="100" rows="3">오랜만에 볼만한 책이였습니다.</textarea>
-					<hr>
-					<strong>아이디:</strong> <input type="text" style="width: 100px"
-						readonly value="될놈" /> <strong>평점:</strong> <input type="number"
-						min="1" max="5" readonly value="5" style="width: 30px" />점<br>
-					<br>
-					<textarea name="comments" readonly cols="100" rows="3">최고의 작품입니다 꼭 보세요</textarea>
+					<%
+					if(request.getAttribute("reviews")!=null){
+						for(Review review:reviews){
+					%>
+					
+					<sapn><strong>아이디:</strong> <%= review.getUserId() %> </sapn><span> <strong>평점:</strong> <%= review.getGpa() %>점</p></span><br>
+					<textarea name="comments" readonly cols="100" rows="3"><%= review.getReviewContent() %></textarea><br>
+					<%
+						}
+					}
+					%>
 					<br> <br>
 					<jsp:include page="../../footer.html" />
 				</div>

@@ -20,36 +20,28 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-5">
 						<div class="row" style="border: 1px solid black;">
-							<div class="col-md-8">
+							<div class="col-md-12">
 								<h2>아이디 찾기</h2>
 								<hr>
 
 								<br>
-								<p>아이디는</p>
-								<p>insungJY 입니다.</p>
+								<p><%=request.getAttribute("msg1")%></p>
+								<p><%=request.getAttribute("msg2")%></p>
 								<br>
-							</div>
-							<div class="row">
-								<div class="col-md-12">
-									<nav class="Finds" style="float: right;">
-									<a
-											href="../pwFind/pwFind.jsp"><input
-											type="button" value="비밀번호찾기" /></a> 
-											
-										<a
-											href="../login/login.jsp"><input
-											type="button" value="로그인하기" /></a> <a
-											href="../../main.jsp"><input
-											type="button" value="홈으로가기" /></a>
+								
+								<form>
+									<nav class="Finds" style="float: right; margin-bottom:10px; margin-right:10px;">
+										<button type="submit" class="btn btn-md" formaction="../pwFind/pwFind.jsp">비밀번호찾기</button>
+										<button type="submit" class="btn btn-md" formaction="../login/login.jsp">로그인하기</button>
 									</nav>
+								</form>
 								</div>
 							</div>
 				</div>
-			</div>
-			<div class="col-md-5">
+					<div class="col-md-5">
 				<img src="../../img/ad/login.jpg" width="230px">
 			</div>
-		</div>
+			</div>
 		</div>
 		<br>
 		<br>

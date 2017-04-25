@@ -19,4 +19,4 @@ int boardNum=Integer.parseInt(request.getParameter("boardNum"));
 queryService.deleteQuery(boardNum);
 
 %>
-<jsp:include page="queryListProc.jsp"/>
+<jsp:include page="queryList.jsp"/>

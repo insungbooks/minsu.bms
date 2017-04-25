@@ -34,7 +34,8 @@ DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
 PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
 PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
-	%>
+
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -93,6 +94,16 @@ th {
 <body>
 	<jsp:include page="../../header.jsp"/>
 <article>
+<%
+	String id = (String)session.getAttribute("login");
+	if(id == null) {
+%>
+	<script>
+		window.location.href="../../shop/login/login.jsp";
+	</script>
+<% 
+	}
+%>
 	<div class="container">
 	<div class="row">
 		<div class="col-md-2">
@@ -101,14 +112,14 @@ th {
         	<li class="nav-header"><strong> 주문관리</strong></li>
             <li class="active"><a href="orderListProc.jsp"> 주문조회</a></li>
             <li><a href="../basket/BasketProc.jsp"> 장바구니</a></li>
-            <li><a href="../refund/refundListProc.jsp">취소/교환내역</a></li>
+            <li><a href="../refund/refundList.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
            	<li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
             <li><a href="../../shop/system/idCheck1.jsp"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 나의 상담</strong></li>
-            <li ><a href="../customerCenter/queryListProc.jsp"> 나의 상담 내역</a></li>
+            <li ><a href="../customerCenter/queryList.jsp"> 나의 상담 내역</a></li>
         </ul>
     </nav></div>
     

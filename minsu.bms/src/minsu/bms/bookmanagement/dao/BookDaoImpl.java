@@ -30,4 +30,19 @@ public class BookDaoImpl implements BookDao {
 	public int delBook(String bookCode) {
 		return bookMapper.delBook(bookCode);
 	}
+	public List<Book> bestBookList(){
+		return bookMapper.bestBookList();
+	}
+	public List<Book> newBookList(){
+		return bookMapper.newBookList();
+	}
+	public List<Book> saleBookList(){
+		return bookMapper.saleBookList();
+	}
+	public List<Book> domesticBookList(String kind) {
+		return bookMapper.domesticBookList(kind);
+	}
+	public List<Book> foreignBookList(String kind) {
+		return bookMapper.foreignBookList(kind);
+	}
 }

@@ -19,4 +19,8 @@ public class ReviewDaoImpl implements ReviewDao{
 	public List<Review> getReviews(String bookCode){
 		return reviewMapper.getReviews(bookCode);
 	}
+	
+	public int addReview(Review review){
+		return reviewMapper.addReview(review);
+	}
 }

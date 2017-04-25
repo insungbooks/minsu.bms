@@ -1,8 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.refund.service.RefundService"%>
+<%@ page import="minsu.bms.refund.service.RefundServiceImpl"%>
+<%@ page import="minsu.bms.refund.dao.RefundDao"%>
+<%@ page import="minsu.bms.refund.dao.RefundDaoImpl"%>
+<%@ page import="minsu.bms.refund.dao.mapper.RefundMapper"%>
 <%@ page import="minsu.bms.refund.domain.Refund"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="minsu.bms.paging.domain.Page"%>
+<%@ page import="minsu.bms.paging.service.RefundPageService"%>
+<%@ page import="minsu.bms.paging.service.RefundPageServiceImpl"%>
 <%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
+<%
+	Page myPage = null;
+	String currentPage = request.getParameter("currentPage");
+	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
+	else myPage = new Page();
+	
+	RefundPageService pageService = new RefundPageServiceImpl(5, myPage);
+	pageContext.setAttribute("pageMaker", pageService);
+
+	RefundMapper refundMapper = Configuration.getMapper(RefundMapper.class);
+	RefundDao refundDao = new RefundDaoImpl(refundMapper);
+	RefundService refundService = new RefundServiceImpl(refundDao);
+	
+	String id=(String)session.getAttribute("login");
+	pageContext.setAttribute("refund", refundService.listRefundPage(id, myPage));
+	
+	
+	%>
+
 <html lang="ko">
 <head>
 <title>환불목록조회</title>
@@ -79,14 +109,14 @@
 							<li class="nav-header"><strong> 주문관리</strong></li>
 							<li><a href="../order/orderListProc.jsp"> 주문조회</a></li>
 							<li><a href="../basket/BasketProc.jsp"> 장바구니</a></li>
-							<li class="active"><a href="refundListProc.jsp">취소/교환내역</a></li>
+							<li class="active"><a href="refundList.jsp">취소/교환내역</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 나의 정보</strong></li>
 							<li><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
            					<li><a href="../../shop/system/idCheck1.jsp"> 회원 탈퇴</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong> 나의 상담</strong></li>
-							<li><a href="../customerCenter/queryListProc.jsp"> 나의 상담
+							<li><a href="../customerCenter/queryList.jsp"> 나의 상담
 									내역</a></li>
 						</ul>
 					</nav>
@@ -107,24 +137,37 @@
 							</tr>
 						</thead>
 						<tbody>
-						<%if(request.getAttribute("refundList")!=null){
-							List<Refund> refundLists=(List<Refund>)request.getAttribute("refundList");
-							for(Refund refundList: refundLists){
-							%>
+						<c:forEach var="refund" items="${refund}">
 						
 							<tr>
-								<td><%=refundList.getRefundNum()%></td>
-								<td><%=refundList.getBookName() %></td>
-								<td><%=refundList.getRefundDate() %></td>
-								<td><%=refundList.getRefundAmount() %></td>
-								<td><%=refundList.getCancelType() %></td>
-								<td><%=refundList.getRefundReason() %></td>
-								<td><%=refundList.getRefundNow() %></td>
+								<td>${refund.refundNum}</td>
+								<td>${refund.bookName}</td>
+								<td>${refund.refundDate}</td>
+								<td>${refund.refundAmount}</td>
+								<td>${refund.cancelType}</td>
+								<td>${refund.refundReason}</td>
+								<td>${refund.refundNow}</td>
 							</tr>
-							
-							<%}} %>
+							</c:forEach>
 						</tbody>
 					</table>
+					<div class="text-center">
+										<ul class="pagination">
+											<c:if test="${pageMaker.prev}">
+												<li><a href="refundList.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a></li>
+											</c:if>
+											
+											<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+												<li <c:out value="${pageMaker.page.currentPage==idx ? 'class=active' :''}"/>>
+													<a href="refundList.jsp?currentPage=${idx}">${idx}</a>
+												</li>
+											</c:forEach>
+											
+											<c:if test="${pageMaker.next}">
+												<li><a href="refundList.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
+											</c:if>
+										</ul>
+											</div>
 				</div>
 			</div>
 		</div>

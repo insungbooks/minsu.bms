@@ -3,8 +3,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <%@ page import="minsu.bms.paging.domain.Page" %>
-<%@ page import="minsu.bms.paging.service.PageService" %>
-<%@ page import="minsu.bms.paging.service.PageServiceImpl" %>
+<%@ page import="minsu.bms.paging.service.BookPageService" %>
+<%@ page import="minsu.bms.paging.service.BookPageServiceImpl" %>
 <%@ page import="minsu.bms.bookmanagement.service.BookService"%>
 <%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
 <%@ page import="minsu.bms.config.Configuration"%>
@@ -19,12 +19,12 @@
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
 	else myPage = new Page();
 	
-	PageService pageService = new PageServiceImpl(5, myPage);
+	BookPageService pageService = new BookPageServiceImpl(5, myPage);
 	pageContext.setAttribute("pageMaker", pageService);
 	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
 	BookDao bookDao = new BookDaoImpl(bookMapper);
 	BookService bookService = new BookServiceImpl(bookDao);
-	pageContext.setAttribute("posts", bookService.listBooks1(myPage));
+	pageContext.setAttribute("posts", bookService.listBooks(myPage));
 %>
 <html lang="ko">
 <head>
@@ -106,7 +106,7 @@
 									주문관리</a></li>
 							<li class="nav-divider"></li>
 							<li class="nav-header"><strong>고객센터</strong></li>
-							<li><a href="../customerCenter/queryListProc.jsp">문의답하기</a></li>
+							<li><a href="../customerCenter/queryList.jsp">문의답하기</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -128,12 +128,6 @@
 								</tr>
 							</thead>
 							<tbody>
-								<%-- <%
-									if (request.getAttribute("books") != null) {
-										List<Book> books = (List<Book>) request.getAttribute("books");
-										for (Book book : books) {
-									
-								%> --%>
 								<c:forEach var="book" items="${posts}">
 								<form>
 								<tr>

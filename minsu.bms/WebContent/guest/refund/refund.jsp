@@ -1,9 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="minsu.bms.purchase.service.PurchaseService"%>
+<%@ page import="minsu.bms.purchase.service.PurchaseServiceImpl"%>
+<%@ page import="minsu.bms.purchase.dao.PurchaseDao"%>
+<%@ page import="minsu.bms.purchase.dao.PurchaseDaoImpl"%>
+<%@ page import="minsu.bms.purchase.dao.mapper.PurchaseMapper"%>
 <%@ page import="minsu.bms.purchase.domain.Purchase"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDao"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDaoImpl"%>
+<%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page import="java.util.*" %>
+
 <!DOCTYPE html>
+<%
+	PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
+	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
+	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
+	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
+	BookDao bookDao = new BookDaoImpl(bookMapper);
+	BookService bookService = new BookServiceImpl(bookDao);
+	
+	int orderNum = Integer.parseInt(request.getParameter("orderNum"));
+	Purchase purchase = purchaseService.findPurchase(orderNum);
+	String bookCode = purchase.getBookCode();
+
+	pageContext.setAttribute("purchase", purchase);
+	pageContext.setAttribute("book", bookService.findBook(bookCode));
+	
+	%>
 <html lang="ko">
 <head>
 <title>환불하기</title>
@@ -28,11 +57,6 @@ li{
 	<jsp:include page="../../header.jsp"/>
 	<article>
 	<form>
-	<% Book book = (Book)request.getAttribute("book");
-			if(request.getAttribute("purchase")!=null){
-		Purchase purchase = (Purchase)request.getAttribute("purchase");
-
-	%>
 <div class="container">
 
 		<h2>환불하기</h2>
@@ -49,18 +73,18 @@ li{
 			</thead>
 			<tbody>
 				<tr>
-					<td><%=purchase.getOrderNum() %></td>
-					<td><%=purchase.getOrderDate() %></td>
+					<td>${purchase.orderNum}</td>
+					<td>${purchase.orderDate}</td>
 					<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
-							class="img-responsive1" > [<%=book.getKind()%>]<%=book.getBookName() %>
+							class="img-responsive1" > [${book.kind}]${book.bookName}
 					</a></td>
-					<td style="padding:35px;" ><%=purchase.getOrderCount() %></td>
-					<td style="padding:35px;"><%=purchase.getPayAmount() %>원</td>
+					<td style="padding:35px;" >${purchase.orderCount}</td>
+					<td style="padding:35px;">${purchase.payAmount}원</td>
 
 				</tr>
-				<input type="hidden" name="orderNum" value="<%=purchase.getOrderNum() %>">
-				<input type="hidden" name="bookName" value="<%=book.getBookName() %>"/>
-				<input type="hidden" name="payAmount" value="<%=purchase.getPayAmount() %>"/>
+				<input type="hidden" name="orderNum" value="${purchase.orderNum}">
+				<input type="hidden" name="bookName" value="${book.bookName}"/>
+				<input type="hidden" name="payAmount" value="${purchase.payAmount}"/>
 			
 </tbody>
 </table>
@@ -105,7 +129,6 @@ li{
 			</div>
 		</div>
 		<br> <br>
-		<%} %>
 		</form>
 	</article>
 	<br><br><br>

@@ -8,13 +8,13 @@
 		<typeAlias alias="basket" type="minsu.bms.basket.domain.Basket" />
 		<typeAlias alias="book" type="minsu.bms.bookmanagement.domain.Book" />
 		<typeAlias alias="searchResult" type="minsu.bms.search.domain.SearchResult"/>
-		<typeAlias alias="review" type="minsu.bms.review.domain.Review"/>
 		<typeAlias alias="query" type="minsu.bms.query.domain.Query"/>
 		<typeAlias alias="delivery" type="minsu.bms.delivery.domain.Delivery"/>
 		<typeAlias alias="purchase" type="minsu.bms.purchase.domain.Purchase"/>
 		<typeAlias alias="refund" type="minsu.bms.refund.domain.Refund"/>
 		<typeAlias alias="order" type="minsu.bms.orderManagement.domain.Order"/>
 		<typeAlias alias="page" type="minsu.bms.paging.domain.Page" />
+		<typeAlias alias="review" type="minsu.bms.review.domain.Review"/>
 	</typeAliases>	
 		
 	<environments default="development">
@@ -34,12 +34,12 @@
 		<mapper resource="minsu/bms/basket/dao/mapper/BasketMapper.xml" />
 		<mapper resource="minsu/bms/bookmanagement/dao/mapper/BookMapper.xml" />
 		<mapper resource="minsu/bms/search/dao/mapper/SearchMapper.xml" />
-		<mapper resource="minsu/bms/review/dao/mapper/ReviewMapper.xml" />
 		<mapper resource="minsu/bms/query/dao/mapper/QueryMapper.xml" />
 		<mapper resource="minsu/bms/delivery/dao/mapper/DeliveryMapper.xml" />
 		<mapper resource="minsu/bms/purchase/dao/mapper/PurchaseMapper.xml" />
 		<mapper resource="minsu/bms/refund/dao/mapper/RefundMapper.xml" />
 		<mapper resource="minsu/bms/orderManagement/dao/mapper/OrderMapper.xml" />
 		<mapper resource="minsu/bms/paging/dao/mapper/PageMapper.xml" />
+		<mapper resource="minsu/bms/review/dao/mapper/ReviewMapper.xml" />
 	</mappers>
 </configuration>

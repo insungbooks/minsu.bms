@@ -1,7 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.login.domain.User"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDao"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDaoImpl"%>
+<%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
+<%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
+<%
+	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
+	BookDao bookDao = new BookDaoImpl(bookMapper);
+	BookService bookService = new BookServiceImpl(bookDao);
+	
+	pageContext.setAttribute("bestBookList", bookService.bestBookList());
+	pageContext.setAttribute("saleBookList", bookService.saleBookList());
+	pageContext.setAttribute("newBookList", bookService.newBookList());
+	
+	pageContext.setAttribute("id", session.getAttribute("login"));
+	
+%>
 <html lang="ko">
 <head>
 <title>인성문고</title>
@@ -80,6 +102,40 @@ a {
 	text-decoration: none; /* 밑줄 없앰 */
 	color: #000000; /*검정색*/
 }
+.btn11{
+	text-decoration: none; /* 밑줄 없앰 */
+	color: #000000; /*검정색*/
+	border: none;
+	background-color: rgb(115, 215, 209);
+	font-family:고딕체;
+	text-indent:-50px;
+	line-height:0px;
+	-moz-border-radius:0px;
+	-webkit-border-radius:0px;
+	border-radius:0px;
+	text-align:center;
+	vertical-align:middle;
+	display:inline-block;
+	font-size:15px;
+	color:#000000;
+	width:173px;
+	height:0px;
+	padding:19px;
+	border-color:#73d7d0;
+	border-width:0px;
+	border-style:solid;
+}
+
+.btn11:active {
+	position:relative;
+	top:3px
+}
+
+.btn11:hover {
+background-color: rgb(56, 194, 188);
+}
+
+
 
 .topul { /*위ul*/
 	padding-top: 20px; /*위에여백*/
@@ -97,7 +153,7 @@ a {
 	border-left: none;
 }
 
-.topli a { /*위li 링크*/
+.topli a{ /*위li 링크*/
 	margin: 0 10px 0 10px; /* 메뉴 글자 간격 */
 }
 
@@ -233,33 +289,24 @@ footer { /*바닥글*/
 		<nav class="btnRight navbar-fixed-top">
 			<div class="container">
 				<ul class="topul">
-					<%
-	String id = ""; 
-	if(session.getAttribute("login")!=null) {		//세션값이 비어있지 않다라면
-		id = (String)session.getAttribute("login"); //세션값 추출하고 저장
-	}
-%>
-					<% if(id.equals("insung")) { %>
-					<!-- 세센값의 아이디가 관리자 아이디와 같다면 밑에 코드 출력  -->
-					<li class="topli"><a
-						href="shop/login/logoutProc.jsp">로그아웃</a></li>
-					<li class="topli"><a
-						href="order/member/memberList.jsp">관리자페이지</a></li>
-					<% }else if(!id.equals("")) { %>
-					<!-- 로그인이 성공했다라면 id값에 데이터가 들어가있으므로 실행 -->
-					<li class="topli"><a href="shop/login/logoutProc.jsp">로그아웃</a></li>
-					<li class="topli"><a>적립금 : 650점</a></li>
-					<li class="topli"><a href="guest/basket/BasketProc.jsp">장바구니</a></li>
-					<li class="topli"><a href="guest/order/orderListProc.jsp">마이페이지</a></li>
-					<% }else { %>
-					<!-- 세션값이 없다라면 실행 (로그인 안된상태) -->
-					<li class="topli"><a
-						href="shop/login/login.jsp">로그인</a></li>
-					<li class="topli"><a
-						href="guest/signUp/signUp.jsp">회원가입</a></li>
-					<li class="topli"><a href="guest/basket/BasketProc.jsp">장바구니</a></li>
-					<li class="topli"><a href="guest/order/orderListProc.jsp">마이페이지</a></li>
-					<% } %>
+					<c:choose>
+						 <c:when test="${id eq 'insung'}">
+						  	<li class="topli"><a href="shop/login/logoutProc.jsp">로그아웃</a></li>
+							<li class="topli"><a href="order/member/memberList.jsp">관리자페이지</a></li>
+						 </c:when>
+						 <c:when test="${id != ''&& id ne null}">
+							<li class="topli"><a href="shop/login/logoutProc.jsp">로그아웃</a></li>
+							<li class="topli"><a>적립금 : 650점</a></li>
+							<li class="topli"><a href="guest/basket/BasketProc.jsp">장바구니</a></li>
+							<li class="topli"><a href="guest/order/orderListProc.jsp">마이페이지</a></li>
+						 </c:when>
+						 <c:otherwise>
+						    <li class="topli"><a href="shop/login/login.jsp">로그인</a></li>
+							<li class="topli"><a href="guest/signUp/signUp.jsp">회원가입</a></li>
+							<li class="topli"><a href="guest/basket/BasketProc.jsp">장바구니</a></li>
+							<li class="topli"><a href="guest/order/orderListProc.jsp">마이페이지</a></li>
+						 </c:otherwise>
+					</c:choose>
 				</ul>
 			</div>
 		</nav>
@@ -321,10 +368,10 @@ footer { /*바닥글*/
 									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="category/domesticBook/literatureBook.jsp">문학</a> <a
-										href="category/domesticBook/humanitiesBook.jsp">인문</a> <a
-										href="category/domesticBook/referenceBook.jsp">참고서</a> <a
-										href="category/domesticBook/besidesBook.jsp">기타</a>
+									<a href="category/domesticBook/categoryList.jsp?kind=k1">문학</a> 
+									<a href="category/domesticBook/categoryList.jsp?kind=k2">인문</a> 
+									<a href="category/domesticBook/categoryList.jsp?kind=k3">참고서</a>
+									<a href="category/domesticBook/categoryList.jsp?kind=k4">기타</a>
 								</div>
 							</div>
 							<div class="dropdown">
@@ -332,10 +379,10 @@ footer { /*바닥글*/
 									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<a href="category/foreignBook/literatureBook.jsp">문학</a> <a
-										href="category/foreignBook/humanitiesBook.jsp">인문</a> <a
-										href="category/foreignBook/referenceBook.jsp">참고서</a> <a
-										href="category/domesticBook/besidesBook.jsp">기타</a>
+									<a href="category/foreignBook/categoryList.jsp?kind=f1">문학</a> 
+									<a href="category/foreignBook/categoryList.jsp?kind=f2">인문</a> 
+									<a href="category/foreignBook/categoryList.jsp?kind=f3">참고서</a>
+									<a href="category/foreignBook/categoryList.jsp?kind=f4">기타</a>
 								</div>
 							</div>
 						</div>
@@ -344,7 +391,9 @@ footer { /*바닥글*/
 			</nav>
 		</div>
 	</div>
+	
 	<!-- //메뉴바 -->
+
 	<!-- //상단 -->
 
 	<!-- 옆 광고 -->
@@ -387,11 +436,13 @@ footer { /*바닥글*/
 								<div class="row">
 									<h4 style="padding-left: 20px;">▶ 추천도서</h4>
 									<div class="col-md-3">
+									
 										<div id="text1"
 											style="max-width: 100%; height: 320px; text-align: center; padding: 30px;">
 											<h3>지금 다시, 헌법</h3>
 											<p>저자 : 차병직</p>
 										</div>
+										
 										<div id="imgInfo">
 											<a href="shop/search/productInfo.jsp" class="thumbnail"><img
 												src="img/againNow.jpg" alt="Image"
@@ -518,33 +569,13 @@ footer { /*바닥글*/
 				<h3>베스트 Top5</h3>
 				<hr>
 				<div class="col-md-1"></div>
+				<c:forEach var="bestBook" items="${bestBookList}" begin="1" end="5" step="1">
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/1.jpg" style="width: 150px; height: 150px">
+					<a href="shop/search/productInfoProc.jsp?bookCode=${bestBook.bookCode}" class="thumbnail"> 
+					<img src="${fn:substring(bestBook.img,6,15)}" style="width: 150px; height: 150px">
 					</a>
 				</div>
-
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/2.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/3.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/4.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/5.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
+				</c:forEach>
 				<div class="col-md-1"></div>
 			</div>
 		</div>
@@ -554,33 +585,13 @@ footer { /*바닥글*/
 				<h3>신간 Top5</h3>
 				<hr>
 				<div class="col-md-1"></div>
+				<c:forEach var="newBook" items="${newBookList}" begin="1" end="5" step="1">
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/1.jpg" style="width: 150px; height: 150px">
+					<a href="shop/search/productInfoProc.jsp?bookCode=${newBook.bookCode}" class="thumbnail"> <img
+						src="${fn:substring(newBook.img,6,15)}" style="width: 150px; height: 150px">
 					</a>
 				</div>
-
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/2.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/3.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/4.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/5.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
+				</c:forEach>
 				<div class="col-md-1"></div>
 			</div>
 		</div>
@@ -590,33 +601,13 @@ footer { /*바닥글*/
 				<h3>할인 Top5</h3>
 				<hr>
 				<div class="col-md-1"></div>
+				<c:forEach var="saleBook" items="${saleBookList}" begin="1" end="5" step="1">
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/1.jpg" style="width: 150px; height: 150px">
+					<a href="shop/search/productInfoProc.jsp?bookCode=${saleBook.bookCode}" class="thumbnail"> <img
+						src="${fn:substring(saleBook.img,6,15)}" style="width: 150px; height: 150px">
 					</a>
 				</div>
-
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/2.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/3.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/5.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
-						src="img/4.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
+				</c:forEach>
 				<div class="col-md-1"></div>
 			</div>
 			<hr>

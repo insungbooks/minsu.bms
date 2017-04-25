@@ -266,7 +266,7 @@ th {
 								String strMonth = df
 										.format(currentCalendar.get(Calendar.MONTH) + 1);
 								String strDay = df
-										.format(currentCalendar.get(Calendar.DATE) + 3);
+										.format(currentCalendar.get(Calendar.DATE)+3);
 								String strDate = strYear + "년" + strMonth + "월" + strDay + "일";
 
 								if (request.getAttribute("bookInfo") != null) {
@@ -285,7 +285,7 @@ th {
 								style="display: block; width: 50px; float: center; margin: 0px 60px;" readonly/>
 							</td>
 							<td style="padding: 35px;"><%=book.getBookPrice()%>원</td>
-							<td style="padding: 35px;">2017년3월19일 도착예정</td>
+							<td style="padding: 35px;"><%=strDate %> 도착예정</td>
 							<!-- 배송에서받아오기 -->
 							<input type="hidden" name="bookCode" value="<%=book.getBookCode()%>" />
 							<%

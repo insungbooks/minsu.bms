@@ -3,7 +3,20 @@
 <%@ page import="minsu.bms.search.domain.SearchResult"%>
 <%@ page import="minsu.bms.review.domain.Review" %>
 <%@ page import="java.util.List" %>
+<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDao"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDaoImpl"%>
+<%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
+<%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
+<%
+	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
+	BookDao bookDao = new BookDaoImpl(bookMapper);
+	BookService bookService = new BookServiceImpl(bookDao);
+%>
 <html lang="ko">
 <head>
 <title>상품정보</title>
@@ -80,33 +93,16 @@
 				<h3>신간 Top5</h3>
 				<hr>
 				<div class="col-sm-1"></div>
-				<div class="col-sm-2">
-					<a href="productInfo.jsp" class="thumbnail"> <img
-						src="../../img/1.jpg" style="width: 150px; height: 150px">
+				
+			<%List<Book> newBook = (List<Book>)bookService.newBookList();
+			for(int i=0;i<5;i++){ %>
+			
+				<div class="col-md-2">
+					<a href="productInfoProc.jsp?bookCode=<%= newBook.get(i).getBookCode() %>" class="thumbnail"> 
+					<img src="<%= newBook.get(i).getImg() %>" style="width: 150px; height: 150px">
 					</a>
 				</div>
-
-				<div class="col-sm-2">
-					<a href="productInfo.jsp" class="thumbnail"> <img
-						src="../../img/2.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-
-				<div class="col-sm-2">
-					<a href="productInfo.jsp" class="thumbnail"> <img
-						src="../../img/3.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-				<div class="col-sm-2">
-					<a href="productInfo.jsp" class="thumbnail"> <img
-						src="../../img/4.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
-				<div class="col-sm-2">
-					<a href="../../img/5.jpg" class="thumbnail"> <img
-						src="../../img/5.jpg" style="width: 150px; height: 150px">
-					</a>
-				</div>
+			<%} %>
 				<div class="col-sm-1"></div>
 			</div>
 		</div>

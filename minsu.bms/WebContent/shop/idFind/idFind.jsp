@@ -18,7 +18,7 @@
 		<div class="row">
 			<div class="col-md-2"></div>
 			<div class="col-md-5">
-				<form>
+				<form >
 				<div class="row" style="border: 1px solid black;">
 					<div class="col-md-12">
 						<h2>아이디 찾기</h2>

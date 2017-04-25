@@ -49,29 +49,6 @@
 	padding-left: 50px;
 }
 
-/* 드롭다운 아래
-.dropdown-content {
-	display: none;
-	position: absolute;
-	background-color: #ffffff;
-	min-width: 100px;
-	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-	z-index: 1;
-}*/
-
-/* 드롭다운 아래 링크
-.dropdown-content a {
-	color: black;
-	padding: 12px 16px;
-	text-decoration: none;
-	display: block;
-} */
-
-/* Change color of dropdown links on hover 
-.dropdown-content a:hover {
-	background-color: #ffffff;
-}*/
-
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
 	display: block;
@@ -275,21 +252,6 @@ article { /*본문*/
 							<%
 								}
 							%>
-							<%-- 
-							<%= currentNum %><br>
-							<%= startNum %><br>
-							<%= endNum %><br>
-							<%= dataNum %><br>
-							<%= totalPageNum %><br>
-							<%= startDataNum %><br>
-							<%= endDataNum %> <br>
-							
-							<<	&laquo;<br>
-							>>	&raquo;<br>
-							<	&lsaquo;<br>
-							>	&rsaquo;<br>
-							 --%>
-
 						</ul>
 					</div>
 					<div class="col-sm-3"></div>

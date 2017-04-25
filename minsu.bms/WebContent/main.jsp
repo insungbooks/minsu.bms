@@ -435,56 +435,20 @@ footer { /*바닥글*/
 							<div class="item active">
 								<div class="row">
 									<h4 style="padding-left: 20px;">▶ 추천도서</h4>
-									<div class="col-md-3">
-									
-										<div id="text1"
-											style="max-width: 100%; height: 320px; text-align: center; padding: 30px;">
-											<h3>지금 다시, 헌법</h3>
-											<p>저자 : 차병직</p>
-										</div>
-										
-										<div id="imgInfo">
-											<a href="shop/search/productInfo.jsp" class="thumbnail"><img
-												src="img/againNow.jpg" alt="Image"
-												style="max-width: 100%; height: 320px;"></a>
-										</div>
-									</div>
+									<c:forEach var="bestBook" items="${bestBookList}" begin="1" end="4" step="1">
 									<div class="col-md-3">
 										<div id="text1"
 											style="max-width: 100%; height: 320px; text-align: center; padding: 30px;">
-											<h3>혼자 잘해주고 상처받지마라</h3>
-											<p>저자 : 유은정</p>
+											<h3>${ bestBook.bookName }</h3>
+											<p>저자 :${ bestBook.writer }</p>
 										</div>
 										<div id="imgInfo">
-											<a href="shop/search/productInfo.jsp" class="thumbnail"><img
-												src="img/aloneRight.jpg" alt="Image"
+											<a href="shop/search/productInfoProc.jsp?bookCode=${bestBook.bookCode}" class="thumbnail"><img
+												src="${fn:substring(bestBook.img,6,15)}" alt="Image"
 												style="max-width: 100%; height: 320px;"></a>
 										</div>
 									</div>
-									<div class="col-md-3">
-										<div id="text1"
-											style="max-width: 100%; height: 320px; text-align: center; padding: 30px;">
-											<h3>그릿</h3>
-											<p>저자 : 앤절라더크워스</p>
-										</div>
-										<div id="imgInfo">
-											<a href="shop/search/productInfo.jsp" class="thumbnail"><img
-												src="img/grit.jpg" alt="Image"
-												style="max-width: 100%; height: 320px;"></a>
-										</div>
-									</div>
-									<div class="col-md-3">
-										<div id="text1"
-											style="max-width: 100%; height: 320px; text-align: center; padding: 30px;">
-											<h3>아무도 아닌</h3>
-											<p>저자 : 황정은</p>
-										</div>
-										<div id="imgInfo">
-											<a href="shop/search/productInfo.jsp" class="thumbnail"><img
-												src="img/nobody.jpg" alt="Image"
-												style="max-width: 100%; height: 320px;"></a>
-										</div>
-									</div>
+									</c:forEach>
 								</div>
 							</div>
 
@@ -571,8 +535,8 @@ footer { /*바닥글*/
 				<div class="col-md-1"></div>
 				<c:forEach var="bestBook" items="${bestBookList}" begin="1" end="5" step="1">
 				<div class="col-md-2">
-					<a href="shop/search/productInfoProc.jsp?bookCode=${beskBook.bookCode}" class="thumbnail"> <img
-						src="${fn:substring(bestBook.img,6,15)}" style="width: 150px; height: 150px">
+					<a href="shop/search/productInfoProc.jsp?bookCode=${bestBook.bookCode}" class="thumbnail"> 
+					<img src="${fn:substring(bestBook.img,6,15)}" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				</c:forEach>
@@ -587,7 +551,7 @@ footer { /*바닥글*/
 				<div class="col-md-1"></div>
 				<c:forEach var="newBook" items="${newBookList}" begin="1" end="5" step="1">
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
+					<a href="shop/search/productInfoProc.jsp?bookCode=${newBook.bookCode}" class="thumbnail"> <img
 						src="${fn:substring(newBook.img,6,15)}" style="width: 150px; height: 150px">
 					</a>
 				</div>
@@ -603,7 +567,7 @@ footer { /*바닥글*/
 				<div class="col-md-1"></div>
 				<c:forEach var="saleBook" items="${saleBookList}" begin="1" end="5" step="1">
 				<div class="col-md-2">
-					<a href="shop/search/productInfo.jsp" class="thumbnail"> <img
+					<a href="shop/search/productInfoProc.jsp?bookCode=${saleBook.bookCode}" class="thumbnail"> <img
 						src="${fn:substring(saleBook.img,6,15)}" style="width: 150px; height: 150px">
 					</a>
 				</div>

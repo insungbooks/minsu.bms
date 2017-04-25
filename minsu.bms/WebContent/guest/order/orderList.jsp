@@ -99,6 +99,7 @@ th {
 	if(id == null) {
 %>
 	<script>
+		alert("로그인해주세요");
 		window.location.href="../../shop/login/login.jsp";
 	</script>
 <% 

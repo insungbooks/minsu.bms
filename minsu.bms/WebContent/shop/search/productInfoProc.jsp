@@ -15,7 +15,7 @@
 	SearchService searchService=new SearchServiceImpl();
 	ReviewService reviewService=new ReviewServiceImpl();
 	
-	String bookCode=request.getParameter("bookCode");
+	String bookCode = request.getParameter("bookCode");
 	SearchResult searchResult=searchService.bookInfo(bookCode);
 	request.setAttribute("searchResult", searchResult);
 

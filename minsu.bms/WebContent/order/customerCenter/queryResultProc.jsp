@@ -24,6 +24,19 @@ if(boardNum!=0&&answer!=null&&!answer.equals("")){
 	queryService.modifyQueryAnswer(queryAnswer);
 	
 %>
+<script>
+		alert("정상적으로 실행되었습니다.");
+</script>
 <jsp:include page="queryList.jsp"/>
+<%}else if(answer==null&&answer.equals("")){%>
+	<script>
+		alert("답변을 입력하세요");
+	</script>
+	<jsp:include page="queryList.jsp"/>
+<% }else{%>
+	<script>
+		alert("실행이 정상적으로 이루어지지않았습니다.");
+	</script>
+	<jsp:include page="queryList.jsp"/>
 <%}%>
 

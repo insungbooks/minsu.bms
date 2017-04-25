@@ -14,9 +14,9 @@
 	BookDao bookDao = new BookDaoImpl(bookMapper);
 	BookService bookService = new BookServiceImpl(bookDao);
 	String kind = request.getParameter("kind");
-	List<Book> domesticBookList = bookService.domesticBookList(kind);
+	List<Book> foreignBookList = bookService.foreignBookList(kind);
 	
-	request.setAttribute("books", domesticBookList);
+	request.setAttribute("books", foreignBookList);
 	request.setAttribute("kind", kind);
 %>
-	<jsp:include page="domesticBook.jsp"/>
+	<jsp:include page="foreignBook.jsp"/>

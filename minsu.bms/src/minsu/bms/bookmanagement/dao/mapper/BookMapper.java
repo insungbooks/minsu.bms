@@ -17,5 +17,6 @@ public interface BookMapper {
 	List<Book> bestBookList();
 	List<Book> newBookList();
 	List<Book> saleBookList();
-	List<Book> categoryBookList(@Param("country")String country,@Param("kind")String kind);
+	List<Book> domesticBookList(@Param("kind")String kind);
+	List<Book> foreignBookList(@Param("kind")String kind);
 }

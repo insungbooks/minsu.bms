@@ -15,5 +15,6 @@ public interface BookService {
 	List<Book> bestBookList();
 	List<Book> newBookList();
 	List<Book> saleBookList();
-	List<Book> categoryBookList(String country, String kind);
+	List<Book> domesticBookList(String kind);
+	List<Book> foreignBookList(String kind);
 }

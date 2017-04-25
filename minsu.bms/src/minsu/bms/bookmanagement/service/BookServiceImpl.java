@@ -36,7 +36,10 @@ public class BookServiceImpl implements BookService {
 	public List<Book> saleBookList(){
 		return bookDao.saleBookList();
 	}
-	public List<Book> categoryBookList(String country, String kind){
-		return bookDao.categoryBookList(country, kind);
+	public List<Book> domesticBookList(String kind) {
+		return bookDao.domesticBookList(kind);
+	}
+	public List<Book> foreignBookList(String kind) {
+		return bookDao.foreignBookList(kind);
 	}
 }

@@ -2,10 +2,23 @@
     pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <%@ page import="java.util.*" %>
+<%
+	String kind = null;
+	if(request.getAttribute("kind")!=null){
+		kind = (String)request.getAttribute("kind");
+	}
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<title>국내도서-기타</title>
+<%
+	switch(kind) {
+	case "fl" : %> <title>해외도서-문학</title><% 
+	case "f2" : %> <title>해외도서-인문</title><% 
+	case "f3" : %> <title>해외도서-참고서</title><% 
+	case "f4" : %> <title>해외도서-기타</title><% 
+	}
+%>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -77,16 +90,33 @@
 			<nav class="nav-sidebar">
 				<ul class="nav">
 					<li class="nav-header"><strong> 국내도서</strong></li>
-					<li><a href="literatureBook.jsp">문학</a></li>
-					<li><a href="humanitiesBook.jsp">인문</a></li>
-					<li><a href="referenceBook.jsp">참고서</a></li>
-					<li class="active"><a href="besidesBook.jsp">기타</a></li>
+					<li><a href="../domesticBook/categoryList.jsp?kind=k1">문학</a></li>
+					<li><a href="../domesticBook/categoryList.jsp?kind=k2">인문</a></li>
+					<li><a href="../domesticBook/categoryList.jsp?kind=k3">참고서</a></li>
+					<li><a href="../domesticBook/categoryList.jsp?kind=k4">기타</a></li>
+
 					<li class="nav-divider"></li>
 					<li class="nav-header"><strong> 해외도서</strong></li>
-					<li><a href="../foreignBook/literatureBook.jsp">문학</a></li>
-					<li><a href="../foreignBook/humanitiesBook.jsp">인문</a></li>
-					<li><a href="../foreignBook/referenceBook.jsp">참고서</a></li>
-					<li><a href="../foreignBook/besidesBook.jsp">기타</a></li>
+				<% if(kind.equals("f1")){ %>
+					<li class="active"><a href="categoryList.jsp?kind=f1">문학</a></li>
+				<% }else { %>
+					<li><a href="categoryList.jsp?kind=f1">문학</a></li>
+				<% 	} %>
+				<% if(kind.equals("f2")){ %>
+					<li class="active"><a href="categoryList.jsp?kind=f2">인문</a></li>
+				<% }else { %>
+					<li><a href="categoryList.jsp?kind=f2">인문</a></li>
+				<% 	} %>
+				<% if(kind.equals("f3")){ %>
+					<li class="active"><a href="categoryList.jsp?kind=f3">참고서</a></li>
+				<% }else { %>
+					<li><a href="categoryList.jsp?kind=f3">참고서</a></li>
+				<% 	} %>
+				<% if(kind.equals("f4")){ %>
+					<li class="active"><a href="categoryList.jsp?kind=f4">기타</a></li>
+				<% }else { %>
+					<li><a href="categoryList.jsp?kind=f4">기타</a></li>
+				<% 	} %>
 				</ul>
 			</nav>
 		</div>

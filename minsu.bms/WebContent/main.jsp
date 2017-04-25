@@ -354,26 +354,10 @@ footer { /*바닥글*/
 									국내도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<form>
-									<input type="hidden" name ="country" value="domestic">
-									<input type="hidden" name ="kind" value="문학">
-									<button type="submit" class="btn11" formaction="category/domesticBook/categoryList.jsp" style="none" >문학</button>
-									</form>
-									<form>
-									<input type="hidden" name ="country" value="domestic">
-									<input type="hidden" name ="kind" value="인문">
-									<button type="submit" class="btn11" formaction="category/domesticBook/categoryList.jsp" style="none" >인문</button>
-									</form>
-									<form>
-									<input type="hidden" name ="country" value="domestic">
-									<input type="hidden" name ="kind" value="참고서">
-									<button type="submit" class="btn11" formaction="category/domesticBook/categoryList.jsp" style="none" >참고서</button>
-									</form>
-									<form>
-									<input type="hidden" name ="country" value="domestic">
-									<input type="hidden" name ="kind" value="기타">
-									<button type="submit" class="btn11" formaction="category/domesticBook/categoryList.jsp" style="none" >기타</button>
-									</form>
+									<a href="category/domesticBook/categoryList.jsp?kind=k1">문학</a> 
+									<a href="category/domesticBook/categoryList.jsp?kind=k2">인문</a> 
+									<a href="category/domesticBook/categoryList.jsp?kind=k3">참고서</a>
+									<a href="category/domesticBook/categoryList.jsp?kind=k4">기타</a>
 								</div>
 							</div>
 							<div class="dropdown">
@@ -381,26 +365,10 @@ footer { /*바닥글*/
 									해외도서 <span class="glyphicon glyphicon-chevron-down"></span>
 								</button>
 								<div class="dropdown-content">
-									<form>
-									<input type="hidden" name ="country" value="domestic">
-									<input type="hidden" name ="kind" value="문학">
-									<button type="submit" class="btn11" formaction="category/foreignBook/categoryList.jsp" style="none" >문학</button>
-									</form>
-									<form>
-									<input type="hidden" name ="country" value="domestic">
-									<input type="hidden" name ="kind" value="인문">
-									<button type="submit" class="btn11" formaction="category/foreignBook/categoryList.jsp" style="none" >인문</button>
-									</form>
-									<form>
-									<input type="hidden" name ="country" value="domestic">
-									<input type="hidden" name ="kind" value="참고서">
-									<button type="submit" class="btn11" formaction="category/foreignBook/categoryList.jsp" style="none" >참고서</button>
-									</form>
-									<form>
-									<input type="hidden" name ="country" value="domestic">
-									<input type="hidden" name ="kind" value="기타">
-									<button type="submit" class="btn11" formaction="category/foreignBook/categoryList.jsp" style="none" >기타</button>
-									</form>
+									<a href="category/foreignBook/categoryList.jsp?kind=f1">문학</a> 
+									<a href="category/foreignBook/categoryList.jsp?kind=f2">인문</a> 
+									<a href="category/foreignBook/categoryList.jsp?kind=f3">참고서</a>
+									<a href="category/foreignBook/categoryList.jsp?kind=f4">기타</a>
 								</div>
 							</div>
 						</div>
@@ -409,7 +377,9 @@ footer { /*바닥글*/
 			</nav>
 		</div>
 	</div>
+	
 	<!-- //메뉴바 -->
+
 	<!-- //상단 -->
 
 	<!-- 옆 광고 -->

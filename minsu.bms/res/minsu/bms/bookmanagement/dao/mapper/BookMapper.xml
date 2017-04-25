@@ -46,7 +46,43 @@
 	]]>
 	</select>
 	
-	<select id="categoryBookList" parameterType="string" resultMap="bookMap">
+	<select id="domesticBookList" parameterType="string" resultMap="bookMap">
+		select * 
+		from books
+		where country = '국내'
+	<if test="kind.equals('k1')">
+		and kind = '문학'
+	</if>
+	<if test="kind.equals('k2')">
+		and kind = '인문'
+	</if>
+	<if test="kind.equals('k3')">
+		and kind = '참고서'
+	</if>
+	<if test="kind.equals('k4')">
+		and kind = '기타'
+	</if>
+	</select>
+	
+	<select id="foreignBookList" parameterType="string" resultMap="bookMap">
+		select * 
+		from books
+		where country = '해외'
+	<if test="kind.equals('f1')">
+		and kind = '문학'
+	</if>
+	<if test="kind.equals('f2')">
+		and kind = '인문'
+	</if>
+	<if test="kind.equals('f3')">
+		and kind = '참고서'
+	</if>
+	<if test="kind.equals('f4')">
+		and kind = '기타'
+	</if>
+	</select>
+	
+	<!-- <select id="categoryBookList" parameterType="string" resultMap="bookMap">
 	select * from books
 	<if test="country.equals('domestic')">
 	where country = '국내'
@@ -66,7 +102,7 @@
 	<if test="kind.equals('기타')">
 	and kind = '기타'
 	</if>
-	</select>
+	</select> -->
 	
 	<select id="getBook" parameterType="string" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,

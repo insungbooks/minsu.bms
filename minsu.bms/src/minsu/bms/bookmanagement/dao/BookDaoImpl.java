@@ -39,7 +39,10 @@ public class BookDaoImpl implements BookDao {
 	public List<Book> saleBookList(){
 		return bookMapper.saleBookList();
 	}
-	public List<Book> categoryBookList(String country, String kind) {
-		return bookMapper.categoryBookList(country, kind);
+	public List<Book> domesticBookList(String kind) {
+		return bookMapper.domesticBookList(kind);
+	}
+	public List<Book> foreignBookList(String kind) {
+		return bookMapper.foreignBookList(kind);
 	}
 }

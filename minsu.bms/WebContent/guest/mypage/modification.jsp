@@ -158,7 +158,7 @@
 							<tr>
 								<th>성 별</th>
 								<td><input type="radio" name="sex" checked="checked" value="여"/>여 <input type="radio"
-									name="sex" disabled/>남</td>
+									name="sex'" disabled/>남</td>
 							</tr>
 							<%}else{ %>
 							<tr>

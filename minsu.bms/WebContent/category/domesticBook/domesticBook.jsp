@@ -133,7 +133,7 @@
 				Book book = books.get(i);
 %>
 				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
+					<a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>" class="thumbnail"> <img
 						src="<%=book.getImg() %>" style="width: 150px; height: 150px">
 					</a>
 					<div class="text">
@@ -159,7 +159,7 @@
 				Book book = books.get(i);
 %>
 				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
+					<a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>" class="thumbnail"> <img
 						src="<%=book.getImg() %>" style="width: 150px; height: 150px">
 					</a>
 					<div class="text">
@@ -185,7 +185,7 @@
 				Book book = books.get(i);
 %>
 				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
+					<a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>" class="thumbnail"> <img
 						src="<%=book.getImg() %>" style="width: 150px; height: 150px">
 					</a>
 					<div class="text">
@@ -210,7 +210,7 @@
 				Book book = books.get(i);
 %>
 				<div class="col-md-2">
-					<a href="../../shop/search/productInfo.jsp" class="thumbnail"> <img
+					<a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>" class="thumbnail"> <img
 						src="<%=book.getImg() %>" style="width: 150px; height: 150px">
 					</a>
 					<div class="text">

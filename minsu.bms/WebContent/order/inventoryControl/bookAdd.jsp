@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ page import="minsu.bms.writer.domain.Writer" %>
+<%@ page import="minsu.bms.writer.service.WriterService"%>
+<%@ page import="minsu.bms.writer.service.WriterServiceImpl"%>
+<%@ page import="java.util.List" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+<%
+	WriterService writerService = new WriterServiceImpl();
+	pageContext.setAttribute("writers", writerService.listWriters());
+%>
 <html lang="ko">
 <head>
 <title>책추가</title>
@@ -248,7 +257,11 @@
 				<div class="form-group">
 					<label class="col-md-2" for="author">저자 :</label>
 					<div class="col-md-10">
-						<input type="text" class="form-control" name="writer" placeholder="저자를 입력하세요." required>
+						<select class="form-control" name="writer">
+							<c:forEach var="writer" items="${writers}">
+								<option value="${writer.writer}">${writer.writer}</option>
+							</c:forEach>
+						</select>
 					</div>
 				</div>
 				
@@ -335,3 +348,4 @@
 <jsp:include page="../../footer.html"/>
 </body>
 </html>
+

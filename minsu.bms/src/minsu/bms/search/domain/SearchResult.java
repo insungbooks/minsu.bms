@@ -17,7 +17,7 @@ public class SearchResult {
 	private String	companyEval;//출판사 서평
 	
 	public SearchResult(){}
-
+	
 	public SearchResult(String bookCode, String bookName, int bookPrice, String	bookIntro, String writer,String writerIntro, String company,
 			String publiDate, String contents, String companyEval) {
 		this.bookCode = bookCode;

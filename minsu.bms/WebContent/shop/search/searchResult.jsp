@@ -113,7 +113,6 @@ article { /*본문*/
 							<input type="text" name="searchText" value="<%= searchText %>" hidden/>
 							<input type="text" name="pageNum" value="1" hidden/>
 							<button class="orderOption" name="orderOption" value="salesNum desc" formaction="searchResultProc.jsp">판매량순</button>
-							<button class="orderOption" name="orderOption" value="grade" formaction="searchResultProc.jsp">평점순</button>
 							<button class="orderOption" name="orderOption" value="reviewCnt desc" formaction="searchResultProc.jsp">리뷰순</button>
 							<button class="orderOption" name="orderOption" value="publiDate desc" formaction="searchResultProc.jsp">출간일순</button>
 							<button class="orderOption" name="orderOption" value="bookPrice desc" formaction="searchResultProc.jsp">높은가격순</button>

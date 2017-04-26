@@ -13,7 +13,7 @@
 	String orderOption="";
 	
 	List<SearchResult> searchResults = null;
-	if(request.getParameter("orderOption") == null || request.getParameter("orderOption").equals("")||request.getParameter("orderOption").equals("salesNum")){
+	if(request.getParameter("orderOption") == null || request.getParameter("orderOption").equals("")||request.getParameter("orderOption").equals("salesNum desc")){
 		searchResults=searchService.salesNum(searchOption,searchText);
 	}else if(request.getParameter("orderOption").equals("reviewCnt desc")){
 		searchResults=searchService.reviewCnt(searchOption,searchText);

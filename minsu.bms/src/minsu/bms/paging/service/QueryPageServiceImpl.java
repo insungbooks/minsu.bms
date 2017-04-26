@@ -15,6 +15,13 @@ public class QueryPageServiceImpl implements QueryPageService {
 	private int pageNumCnt;
 	private Page page;
 	
+	public QueryPageServiceImpl(String userId, int pageNumCnt, Page page) {
+		this.pageDao = new PageDaoImpl();
+		this.totRowCnt = getTotRowCnt1(userId);
+		this.pageNumCnt = pageNumCnt;
+		this.page = page;
+		init();
+	}
 	public QueryPageServiceImpl(int pageNumCnt, Page page) {
 		this.pageDao = new PageDaoImpl();
 		this.totRowCnt = getTotRowCnt();
@@ -23,6 +30,9 @@ public class QueryPageServiceImpl implements QueryPageService {
 		init();
 	}
 	
+	private int getTotRowCnt1(String userId){
+		return pageDao.getTotRowCntQuery1(userId);
+	}
 	private int getTotRowCnt(){
 		return pageDao.getTotRowCntQuery();
 	}

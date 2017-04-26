@@ -15,16 +15,16 @@ public class RefundPageServiceImpl implements RefundPageService {
 	private int pageNumCnt;
 	private Page page;
 	
-	public RefundPageServiceImpl(int pageNumCnt, Page page) {
+	public RefundPageServiceImpl(String userId, int pageNumCnt, Page page) {
 		this.pageDao = new PageDaoImpl();
-		this.totRowCnt = getTotRowCnt();
+		this.totRowCnt = getTotRowCnt(userId);
 		this.pageNumCnt = pageNumCnt;
 		this.page = page;
 		init();
 	}
 	
-	private int getTotRowCnt(){
-		return pageDao.getTotRowCntRefund();
+	private int getTotRowCnt(String userId){
+		return pageDao.getTotRowCntRefund(userId);
 	}
 	
 	

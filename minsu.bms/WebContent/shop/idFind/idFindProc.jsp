@@ -19,16 +19,6 @@
 	System.out.print(name.trim());
 	System.out.print(myNum);
 	
-/* 	String userId=null;
-	List<User> users = (List<User>)findService.userList();
-	for(User user : users){
-		if(user.getName().equals(name) && user.getMyNum().equals(myNum)){
-			userId = user.getUserId();
-		}
-	}
-	request.setAttribute("userId", userId);
-	 */
-	
 	String msg1="";
 	String msg2="";
 	String userId=null;

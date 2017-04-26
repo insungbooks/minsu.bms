@@ -44,9 +44,7 @@
 .table {
 	text-align: center;
 }
-
 /*//회원목록*/
-
 
 /*사이드바*/
 
@@ -136,34 +134,28 @@
 								<td>${member.phoneNum}</td>
 								<td>${member.address}</td>
 							</tr>
-							</c:forEach>
-						</tbody>
-					</table>
-					<div class="text-center">
-										<ul class="pagination">
-											<c:if test="${pageMaker.prev}">
-												<li><a href="memberList.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a></li>
-											</c:if>
-											
-											<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-												<li <c:out value="${pageMaker.page.currentPage==idx ? 'class=active' :''}"/>>
-													<a href="memberList.jsp?currentPage=${idx}">${idx}</a>
-												</li>
-											</c:forEach>
-											
-											<c:if test="${pageMaker.next}">
-												<li><a href="memberList.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
-											</c:if>
-										</ul>
-											</div>
+						</c:forEach>
+					</tbody>
+				</table>
+				<div class="text-center">
+					<ul class="pagination">
+						<c:if test="${pageMaker.prev}">
+							<li><a href="memberList.jsp?currentPage=${pageMaker.startPage-1}">&laquo;</a></li>
+						</c:if>
+						<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+							<li <c:out value="${pageMaker.page.currentPage==idx ? 'class=active' :''}"/>>
+								<a href="memberList.jsp?currentPage=${idx}">${idx}</a>
+							</li>
+						</c:forEach>
+						<c:if test="${pageMaker.next}">
+							<li><a href="memberList.jsp?currentPage=${pageMaker.endPage+1}">&raquo;</a></li>
+						</c:if>
+					</ul>
 				</div>
 			</div>
 		</div>
-	</article>
-
-
-
-	<!-- //구매화면 -->
-	<jsp:include page="../../footer.html"/>
+	</div>
+</article>
+<jsp:include page="../../footer.html"/>
 </body>
 </html>

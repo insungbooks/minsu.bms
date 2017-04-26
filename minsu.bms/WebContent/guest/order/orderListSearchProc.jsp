@@ -17,23 +17,31 @@
 	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
 	
-	 if(request.getParameter("date1") != null
-				&& !request.getParameter("date1").equals("")
-				&& request.getParameter("date2") != null
-				&& !request.getParameter("date2").equals("")){
-		 String date1= request.getParameter("date1");
-		 String date2= request.getParameter("date2");
-		 List<Purchase> purchases = purchaseService.findPurchaseSearch(date1, date2);
-			request.setAttribute("purchases", purchases);
-			request.setAttribute("date1", date1);
-			request.setAttribute("date2", date2);
-			
+	String id = (String)session.getAttribute("login");
+	List<Purchase> purchaseList = new ArrayList<Purchase>();
+	if(session.getAttribute("login")!=null){
+	 	if(request.getParameter("date1") != null
+			&& !request.getParameter("date1").equals("")
+			&& request.getParameter("date2") != null
+			&& !request.getParameter("date2").equals("")){
+			String date1= request.getParameter("date1");
+		 	String date2= request.getParameter("date2");
+			List<Purchase> purchases = purchaseService.findPurchaseSearch(date1, date2);
+		for(Purchase purchase :purchases){
+			if(purchase.getUserId().equals(id)){
+				Purchase purchase1 = purchase;
+				purchaseList.add(purchase1);
+			}
+		}	
+		request.setAttribute("purchases", purchaseList);
+		request.setAttribute("date1", date1);
+		request.setAttribute("date2", date2);
 	 }else{
 		 DecimalFormat df = new DecimalFormat("00");
 			Calendar currentCalendar = Calendar.getInstance();
+			//현재 날짜 구하기
 			String date1="";
 			String date2="";
-			//현재 날짜 구하기
 			String strYear = Integer.toString(currentCalendar
 					.get(Calendar.YEAR));
 			String strMonth = df.format(currentCalendar
@@ -63,12 +71,23 @@
 				date1 = date90.trim();
 				date2 = strYear +"-"+ strMonth  +"-"+ strDay;
 			}
-			
 			List<Purchase> purchases = purchaseService.findPurchaseSearch(date1, date2);
-			request.setAttribute("purchases", purchases);
+			for(Purchase purchase :purchases){
+				if(purchase.getUserId().equals(id)){
+					Purchase purchase1 = purchase;
+					purchaseList.add(purchase1);
+				}
+			}	
+			request.setAttribute("purchases", purchaseList);
 			request.setAttribute("date1", date1);
 			request.setAttribute("date2", date2);
-		
-	 }
+	 	}
+	 	
+	 }else{%>
+		<script>
+			alert("로그인해주세요");
+			window.location.href="../../shop/login/login.jsp";
+		</script> 
+	 <%}
 	
 %><jsp:include page="orderList.jsp"/>

@@ -56,7 +56,7 @@ li{
 <body>
 	<jsp:include page="../../header.jsp"/>
 	<article>
-	<form>
+	<form >
 <div class="container">
 
 		<h2>환불하기</h2>

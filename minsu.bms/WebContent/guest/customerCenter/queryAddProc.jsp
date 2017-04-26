@@ -28,6 +28,7 @@ query.setSeparation(separation);//
 query.setUserId(id);//
 
 queryService.addQuery(query);
+request.setAttribute("id",id);
 }
 
 request.setAttribute("id",id);

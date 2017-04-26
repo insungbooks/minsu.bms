@@ -2,8 +2,9 @@ package minsu.bms.paging.dao;
 
 public interface PageDao {
 	int getTotRowCntBook();
+	int getTotRowCntQuery1(String userId);
 	int getTotRowCntQuery();
 	int getTotRowCntUser();
-	int getTotRowCntRefund();
-	int getTotRowCntOrder();
+	int getTotRowCntRefund(String userId);
+	int getTotRowCntOrder(String userId);
 }

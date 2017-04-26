@@ -13,17 +13,20 @@ public class PageDaoImpl implements PageDao {
 	public int getTotRowCntBook() {
 		return pageMapper.getTotRowCntBook();
 	}
+	public int getTotRowCntQuery1(String userId) {
+		return pageMapper.getTotRowCntQuery1(userId);
+	}
 	public int getTotRowCntQuery() {
 		return pageMapper.getTotRowCntQuery();
 	}
 	public int getTotRowCntUser() {
 		return pageMapper.getTotRowCntUser();
 	}
-	public int getTotRowCntRefund() {
-		return pageMapper.getTotRowCntRefund();
+	public int getTotRowCntRefund(String userId) {
+		return pageMapper.getTotRowCntRefund(userId);
 	}
-	public int getTotRowCntOrder() {
-		return pageMapper.getTotRowCntOrder();
+	public int getTotRowCntOrder(String userId) {
+		return pageMapper.getTotRowCntOrder(userId);
 	}
 	
 	

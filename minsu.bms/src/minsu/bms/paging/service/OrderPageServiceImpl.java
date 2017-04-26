@@ -15,16 +15,16 @@ public class OrderPageServiceImpl implements OrderPageService {
 	private int pageNumCnt;
 	private Page page;
 	
-	public OrderPageServiceImpl(int pageNumCnt, Page page) {
+	public OrderPageServiceImpl(String userId, int pageNumCnt, Page page) {
 		this.pageDao = new PageDaoImpl();
-		this.totRowCnt = getTotRowCnt();
+		this.totRowCnt = getTotRowCnt(userId);
 		this.pageNumCnt = pageNumCnt;
 		this.page = page;
 		init();
 	}
 	
-	private int getTotRowCnt(){
-		return pageDao.getTotRowCntOrder();
+	private int getTotRowCnt(String userId){
+		return pageDao.getTotRowCntOrder(userId);
 	}
 	
 	

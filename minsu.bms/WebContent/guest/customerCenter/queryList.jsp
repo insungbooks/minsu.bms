@@ -13,20 +13,22 @@
 <%@ page import="minsu.bms.query.service.QueryService"%>
 <%@ page import="minsu.bms.query.service.QueryServiceImpl"%>
 <%
-	Page myPage = null;
-	String currentPage = request.getParameter("currentPage");
-	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
-	else myPage = new Page();
-	
-	QueryPageService querypageService = new QueryPageServiceImpl(5, myPage);
-	pageContext.setAttribute("pageMaker", querypageService);
-	
+
 	QueryMapper queryMapper = Configuration.getMapper(QueryMapper.class);
 	QueryDao queryDao = new QueryDaoImpl(queryMapper);
 	QueryService queryService = new QueryServiceImpl(queryDao);
+
+	Page myPage = null;
+	String userId=(String)session.getAttribute("login");
+	String currentPage = request.getParameter("currentPage");
+	if(currentPage != null)myPage = new Page(Integer.parseInt(currentPage));
+	else myPage = new Page();
 	
-	String id=(String)session.getAttribute("login");
-	pageContext.setAttribute("querys", queryService.queryList(id, myPage));
+	QueryPageService querypageService = new QueryPageServiceImpl(userId, 5, myPage);
+	pageContext.setAttribute("pageMaker", querypageService);
+	
+	
+	pageContext.setAttribute("querys", queryService.queryList(userId, myPage));
 %>
 <!DOCTYPE html>
 <html lang="ko">

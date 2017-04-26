@@ -124,13 +124,6 @@ article { /*본문*/
 				</nav>
 			</div>
 			<form>
-			<div class="row">
-				<div id="optBtn">
-					<!-- <a href="#" class="btn btn-default btn-sm">전체선택</a> 
-					<a href="#" class="btn btn-default btn-sm">장바구니 담기</a> -->
-					<button type="submit" formaction="../../guest/basket/addBasketProc.jsp">장바구니 담기</button>
-				</div>
-			</div>
 			<br>
 			<%
 				if(searchResults == null || searchResults.size()==0){
@@ -180,7 +173,6 @@ article { /*본문*/
 					</p>
 				</div>
 				<div class="col-md-3">
-					<input id="line checkbox" name="bookCodes" type="checkbox" value="<%=searchResult.getBookCode() %>"/>
 					<input type="hidden" name="bookCode" value="<%=searchResult.getBookCode() %>"/>
 					<button id="block" type="submit" formaction="../../guest/basket/addBasketProc.jsp" class="btn btn-default btn-md">장바구니</button> 
 					<button id="block" type="submit" formaction="../../guest/purchase/paymentProc.jsp" class="btn btn-default btn-md">바로구매</button>

@@ -3,7 +3,8 @@ package minsu.bms.paging.domain;
 public class Page {
 	protected int currentPage;	//현재 페이지
 	private int rowCnt;			//글개수/화면
-
+	private String userId;
+	
 	public Page() {
 		this(1, 10);
 	}
@@ -32,4 +33,13 @@ public class Page {
 	public void setRowCnt(int rowCnt) {
 		this.rowCnt = rowCnt;
 	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+	
 }

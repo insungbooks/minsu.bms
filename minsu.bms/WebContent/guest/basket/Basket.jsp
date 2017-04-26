@@ -4,6 +4,21 @@
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.*"%>
 <%@ page import="java.text.DecimalFormat"%>
+<%@ page import="minsu.bms.bookmanagement.domain.Book"%>
+<%@ page import="minsu.bms.paging.service.BookPageService" %>
+<%@ page import="minsu.bms.paging.service.BookPageServiceImpl" %>
+<%@ page import="minsu.bms.bookmanagement.service.BookService"%>
+<%@ page import="minsu.bms.bookmanagement.service.BookServiceImpl"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDao"%>
+<%@ page import="minsu.bms.bookmanagement.dao.BookDaoImpl"%>
+<%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
+<%
+	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
+	BookDao bookDao = new BookDaoImpl(bookMapper);
+	BookService bookService = new BookServiceImpl(bookDao);
+
+%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -124,7 +139,7 @@ $(document).ready(function(){
 						<%
 					if(request.getAttribute("listBasket")!=null){
 						List<Basket> listBasket=(List<Basket>)request.getAttribute("listBasket");
-						int basketPrice=0,delivery = 2500;%>
+						int basketPrice=0,delivery = 0;%>
 						<form>
 						<table class="table table-hover">
 							<thead>
@@ -140,14 +155,15 @@ $(document).ready(function(){
 							<tbody>
 <%
 						for (Basket book : listBasket) {
-%> 							
+							Book bookimg = bookService.findBook(book.getBookCode());
+%> 								
 								<tr>
 									<td><input type="checkbox" name="basketNum" class="ab" value="<%= book.getBasketNum() %>"
 										style="margin: 35px;"></td>
-									<td><a href="../../shop/search/productInfo.jsp"> <img src="../../img/nobody.jpg"
+									<td><a href="../../shop/search/productInfo.jsp"> <img src="<%= bookimg.getImg() %>"
 											class="img-responsive1"> <%=book.getBookName() %>
 									</a></td>
-									<td style="padding: 35px 15px;"><%=book.getBookPrice() %></td>
+									<td style="padding: 35px 15px;"><%=book.getBookPrice() %>원</td>
 									<form>
 									<input type="hidden" name="basketNum1" value="<%=book.getBasketNum() %>"/>
 									<td>
@@ -156,7 +172,7 @@ $(document).ready(function(){
 										<button type="submit" formaction="BasketUpdateProc.jsp" class="btn btn-default" style="display: block; width: 50px; float: center; margin: 0px 60px; margin-left:100px;">변경</button>
 									</form>	
 									</td>
-									<td style="padding: 35px 15px;"><%=book.getBookPrice()*book.getBookCount() %></td>
+									<td style="padding: 35px 15px;"><%=book.getBookPrice()*book.getBookCount() %>원</td>
 									<td style="padding: 35px 15px;"><%=strDate %> 도착예정</td>
 								</tr>
 <%
@@ -165,6 +181,8 @@ $(document).ready(function(){
 	}
 						if(basketPrice >29999){
 							delivery = 0;
+						}else if(basketPrice > 1){
+							delivery = 2500;
 						}
 
 %>							

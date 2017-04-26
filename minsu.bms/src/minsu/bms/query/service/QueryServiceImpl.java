@@ -22,6 +22,7 @@ public class QueryServiceImpl implements QueryService{
 			 } 
 		}return queryList;
 	}
+	
 	public List<Query> queryLists(Page page){
 		return queryDao.queryList(page);
 	}

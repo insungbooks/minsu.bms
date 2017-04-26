@@ -30,7 +30,7 @@ th, td {
 <body>
 <jsp:include page="../../header.jsp"/>
 <article>
-<form>
+<form method="post">
 <%					
 Delivery delivery=(Delivery)request.getAttribute("delivery");
 Book book=(Book)request.getAttribute("book");

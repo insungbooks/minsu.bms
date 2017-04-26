@@ -444,7 +444,7 @@ footer { /*바닥글*/
 										</div>
 										<div id="imgInfo">
 											<a href="shop/search/productInfoProc.jsp?bookCode=${bestBook.bookCode}" class="thumbnail"><img
-												src="${fn:substring(bestBook.img,6,15)}" alt="Image"
+												src="${fn:substring(bestBook.img,6,20)}" alt="Image"
 												style="max-width: 100%; height: 320px;"></a>
 										</div>
 									</div>
@@ -536,7 +536,7 @@ footer { /*바닥글*/
 				<c:forEach var="bestBook" items="${bestBookList}" begin="1" end="5" step="1">
 				<div class="col-md-2">
 					<a href="shop/search/productInfoProc.jsp?bookCode=${bestBook.bookCode}" class="thumbnail"> 
-					<img src="${fn:substring(bestBook.img,6,15)}" style="width: 150px; height: 150px">
+					<img src="${fn:substring(bestBook.img,6,20)}" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				</c:forEach>
@@ -552,7 +552,7 @@ footer { /*바닥글*/
 				<c:forEach var="newBook" items="${newBookList}" begin="1" end="5" step="1">
 				<div class="col-md-2">
 					<a href="shop/search/productInfoProc.jsp?bookCode=${newBook.bookCode}" class="thumbnail"> <img
-						src="${fn:substring(newBook.img,6,15)}" style="width: 150px; height: 150px">
+						src="${fn:substring(newBook.img,6,20)}" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				</c:forEach>
@@ -568,7 +568,7 @@ footer { /*바닥글*/
 				<c:forEach var="saleBook" items="${saleBookList}" begin="1" end="5" step="1">
 				<div class="col-md-2">
 					<a href="shop/search/productInfoProc.jsp?bookCode=${saleBook.bookCode}" class="thumbnail"> <img
-						src="${fn:substring(saleBook.img,6,15)}" style="width: 150px; height: 150px">
+						src="${fn:substring(saleBook.img,6,20)}" style="width: 150px; height: 150px">
 					</a>
 				</div>
 				</c:forEach>

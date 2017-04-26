@@ -98,7 +98,7 @@ request.setAttribute("query", queryList);
 		</div>
 		<div class="col-md-8">
 			<div class="row">
-				<form class="form" method="post">
+				<form class="form">
 					<div class="form-group row">
 						<h2>문의 답하기</h2>
 						<hr>

@@ -2,7 +2,8 @@ package minsu.bms.paging.dao.mapper;
 
 public interface PageMapper {
 	int getTotRowCntBook();
-	int getTotRowCntQuery(String userId);
+	int getTotRowCntQuery1(String userId);
+	int getTotRowCntQuery();
 	int getTotRowCntUser();
 	int getTotRowCntRefund(String userId);
 	int getTotRowCntOrder(String userId);

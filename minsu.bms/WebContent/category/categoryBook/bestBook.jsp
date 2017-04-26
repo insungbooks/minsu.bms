@@ -53,8 +53,8 @@
 					
 					<br>
 					<p>
-						[베스트셀러]<a href="../../shop/search/productInfo.jsp">${bestBook.bookName}</a><br><br> <a href="../shop/search/productInfo.jsp">${bestBook.writer}</a>(지은이)|<a
-							href="../../shop/search/productInfo.jsp">${bestBook.company}</a>|${bestBook.publiDate}<br><br> ${bestBook.bookPrice}원<!--  →<b>12,420</b>(10%
+						[베스트셀러]<a href="../../shop/search/productInfoProc.jsp?bookCode=${bestBook.bookCode}">${bestBook.bookName}</a><br><br> ${bestBook.writer}(지은이)|
+							${bestBook.company}|${bestBook.publiDate}<br><br> ${bestBook.bookPrice}원<!--  →<b>12,420</b>(10%
 						할인), 마일리지 690점(5% 적립)<br> -->
 						<br>
 						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)

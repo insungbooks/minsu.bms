@@ -112,12 +112,12 @@ article { /*본문*/
 							<input type="text" name="searchOption" value="<%= searchOption %>" hidden/>
 							<input type="text" name="searchText" value="<%= searchText %>" hidden/>
 							<input type="text" name="pageNum" value="1" hidden/>
-							<button class="orderOption" value="sellCnt" formaction="searchResultProc.jsp">판매량순</button>
-							<button class="orderOption" value="grade" formaction="searchResultProc.jsp">평점순</button>
-							<button class="orderOption" value="reviewCnt" formaction="searchResultProc.jsp">리뷰순</button>
-							<button class="orderOption" value="publishDate" formaction="searchResultProc.jsp">출간일순</button>
-							<button class="orderOption" value="highPrice" formaction="searchResultProc.jsp">높은가격순</button>
-							<button class="orderOption" value="lowPrice" formaction="searchResultProc.jsp">낮은가격순</button>
+							<button class="orderOption" name="orderOption" value="salesNum desc" formaction="searchResultProc.jsp">판매량순</button>
+							<button class="orderOption" name="orderOption" value="grade" formaction="searchResultProc.jsp">평점순</button>
+							<button class="orderOption" name="orderOption" value="reviewCnt desc" formaction="searchResultProc.jsp">리뷰순</button>
+							<button class="orderOption" name="orderOption" value="publiDate desc" formaction="searchResultProc.jsp">출간일순</button>
+							<button class="orderOption" name="orderOption" value="bookPrice desc" formaction="searchResultProc.jsp">높은가격순</button>
+							<button class="orderOption" name="orderOption" value="bookPrice" formaction="searchResultProc.jsp">낮은가격순</button>
 						</form>
 					</div>
 				</div>
@@ -132,13 +132,13 @@ article { /*본문*/
 			<%
 				}else{
 					if(pageNum == null || pageNum.equals("")){
-						currentNum=1;
+						currentNum=1;	
 					}else{
 						currentNum=Integer.parseInt(pageNum);
 					}
 					dataNum=searchResults.size();
 					totalPageNum=(dataNum-1)/10+1;
-					startNum=(currentNum/10)*10+1;
+					startNum=((currentNum-1)/10)*10+1;
 					if(startNum/10 == totalPageNum/10){
 						endNum=totalPageNum;
 					}else{
@@ -226,7 +226,7 @@ article { /*본문*/
 							%>
 							<%
 								if (totalPageNum > 10) {
-									if (currentNum / 10 == totalPageNum / 10) {
+									if ((currentNum-1) / 10 == totalPageNum / 10) {
 							%>
 							<li><a
 								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=endNum%>">&rsaquo;</a></li>
@@ -234,12 +234,12 @@ article { /*본문*/
 									} else {
 							%>
 							<li><a
-								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=currentNum / 10 * 10 + 11%>">&rsaquo;</a></li>
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=(currentNum-1) / 10 * 10 + 11%>">&rsaquo;</a></li>
 							<%
 									}
 							%>
 							<li><a
-								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=endNum%>">&raquo;</a></li>
+								href="searchResultProc.jsp?searchOption=<%=searchOption%>&searchText=<%=searchText%>&pageNum=<%=totalPageNum%>">&raquo;</a></li>
 							<%
 								}
 							%>

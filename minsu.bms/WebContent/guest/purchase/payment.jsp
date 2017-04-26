@@ -239,7 +239,7 @@ th {
 		if (request.getAttribute("user") != null) {
 			User user = (User) request.getAttribute("user");
 	%>
-	<form action="paymentResult.jsp" method="post">
+	<form action="paymentResult.jsp" >
 		<article>
 			<div class="container">
 				<!-- 주문상품목록 -->

@@ -17,17 +17,18 @@
 <%
 	Page myPage = null;
 	String currentPage = request.getParameter("currentPage");
+	String id=(String)session.getAttribute("login");
 	if(currentPage != null) myPage = new Page(Integer.parseInt(currentPage));
 	else myPage = new Page();
 	
-	RefundPageService pageService = new RefundPageServiceImpl(5, myPage);
+	RefundPageService pageService = new RefundPageServiceImpl(id, 5, myPage);
 	pageContext.setAttribute("pageMaker", pageService);
 
 	RefundMapper refundMapper = Configuration.getMapper(RefundMapper.class);
 	RefundDao refundDao = new RefundDaoImpl(refundMapper);
 	RefundService refundService = new RefundServiceImpl(refundDao);
 	
-	String id=(String)session.getAttribute("login");
+	
 	pageContext.setAttribute("refund", refundService.listRefundPage(id, myPage));
 	
 	

@@ -4,6 +4,6 @@ public interface PageDao {
 	int getTotRowCntBook();
 	int getTotRowCntQuery(String userId);
 	int getTotRowCntUser();
-	int getTotRowCntRefund();
-	int getTotRowCntOrder();
+	int getTotRowCntRefund(String userId);
+	int getTotRowCntOrder(String userId);
 }

@@ -122,7 +122,6 @@ article { /*본문*/
 				</div>
 				</nav>
 			</div>
-			<form>
 			<br>
 			<%
 				if(searchResults == null || searchResults.size()==0){
@@ -152,22 +151,23 @@ article { /*본문*/
 					for(int i=startDataNum; i<=endDataNum; i++){
 						SearchResult searchResult = searchResults.get(i-1);
 			%>
+			<form>
 			<div class="row">
 				<div class="col-md-2">
 					<div>
 						<a href="productInfoProc.jsp?bookCode=<%= searchResult.getBookCode() %>" class="thumbnail"> <img
-							src="../../img/7.jpg">
+							src="<%= searchResult.getImg() %>">
 						</a>
 					</div>
 				</div>
 				<div class="col-md-7">
 					<p>[<%= searchResult.getKind() %>]
-					</p><br> <br>
+					</p> <br>
 					<p>
 						[<%= searchResult.getCountry() %>도서]<a href="productInfoProc.jsp?bookCode=<%= searchResult.getBookCode() %>"><%= searchResult.getBookName() %></a><br>
 						<span><%= searchResult.getWriter() %></span>(지은이) | <span><%= searchResult.getCompany() %></span> | <%= searchResult.getPubliDate() %><br>
-						<%= searchResult.getBookPrice() %>원 →<%= searchResult.getBookPrice()*9/10 %>원(10%
-						할인), 마일리지 <%= searchResult.getBookPrice()*9/10/20 %>점(5% 적립)<br> <br> 출고예상일 : 지금 주문하면 <b>3월
+						<%= searchResult.getBookPrice() %>원 <%-- →<%= searchResult.getBookPrice()*9/10 %>원(10%
+						할인), --%> 마일리지 <%= searchResult.getBookPrice()*9/10/20 %>점(5% 적립)<br> <br> 출고예상일 : 지금 주문하면 <b>3월
 							10일 출고</b>예상 (출고후 1~2일 이내 수령)
 					</p>
 				</div>

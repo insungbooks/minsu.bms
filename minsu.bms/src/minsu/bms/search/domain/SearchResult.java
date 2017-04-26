@@ -1,6 +1,7 @@
 package minsu.bms.search.domain;
 
 public class SearchResult {
+	private String	img;		//사진 url
 	private String  bookCode;	//도서 코드
 	private String  bookName;	//도서 제목
 	private int 	bookPrice;	//도서 가격
@@ -30,22 +31,14 @@ public class SearchResult {
 		this.companyEval=companyEval;
 	}
 	
-	
-/*	this.bookCode = bookCode;
-	this.bookName = bookName;
-	this.bookPrice = bookPrice;
-	this.bookIntro = bookIntro;
-	this.writer = writer;
-	this.writerIntro=writerIntro;
-	this.company = company;
-	this.publiDate = publiDate;
-	this.country = country;
-	this.kind = kind;
-	this.salesNum = salesNum;
-	this.reviewCnt=reviewCnt;*/
-	
-	
-	
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
+
 	public String getBookCode() {
 		return bookCode;
 	}

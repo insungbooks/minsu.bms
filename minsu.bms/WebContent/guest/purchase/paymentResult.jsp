@@ -10,6 +10,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="minsu.bms.login.service.LoginService"%>
 <%@ page import="minsu.bms.login.service.LoginServiceImpl"%>
+<%@ page import="minsu.bms.login.service.PointService"%>
+<%@ page import="minsu.bms.login.service.PointServiceImpl"%>
 <%@ page import="minsu.bms.login.dao.LoginDao"%>
 <%@ page import="minsu.bms.login.dao.LoginDaoImpl"%>
 <%@ page import="minsu.bms.login.dao.mapper.LoginMapper"%>
@@ -41,6 +43,7 @@
 	LoginMapper loginMapper = Configuration.getMapper(LoginMapper.class);
 	LoginDao loginDao = new LoginDaoImpl(loginMapper);
 	LoginService loginService = new LoginServiceImpl(loginDao); 
+	PointService reserveService = new PointServiceImpl(loginDao);
 	PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
 	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
@@ -61,11 +64,12 @@
 	String message= request.getParameter("message");//배송메세지
 	int bookPrice = Integer.parseInt(request.getParameter("bookPrice"));//결제금액
 	int deliveryPrice=Integer.parseInt(request.getParameter("deliveryPrice"));//배송비
-	
+	int forecastPoint=Integer.parseInt(request.getParameter("forecastPoint"));//적립금
 	if(request.getParameterValues("bookCodeList")!=null){
 		String[] bookCodes = request.getParameterValues("bookCodeList");
 		String[] bookNums=request.getParameterValues("bookNumList");
 		String[] bookPriceNums=request.getParameterValues("bookPriceList");
+		
 		for(int i=0;i<bookCodes.length;i++){
 			int bookNum1 = Integer.parseInt(bookNums[i]);
 			int bookPrice1= Integer.parseInt(bookPriceNums[i]);
@@ -88,7 +92,6 @@
 			delivery.setRecipient(recipient);
 			delivery.setSender(sender);
 			
-			
 			deliveryService.addDelivery(delivery);
 			
 			Book book = bookService.findBook(bookCodes[i]);
@@ -97,36 +100,43 @@
 			bookService.modifyBook(book);
 			
 			}
+			
+		}else if(request.getParameter("bookCode")!=null){
+	
+			String bookCode=request.getParameter("bookCode");
+			Purchase purchase= new Purchase();//주문생성
+			purchase.setBookCode(bookCode);
+			purchase.setOrderCount(bookNum);
+			purchase.setUserId(id);
+			purchase.setDestination(address);
+			purchase.setPayOption(payType);
+			purchase.setPayAmount(bookPrice);
+			purchase.setDeliveryPrice(deliveryPrice);
+			
+			purchaseService.addPurchase(purchase);
+			
+			Delivery delivery=new Delivery();
+			
+			delivery.setDeliveryNow("배송중");
+			delivery.setAddress(address);
+			delivery.setMessage(message);
+			delivery.setPhoneNum(phoneNum);
+			delivery.setRecipient(recipient);
+			delivery.setSender(sender);
+			
+			deliveryService.addDelivery(delivery);
+			
+			Book book = bookService.findBook(bookCode);
+			book.setInventory(book.getInventory()-bookNum);
+			book.setSalesNum(book.getSalesNum()+bookNum);
+			bookService.modifyBook(book);
+			
 		}
-	else if(request.getParameter("bookCode")!=null){
+	User user = loginService.findUser(id);
+
+	int userReserve=user.getPoint();
+	user.setPoint(userReserve+forecastPoint);
+	reserveService.updatePoint(user);
 	
-	String bookCode=request.getParameter("bookCode");
-	Purchase purchase= new Purchase();//주문생성
-	purchase.setBookCode(bookCode);
-	purchase.setOrderCount(bookNum);
-	purchase.setUserId(id);
-	purchase.setDestination(address);
-	purchase.setPayOption(payType);
-	purchase.setPayAmount(bookPrice);
-	purchase.setDeliveryPrice(deliveryPrice);
-	
-	purchaseService.addPurchase(purchase);
-	
-	Delivery delivery=new Delivery();
-	delivery.setDeliveryNow("배송중");
-	delivery.setAddress(address);
-	delivery.setMessage(message);
-	delivery.setPhoneNum(phoneNum);
-	delivery.setRecipient(recipient);
-	delivery.setSender(sender);
-	
-	deliveryService.addDelivery(delivery);
-	
-	Book book = bookService.findBook(bookCode);
-	book.setInventory(book.getInventory()-bookNum);
-	book.setSalesNum(book.getSalesNum()+bookNum);
-	bookService.modifyBook(book);
-	
-	}
-	
+			
 %><jsp:include page="../order/orderListProc.jsp"/>

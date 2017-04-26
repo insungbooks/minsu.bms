@@ -14,6 +14,14 @@
 <%@ page import="minsu.bms.purchase.dao.PurchaseDaoImpl"%>
 <%@ page import="minsu.bms.purchase.dao.mapper.PurchaseMapper"%>
 <%@ page import="minsu.bms.purchase.domain.Purchase"%>
+<%@ page import="minsu.bms.login.service.LoginService"%>
+<%@ page import="minsu.bms.login.service.LoginServiceImpl"%>
+<%@ page import="minsu.bms.login.service.PointService"%>
+<%@ page import="minsu.bms.login.service.PointServiceImpl"%>
+<%@ page import="minsu.bms.login.dao.LoginDao"%>
+<%@ page import="minsu.bms.login.dao.LoginDaoImpl"%>
+<%@ page import="minsu.bms.login.dao.mapper.LoginMapper"%>
+<%@ page import="minsu.bms.login.domain.User"%>
 
 <!DOCTYPE html>
 <%
@@ -23,6 +31,10 @@
 	PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
 	PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 	PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
+	LoginMapper loginMapper = Configuration.getMapper(LoginMapper.class);
+	LoginDao loginDao = new LoginDaoImpl(loginMapper);
+	LoginService loginService = new LoginServiceImpl(loginDao); 
+	PointService pointService = new PointServiceImpl(loginDao);
 	
 	String bookName=request.getParameter("bookName");
 	int refundAmount=Integer.parseInt(request.getParameter("payAmount"));
@@ -31,6 +43,7 @@
 	int orderNum= Integer.parseInt(request.getParameter("orderNum"));
 	String id=(String)session.getAttribute("login");
 	Purchase purchase = purchaseService.findPurchase(orderNum);
+	int point = purchase.getPayAmount()/10;
 	
 	Refund refund =new Refund();
 	refund.setCancelType(cancelType);
@@ -41,6 +54,8 @@
 	refund.setUserId(id);
 
 	refundService.addRefund(refund);
+	
+	
 
 	Refund refund2 = refundService.findRefund(orderNum);
 	int refundNum = refund2.getRefundNum();
@@ -51,6 +66,11 @@
 		purchaseService.modifyRefund(purchase);
 	
 	}
+	User user = loginService.findUser(id);
+
+	int userReserve=user.getPoint();
+	user.setPoint(userReserve-point);
+	pointService.updatePoint(user);
 
 	
 	%>

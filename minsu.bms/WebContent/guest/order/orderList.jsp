@@ -34,7 +34,8 @@ DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
 PurchaseMapper purchaseMapper = Configuration.getMapper(PurchaseMapper.class);
 PurchaseDao purchaseDao = new PurchaseDaoImpl(purchaseMapper);
 PurchaseService purchaseService = new PurchaseServiceImpl(purchaseDao);
-
+String id=(String)session.getAttribute("login");
+List<Purchase> purchaseId = purchaseService.findPurchaseId(id);
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -91,11 +92,11 @@ th {
 }
 </style>
 </head>
+
 <body>
 	<jsp:include page="../../header.jsp"/>
 <article>
 <%
-	String id = (String)session.getAttribute("login");
 	if(id == null) {
 %>
 	<script>
@@ -158,10 +159,23 @@ th {
 					
 				</table>
 			</form>
-			<% 
+			<% List<Purchase> purchases= new ArrayList<Purchase>();
+			String date1="";
+			String date2="";
 				if(request.getAttribute("purchases")!=null){
-					List<Purchase> purchases= (List<Purchase>)request.getAttribute("purchases");%>
-			<p><small><%=request.getAttribute("date1") %> ~ <%=request.getAttribute("date2") %>까지의 주문 총 <%=purchases.size() %>건 검색완료</small></p>
+					purchases= (List<Purchase>)request.getAttribute("purchases");
+					date1 = (String)request.getAttribute("date1");
+					date2 = (String)request.getAttribute("date2");
+				}else if(request.getAttribute("purchases")==null){
+					purchases = (List<Purchase>)purchaseService.findPurchaseId(id);
+					date1="처음";
+					date2="끝";
+					
+				}else{
+					
+				}
+					%>
+			<p><small><%=date1 %> ~ <%=date2 %>까지의 주문 총 <%=purchases.size() %>건 검색완료</small></p>
 			<table class="table table-bordered" id="orderList">
 				<thead>
 					<tr>
@@ -205,7 +219,7 @@ th {
 						</th>
 					</tr>
 						<%}
-				}
+				
 				%>
 				</tbody>
 			</table>
@@ -233,6 +247,7 @@ th {
 		</div>
 	</div>
 </div>
+
 </article>
 
 <jsp:include page="../../footer.html"/>

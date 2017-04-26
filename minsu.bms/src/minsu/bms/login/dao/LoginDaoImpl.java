@@ -34,6 +34,9 @@ public class LoginDaoImpl implements LoginDao {
 	public List<User> userList(){
 		return loginMapper.userList();
 	}
+	public int updatePoint(User user){
+		return loginMapper.updatePoint(user);
+	}
 	public List<User> userListPage(Page page){
 		return loginMapper.userListPage(page);
 	}

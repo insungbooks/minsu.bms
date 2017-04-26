@@ -236,10 +236,11 @@ th {
 	int basketMoney = 0;
 	int delivery = 2500;
 	int sumMoney = 0;
+	int forecastPoint=0;
 		if (request.getAttribute("user") != null) {
 			User user = (User) request.getAttribute("user");
 	%>
-	<form action="paymentResult.jsp" >
+	<form action="paymentResult.jsp">
 		<article>
 			<div class="container">
 				<!-- 주문상품목록 -->
@@ -294,6 +295,7 @@ th {
 											delivery = 0;
 										}
 										sumMoney = basketMoney + delivery;
+										forecastPoint=sumMoney/10;
 							%>
 						</tr>
 						<%
@@ -323,6 +325,7 @@ th {
 										delivery = 0;
 									}
 									sumMoney = basketMoney + delivery;
+									forecastPoint=sumMoney/10;
 									}
 							%>
 						</tr>
@@ -348,7 +351,8 @@ th {
 								<td><%=delivery%>원</td>
 								<td><%=sumMoney%>원</td>
 								<input type="hidden" name="bookPrice" value="<%=sumMoney%>" />
-								<td><%=sumMoney / 10%>원</td>
+								<input type="hidden" name="forecastPoint" value="<%=forecastPoint%>" />
+								<td><%=forecastPoint%>원</td>
 							</tr>
 						</tbody>
 					</table>

@@ -84,6 +84,44 @@
         }); 
        });
 </script>
+<style>
+/*사이드바*/
+
+/* CSS코드는 관리자나 회원이나 동일한 코드 */
+.nav-sidebar { 
+    width: 100%;
+    padding: 8px 0; 
+    border-right: 1px solid #ddd;
+}
+.nav-sidebar a {
+    color: #333;
+    transition: all 0.08s linear;
+    border-radius: 4px 0 0 4px; 
+}
+.nav-sidebar .active a { 
+    cursor: default;
+    background-color: rgb(115, 215, 209); 
+    color: #fff; 
+    text-shadow: 1px 1px 1px #666; 
+}
+.nav-sidebar .active a:hover {
+    background-color: rgb(115, 215, 209);   
+}
+
+/* Right-aligned sidebar */
+.nav-sidebar.pull-right { 
+    border-right: 0; 
+    border-left: 1px solid #ddd; 
+}
+.nav-sidebar.pull-right a { 
+    border-radius: 0 4px 4px 0; 
+}
+
+.nav-header{
+	color : #909090;
+}
+
+</style>
 </head>
 <body>
 	<jsp:include page="../../header.jsp"/>
@@ -104,14 +142,13 @@
 				<nav class="nav-sidebar">
         <ul class="nav">
         	<li class="nav-header"><strong> 주문관리</strong></li>
-            <li ><a href="orderList.html"> 주문조회</a></li>
-            <li><a href="../basket/Basket.html"> 장바구니</a></li>
-            <li><a href="purchaseList.html">구매내역</a></li>
-            <li><a href="refundDetail.html">취소/교환내역</a></li>
+            <li ><a href="../order/orderListProc.jsp"> 주문조회</a></li>
+            <li><a href="../basket/Basket.jsp"> 장바구니</a></li>
+            <li><a href="../refund/refundList.jsp">취소/교환내역</a></li>
             <li class="nav-divider"></li>
      		<li class="nav-header"><strong> 나의 정보</strong></li>
-            <li class="active"><a href="../../shop/system/idCheck.html"> 회원정보 수정</a></li>
-            <li><a href="../../shop/system/idCheck1.html"> 회원 탈퇴</a></li>
+     		<li  class="active"><a href="../../shop/system/idCheck.jsp"> 회원정보 수정</a></li>
+            <li><a href="../../shop/system/idCheck1.jsp"> 회원 탈퇴</a></li>
             <li class="nav-divider"></li>
             <li class="nav-header"><strong> 나의 상담</strong></li>
             <li ><a href="../customerCenter/queryListProc.jsp"> 나의 상담 내역</a></li>

@@ -141,7 +141,7 @@
 							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
 							<div class="aTag"><b><a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>"><%= book.getBookName() %></a></b></div>
 							<div class="author"><p><%= book.getWriter() %></p></div>
-							<div class="price"><p><%= book.getBookPrice() %></p></div>
+							<div class="price"><p><%= book.getBookPrice() %>원</p></div>
 						</div>
 				</div>
 <%}} %>
@@ -167,7 +167,7 @@
 							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
 							<div class="aTag"><b><a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>"><%= book.getBookName() %></a></b></div>
 							<div class="author"><p><%= book.getWriter() %></p></div>
-							<div class="price"><p><%= book.getBookPrice() %></p></div>
+							<div class="price"><p><%= book.getBookPrice() %>원</p></div>
 						</div>
 				</div>
 <%}} %>
@@ -193,7 +193,7 @@
 							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
 							<div class="aTag"><b><a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>"><%= book.getBookName() %></a></b></div>
 							<div class="author"><p><%= book.getWriter() %></p></div>
-							<div class="price"><p><%= book.getBookPrice() %></p></div>
+							<div class="price"><p><%= book.getBookPrice() %>원</p></div>
 						</div>
 				</div>
 <%}} %>
@@ -218,7 +218,7 @@
 							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
 							<div class="aTag"><b><a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>"><%= book.getBookName() %></a></b></div>
 							<div class="author"><p><%= book.getWriter() %></p></div>
-							<div class="price"><p><%= book.getBookPrice() %></p></div>
+							<div class="price"><p><%= book.getBookPrice() %>원</p></div>
 						</div>
 				</div>
 <%}} %>

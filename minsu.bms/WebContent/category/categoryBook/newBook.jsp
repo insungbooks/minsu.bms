@@ -9,12 +9,25 @@
 <%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <%@ page import="java.util.*" %>
+<%@ page import="java.text.DecimalFormat"%>
 <!DOCTYPE html>
 <%
 	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
 	BookDao bookDao = new BookDaoImpl(bookMapper);
 	BookService bookService = new BookServiceImpl(bookDao);
 	pageContext.setAttribute("newBookList", bookService.newBookList());
+	
+	DecimalFormat df = new DecimalFormat("00");
+	Calendar currentCalendar = Calendar.getInstance();
+
+	//현재 날짜 구하기
+	String strYear = Integer.toString(currentCalendar
+			.get(Calendar.YEAR));
+	String strMonth = df
+			.format(currentCalendar.get(Calendar.MONTH) + 1);
+	String strDay = df
+			.format(currentCalendar.get(Calendar.DATE));
+	String strDate = strMonth + "월" + strDay + "일";
 %>
 <html lang="ko">
 <head>
@@ -56,7 +69,7 @@
 						${bestBook.company}|${bestBook.publiDate}<br><br> ${bestBook.bookPrice}원<!--  →<b>12,420</b>(10%
 						할인), 마일리지 690점(5% 적립)<br> -->
 						<br>
-						<br> 출고예상일 : 지금 주문하면 <b>4월 10일 출고</b>예상 (출고후 1~2일 이내 수령)
+						<br> 출고예상일 : 지금 주문하면 <b><%= strDate %> 출고</b>예상 (출고후 1~2일 이내 수령)
 					</p>
 				</div>
 				<div class="col-md-3">

@@ -166,8 +166,8 @@ article { /*본문*/
 					<p>
 						[<%= searchResult.getCountry() %>도서]<a href="productInfoProc.jsp?bookCode=<%= searchResult.getBookCode() %>"><%= searchResult.getBookName() %></a><br>
 						<span><%= searchResult.getWriter() %></span>(지은이) | <span><%= searchResult.getCompany() %></span> | <%= searchResult.getPubliDate() %><br>
-						<%= searchResult.getBookPrice() %>원 →<%= searchResult.getBookPrice()*9/10 %>원(10%
-						할인), 마일리지 <%= searchResult.getBookPrice()*9/10/20 %>점(5% 적립)<br> <br> 출고예상일 : 지금 주문하면 <b>3월
+						<%= searchResult.getBookPrice() %>원 <%-- →<%= searchResult.getBookPrice()*9/10 %>원(10%
+						할인), --%> 마일리지 <%= searchResult.getBookPrice()*9/10/20 %>점(5% 적립)<br> <br> 출고예상일 : 지금 주문하면 <b>3월
 							10일 출고</b>예상 (출고후 1~2일 이내 수령)
 					</p>
 				</div>

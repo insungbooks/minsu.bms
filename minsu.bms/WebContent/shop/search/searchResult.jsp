@@ -122,7 +122,6 @@ article { /*본문*/
 				</div>
 				</nav>
 			</div>
-			<form>
 			<br>
 			<%
 				if(searchResults == null || searchResults.size()==0){
@@ -152,6 +151,7 @@ article { /*본문*/
 					for(int i=startDataNum; i<=endDataNum; i++){
 						SearchResult searchResult = searchResults.get(i-1);
 			%>
+			<form>
 			<div class="row">
 				<div class="col-md-2">
 					<div>

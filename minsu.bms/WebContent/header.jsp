@@ -267,7 +267,7 @@ background-color: rgb(56, 194, 188);
 							src="../../img/logo.png" class="headlogo"></a>
 					</div>
 					<div class="col-md-7">
-						<form action="shop/search/searchResultProc.jsp">
+						<form action="../../shop/search/searchResultProc.jsp">
 							<div class="input-group" class="searchBar" style="margin: 80px;">
 								<div class="input-group-btn search-panel">
 									<button type="button" class="btn btn-default ">

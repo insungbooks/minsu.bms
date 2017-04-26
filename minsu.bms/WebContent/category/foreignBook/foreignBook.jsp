@@ -139,7 +139,7 @@
 					</a>
 					<div class="text">
 							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp"><%= book.getBookName() %></a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>"><%= book.getBookName() %></a></b></div>
 							<div class="author"><p><%= book.getWriter() %></p></div>
 							<div class="price"><p><%= book.getBookPrice() %></p></div>
 						</div>
@@ -165,7 +165,7 @@
 					</a>
 					<div class="text">
 							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp"><%= book.getBookName() %></a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>"><%= book.getBookName() %></a></b></div>
 							<div class="author"><p><%= book.getWriter() %></p></div>
 							<div class="price"><p><%= book.getBookPrice() %></p></div>
 						</div>
@@ -191,7 +191,7 @@
 					</a>
 					<div class="text">
 							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp"><%= book.getBookName() %></a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>"><%= book.getBookName() %></a></b></div>
 							<div class="author"><p><%= book.getWriter() %></p></div>
 							<div class="price"><p><%= book.getBookPrice() %></p></div>
 						</div>
@@ -216,7 +216,7 @@
 					</a>
 					<div class="text">
 							<div class="classification"><p>[<%=book.getKind() %>]</p></div>
-							<div class="aTag"><b><a href="../../shop/search/productInfo.jsp"><%= book.getBookName() %></a></b></div>
+							<div class="aTag"><b><a href="../../shop/search/productInfoProc.jsp?bookCode=<%= book.getBookCode() %>"><%= book.getBookName() %></a></b></div>
 							<div class="author"><p><%= book.getWriter() %></p></div>
 							<div class="price"><p><%= book.getBookPrice() %></p></div>
 						</div>

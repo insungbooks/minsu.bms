@@ -11,14 +11,20 @@
 	String searchOption = request.getParameter("searchOption");
 	String pageNum = request.getParameter("pageNum");
 	String orderOption="";
-	if(request.getParameter("orderOption") == null || request.getParameter("orderOption").equals("")){
-		orderOption = "salesNum";
-	}else{
-		orderOption = request.getParameter("orderOption");
-	}
 	
 	List<SearchResult> searchResults = null;
-	searchResults = searchService.listSearchResult(searchOption, searchText, orderOption);
+	if(request.getParameter("orderOption") == null || request.getParameter("orderOption").equals("")||request.getParameter("orderOption").equals("salesNum desc")){
+		searchResults=searchService.salesNum(searchOption,searchText);
+	}else if(request.getParameter("orderOption").equals("reviewCnt desc")){
+		searchResults=searchService.reviewCnt(searchOption,searchText);
+	}else if(request.getParameter("orderOption").equals("publiDate desc")){
+		searchResults=searchService.publiDate(searchOption,searchText);
+	}else if(request.getParameter("orderOption").equals("bookPrice desc")){
+		searchResults=searchService.highPrice(searchOption,searchText);
+	}else if(request.getParameter("orderOption").equals("bookPrice")){
+		searchResults=searchService.lowPrice(searchOption,searchText);
+	}
+	
 	request.setAttribute("searchResults", searchResults);
 	request.setAttribute("searchText", searchText);
 	request.setAttribute("searchOption", searchOption);

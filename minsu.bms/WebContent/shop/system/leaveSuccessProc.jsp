@@ -15,5 +15,6 @@
 	String id = (String)session.getAttribute("login");
 	User user=signUp.findUser(id);
 	signUp.deleteUser(user);
+	session.invalidate(); 
 %>
 <jsp:forward page ="../../shop/system/leaveSuccess.jsp"/>

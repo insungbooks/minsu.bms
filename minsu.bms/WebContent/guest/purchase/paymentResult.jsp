@@ -69,10 +69,11 @@
 		String[] bookCodes = request.getParameterValues("bookCodeList");
 		String[] bookNums=request.getParameterValues("bookNumList");
 		String[] bookPriceNums=request.getParameterValues("bookPriceList");
-		
+		String[] basketNum = request.getParameterValues("basketNum");
 		for(int i=0;i<bookCodes.length;i++){
 			int bookNum1 = Integer.parseInt(bookNums[i]);
 			int bookPrice1= Integer.parseInt(bookPriceNums[i]);
+			int basketNum1= Integer.parseInt(basketNum[i]);
 			
 			Purchase purchase= new Purchase();//주문생성
 			purchase.setBookCode(bookCodes[i]);
@@ -98,6 +99,8 @@
 			book.setInventory(book.getInventory()-bookNum1);
 			book.setSalesNum(book.getSalesNum()+bookNum1);
 			bookService.modifyBook(book);
+			
+			basketService.deleteBasket(basketNum1);
 			
 			}
 			
@@ -137,6 +140,7 @@
 	int userReserve=user.getPoint();
 	user.setPoint(userReserve+forecastPoint);
 	reserveService.updatePoint(user);
+	
 	
 			
 %><jsp:include page="../order/orderListProc.jsp"/>

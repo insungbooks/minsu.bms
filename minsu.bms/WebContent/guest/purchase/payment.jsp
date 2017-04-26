@@ -314,6 +314,7 @@ th {
 							<td style="padding: 35px;"><%=basket.getBookPrice() * basket.getBookCount()%>원</td>
 							<td style="padding: 35px;"><%=strDate%> 도착예정</td>
 							<!-- 배송에서받아오기 -->
+							<input type="hidden" name="basketNum" value="<%=basket.getBasketNum()%>" />
 							<input type="hidden" name="bookCodeList" value="<%=basket.getBookCode()%>" />
 							<input type="hidden" name="bookPriceList" value="<%=basket.getBookPrice() * basket.getBookCount()%>" />
 							<input type="hidden" name="bookNumList" value="<%=basket.getBookCount()%>" />

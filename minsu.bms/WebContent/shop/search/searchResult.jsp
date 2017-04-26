@@ -156,13 +156,13 @@ article { /*본문*/
 				<div class="col-md-2">
 					<div>
 						<a href="productInfoProc.jsp?bookCode=<%= searchResult.getBookCode() %>" class="thumbnail"> <img
-							src="../../img/7.jpg">
+							src="<%= searchResult.getImg() %>">
 						</a>
 					</div>
 				</div>
 				<div class="col-md-7">
 					<p>[<%= searchResult.getKind() %>]
-					</p><br> <br>
+					</p> <br>
 					<p>
 						[<%= searchResult.getCountry() %>도서]<a href="productInfoProc.jsp?bookCode=<%= searchResult.getBookCode() %>"><%= searchResult.getBookName() %></a><br>
 						<span><%= searchResult.getWriter() %></span>(지은이) | <span><%= searchResult.getCompany() %></span> | <%= searchResult.getPubliDate() %><br>

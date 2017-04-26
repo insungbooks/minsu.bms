@@ -51,7 +51,7 @@
 					<br> <br>
 					<div class="col-sm-5">
 						<a href="../../img/1.jpg" class="thumbnail"><img
-							src="../../img/1.jpg" style="width: 200px; height: 300px"></a>
+							src="<%= searchResult.getImg() %>" style="width: 200px; height: 300px"></a>
 					</div>
 
 					<div class="col-sm-7">

@@ -3,7 +3,7 @@
 <mapper namespace="minsu.bms.login.dao.mapper.LoginMapper">
 	<select id="getUser" parameterType ="string" resultType="user"> <!-- 아이디값과 일치하는 데이터를 찾으면 user객체로 맵핑해서 리턴 -->
 		select user_id userId, password, name, age, gender, my_num myNum,
-		email, phone_num phoneNum, address
+		email, phone_num phoneNum, address, point
 		from users
 		where user_id = #{id}
 	</select>
@@ -29,11 +29,13 @@
 		<result property="email"	column="email"/>
 		<result property="phoneNum"	column="phone_num"/>
 		<result property="address"	column="address"/>
+		<result property="point"	column="point"/>
 	</resultMap>
+	
 	
 	<select id="getUserId" parameterType ="string" resultType="user"> 
 		select user_id userId, password, name, age, gender, my_num myNum,
-		email, phone_num phoneNum, address
+		email, phone_num phoneNum, address, point
 		from users
 		where name = #{name}
 		and my_num = #{myNum}
@@ -41,7 +43,7 @@
 	
 	<select id="getUserPw" parameterType ="string" resultType="user"> <!-- 아이디값과 일치하는 데이터를 찾으면 user객체로 맵핑해서 리턴 -->
 		select user_id userId, password, name, age, gender, my_num myNum,
-		email, phone_num phoneNum, address
+		email, phone_num phoneNum, address, point
 		from users
 		where user_id = #{userId}
 		and name = #{name}
@@ -51,7 +53,7 @@
 	
 	<select id="userList" resultType="user">
 		select user_id userId,password, name, age, gender, my_num myNum,
-		email, phone_num phoneNum, address
+		email, phone_num phoneNum, address, point
 		from users
 	</select>
 	
@@ -67,6 +69,11 @@
 		user_id=#{userId}, password=#{password}, name=#{name},age=#{age},
 		gender=#{gender},my_num=#{myNum},email=#{email},phone_num=#{phoneNum},
 		address=#{address}
+		where user_id=#{userId}
+	</update>
+	<update id="updatePoint" parameterType="user">
+		update users set
+		point=#{point}
 		where user_id=#{userId}
 	</update>
 	

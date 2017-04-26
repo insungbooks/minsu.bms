@@ -28,35 +28,32 @@
 	DeliveryDao deliveryDao = new DeliveryDaoImpl(deliveryMapper);
 	DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
 	
-	if(session.getAttribute("login")!=null){
 	String id=(String)session.getAttribute("login");
 	List<Purchase> purchases = (List<Purchase>)purchaseService.findPurchaseId(id);
+	Delivery delivery=null;
+	int deliveryNum=0;
+	
+	DecimalFormat df = new DecimalFormat("00");
+	Calendar currentCalendar = Calendar.getInstance();
+	
+	String strYear = Integer.toString(currentCalendar.get(Calendar.YEAR));
+	String strMonth = df.format(currentCalendar.get(Calendar.MONTH) + 1);
+	String strDay = df.format(currentCalendar.get(Calendar.DATE) );
+	int strDate = Integer.parseInt(strYear+strMonth+strDay) ;
+	
+	System.out.println(strDate); 
 	for(Purchase purchase :purchases){
-		int deliveryNum = purchase.getDeliveryNum();
-		Delivery delivery = (Delivery)deliveryService.findDelivery(deliveryNum);
+		deliveryNum = purchase.getDeliveryNum();
+		delivery = (Delivery)deliveryService.findDelivery(deliveryNum);
 		
 		String[] date = delivery.getDeliveryDate().split("-");
 		int deliveryDate =Integer.parseInt(date[0]+date[1]+date[2]);
 		System.out.println(deliveryDate); 
 		
-		DecimalFormat df = new DecimalFormat("00");
-		Calendar currentCalendar = Calendar.getInstance();
-
-		//현재 날짜 구하기
-		String strYear = Integer.toString(currentCalendar.get(Calendar.YEAR));
-		String strMonth = df.format(currentCalendar.get(Calendar.MONTH) + 1);
-		String strDay = df.format(currentCalendar.get(Calendar.DATE) );
-		int strDate = Integer.parseInt(strYear+strMonth+strDay) ;
-		System.out.println(strDate); 
-		
-		if(deliveryDate<=strDate){
+		if(deliveryDate<strDate){
 			delivery.setDeliveryNow("배송완료");
 			deliveryService.modifyDeliveryNow(delivery);
 		}
-	}
-	request.setAttribute("purchases", purchases);
-	request.setAttribute("date1", "처음");
-	request.setAttribute("date2", "끝");
-	}
-	
-%><jsp:include page="orderList.jsp"/>
+	}	
+%>
+<jsp:include page="orderList.jsp"/>

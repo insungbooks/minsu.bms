@@ -10,19 +10,32 @@
 <%@ page import="minsu.bms.bookmanagement.dao.mapper.BookMapper"%>
 <%@ page import="minsu.bms.bookmanagement.domain.Book"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ page import="minsu.bms.login.service.LoginService"%>
+<%@ page import="minsu.bms.login.service.LoginServiceImpl"%>
+<%@ page import="minsu.bms.login.dao.LoginDao"%>
+<%@ page import="minsu.bms.login.dao.LoginDaoImpl"%>
+<%@ page import="minsu.bms.login.dao.mapper.LoginMapper"%>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <%
 	BookMapper bookMapper = Configuration.getMapper(BookMapper.class);
 	BookDao bookDao = new BookDaoImpl(bookMapper);
 	BookService bookService = new BookServiceImpl(bookDao);
+	LoginMapper loginMapper = Configuration.getMapper(LoginMapper.class);
+	LoginDao loginDao = new LoginDaoImpl(loginMapper);
+	LoginService loginService = new LoginServiceImpl(loginDao);
 	
 	pageContext.setAttribute("bestBookList", bookService.bestBookList());
 	pageContext.setAttribute("saleBookList", bookService.saleBookList());
 	pageContext.setAttribute("newBookList", bookService.newBookList());
 	
 	pageContext.setAttribute("id", session.getAttribute("login"));
-	
+	String id="";
+	if(session.getAttribute("login")!=null){
+		 id =  (String)session.getAttribute("login");
+		User user = loginService.findUser(id);
+		pageContext.setAttribute("userPoint",user.getPoint());
+	}
 %>
 <html lang="ko">
 <head>
@@ -296,7 +309,7 @@ footer { /*바닥글*/
 						 </c:when>
 						 <c:when test="${id != ''&& id ne null}">
 							<li class="topli"><a href="shop/login/logoutProc.jsp">로그아웃</a></li>
-							<li class="topli"><a>적립금 : 650점</a></li>
+							<li class="topli"><a>적립금 : ${userPoint}점</a></li>
 							<li class="topli"><a href="guest/basket/BasketProc.jsp">장바구니</a></li>
 							<li class="topli"><a href="guest/order/orderListProc.jsp">마이페이지</a></li>
 						 </c:when>

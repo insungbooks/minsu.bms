@@ -10,11 +10,12 @@ public class User {
 	private String email;     
 	private String phoneNum; 
 	private String address;
+	private int point;
 	
 	public User(){}
 	
 	public User(String userId,String password, String name, int age, String gender, String myNum,
-				String email, String phoneNum, String address) {
+				String email, String phoneNum, String address, int point) {
 		this.userId = userId;
 		this.password = password;
 		this.name = name;
@@ -24,6 +25,7 @@ public class User {
 		this.email = email;
 		this.phoneNum = phoneNum;
 		this.address = address;
+		this.point=point;
 	}
 
 	public String getUserId() {
@@ -97,4 +99,13 @@ public class User {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
+	public int getPoint() {
+		return point;
+	}
+
+	public void setPoint(int point) {
+		this.point = point;
+	}
+	
 }

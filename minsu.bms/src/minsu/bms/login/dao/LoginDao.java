@@ -10,6 +10,7 @@ public interface LoginDao {
 	User getUserPw(String userId, String name, String myNum);
 	int addUser(User user);
 	int updateUser(User user);
+	int updatePoint(User user);
 	List<User> userList();
 	List<User> userListPage(Page page);
 	int delUser(User user);

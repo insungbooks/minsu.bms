@@ -67,6 +67,7 @@ Purchase purchase=(Purchase)request.getAttribute("purchase");
 										class="btn btn-default btn-block" style="margin-top:15px;">배송조회</button></td>
 							<td>
 							<input type="hidden" name="orderNum" value="<%=purchase.getOrderNum() %>">
+							<input type="hidden" name="point" value="<%=purchase.getPayAmount()/10 %>">
 							<%if(purchase.getRefundNum()==0){
 							%>
 							<button type="submit" formaction="../refund/refundProc.jsp" class="btn btn-default btn-block" style="margin-top:15px;">환불하기</button>

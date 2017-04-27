@@ -57,7 +57,6 @@
 			
 			String[] date = delivery.getDeliveryDate().split("-");
 			int deliveryDate =Integer.parseInt(date[0]+date[1]+date[2]);
-			System.out.println(deliveryDate); 
 			
 			if(deliveryDate<strDate){
 				delivery.setDeliveryNow("배송완료");

@@ -31,9 +31,10 @@
  	String phoneNum = request.getParameter("phoneNum"); 
 	
  	String address = request.getParameter("address");
+	int point = 0;
 	
 	User user = new User(userId,password,name,age,gender,myNum,
-			email,phoneNum,address);
+			email,phoneNum,address,point);
 	signUp.join(user);
 %>
 

@@ -9,10 +9,15 @@
 <%@ page import="minsu.bms.login.domain.User"%>
 <body>
 <%
+	String id = ""; 
+	if(session.getAttribute("login")!=null) {		//세션값이 비어있지 않다라면
+	id = (String)session.getAttribute("login");} 
+	
 	LoginMapper loginMapper = Configuration.getMapper(LoginMapper.class);
 	LoginDao loginDao = new LoginDaoImpl(loginMapper);
 	SignUp signUp = new SignUpImpl(loginDao);
-
+	User user1 = signUp.findUser(id);
+	
 	String userId = request.getParameter("id");
 	String password = request.getParameter("password"); 
 	String name = request.getParameter("name");   
@@ -28,9 +33,10 @@
 	String phoneNum = request.getParameter("phoneNum");
 
 	String address = request.getParameter("address");
+	int point = user1.getPoint();
 	
 	User user = new User(userId,password,name,age,gender,myNum,
-			email,phoneNum,address);
+			email,phoneNum,address,point);
 	signUp.modifyUser(user);
 %>
 

@@ -88,18 +88,7 @@
 		<br>
 		<h2>도서 추가하기</h2>
 		<br>
-			<div class="col-md-3">
-				<div>
-					<a href="#" class="thumbnail" >
-						<img src="http://placehold.it/200x300">
-					</a>
-				</div>
-				<div>
-					<input type="button" value="이미지 등록">
-<!-- 이미지등록버튼 중앙 등록 하기 -->
-				</div>
-			</div>
-			<div class="col-md-9">
+			<div class="col-md-12">
 				<!-- 분류 -->
 				<div class="form-group">
 					<label class="col-md-2">분류 :</label>
@@ -178,9 +167,13 @@
 				</div>
 				
 				<div class="form-group">
+					<label class="col-md-2" for="inventory">이미지 경로 :</label>
 					<div class="col-md-10">
-						<input type="hidden" class="form-control" name="salesNum" value="<%= book.getSalesNum() %>" placeholder="판매수량을 입력하세요." required>
+						<input type="text" class="form-control" name="img" value="<%= book.getImg() %>" placeholder="이미지경로를 입력하세요." required>
 					</div>
+				</div>
+				<input type="hidden" class="form-control" name="salesNum" value="<%= book.getSalesNum() %>" placeholder="판매수량을 입력하세요." required>
+				
 				</div>
 			<br><br>
 			</div>
@@ -294,10 +287,14 @@
 				</div>
 				
 				<div class="form-group">
+					<label class="col-md-2" for="inventory">이미지 경로 :</label>
 					<div class="col-md-10">
-						<input type="hidden" class="form-control" name="salesNum" value="0" placeholder="판매수량을 입력하세요." required>
+						<input type="text" class="form-control" name="img" placeholder="이미지경로를 입력하세요." required>
 					</div>
 				</div>
+				
+				<input type="hidden" class="form-control" name="salesNum" value="0" placeholder="판매수량을 입력하세요." required>
+				
 			<br><br>
 			</div>
 			<div class="row">

@@ -122,7 +122,7 @@
 							<th>배송주소</th>
 							<th>상품코드</th>
 							<th>주문수량</th>
-							<th>배송상황</th><!-- 자바코드로 구현(기창이오빠말) -->
+							<th>배송상황</th>
 							<th>지불방법</th>
 							<th>책가격</th>
 						</tr>
@@ -144,7 +144,7 @@
 									<td><%=order.getOrderCount()%></td>
 									<td><%=order.getDeliveryNum()%></td>
 									<td><%=order.getPayOption() %></td>				
-									<td><%=order.getPayAmount() %></td>
+									<td><%=order.getPayAmount() %>원</td>
 								</tr>
 								<%
 									}
@@ -155,7 +155,7 @@
 							<td colspan="7">
 							</td>
 							<th>총 금액 :</th>
-							<td><%= totalPrice %></td>
+							<td><%= totalPrice %>원</td>
 							
 							<%
 								} 

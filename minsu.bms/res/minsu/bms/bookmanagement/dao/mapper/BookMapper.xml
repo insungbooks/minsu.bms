@@ -81,29 +81,7 @@
 		and kind = '기타'
 	</if>
 	</select>
-	
-	<!-- <select id="categoryBookList" parameterType="string" resultMap="bookMap">
-	select * from books
-	<if test="country.equals('domestic')">
-	where country = '국내'
-	</if>
-	<if test="country.equals('foreign')">
-	where country = '해외'
-	</if>
-	<if test="kind.equals('문학')">
-	and kind = '문학'
-	</if>
-	<if test="kind.equals('인문')">
-	and kind = '인문'
-	</if>
-	<if test="kind.equals('참고서')">
-	and kind = '참고서'
-	</if>
-	<if test="kind.equals('기타')">
-	and kind = '기타'
-	</if>
-	</select> -->
-	
+
 	<select id="getBook" parameterType="string" resultType="book">
 		select book_code bookCode, book_name bookName, book_price bookPrice, writer,
 			   company, publi_date publiDate, country, kind, inventory, sales_num salesNum,
@@ -120,7 +98,7 @@
 		insert into books values (
 		#{bookCode}, #{bookName}, #{bookPrice}, #{writer}, #{company},
 		#{publiDate}, #{country}, #{kind}, #{inventory}, #{salesNum},
-		#{bookIntro}, #{companyEval}, 1)
+		#{bookIntro}, #{companyEval}, #{img})
 	</insert>
 	
 	<update id="updateBook" parameterType="book">
@@ -128,7 +106,8 @@
 		book_name=#{bookName}, book_price=#{bookPrice},
 		writer=#{writer}, company=#{company}, publi_date=#{publiDate},
 		country=#{country}, kind=#{kind}, inventory=#{inventory},
-		book_intro=#{bookIntro}, company_eval=#{companyEval}, sales_num=#{salesNum}
+		book_intro=#{bookIntro}, company_eval=#{companyEval}, sales_num=#{salesNum},
+		img=#{img}
 		where book_code=#{bookCode}
 	</update>
 </mapper>

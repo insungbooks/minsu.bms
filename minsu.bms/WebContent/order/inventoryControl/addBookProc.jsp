@@ -28,7 +28,7 @@
 	String writerIntro = request.getParameter("writerIntro");
 	String bookIntro = request.getParameter("bookIntro");
 	String companyEval = request.getParameter("companyEval");
-	String img = "1";
+	String img = request.getParameter("img");
 	
 	Book addBook = new Book(bookCode,bookName,bookPrice,writer,
 							company,publiDate,country,kind,inventory,salesNum,

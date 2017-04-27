@@ -29,6 +29,7 @@
 	DeliveryService deliveryService = new DeliveryServiceImpl(deliveryDao);
 	
 	String id=(String)session.getAttribute("login");
+
 	List<Purchase> purchases = (List<Purchase>)purchaseService.findPurchaseId(id);
 	Delivery delivery=null;
 	int deliveryNum=0;

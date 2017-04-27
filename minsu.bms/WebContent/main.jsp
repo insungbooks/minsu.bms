@@ -303,7 +303,7 @@ footer { /*바닥글*/
 			<div class="container">
 				<ul class="topul">
 					<c:choose>
-						 <c:when test="${id eq 'insung'}">
+						 <c:when test="${id eq 'admin'}">
 						  	<li class="topli"><a href="shop/login/logoutProc.jsp">로그아웃</a></li>
 							<li class="topli"><a href="order/member/memberList.jsp">관리자페이지</a></li>
 						 </c:when>

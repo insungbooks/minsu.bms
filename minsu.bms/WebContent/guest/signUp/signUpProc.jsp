@@ -20,7 +20,7 @@
 %>
 	<script>
 	alert("중복된 아이디 입니다");	//경고창과 함께 스크립트 언어로 출력
-	window.location.href="signUp.jsp";
+	history.back();
 	</script>
 <% 
 		}else {

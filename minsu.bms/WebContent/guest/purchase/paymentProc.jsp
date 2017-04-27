@@ -47,13 +47,19 @@
 		request.setAttribute("bookNum", bookNum);
 	}
 	
-	if(session.getAttribute("login")!=null){
 	String id=(String)session.getAttribute("login");
+	
+	if(id !=null){
 	User user = loginService.findUser(id);
 	request.setAttribute("user",user);
-	}else{%>
-	<jsp:include page="../../shop/login/login.jsp"/>	
-<% 	}
+	}else {
+%>
+	<script>
+		alert("로그인해주세요");
+		window.location.href="../../shop/login/login.jsp";
+	</script>
+<% 
+ 	}
 	
 	
 	List<Basket> basket= new ArrayList<Basket>();

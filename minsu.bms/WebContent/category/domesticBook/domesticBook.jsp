@@ -13,9 +13,9 @@
 <head>
 <%
 	switch(kind) {
-	case "kl" : %> <title>국내도서-문학</title><% 
-	case "k2" : %> <title>국내도서-인문</title><% 
-	case "k3" : %> <title>국내도서-참고서</title><% 
+	case "k1" : %> <title>국내도서-문학</title><% break;
+	case "k2" : %> <title>국내도서-인문</title><% break;
+	case "k3" : %> <title>국내도서-참고서</title><% break;
 	case "k4" : %> <title>국내도서-기타</title><% 
 	}
 %>

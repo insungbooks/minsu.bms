@@ -13,9 +13,9 @@
 <head>
 <%
 	switch(kind) {
-	case "fl" : %> <title>해외도서-문학</title><% 
-	case "f2" : %> <title>해외도서-인문</title><% 
-	case "f3" : %> <title>해외도서-참고서</title><% 
+	case "f1" : %> <title>해외도서-문학</title><% break;
+	case "f2" : %> <title>해외도서-인문</title><% break;
+	case "f3" : %> <title>해외도서-참고서</title><% break;
 	case "f4" : %> <title>해외도서-기타</title><% 
 	}
 %>

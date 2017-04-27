@@ -14,6 +14,17 @@
 	SignUp signUp = new SignUpImpl(loginDao);
 
 	String userId = request.getParameter("id");
+	if(!userId.equals("") && userId != null) {
+		User userid = signUp.findUser(userId);
+		if(userid != null) {
+%>
+	<script>
+	alert("중복된 아이디 입니다");	//경고창과 함께 스크립트 언어로 출력
+	window.location.href="signUp.jsp";
+	</script>
+<% 
+		}else {
+	
 	String password = request.getParameter("password"); 
 	String name = request.getParameter("name");     
  	
@@ -35,7 +46,10 @@
 			email,phoneNum,address,point);
 	signUp.join(user);
 %>
+<jsp:forward page= "../../shop/system/signUpSuccess.jsp"/>
 
-<jsp:forward page= "../../shop/system/signUpSuccess.jsp"/> 
+<%
+} }
+%>
 </body>
 </html>

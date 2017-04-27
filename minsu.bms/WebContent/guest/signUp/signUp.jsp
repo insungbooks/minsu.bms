@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="minsu.bms.login.domain.User"%>
+<%@ page import="minsu.bms.login.service.LoginService"%>
+<%@ page import="minsu.bms.login.service.LoginServiceImpl"%>
+<%@ page import="minsu.bms.config.Configuration"%>
+<%@ page import="minsu.bms.login.dao.LoginDao"%>
+<%@ page import="minsu.bms.login.dao.LoginDaoImpl"%>
+<%@ page import="minsu.bms.login.dao.mapper.LoginMapper"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -101,12 +108,11 @@
 					<p>- 개인정보 이메일 : dlstjd@dlstjd.co.kr</p>
 				</div>
 			</section>
-
+			
 			<p>
 <form action="signUpProc.jsp">
 				<!-- 이용약관 -->
 			<div class="container">
-			
 				<hr>
 				<h4 style="padding-top: 16px;">약관동의</h4>
 				<div class="row">

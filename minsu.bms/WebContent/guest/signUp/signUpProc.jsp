@@ -17,9 +17,7 @@
 	String password = request.getParameter("password"); 
 	String name = request.getParameter("name");     
  	
-	String myNum1 = request.getParameter("myNum1"); 
- 	String myNum2 = request.getParameter("myNum2");
- 	String myNum = myNum1+"-"+myNum2;
+ 	String myNum = request.getParameter("myNum");
  	
  	String gender = request.getParameter("sex");
  	int age = Integer.parseInt(request.getParameter("age"));

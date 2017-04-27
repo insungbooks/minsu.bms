@@ -167,8 +167,8 @@
 								</td>
 							</tr>
 							<tr>
-								<th>주민등록번호</th>
-								<td><input type="text"  name="myNum1" required Maxlength="6"/>-<input type="text"  name="myNum2" required Maxlength="7"/></td>
+								<th>주민등록번호 앞자리</th>
+								<td><input type="text"  name="myNum" required Maxlength="6"/></td>
 							</tr>
 							<tr>
 								<th>나 이</th>

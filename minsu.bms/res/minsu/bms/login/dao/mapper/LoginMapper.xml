@@ -60,7 +60,7 @@
 	<insert id="addUser" parameterType="user">
 		insert into users values(
 		#{userId}, #{password}, #{name}, #{age}, #{gender}, #{myNum},
-		#{email}, #{phoneNum}, #{address}
+		#{email}, #{phoneNum}, #{address},0
 		)
 	</insert>
 	
